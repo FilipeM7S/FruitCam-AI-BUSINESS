@@ -1,0 +1,100 @@
+{
+ "setup": {
+  "what": "simulated belt carrying real held-out TEST fruit (photo-disjoint from training; label files with the paper's class numbering only), cut out with their masks, no leaves, processed by the real camera pipeline and models/belt_v2.pt",
+  "model": "belt_v2",
+  "minutes_simulated": 8,
+  "rate_per_s": 2.0,
+  "class_mix": "1:1:1",
+  "test_crops": {
+   "boa": 56,
+   "baixa_qualidade": 84,
+   "podre": 509
+  },
+  "test_photos": 149,
+  "seed": 11,
+  "note": "each fruit keeps one fixed image while it moves (no rotation or lighting change), so the extra views add little information here"
+ },
+ "fps": 25.0,
+ "counting": {
+  "fruits_that_crossed_the_line": 914,
+  "counted": 914,
+  "matched_to_a_true_fruit": 914,
+  "distinct_true_fruits": 914,
+  "double_counts": 0
+ },
+ "multi_view": {
+  "n": 914,
+  "accuracy": 0.43982494529540483,
+  "accuracy_ci95": [
+   0.4079639044554828,
+   0.4721896896804014
+  ],
+  "balanced_accuracy": 0.4402158677406202,
+  "recall": {
+   "boa": 0.4370629370629371,
+   "baixa_qualidade": 0.42153846153846153,
+   "podre": 0.46204620462046203
+  },
+  "confusion": [
+   [
+    125,
+    63,
+    98
+   ],
+   [
+    53,
+    137,
+    135
+   ],
+   [
+    31,
+    132,
+    140
+   ]
+  ]
+ },
+ "single_view": {
+  "n": 914,
+  "accuracy": 0.44529540481400437,
+  "accuracy_ci95": [
+   0.41337071259528757,
+   0.47767800934642524
+  ],
+  "balanced_accuracy": 0.4454185418541854,
+  "recall": {
+   "boa": 0.4370629370629371,
+   "baixa_qualidade": 0.4338461538461538,
+   "podre": 0.46534653465346537
+  },
+  "confusion": [
+   [
+    125,
+    72,
+    89
+   ],
+   [
+    51,
+    141,
+    133
+   ],
+   [
+    30,
+    132,
+    141
+   ]
+  ]
+ },
+ "with_review": {
+  "threshold": null,
+  "coverage": 0.0,
+  "accuracy_on_decided": null,
+  "n_decided": 0
+ },
+ "views_per_fruit": 6.0,
+ "size_ratio_median": 1.028878091612086,
+ "size_ratio_p05_p95": [
+  0.9789110159662487,
+  1.061235176411537
+ ],
+ "seconds": 464.7
+}

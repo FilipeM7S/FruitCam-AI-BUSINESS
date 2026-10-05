@@ -1,0 +1,216 @@
+{
+ "source": {
+  "doi": "10.5281/zenodo.17494608",
+  "url": "https://zenodo.org/records/17494608",
+  "title": "Potatoes Dataset",
+  "authors": "Štursa, Dominik; Doležel, Petr; Ksiažek, Jakub (University of Pardubice)",
+  "license": "CC BY 4.0",
+  "zip_md5": "6e75a6ed39e929ee646dd002767531e7"
+ },
+ "files": 4145,
+ "image_size": [
+  50,
+  50
+ ],
+ "exact_unique_images": 1294,
+ "unique_up_to_rotation_and_flip": 757,
+ "near_duplicate_pairs_merged": 51,
+ "near_duplicate_rule": "8x8 grey signature correlation > 0.95 under any rotation/flip",
+ "object_groups": 712,
+ "objects_per_class": {
+  "Good": 560,
+  "Damaged": 110,
+  "Plant": 44,
+  "Stone": 43
+ },
+ "objects_by_official_split_membership": {
+  "train": 353,
+  "val": 70,
+  "test1 + test3 + train + val": 67,
+  "test2 + test3 + train + val": 54,
+  "train + val": 46,
+  "test2 + test3": 34,
+  "test2": 30,
+  "test1 + train + val": 26,
+  "test2 + train + val": 19,
+  "test2 + train": 17,
+  "test2 + test3 + train": 16,
+  "test1 + test3 + train": 15,
+  "test1 + train": 5,
+  "test2 + val": 3,
+  "test2 + test3 + val": 2
+ },
+ "test_objects_also_in_train_or_val": 224,
+ "test_objects_total": 288,
+ "contains_full_frames_or_sequences": false
+}
+{
+ "belt_lab_opencv": [
+  91.0,
+  127.0,
+  126.0
+ ],
+ "threshold": 14.0,
+ "lightness_weight": 0.5,
+ "rule": "object centre (16x16 px) at least 90% foreground with the detector's own Lab rule, belt colour = median of crop corners",
+ "per_class": {
+  "Good": {
+   "n": 560,
+   "centre_separated": 200,
+   "centre_separated_share": 0.35714285714285715,
+   "centre_separated_ci95": [
+    0.3185540500064595,
+    0.3976782392660391
+   ],
+   "median_centre_distance_to_belt": 15.173948287963867,
+   "median_mask_share": 0.5246
+  },
+  "Damaged": {
+   "n": 110,
+   "centre_separated": 36,
+   "centre_separated_share": 0.32727272727272727,
+   "centre_separated_ci95": [
+    0.24671132553263087,
+    0.4194911250207909
+   ],
+   "median_centre_distance_to_belt": 14.320003509521484,
+   "median_mask_share": 0.5418000000000001
+  },
+  "Plant": {
+   "n": 44,
+   "centre_separated": 24,
+   "centre_separated_share": 0.5454545454545454,
+   "centre_separated_ci95": [
+    0.4006618309120573,
+    0.6829476595494435
+   ],
+   "median_centre_distance_to_belt": 16.220827102661133,
+   "median_mask_share": 0.7544
+  },
+  "Stone": {
+   "n": 43,
+   "centre_separated": 7,
+   "centre_separated_share": 0.16279069767441862,
+   "centre_separated_ci95": [
+    0.08116627302914933,
+    0.29972406017992526
+   ],
+   "median_centre_distance_to_belt": 11.858530044555664,
+   "median_mask_share": 0.4968
+  }
+ }
+}
+{
+ "what": "median Lab distance between the centre of each real cashew crop (field photos, box without margin) and the colour of this real potato belt, with the detector's formula",
+ "lightness_weight": 0.5,
+ "per_source_label": {
+  "premature": {
+   "n": 4777,
+   "median_distance": 48.239784240722656,
+   "share_above": {
+    "14.0": 1.0,
+    "20.0": 0.9995813271927988
+   }
+  },
+  "ripe": {
+   "n": 749,
+   "median_distance": 40.90383529663086,
+   "share_above": {
+    "14.0": 0.9986648865153538,
+    "20.0": 0.9919893190921228
+   }
+  },
+  "spoilt": {
+   "n": 2446,
+   "median_distance": 46.89939498901367,
+   "share_above": {
+    "14.0": 1.0,
+    "20.0": 0.9975470155355682
+   }
+  },
+  "unripe": {
+   "n": 135,
+   "median_distance": 61.33208084106445,
+   "share_above": {
+    "14.0": 1.0,
+    "20.0": 1.0
+   }
+  }
+ }
+}
+C:\Users\Filipe\OneDrive\Desktop\Documentos\PROJECTS\Startup de visão computacional\train_belt.py:111: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  return float(log_t.exp())
+fold 0: train 513 val 97 test 147 T=0.97 289 s
+fold 1: train 506 val 96 test 155 T=1.18 369 s
+fold 2: train 511 val 101 test 145 T=1.25 255 s
+fold 3: train 497 val 102 test 158 T=1.15 269 s
+fold 4: train 509 val 96 test 152 T=1.40 785 s
+{
+ "protocol": "5-fold cross-validation, folds by object group (rotated/flipped copies and near-duplicates kept together); in each fold 1/7 of the training groups is validation for checkpoint choice and temperature",
+ "img_size": 128,
+ "epochs": 20,
+ "n": 757,
+ "groups": 712,
+ "accuracy": 0.9062087186261559,
+ "accuracy_ci95_group_bootstrap": [
+  0.885179766570481,
+  0.9266119095256685
+ ],
+ "balanced_accuracy": 0.8412630247659316,
+ "balanced_accuracy_ci95_group_bootstrap": [
+  0.8035197996380326,
+  0.8742372512679191
+ ],
+ "majority_baseline_accuracy": 0.7397622192866579,
+ "confusion": [
+  [
+   547,
+   13,
+   0,
+   0
+  ],
+  [
+   52,
+   58,
+   0,
+   0
+  ],
+  [
+   0,
+   1,
+   43,
+   0
+  ],
+  [
+   2,
+   3,
+   0,
+   38
+  ]
+ ],
+ "good_vs_not_good_on_potatoes": {
+  "n": 670,
+  "accuracy": 0.9029850746268657,
+  "accuracy_ci95": [
+   0.878222456100151,
+   0.923152990427734
+  ]
+ },
+ "damaged_predicted_good": {
+  "k": 52,
+  "n": 110,
+  "rate_ci95": [
+   0.38193206652085265,
+   0.5653630572507403
+  ]
+ },
+ "ece": 0.03924670665959653,
+ "temperatures": [
+  0.9689314365386963,
+  1.1827465295791626,
+  1.247217059135437,
+  1.1463946104049683,
+  1.400540828704834
+ ]
+}

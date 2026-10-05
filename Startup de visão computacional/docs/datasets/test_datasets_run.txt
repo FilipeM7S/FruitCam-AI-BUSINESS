@@ -1,0 +1,50 @@
+Found 10 test(s).
+Skipping setup of unused database(s): default.
+System check identified no issues (0 silenced).
+test_archives_match_the_published_hashes (core.test_datasets.DatasetFilesTests.test_archives_match_the_published_hashes) ...     potatoes   dataset_potatoes.zip           md5    published 6e75a6ed39e929ee… computed 6e75a6ed39e929ee… size 26,584,805 (published 26,584,805)
+    lemons     lemon-dataset-v1.0.0.zip       md5    published 859dbb37e3500c32… computed 859dbb37e3500c32… size 86,518,492 (published 86,518,492)
+    fruitnet   FruitNetDataset.zip            sha256 published b84851e0c9101156… computed b84851e0c9101156… size 3,253,463,240 (published 3,253,463,240)
+ok
+test_dataset_card_counts_equal_the_files_on_disk (core.test_datasets.DatasetFilesTests.test_dataset_card_counts_equal_the_files_on_disk) ...     potatoes                   card 670 (total cell 670) vs disk 670 (all png 670)
+    potatoes_foreign_objects   card 87 (total cell 87) vs disk 87 (all png 87)
+    lemons                     card 2690 (total cell 2690) vs disk 2690 (all png 2690)
+    fruitnet                   card 18452 (total cell 18452) vs disk 18452 (all png 18452)
+ok
+test_duplicate_check_across_splits (core.test_datasets.DatasetFilesTests.test_duplicate_check_across_splits) ...     potatoes                   exact duplicates across splits 0; pHash candidates 0; confirmed near-duplicates 0 (highest candidate correlation 0.0)
+    potatoes_foreign_objects   exact duplicates across splits 0; pHash candidates 0; confirmed near-duplicates 0 (highest candidate correlation 0.0)
+    lemons                     exact duplicates across splits 0; pHash candidates 9007; confirmed near-duplicates 0 (highest candidate correlation 0.9755)
+    fruitnet                   exact duplicates across splits 0; pHash candidates 13; confirmed near-duplicates 0 (highest candidate correlation 0.9723)
+ok
+test_every_label_is_in_the_label_map_and_follows_it (core.test_datasets.DatasetFilesTests.test_every_label_is_in_the_label_map_and_follows_it) ...     potatoes                   labels on disk ['good', 'poor_or_rotten']; label folders ['good', 'poor_or_rotten']
+    potatoes_foreign_objects   labels on disk ['plant', 'stone']; label folders ['plant', 'stone']
+    lemons                     labels on disk ['good', 'poor', 'poor_or_rotten', 'rotten']; label folders ['good', 'poor', 'poor_or_rotten', 'rotten']
+    fruitnet                   labels on disk ['good', 'poor_or_rotten']; label folders ['good', 'poor_or_rotten']
+    rows whose label does not follow data/label_map.json: 0
+ok
+test_every_processed_image_opens_with_the_expected_size (core.test_datasets.DatasetFilesTests.test_every_processed_image_opens_with_the_expected_size) ...     potatoes                   manifest rows    670 png files    670 sizes {(128, 128): 670} modes {'RGB': 670}
+    potatoes_foreign_objects   manifest rows     87 png files     87 sizes {(128, 128): 87} modes {'RGB': 87}
+    lemons                     manifest rows   2690 png files   2690 sizes {(128, 128): 2690} modes {'RGB': 2690}
+    fruitnet                   manifest rows  18452 png files  18452 sizes {(128, 128): 18452} modes {'RGB': 18452}
+ok
+test_fetch_script_downloads_nothing_the_second_time (core.test_datasets.DatasetFilesTests.test_fetch_script_downloads_nothing_the_second_time) ...     potatoes         already present and verified, nothing downloaded | lemons           already present and verified, nothing downloaded | fruitnet         already present and verified, nothing downloaded | cashew_makerere  already present and verified, nothing downloaded | total downloaded: 0 B
+ok
+test_no_object_or_fruit_is_in_two_splits (core.test_datasets.DatasetFilesTests.test_no_object_or_fruit_is_in_two_splits) ...     potatoes                   groups    625 objects    670 splits {'train': 467, 'test': 99, 'val': 104}; groups in two splits 0; objects in two splits 0
+    potatoes_foreign_objects   groups     87 objects     87 splits {'train': 63, 'test': 13, 'val': 11}; groups in two splits 0; objects in two splits 0
+    lemons                     groups     35 objects   2690 splits {'train': 2126, 'val': 342, 'test': 222}; groups in two splits 0; objects in two splits 0
+    fruitnet                   groups   9386 objects  18452 splits {'val': 2734, 'train': 12854, 'test': 2864}; groups in two splits 0; objects in two splits 0
+    lemons: 35 fruit numbers, each in exactly one split: True
+ok
+test_every_dataset_on_disk_has_a_source_file_and_a_manifest_entry (core.test_datasets.DatasetLicenceTests.test_every_dataset_on_disk_has_a_source_file_and_a_manifest_entry) ...     cashew_makerere  SOURCE.md True licence 'CC BY 4.0' in licenses.json True
+    fruitnet         SOURCE.md True licence 'CC BY 4.0' in licenses.json True
+    lemons           SOURCE.md True licence 'MIT' in licenses.json True
+    potatoes         SOURCE.md True licence 'CC BY 4.0' in licenses.json True
+ok
+test_gitignore_keeps_dataset_files_out_and_source_files_in (core.test_datasets.DatasetLicenceTests.test_gitignore_keeps_dataset_files_out_and_source_files_in) ...     ignored by .gitignore: data/label_map.json no, data/external/potatoes/SOURCE.md no, data/external/potatoes/raw/dataset_potatoes.zip yes, data/external/fruitnet/extracted/FruitNetDataset/a.jpg yes, data/processed/lemons/images/train/good/a.png yes, data/processed/lemons/manifest.csv yes, data/processed/conversion_report.json yes
+ok
+test_no_non_commercial_or_unclear_dataset_is_on_disk (core.test_datasets.DatasetLicenceTests.test_no_non_commercial_or_unclear_dataset_is_on_disk) ...     datasets on disk ['cashew_makerere', 'fruitnet', 'lemons', 'potatoes'] with licences ['CC BY 4.0', 'CC BY 4.0', 'MIT', 'CC BY 4.0']; recorded but not downloaded ['FruitRoll-360', 'Oranges Classification', 'Sisfrutos Papaya']; files named after excluded sets 0
+ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 76.507s
+
+OK

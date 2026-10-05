@@ -1,0 +1,559 @@
+{
+ "setup": {
+  "test_fruit": "the same held-out TEST crops for every model: label files with the paper's class numbering only (1466 files that number 'tree' as 5 are excluded), boxes with short side >= 16 px, split by source photo (never used in training or validation of belt_v2*; belt_v1 was trained on the same photo split but with the excluded files included)",
+  "test_counts": {
+   "boa": 56,
+   "baixa_qualidade": 84,
+   "podre": 509
+  },
+  "test_photos": 149,
+  "field_photo_test": "each crop as cut from the field photo (leaves around the fruit), scored here for every model",
+  "held_out_blue_belt_composites": "each test crop cut out with its GrabCut mask and pasted once onto a synthetic belt in colours never used in training (azul, azul-claro), fixed seed",
+  "simulated_belt_masked_fruit": "end-to-end camera pipeline (segment, track, count, classify) on the simulated belt for 8 min; real test fruit pasted with their masks, so no leaves; seed 11",
+  "simulated_belt_old_disc_crops": "same, but fruit pasted as discs that keep leaves around the fruit (the setup of the earlier 59.6% result)",
+  "adabn": "batch-norm statistics recomputed on unlabelled crops of VALIDATION fruit in the same setting (blue composites, or 4 min of simulated belt, seed 23); temperature and review threshold unchanged",
+  "masks": {
+   "grabcut": 1330,
+   "ellipse": 25
+  },
+  "caveat": "all belt numbers are synthetic settings built from real fruit images; none is a measurement on a real cashew belt"
+ },
+ "results": {
+  "belt_v1": {
+   "field_photo_test": {
+    "n": 649,
+    "accuracy": 0.42989214175654855,
+    "accuracy_ci95_photo_bootstrap": [
+     0.3758505589626189,
+     0.4886230947196516
+    ],
+    "balanced_accuracy": 0.44238625378114566,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.3678126028434894,
+     0.5178559005157376
+    ],
+    "recall": {
+     "boa": 0.42857142857142855,
+     "baixa_qualidade": 0.47619047619047616,
+     "podre": 0.4223968565815324
+    },
+    "rotten_predicted_good": {
+     "k": 93,
+     "n": 509,
+     "rate_ci95": [
+      0.1515588550107174,
+      0.2186168700474966
+     ]
+    },
+    "with_review": {
+     "threshold": 0.81,
+     "coverage": 0.09399075500770417,
+     "accuracy_on_decided": 0.2459016393442623
+    }
+   },
+   "field_photo_test_boxes_24px_or_more": {
+    "n": 194,
+    "accuracy": 0.4845360824742268,
+    "accuracy_ci95_photo_bootstrap": [
+     0.39655172413793105,
+     0.5656120023767083
+    ],
+    "balanced_accuracy": 0.3943021969337759,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.29809990846940465,
+     0.5142740454133421
+    ],
+    "recall": {
+     "boa": 0.3157894736842105,
+     "baixa_qualidade": 0.3333333333333333,
+     "podre": 0.5337837837837838
+    },
+    "rotten_predicted_good": {
+     "k": 29,
+     "n": 148,
+     "rate_ci95": [
+      0.14003730725672536,
+      0.2672391990210584
+     ]
+    },
+    "with_review": {
+     "threshold": 0.81,
+     "coverage": 0.08247422680412371,
+     "accuracy_on_decided": 0.375
+    }
+   },
+   "held_out_blue_belt_composites": {
+    "n": 649,
+    "accuracy": 0.28197226502311246,
+    "accuracy_ci95_photo_bootstrap": [
+     0.23612828506148928,
+     0.3283827866654749
+    ],
+    "balanced_accuracy": 0.4113808588268313,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.3615656982583712,
+     0.4594633742618316
+    ],
+    "recall": {
+     "boa": 0.17857142857142858,
+     "baixa_qualidade": 0.8571428571428571,
+     "podre": 0.19842829076620824
+    },
+    "rotten_predicted_good": {
+     "k": 25,
+     "n": 509,
+     "rate_ci95": [
+      0.033486929945752024,
+      0.07149962671592053
+     ]
+    },
+    "with_review": {
+     "threshold": 0.81,
+     "coverage": 0.25115562403698,
+     "accuracy_on_decided": 0.147239263803681
+    }
+   },
+   "simulated_belt_masked_fruit": {
+    "counted": 914,
+    "multi_view": {
+     "n": 914,
+     "accuracy": 0.3862144420131291,
+     "accuracy_ci95": [
+      0.355188790395493,
+      0.4181925512432697
+     ],
+     "balanced_accuracy": 0.37876695361843876,
+     "recall": {
+      "boa": 0.10139860139860139,
+      "baixa_qualidade": 0.47384615384615386,
+      "podre": 0.5610561056105611
+     }
+    },
+    "with_review": {
+     "threshold": 0.81,
+     "coverage": 0.05689277899343545,
+     "accuracy_on_decided": 0.46153846153846156,
+     "n_decided": 52
+    }
+   },
+   "simulated_belt_old_disc_crops": {
+    "counted": 918,
+    "multi_view": {
+     "n": 918,
+     "accuracy": 0.3660130718954248,
+     "accuracy_ci95": [
+      0.33547012519982944,
+      0.39767270795226795
+     ],
+     "balanced_accuracy": 0.3681752613455063,
+     "recall": {
+      "boa": 0.16025641025641027,
+      "baixa_qualidade": 0.4778156996587031,
+      "podre": 0.46645367412140576
+     }
+    },
+    "with_review": {
+     "threshold": 0.81,
+     "coverage": 0.027233115468409588,
+     "accuracy_on_decided": 0.52,
+     "n_decided": 25
+    }
+   }
+  },
+  "belt_v1+adabn": {
+   "held_out_blue_belt_composites": {
+    "n": 649,
+    "accuracy": 0.2942989214175655,
+    "accuracy_ci95_photo_bootstrap": [
+     0.2575007769404086,
+     0.32920374499049393
+    ],
+    "balanced_accuracy": 0.3430512676583403,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.2907537806657076,
+     0.3965692885087482
+    ],
+    "recall": {
+     "boa": 0.23214285714285715,
+     "baixa_qualidade": 0.5357142857142857,
+     "podre": 0.26129666011787817
+    },
+    "rotten_predicted_good": {
+     "k": 68,
+     "n": 509,
+     "rate_ci95": [
+      0.10676715608765572,
+      0.16591255117771217
+     ]
+    },
+    "with_review": {
+     "threshold": 0.81,
+     "coverage": 0.2650231124807396,
+     "accuracy_on_decided": 0.12790697674418605
+    }
+   },
+   "simulated_belt_masked_fruit": {
+    "counted": 914,
+    "multi_view": {
+     "n": 914,
+     "accuracy": 0.3293216630196937,
+     "accuracy_ci95": [
+      0.299623557922091,
+      0.3604484545360532
+     ],
+     "balanced_accuracy": 0.31746913152853745,
+     "recall": {
+      "boa": 0.15734265734265734,
+      "baixa_qualidade": 0.6861538461538461,
+      "podre": 0.10891089108910891
+     }
+    },
+    "with_review": {
+     "threshold": 0.81,
+     "coverage": 0.2024070021881838,
+     "accuracy_on_decided": 0.3027027027027027,
+     "n_decided": 185
+    }
+   }
+  },
+  "belt_v2_clean": {
+   "field_photo_test": {
+    "n": 649,
+    "accuracy": 0.6317411402157165,
+    "accuracy_ci95_photo_bootstrap": [
+     0.5744336569579288,
+     0.6807827629289188
+    ],
+    "balanced_accuracy": 0.5149023918670285,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.45355017585839164,
+     0.5808739567935522
+    ],
+    "recall": {
+     "boa": 0.5178571428571429,
+     "baixa_qualidade": 0.3333333333333333,
+     "podre": 0.693516699410609
+    },
+    "rotten_predicted_good": {
+     "k": 49,
+     "n": 509,
+     "rate_ci95": [
+      0.07358492477940136,
+      0.1249978089634035
+     ]
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null
+    }
+   },
+   "field_photo_test_boxes_24px_or_more": {
+    "n": 194,
+    "accuracy": 0.6134020618556701,
+    "accuracy_ci95_photo_bootstrap": [
+     0.5206071250415697,
+     0.7091866397721879
+    ],
+    "balanced_accuracy": 0.4710982912737299,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.3833694576429953,
+     0.5763033088224851
+    ],
+    "recall": {
+     "boa": 0.42105263157894735,
+     "baixa_qualidade": 0.2962962962962963,
+     "podre": 0.6959459459459459
+    },
+    "rotten_predicted_good": {
+     "k": 16,
+     "n": 148,
+     "rate_ci95": [
+      0.06764744336777716,
+      0.16839783139025533
+     ]
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null
+    }
+   },
+   "held_out_blue_belt_composites": {
+    "n": 649,
+    "accuracy": 0.3235747303543914,
+    "accuracy_ci95_photo_bootstrap": [
+     0.27906315127857356,
+     0.3714348925410872
+    ],
+    "balanced_accuracy": 0.46344762528456046,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.397483818587784,
+     0.5372883989200737
+    ],
+    "recall": {
+     "boa": 0.5178571428571429,
+     "baixa_qualidade": 0.6190476190476191,
+     "podre": 0.25343811394891946
+    },
+    "rotten_predicted_good": {
+     "k": 142,
+     "n": 509,
+     "rate_ci95": [
+      0.24178220749663862,
+      0.3194857124355538
+     ]
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null
+    }
+   },
+   "simulated_belt_masked_fruit": {
+    "counted": 914,
+    "multi_view": {
+     "n": 914,
+     "accuracy": 0.47155361050328226,
+     "accuracy_ci95": [
+      0.43937782192563335,
+      0.5039675134840573
+     ],
+     "balanced_accuracy": 0.46965804272734973,
+     "recall": {
+      "boa": 0.5244755244755245,
+      "baixa_qualidade": 0.5907692307692308,
+      "podre": 0.29372937293729373
+     }
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null,
+     "n_decided": 0
+    }
+   },
+   "simulated_belt_old_disc_crops": {
+    "counted": 918,
+    "multi_view": {
+     "n": 918,
+     "accuracy": 0.3638344226579521,
+     "accuracy_ci95": [
+      0.3333398453416701,
+      0.3954638468860712
+     ],
+     "balanced_accuracy": 0.3673722755355964,
+     "recall": {
+      "boa": 0.3141025641025641,
+      "baixa_qualidade": 0.5324232081911263,
+      "podre": 0.25559105431309903
+     }
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null,
+     "n_decided": 0
+    }
+   }
+  },
+  "belt_v2": {
+   "field_photo_test": {
+    "n": 649,
+    "accuracy": 0.5423728813559322,
+    "accuracy_ci95_photo_bootstrap": [
+     0.4854064997050464,
+     0.5969952054048163
+    ],
+    "balanced_accuracy": 0.5332273053294664,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.4599451200064111,
+     0.6091524633735734
+    ],
+    "recall": {
+     "boa": 0.6071428571428571,
+     "baixa_qualidade": 0.44047619047619047,
+     "podre": 0.5520628683693517
+    },
+    "rotten_predicted_good": {
+     "k": 96,
+     "n": 509,
+     "rate_ci95": [
+      0.15700030017686417,
+      0.22487494701649136
+     ]
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null
+    }
+   },
+   "field_photo_test_boxes_24px_or_more": {
+    "n": 194,
+    "accuracy": 0.520618556701031,
+    "accuracy_ci95_photo_bootstrap": [
+     0.43747159090909093,
+     0.6073306459383934
+    ],
+    "balanced_accuracy": 0.4507446042533762,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.35523311134726754,
+     0.5770657612996323
+    ],
+    "recall": {
+     "boa": 0.42105263157894735,
+     "baixa_qualidade": 0.37037037037037035,
+     "podre": 0.5608108108108109
+    },
+    "rotten_predicted_good": {
+     "k": 31,
+     "n": 148,
+     "rate_ci95": [
+      0.1516699009745795,
+      0.28194987169085833
+     ]
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null
+    }
+   },
+   "held_out_blue_belt_composites": {
+    "n": 649,
+    "accuracy": 0.41140215716486905,
+    "accuracy_ci95_photo_bootstrap": [
+     0.3588319978436129,
+     0.46238588241764284
+    ],
+    "balanced_accuracy": 0.47623335516262827,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.4185071540814827,
+     0.537434831476362
+    ],
+    "recall": {
+     "boa": 0.625,
+     "baixa_qualidade": 0.4166666666666667,
+     "podre": 0.38703339882121807
+    },
+    "rotten_predicted_good": {
+     "k": 146,
+     "n": 509,
+     "rate_ci95": [
+      0.24925679368663578,
+      0.32761048909241197
+     ]
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null
+    }
+   },
+   "simulated_belt_masked_fruit": {
+    "counted": 914,
+    "multi_view": {
+     "n": 914,
+     "accuracy": 0.43982494529540483,
+     "accuracy_ci95": [
+      0.4079639044554828,
+      0.4721896896804014
+     ],
+     "balanced_accuracy": 0.4402158677406202,
+     "recall": {
+      "boa": 0.4370629370629371,
+      "baixa_qualidade": 0.42153846153846153,
+      "podre": 0.46204620462046203
+     }
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null,
+     "n_decided": 0
+    }
+   },
+   "simulated_belt_old_disc_crops": {
+    "counted": 918,
+    "multi_view": {
+     "n": 918,
+     "accuracy": 0.3801742919389978,
+     "accuracy_ci95": [
+      0.349333460080602,
+      0.4120137890798103
+     ],
+     "balanced_accuracy": 0.3837852784630091,
+     "recall": {
+      "boa": 0.38461538461538464,
+      "baixa_qualidade": 0.5494880546075085,
+      "podre": 0.21725239616613418
+     }
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null,
+     "n_decided": 0
+    }
+   }
+  },
+  "belt_v2+adabn": {
+   "held_out_blue_belt_composites": {
+    "n": 649,
+    "accuracy": 0.43297380585516176,
+    "accuracy_ci95_photo_bootstrap": [
+     0.3935463251466276,
+     0.4729337678328363
+    ],
+    "balanced_accuracy": 0.4482996538497521,
+    "balanced_accuracy_ci95_photo_bootstrap": [
+     0.39110614389503356,
+     0.5041624306060849
+    ],
+    "recall": {
+     "boa": 0.5892857142857143,
+     "baixa_qualidade": 0.32142857142857145,
+     "podre": 0.43418467583497056
+    },
+    "rotten_predicted_good": {
+     "k": 129,
+     "n": 509,
+     "rate_ci95": [
+      0.21759315101001536,
+      0.2929768396698971
+     ]
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null
+    }
+   },
+   "simulated_belt_masked_fruit": {
+    "counted": 914,
+    "multi_view": {
+     "n": 914,
+     "accuracy": 0.4387308533916849,
+     "accuracy_ci95": [
+      0.4068830152335997,
+      0.47109155334111863
+     ],
+     "balanced_accuracy": 0.44125181748944126,
+     "recall": {
+      "boa": 0.5034965034965035,
+      "baixa_qualidade": 0.38461538461538464,
+      "podre": 0.43564356435643564
+     }
+    },
+    "with_review": {
+     "threshold": null,
+     "coverage": 0.0,
+     "accuracy_on_decided": null,
+     "n_decided": 0
+    }
+   }
+  }
+ },
+ "seconds": 3646
+}

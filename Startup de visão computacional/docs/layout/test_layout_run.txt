@@ -1,0 +1,202 @@
+Found 11 test(s).
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Operations to perform:
+  Synchronize unmigrated apps: rest_framework, staticfiles
+  Apply all migrations: auth, contenttypes, core, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying core.0001_initial... OK
+  Applying core.0002_camera_events... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).
+test_axe_finds_no_serious_or_critical_issues (core.test_layout.LayoutBrowserTests.test_axe_finds_no_serious_or_critical_issues) ... Forbidden: /api/auth/me
+ERROR
+test_dashboard_sections_cards_and_honesty_states (core.test_layout.LayoutBrowserTests.test_dashboard_sections_cards_and_honesty_states) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+    1280px sections ['Visão geral', 'Qualidade agora', 'Tendências', 'Distribuições', 'Previsão']; page demo badge visible True; after scrolling 2400px: filter bar top 68px, more-filters top -2076px
+       overview       section sec-overview       x    264-  1248 y    536 canvases  3 empty states 0 demo True n-badges 1 warnings 0
+       deformity      section sec-now            x    264-   915 y   1032 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       fruits         section sec-now            x    931-  1248 y   1032 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       growth-good    section sec-trends         x    264-   748 y   1634 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       growth-rotten  section sec-trends         x    764-  1248 y   1634 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       recurring      section sec-trends         x    264-  1248 y   2060 canvases  1 empty states 0 demo True n-badges 1 warnings 1
+       gaussian       section sec-distributions  x    264-  1248 y   2657 canvases  6 empty states 2 demo True n-badges 6 warnings 3
+       forecast       section sec-forecast       x    264-  1248 y   4375 canvases  5 empty states 2 demo True n-badges 6 warnings 2
+    360px sections ['Visão geral', 'Qualidade agora', 'Tendências', 'Distribuições', 'Previsão']; page demo badge visible True; after scrolling 2400px: filter bar top 68px, more-filters top -1986px
+       overview       section sec-overview       x     16-   344 y    737 canvases  3 empty states 0 demo True n-badges 1 warnings 0
+       deformity      section sec-now            x     16-   344 y   1742 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       fruits         section sec-now            x     16-   344 y   2263 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       growth-good    section sec-trends         x     16-   344 y   2854 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       growth-rotten  section sec-trends         x     16-   344 y   3367 canvases  1 empty states 0 demo True n-badges 1 warnings 0
+       recurring      section sec-trends         x     16-   344 y   3881 canvases  1 empty states 0 demo True n-badges 1 warnings 1
+       gaussian       section sec-distributions  x     16-   344 y   4624 canvases  6 empty states 2 demo True n-badges 6 warnings 3
+       forecast       section sec-forecast       x     16-   344 y   7124 canvases  5 empty states 2 demo True n-badges 6 warnings 2
+ok
+test_every_page_uses_the_page_header_pattern (core.test_layout.LayoutBrowserTests.test_every_page_uses_the_page_header_pattern) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+    360px /               {'h1': True, 'lead': True, 'first': True, 'actions': {'right': 0, 'top': 269.140625, 'below': True}}
+    360px /inspecao       {'h1': True, 'lead': True, 'first': True, 'actions': None}
+    360px /painel         {'h1': True, 'lead': True, 'first': True, 'actions': {'right': 0, 'top': 142.796875, 'below': True}}
+    360px /como-funciona  {'h1': True, 'lead': True, 'first': True, 'actions': None}
+    360px /creditos       {'h1': True, 'lead': True, 'first': True, 'actions': None}
+    1280px /               {'h1': True, 'lead': True, 'first': True, 'actions': {'right': 0, 'top': 153.078125, 'below': False}}
+    1280px /inspecao       {'h1': True, 'lead': True, 'first': True, 'actions': None}
+    1280px /painel         {'h1': True, 'lead': True, 'first': True, 'actions': {'right': 0, 'top': 53.390625, 'below': False}}
+    1280px /como-funciona  {'h1': True, 'lead': True, 'first': True, 'actions': None}
+    1280px /creditos       {'h1': True, 'lead': True, 'first': True, 'actions': None}
+ok
+test_every_route_is_reachable_from_the_navigation (core.test_layout.LayoutBrowserTests.test_every_route_is_reachable_from_the_navigation) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+    360px nav box left 0 top 836 width 360 height 64; group labels []
+       /               aria-current=page link in view=True h1='Linha de inspeção'
+       /inspecao       aria-current=page link in view=True h1='Linha de inspeção'
+       /painel         aria-current=page link in view=True h1='Painel estatístico'
+       /como-funciona  aria-current=page link in view=True h1='Como funciona'
+       /creditos       aria-current=page link in view=True h1='Créditos e licenças'
+    1024px nav box left 0 top 60 width 88 height 840; group labels []
+       /               aria-current=page link in view=True h1='Linha de inspeção'
+       /inspecao       aria-current=page link in view=True h1='Linha de inspeção'
+       /painel         aria-current=page link in view=True h1='Painel estatístico'
+       /como-funciona  aria-current=page link in view=True h1='Como funciona'
+       /creditos       aria-current=page link in view=True h1='Créditos e licenças'
+    1280px nav box left 0 top 60 width 232 height 840; group labels ['OPERAÇÃO', 'ANÁLISE', 'SOBRE']
+       /               aria-current=page link in view=True h1='Linha de inspeção'
+       /inspecao       aria-current=page link in view=True h1='Linha de inspeção'
+       /painel         aria-current=page link in view=True h1='Painel estatístico'
+       /como-funciona  aria-current=page link in view=True h1='Como funciona'
+       /creditos       aria-current=page link in view=True h1='Como funciona'
+FAIL
+test_inspection_result_beside_the_image_on_desktop_and_below_on_mobile (core.test_layout.LayoutBrowserTests.test_inspection_result_beside_the_image_on_desktop_and_below_on_mobile) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+    1280px image x 289-804 y 746-1100; result panel x 845-1248 y 306-1028; image inside the photo card True
+    360px image x 37-323 y 816-1013; result panel x 16-344 y 1254-2010; image inside the photo card True
+ok
+test_no_horizontal_overflow_on_any_page (core.test_layout.LayoutBrowserTests.test_no_horizontal_overflow_on_any_page) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+      360px /login          scrollWidth 360 clientWidth 360
+      360px /               scrollWidth 360 clientWidth 360
+      360px /inspecao       scrollWidth 360 clientWidth 360
+      360px /painel         scrollWidth 360 clientWidth 360
+      360px /como-funciona  scrollWidth 360 clientWidth 360
+      360px /creditos       scrollWidth 360 clientWidth 360
+      768px /login          scrollWidth 768 clientWidth 768
+      768px /               scrollWidth 768 clientWidth 768
+      768px /inspecao       scrollWidth 768 clientWidth 768
+      768px /painel         scrollWidth 768 clientWidth 768
+      768px /como-funciona  scrollWidth 768 clientWidth 768
+      768px /creditos       scrollWidth 768 clientWidth 768
+     1280px /login          scrollWidth 1280 clientWidth 1280
+     1280px /               scrollWidth 1280 clientWidth 1280
+     1280px /inspecao       scrollWidth 1280 clientWidth 1280
+     1280px /painel         scrollWidth 1280 clientWidth 1280
+     1280px /como-funciona  scrollWidth 1280 clientWidth 1280
+     1280px /creditos       scrollWidth 1280 clientWidth 1280
+ok
+test_reduced_motion_keeps_every_page_still (core.test_layout.LayoutBrowserTests.test_reduced_motion_keeps_every_page_still) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+    reduced motion /login          running animations []
+    reduced motion /               running animations [], <video> elements 0
+    reduced motion /inspecao       running animations [], <video> elements 0
+    reduced motion /painel         running animations [], <video> elements 0
+    reduced motion /como-funciona  running animations [], <video> elements 0
+    reduced motion /creditos       running animations [], <video> elements 0
+ok
+test_skip_link_and_visible_focus_order (core.test_layout.LayoutBrowserTests.test_skip_link_and_visible_focus_order) ... Forbidden: /api/auth/me
+       a      skip                         Pular para o conteúdo        outline 3px focus-visible True
+       a      brand                                                     outline 3px focus-visible True
+       button btn btn-ghost btn-sm         Sair                         outline 3px focus-visible True
+       a                                   Linha                        outline 3px focus-visible True
+       a                                   Inspeção por foto            outline 3px focus-visible True
+       a      router-link-active router-li Painel                       outline 3px focus-visible True
+       a                                   Como funciona                outline 3px focus-visible True
+       a                                   Créditos e licenças          outline 3px focus-visible True
+       input                                                            outline 3px focus-visible True
+    Shift+Tab back to start -> 'skip'; Enter on it -> focus on #main
+ok
+test_only_the_four_breakpoints_are_used (core.test_layout.LayoutTokenTests.test_only_the_four_breakpoints_are_used) ...     min-width breakpoints [768, 1024, 1280]; other media queries ['print', '(prefers-reduced-motion: reduce)']
+ok
+test_screenshots_exist_for_every_page_and_width (core.test_layout.LayoutTokenTests.test_screenshots_exist_for_every_page_and_width) ...     21 of 21 screenshots in docs/layout/after; widths [360, 768, 1280]
+ok
+test_spacing_and_widths_come_from_tokens (core.test_layout.LayoutTokenTests.test_spacing_and_widths_come_from_tokens) ...     spacing scale [2, 4, 6, 8, 12, 16, 20, 24, 32, 48, 64]; layout tokens present: ['bottombar-h', 'card-pad', 'cols', 'content-max', 'form-max', 'gap', 'hairline', 'nav-w', 'page-x', 'rail-w', 'section-gap', 'sidebar-w', 'thumb', 'topbar-h']
+    spacing declarations with raw px: 0; remaining px max-widths: []
+ok
+
+======================================================================
+ERROR: test_axe_finds_no_serious_or_critical_issues (core.test_layout.LayoutBrowserTests.test_axe_finds_no_serious_or_critical_issues)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Filipe\OneDrive\Desktop\Documentos\PROJECTS\Startup de visão computacional\core\test_layout.py", line 319, in test_axe_finds_no_serious_or_critical_issues
+    page.add_script_tag(path=str(AXE))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\playwright\sync_api\_generated.py", line 8748, in add_script_tag
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.add_script_tag(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            url=url, path=path, content=content, type=type
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\playwright\_impl\_page.py", line 497, in add_script_tag
+    return await self._main_frame.add_script_tag(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\playwright\_impl\_frame.py", line 519, in add_script_tag
+    return from_channel(await self._channel.send("addScriptTag", None, params))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.add_script_tag: Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-sf9R+9CH7lEbbZ92iQ14DJmS115jS9GMmeCDaC6GjEU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.
+
+======================================================================
+FAIL: test_every_route_is_reachable_from_the_navigation (core.test_layout.LayoutBrowserTests.test_every_route_is_reachable_from_the_navigation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Filipe\OneDrive\Desktop\Documentos\PROJECTS\Startup de visão computacional\core\test_layout.py", line 186, in test_every_route_is_reachable_from_the_navigation
+    self.assertEqual(modes[1280]["labels"], ["Operação", "Análise", "Sobre"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['OPERAÇÃO', 'ANÁLISE', 'SOBRE'] != ['Operação', 'Análise', 'Sobre']
+
+First differing element 0:
+'OPERAÇÃO'
+'Operação'
+
+- ['OPERAÇÃO', 'ANÁLISE', 'SOBRE']
++ ['Operação', 'Análise', 'Sobre']
+
+----------------------------------------------------------------------
+Ran 11 tests in 164.038s
+
+FAILED (failures=1, errors=1)
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...

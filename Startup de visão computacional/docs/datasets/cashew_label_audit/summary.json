@@ -1,0 +1,85 @@
+{
+ "dataset": "Coffee and Cashew Nut Dataset, cashew part (doi:10.17632/r46c6bpfpf.1, CC BY 4.0)",
+ "files": 3098,
+ "boxes_per_id": {
+  "0 (tree)": 5347,
+  "1 (flower)": 23169,
+  "2 (premature)": 21200,
+  "3 (unripe)": 5347,
+  "4 (ripe)": 7481,
+  "5 (spoilt)": 25820
+ },
+ "rule": "a file is 'tree_as_5' when it has a class-5 box whose longer side covers at least 60% of the photo",
+ "groups": {
+  "tree_as_5": {
+   "files": 1466,
+   "per_id": {
+    "0": {
+     "boxes": 3606,
+     "median_longer_side_fraction": 0.135,
+     "share_covering_60pct": 0.007
+    },
+    "1": {
+     "boxes": 2976,
+     "median_longer_side_fraction": 0.063,
+     "share_covering_60pct": 0.0
+    },
+    "2": {
+     "boxes": 17328,
+     "median_longer_side_fraction": 0.065,
+     "share_covering_60pct": 0.0
+    },
+    "3": {
+     "boxes": 116,
+     "median_longer_side_fraction": 0.088,
+     "share_covering_60pct": 0.0
+    },
+    "4": {
+     "boxes": 1550,
+     "median_longer_side_fraction": 0.071,
+     "share_covering_60pct": 0.0
+    },
+    "5": {
+     "boxes": 1804,
+     "median_longer_side_fraction": 0.999,
+     "share_covering_60pct": 0.813
+    }
+   }
+  },
+  "paper_order": {
+   "files": 1632,
+   "per_id": {
+    "0": {
+     "boxes": 1741,
+     "median_longer_side_fraction": 0.998,
+     "share_covering_60pct": 0.916
+    },
+    "1": {
+     "boxes": 20193,
+     "median_longer_side_fraction": 0.031,
+     "share_covering_60pct": 0.0
+    },
+    "2": {
+     "boxes": 3872,
+     "median_longer_side_fraction": 0.032,
+     "share_covering_60pct": 0.004
+    },
+    "3": {
+     "boxes": 5231,
+     "median_longer_side_fraction": 0.027,
+     "share_covering_60pct": 0.0
+    },
+    "4": {
+     "boxes": 5931,
+     "median_longer_side_fraction": 0.025,
+     "share_covering_60pct": 0.001
+    },
+    "5": {
+     "boxes": 24016,
+     "median_longer_side_fraction": 0.034,
+     "share_covering_60pct": 0.0
+    }
+   }
+  }
+ }
+}

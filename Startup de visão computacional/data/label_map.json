@@ -1,0 +1,47 @@
+{
+  "vocabulary": {
+    "good": "sound fruit, saleable as first quality",
+    "poor": "saleable at a lower grade: immature, blemished, discoloured, minor defects",
+    "rotten": "decay, mould, gangrene, soft rot",
+    "poor_or_rotten": "the source says the fruit is defective but not whether it is a minor defect or rot; kept as its own merged label, never split",
+    "ignore": "not used for fruit quality"
+  },
+  "pipeline_class": {"good": "boa", "poor": "baixa_qualidade", "rotten": "podre"},
+  "foreign_object_labels": ["plant", "stone"],
+  "datasets": {
+    "potatoes": {
+      "unit": "one 50x50 crop per object, as published",
+      "classes": {
+        "Good": {"to": "good", "reason": "dataset definition: healthy, undamaged potatoes, suitable for market sale"},
+        "Damaged": {"to": "poor_or_rotten", "reason": "dataset definition: visible mechanical or biological defects (cut, rotten, or diseased); the source does not separate cut from rotten, so it is not split"},
+        "Plant": {"to": "ignore", "foreign_object": "plant", "reason": "plant residues, tops, weeds or leaves; not fruit quality, kept in the separate foreign-object set"},
+        "Stone": {"to": "ignore", "foreign_object": "stone", "reason": "stones or soil clods; not fruit quality, kept in the separate foreign-object set"}
+      }
+    },
+    "lemons": {
+      "unit": "one lemon per image (1056x1056); all photos of one fruit number share a split",
+      "rule": "worst annotated condition decides the image label: rotten > poor_or_rotten > poor > good; an image with no defect region is good",
+      "classes": {
+        "mould": {"to": "rotten", "reason": "task default; mould is decay"},
+        "gangrene": {"to": "rotten", "reason": "task default; gangrene is tissue death"},
+        "illness": {"to": "poor_or_rotten", "reason": "not in the task defaults; the README marks it as a region of an unhealthy fruit but gives no definition, so minor defect and rot cannot be told apart"},
+        "dark_style_remains": {"to": "poor_or_rotten", "reason": "not in the task defaults; the README says the dark area marks an unhealthy fruit and the region where rotting or mould starts, without saying whether rot is present"},
+        "blemish": {"to": "poor", "reason": "task default; surface blemish"},
+        "greening": {"to": "poor", "reason": "task default; the README defines it as non-uniform yellow with green areas. Not present in the v1.0.0 COCO export (the image-level flags were not exported), so no image receives it"},
+        "healthy": {"to": "good", "reason": "task default. The healthy flag is not in the v1.0.0 export; the README says 'If not [healthy] regions with identified issues are annotated', so an image with no illness, gangrene, mould, blemish or dark_style_remains region is taken as healthy. This is a derived label"},
+        "pedicel": {"to": "ignore", "reason": "fruit stem, not a defect"},
+        "artifact": {"to": "ignore", "reason": "image processing artefact, not a fruit property"},
+        "image_quality": {"to": "ignore", "reason": "photo quality tag (6 annotations), not a fruit property"},
+        "condition": {"to": "ignore", "reason": "2 stray image-level annotations without attributes in the export; not usable as a label"}
+      }
+    },
+    "fruitnet": {
+      "unit": "one phone photo per image, often 2 to 5 fruits of the same quality, varied backgrounds",
+      "classes": {
+        "Good": {"to": "good", "reason": "task default; 'Good quality fruits' folder"},
+        "Bad": {"to": "poor_or_rotten", "reason": "task default; 'Bad quality fruits' folder does not separate minor defects from rot"},
+        "Mixed": {"to": "ignore", "reason": "task default; 'Mixed quality' images contain several fruits of different quality, so one label per image is not defined"}
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+Django==6.0.3
+djangorestframework==3.18.1
+whitenoise==6.12.0
+torch==2.11.0
+torchvision==0.26.0
+pillow==12.1.0
+numpy==2.4.0
+pandas==2.3.3
+scipy==1.17.1
+matplotlib==3.10.8
+playwright==1.57.0
+imageio-ffmpeg==0.6.0
+requests==2.32.5

@@ -1,0 +1,61 @@
+crops loaded in 29 s: {"train": {"boa": 330, "baixa_qualidade": 700, "podre": 2232}, "val": {"boa": 84, "baixa_qualidade": 112, "podre": 510}, "test": {"boa": 56, "baixa_qualidade": 84, "podre": 509}}; photos {'train': 741, 'val': 157, 'test': 149}
+fruit masks for compositing: {'grabcut': 3214, 'ellipse': 48}
+C:\Users\Filipe\OneDrive\Desktop\Documentos\PROJECTS\Startup de visão computacional\train_belt.py:286: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  total += float(loss) * len(y)
+epoch  0 loss 1.1480 val balanced 0.3855 recall {'boa': 0.655, 'baixa_qualidade': 0.304, 'podre': 0.198} 177 s
+epoch  1 loss 1.0417 val balanced 0.4119 recall {'boa': 0.655, 'baixa_qualidade': 0.295, 'podre': 0.286} 144 s
+epoch  2 loss 1.0014 val balanced 0.4765 recall {'boa': 0.476, 'baixa_qualidade': 0.536, 'podre': 0.418} 182 s
+epoch  3 loss 0.9887 val balanced 0.4815 recall {'boa': 0.524, 'baixa_qualidade': 0.348, 'podre': 0.573} 98 s
+epoch  4 loss 0.9369 val balanced 0.4654 recall {'boa': 0.536, 'baixa_qualidade': 0.562, 'podre': 0.298} 79 s
+epoch  5 loss 0.9467 val balanced 0.4576 recall {'boa': 0.357, 'baixa_qualidade': 0.42, 'podre': 0.596} 63 s
+epoch  6 loss 0.9095 val balanced 0.4883 recall {'boa': 0.476, 'baixa_qualidade': 0.616, 'podre': 0.373} 58 s
+epoch  7 loss 0.8948 val balanced 0.4859 recall {'boa': 0.31, 'baixa_qualidade': 0.429, 'podre': 0.72} 67 s
+epoch  8 loss 0.8787 val balanced 0.4865 recall {'boa': 0.321, 'baixa_qualidade': 0.411, 'podre': 0.727} 64 s
+epoch  9 loss 0.8603 val balanced 0.4895 recall {'boa': 0.417, 'baixa_qualidade': 0.411, 'podre': 0.641} 59 s
+epoch 10 loss 0.8529 val balanced 0.4966 recall {'boa': 0.31, 'baixa_qualidade': 0.482, 'podre': 0.698} 73 s
+epoch 11 loss 0.8409 val balanced 0.4979 recall {'boa': 0.357, 'baixa_qualidade': 0.527, 'podre': 0.61} 54 s
+epoch 12 loss 0.8234 val balanced 0.4992 recall {'boa': 0.381, 'baixa_qualidade': 0.509, 'podre': 0.608} 58 s
+epoch 13 loss 0.8299 val balanced 0.5012 recall {'boa': 0.381, 'baixa_qualidade': 0.509, 'podre': 0.614} 69 s
+test n=649 photos=149 acc=0.542 [0.4854064997050464, 0.5969952054048163] balanced=0.533 baseline=0.784 ece=0.044 T=1.61 reject<None coverage=1.000 acc_accepted=0.5423728813559322
+{
+ "boa": {
+  "support": 56,
+  "recall": 0.6071428571428571,
+  "recall_ci95": [
+   0.47633402698507216,
+   0.7241958435149718
+  ],
+  "precision": 0.22818791946308725,
+  "precision_ci95": [
+   0.16813786535812686,
+   0.301901215707512
+  ]
+ },
+ "baixa_qualidade": {
+  "support": 84,
+  "recall": 0.44047619047619047,
+  "recall_ci95": [
+   0.33922955555711976,
+   0.5469289836184028
+  ],
+  "precision": 0.2032967032967033,
+  "precision_ci95": [
+   0.15124404016189533,
+   0.2676154508788863
+  ]
+ },
+ "podre": {
+  "support": 509,
+  "recall": 0.5520628683693517,
+  "recall_ci95": [
+   0.5086324040867071,
+   0.5947133747737098
+  ],
+  "precision": 0.8836477987421384,
+  "precision_ci95": [
+   0.843739488171426,
+   0.9143977662647527
+  ]
+ }
+}

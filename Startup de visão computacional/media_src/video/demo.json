@@ -1,0 +1,43 @@
+{
+  "width": 1280,
+  "height": 720,
+  "duration": 40.2,
+  "alt": "Gravação de tela do app FruitCam_ai: login, página da linha com a explicação da câmera, monitor ao vivo de uma câmera simulada com indicadores e gráficos, o guia do usuário e a inspeção de uma foto de caju.",
+  "posterAlt": "Monitor da linha: quadro da câmera simulada com caixas coloridas nas frutas e indicadores de frutas por minuto e porcentagem de cada classe.",
+  "caption": "Gravação do app real em execução (40 s, sem áudio). A câmera e os dados da linha são simulados e sintéticos; a foto da inspeção é real (CC0) e o resultado é a saída real do modelo.",
+  "transcript": [
+    "Login do FruitCam_ai. Ao fundo, vídeo ilustrativo de uma esteira de seleção (USDA, domínio público).",
+    "Página Linha: a câmera fixa sobre a esteira conta e classifica cada fruta. Ao fundo, a simulação processada pelo mesmo código.",
+    "Linha ao vivo: quadro da câmera simulada, frutas por minuto e porcentagem de cada classe com intervalo de confiança. Dados sintéticos.",
+    "Carta de controle da % de podres, alarmes e aceite de cada lote pelo intervalo de confiança.",
+    "Como a câmera funciona: separa a fruta da esteira, segue a fruta entre quadros, classifica com IA e conta uma vez na linha tracejada.",
+    "O botão ? abre o guia do usuário em qualquer página.",
+    "Inspeção por foto: uma foto real de caju (Wilfredor, CC0) passa pelo mesmo classificador de três classes.",
+    "Saída real do modelo: boa, confiança 69,4%, sem confiança suficiente para decidir sozinho: vai para revisão manual. A foto tem folhas ao fundo, diferente da esteira."
+  ],
+  "credit": "Gravação de tela do app FruitCam_ai (tools/record_demo.py). A interface gravada exibe fotos de terceiros da Wikimedia Commons, que mantêm suas licenças; autores e licenças na página Créditos.",
+  "contains": [
+    "caju-arvore",
+    "caju-vermelho",
+    "castanha",
+    "melao",
+    "video-batatas"
+  ],
+  "stills": {
+    "1-linha": [],
+    "2-monitor": [],
+    "3-camera": [],
+    "4-inspecao": [
+      "caju-arvore",
+      "caju-vermelho",
+      "castanha",
+      "melao"
+    ]
+  },
+  "poster": [],
+  "result": {
+    "label": "Boa",
+    "confidence": "69,4%",
+    "review": true
+  }
+}

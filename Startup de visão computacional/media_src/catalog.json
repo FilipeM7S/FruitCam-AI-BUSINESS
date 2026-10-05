@@ -1,0 +1,208 @@
+{
+  "assets": {
+    "caju-pacajus": {
+      "title": "Plantação de caju em Pacajus (CE)",
+      "creditName": "Porto Neto"
+    },
+    "caju-arvore": {
+      "title": "Cajus com castanha no cajueiro",
+      "creditName": "Ben Tavener"
+    },
+    "caju-vermelho": {
+      "title": "Caju vermelho no cajueiro",
+      "creditName": "Wilfredor"
+    },
+    "castanha": {
+      "title": "Castanhas de caju cruas",
+      "creditName": "Fumikas Sagisavas"
+    },
+    "melao": {
+      "title": "Melões amarelos",
+      "creditName": "Salil Kumar Mukherjee"
+    },
+    "guia-bom": {
+      "title": "Cajus sobre fundo branco",
+      "creditName": "Prabhupuducherry"
+    },
+    "guia-varias": {
+      "title": "Cajus amontoados",
+      "creditName": "Roberta Martins"
+    },
+    "guia-longe": {
+      "title": "Cajus pequenos entre folhas",
+      "creditName": "Colleen Taugher"
+    },
+    "guia-escuro": {
+      "title": "Cajus em cena com pouca luz",
+      "creditName": "Ashay vb"
+    },
+    "video-batatas": {
+      "title": "Seleção de batatas em esteira (Montana, EUA)",
+      "creditName": "USDA"
+    }
+  },
+  "variants": {
+    "hero-caju": {
+      "asset": "caju-arvore",
+      "crop": null,
+      "widths": [
+        640,
+        960,
+        1440
+      ],
+      "alt": "Dois cajus maduros, alaranjados, pendurados no cajueiro, cada um com a castanha na ponta.",
+      "usedIn": "Inspeção por foto (faixa do topo)"
+    },
+    "banner-pacajus": {
+      "asset": "caju-pacajus",
+      "crop": [
+        0.0,
+        0.36,
+        1.0,
+        0.76
+      ],
+      "widths": [
+        640,
+        960,
+        1280,
+        1600
+      ],
+      "alt": "Plantação de cajueiros em Pacajus, no Ceará: árvores baixas sobre solo arenoso, com estacas de cerca.",
+      "usedIn": "Página Como funciona (faixa de abertura)",
+      "quality": {
+        "avif": 36,
+        "webp": 62,
+        "jpeg": 68
+      }
+    },
+    "fruta-caju": {
+      "asset": "caju-vermelho",
+      "crop": [
+        0.185,
+        0.382,
+        0.485,
+        0.818
+      ],
+      "widths": [
+        96,
+        176,
+        264
+      ],
+      "alt": "Caju vermelho maduro com a castanha, entre folhas verdes.",
+      "usedIn": "Tela de análise (cartão de fruta: caju)"
+    },
+    "fruta-castanha": {
+      "asset": "castanha",
+      "crop": [
+        0.25,
+        0.25,
+        0.75,
+        0.75
+      ],
+      "widths": [
+        96,
+        176,
+        264
+      ],
+      "alt": "Castanhas de caju cruas, cor de creme, amontoadas.",
+      "usedIn": "Tela de análise (cartão de fruta: castanha)"
+    },
+    "fruta-melao": {
+      "asset": "melao",
+      "crop": [
+        0.27,
+        0.49,
+        0.67,
+        0.9895
+      ],
+      "widths": [
+        96,
+        176,
+        264
+      ],
+      "alt": "Melão amarelo redondo entre outros melões.",
+      "usedIn": "Tela de análise (cartão de fruta: melão)"
+    },
+    "guia-bom": {
+      "asset": "guia-bom",
+      "crop": [
+        0.33,
+        0.0,
+        0.68,
+        0.9
+      ],
+      "widths": [
+        240,
+        480,
+        720
+      ],
+      "alt": "Exemplo bom: um caju sozinho, bem iluminado, sobre fundo branco liso, ocupando quase toda a foto.",
+      "usedIn": "Tela de análise (guia: exemplo bom)"
+    },
+    "guia-varias": {
+      "asset": "guia-varias",
+      "crop": [
+        0.0,
+        0.15,
+        0.7,
+        1.0
+      ],
+      "widths": [
+        160,
+        320,
+        480
+      ],
+      "alt": "Exemplo a evitar: muitos cajus amontoados na mesma foto.",
+      "usedIn": "Tela de análise (guia: várias frutas)"
+    },
+    "guia-longe": {
+      "asset": "guia-longe",
+      "crop": [
+        0.15,
+        0.05,
+        0.95,
+        0.85
+      ],
+      "widths": [
+        160,
+        320,
+        480
+      ],
+      "alt": "Exemplo a evitar: cajus pequenos e distantes no meio de muitas folhas.",
+      "usedIn": "Tela de análise (guia: longe, entre folhas)"
+    },
+    "guia-escuro": {
+      "asset": "guia-escuro",
+      "crop": [
+        0.3,
+        0.05,
+        1.0,
+        0.95
+      ],
+      "widths": [
+        160,
+        320,
+        480
+      ],
+      "alt": "Exemplo a evitar: cajus em cena escura, com pouca luz.",
+      "usedIn": "Tela de análise (guia: pouca luz)"
+    }
+  },
+  "backgrounds": {
+    "bg-esteira-real": {
+      "asset": "video-batatas",
+      "start": 23,
+      "duration": 6,
+      "crop": "1382:777:0:303",
+      "width": 960,
+      "alt": "Batatas passando em uma esteira de seleção, em close.",
+      "usedIn": "Tela de login (fundo em vídeo)"
+    },
+    "bg-esteira-simulada": {
+      "own": "media_src/video/belt-sim",
+      "width": 960,
+      "alt": "Simulação de esteira vista de cima: frutas desenhadas recebem caixas coloridas ao cruzar a linha de contagem.",
+      "usedIn": "Página Linha (fundo do topo)"
+    }
+  }
+}

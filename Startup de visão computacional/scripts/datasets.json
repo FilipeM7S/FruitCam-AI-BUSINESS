@@ -1,0 +1,138 @@
+{
+  "datasets": [
+    {
+      "id": "potatoes",
+      "title": "Potatoes Dataset",
+      "setting": "real industrial conveyor sorting line (Basler camera perpendicular to the belt)",
+      "fruit": "potato",
+      "authors": "Dominik Štursa, Petr Doležel, Jakub Ksiažek",
+      "institution": "University of Pardubice, Czech Republic",
+      "version": "Zenodo record 17494608 (published 2025-10-31)",
+      "doi": "10.5281/zenodo.17494608",
+      "page": "https://zenodo.org/records/17494608",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "licence_as_written": "Zenodo record licence field: cc-by-4.0; metadata file inside the zip: \"License: CC BY 4.0\"",
+      "commercial_use": "allowed with attribution",
+      "attribution": "Štursa, D.; Doležel, P.; Ksiažek, J. (2025). Potatoes Dataset. University of Pardubice. Zenodo. https://doi.org/10.5281/zenodo.17494608. Licensed under CC BY 4.0.",
+      "citation": "Štursa D., Doležel P., Ksiažek J. Potatoes Dataset. Zenodo, 2025. doi:10.5281/zenodo.17494608",
+      "files": [
+        {
+          "name": "dataset_potatoes.zip",
+          "url": "https://zenodo.org/api/records/17494608/files/dataset_potatoes.zip/content",
+          "size": 26584805,
+          "md5": "6e75a6ed39e929ee646dd002767531e7"
+        }
+      ]
+    },
+    {
+      "id": "lemons",
+      "title": "Lemons quality control dataset",
+      "setting": "lab rig, one lemon per image photographed from several angles; not a conveyor belt",
+      "fruit": "lemon",
+      "authors": "Maciej Adamiak (SoftwareMill)",
+      "institution": "SoftwareMill",
+      "version": "v1.0.0 (GitHub tag v1.0.0, archived on Zenodo 2020-07-29)",
+      "doi": "10.5281/zenodo.3965568",
+      "page": "https://github.com/softwaremill/lemon-dataset",
+      "licence": "MIT",
+      "licence_url": "https://opensource.org/licenses/MIT",
+      "licence_as_written": "README at tag v1.0.0: \"MIT License, Copyright (c) 2020 SoftwareMill\". The Zenodo record's licence field says \"other-open\".",
+      "commercial_use": "allowed; keep the copyright and permission notice",
+      "attribution": "Lemons quality control dataset, Maciej Adamiak, SoftwareMill (2020), https://github.com/softwaremill/lemon-dataset, doi:10.5281/zenodo.3965568. MIT License, Copyright (c) 2020 SoftwareMill.",
+      "citation": "Adamiak M. Lemons quality control dataset. SoftwareMill, 2020. doi:10.5281/zenodo.3965568",
+      "files": [
+        {
+          "name": "lemon-dataset-v1.0.0.zip",
+          "url": "https://zenodo.org/api/records/3965568/files/softwaremill/lemon-dataset-v1.0.0.zip/content",
+          "size": 86518492,
+          "md5": "859dbb37e3500c32ebe5ead2fb624550"
+        }
+      ]
+    },
+    {
+      "id": "fruitnet",
+      "title": "FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality)",
+      "setting": "phone camera, varied backgrounds and lighting; not a conveyor belt",
+      "fruit": "apple, banana, guava, lime, orange, pomegranate",
+      "authors": "Vishal Meshram, Kailas Patil",
+      "institution": "",
+      "version": "Mendeley Data version 3 (published 2022-03-08)",
+      "doi": "10.17632/b6fftwbr2v.3",
+      "page": "https://data.mendeley.com/datasets/b6fftwbr2v/3",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "licence_as_written": "Mendeley Data licence field on version 3: CC BY 4.0 (Creative Commons Attribution 4.0 International)",
+      "commercial_use": "allowed with attribution",
+      "attribution": "Meshram, V.; Patil, K. (2022). FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality). Mendeley Data, V3. https://doi.org/10.17632/b6fftwbr2v.3. Licensed under CC BY 4.0.",
+      "citation": "Meshram V., Patil K. FruitNet: Indian fruits image dataset with quality for machine learning applications. Data in Brief 40 (2022) 107686. doi:10.1016/j.dib.2021.107686",
+      "files": [
+        {
+          "name": "FruitNetDataset.zip",
+          "url": "https://data.mendeley.com/public-files/datasets/b6fftwbr2v/files/532e56bf-d855-4afd-86fd-2c8c425eb32c/file_downloaded",
+          "size": 3253463240,
+          "sha256": "b84851e0c9101156bc537a7adfc4528289fa063d8a9a029ea4a6dd713cf5e53d"
+        }
+      ],
+      "not_downloaded": [
+        {
+          "name": "FruitNet_Processed Images.rar",
+          "size": 3252081233,
+          "sha256": "9b672d5fdb1fc3bd2d2a80c8bc22ef9a6140e7f346a5e4274b587894f9f6b709",
+          "reason": "RAR archive of the processed images, uploaded two months before the ZIP of almost the same size; no RAR extractor is installed here. Whether its content equals the ZIP was not verified."
+        }
+      ]
+    },
+    {
+      "id": "cashew_makerere",
+      "title": "Coffee and Cashew Nut Dataset (cashew part)",
+      "setting": "field photos of cashew trees taken from a drone at close range; not a conveyor belt",
+      "fruit": "cashew apple",
+      "authors": "Joyce Nakatumba-Nabende, Andrew Katumba, Rahman Sanya, Jeremy Tusubira, Sudi Murindanyi, Gloria Namanya, Ann Nabiryo",
+      "institution": "Makerere University, Uganda",
+      "version": "Mendeley Data version 1 (published 2023-11-10)",
+      "doi": "10.17632/r46c6bpfpf.1",
+      "page": "https://data.mendeley.com/datasets/r46c6bpfpf/1",
+      "licence": "CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "licence_as_written": "Mendeley Data licence field on version 1: CC BY 4.0 (Creative Commons Attribution 4.0 International)",
+      "commercial_use": "allowed with attribution",
+      "attribution": "Nakatumba-Nabende, J.; Katumba, A.; Sanya, R.; Tusubira, J.; Murindanyi, S.; Namanya, G.; Nabiryo, A. (2023). Coffee and Cashew Nut Dataset. Mendeley Data, V1. https://doi.org/10.17632/r46c6bpfpf.1. Licensed under CC BY 4.0.",
+      "citation": "Sanya R., Nabiryo A. L., Tusubira J. F., Murindanyi S., Katumba A., Nakatumba-Nabende J. Coffee and cashew nut dataset: A dataset for detection, classification, and yield estimation for machine learning applications. Data in Brief 52 (2024) 109952.",
+      "local": {
+        "images": "images",
+        "labels": "Labels",
+        "expected_images": 3098,
+        "expected_label_files": 3098,
+        "note": "Already in the project (training data of the current model). Not downloaded by the script; the official file is Cashew.rar (445,341,534 B, sha256 9ecd6e2626b48c84efb81ba995dbf57b7be7d1bffb5e799fe6fb55458f0bfeef)."
+      },
+      "files": []
+    }
+  ],
+  "recorded_not_downloaded": [
+    {
+      "title": "FruitRoll-360",
+      "page": "https://ieee-dataport.org/documents/fruitroll-360",
+      "doi": "10.21227/w30m-kb62",
+      "setting": "live factory line, citrus rolled 360° on a dual conveyor",
+      "licence_as_written": "Terms of Use: \"This dataset is released solely for academic and research purposes. Any commercial use requires prior written permission from the authors. Users must not redistribute the dataset or any subset thereof without authorization.\"",
+      "reason": "research only; commercial use needs written permission; IEEE DataPort login required"
+    },
+    {
+      "title": "Oranges Classification",
+      "page": "https://ieee-dataport.org/documents/oranges-classification",
+      "doi": "10.21227/fm4f-1n74",
+      "setting": "packing-house conveyor, camera above the belt",
+      "licence_as_written": "No licence in the visible page text. The page's embedded schema.org metadata declares \"license\": \"https://creativecommons.org/licenses/by/4.0/\".",
+      "reason": "files are behind an IEEE DataPort login/subscription, which this task excludes; the CC BY 4.0 appears only in machine-readable page metadata, so confirm it with the author before relying on it"
+    },
+    {
+      "title": "Sisfrutos Papaya",
+      "page": "https://github.com/jhony2507/Sisfrutos-Papaya",
+      "doi": "",
+      "setting": "papaya packing facility",
+      "licence_as_written": "README, section \"License to use and download\": \"The Sisfrutos dataset is made available free of charge to academic and non-academic entities, such as research, teaching, scientific publications or personal experimentation, on a non-commercial basis. The use of this dataset, in whole or in part, is expressly prohibited for commercial purposes.\"",
+      "reason": "explicitly non-commercial; download links only on request"
+    }
+  ]
+}

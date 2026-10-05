@@ -1,0 +1,66 @@
+import os
+import shutil
+import numpy as np
+import torch
+from PIL import Image
+
+from Bbox import detect_bbox
+from data_synth import make_synthetic_dataset
+from train import build_loaders, build_model, train_one_epoch
+from visualize import annotate, RED, GREEN
+
+
+def test_detect_bbox():
+    img = Image.new("RGB", (100, 80), (255, 255, 255))
+    arr = np.array(img)
+    arr[20:60, 30:70] = (10, 10, 10)
+    img = Image.fromarray(arr)
+
+    x0, y0, x1, y1 = detect_bbox(img, bg_is_light=True)
+    assert abs(x0 - 30) <= 1, (x0, y0, x1, y1)
+    assert abs(y0 - 20) <= 1, (x0, y0, x1, y1)
+    assert abs(x1 - 69) <= 1, (x0, y0, x1, y1)
+    assert abs(y1 - 59) <= 1, (x0, y0, x1, y1)
+    print("test_detect_bbox OK", (x0, y0, x1, y1))
+
+
+def test_annotate_color_matches_prediction():
+    root = "data_synthetic_binary"
+    ckpt_path = "test_binary_checkpoint.pt"
+    shutil.rmtree(root, ignore_errors=True)
+    classes = ["nao_podre", "podre"]
+    make_synthetic_dataset(root, classes, n_per_class=24, img_size=64)
+
+    device = torch.device("cpu")
+    train_loader, val_loader, loaded_classes = build_loaders(root, img_size=64, batch_size=8)
+    assert loaded_classes == classes
+
+    model = build_model(len(classes), pretrained=False).to(device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    criterion = torch.nn.CrossEntropyLoss()
+    for _ in range(3):
+        train_one_epoch(model, train_loader, optimizer, criterion, device)
+    torch.save({"model_state": model.state_dict(), "classes": classes}, ckpt_path)
+
+    sample_image = f"{root}/val/podre/podre_0.png"
+    image, label, confidence, box = annotate(
+        sample_image, ckpt_path, bad_class="podre", img_size=64,
+    )
+    assert label in classes
+    assert 0.0 <= confidence <= 1.0
+    assert image.size == Image.open(sample_image).size
+
+    expected_color = RED if label == "podre" else GREEN
+    x0, y0, x1, y1 = box
+    top_edge_pixel = image.getpixel((min(x0 + 2, image.width - 1), y0))
+    assert top_edge_pixel == expected_color, (top_edge_pixel, expected_color, label)
+
+    shutil.rmtree(root, ignore_errors=True)
+    os.remove(ckpt_path)
+    print("test_annotate_color_matches_prediction OK", "label=", label, "box=", box)
+
+
+if __name__ == "__main__":
+    test_detect_bbox()
+    test_annotate_color_matches_prediction()
+    print("ALL VISUALIZATION CHECKS PASSED")

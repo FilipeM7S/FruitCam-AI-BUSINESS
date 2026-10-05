@@ -1,0 +1,128 @@
+{
+  "interim": true,
+  "source": {
+    "file": "brand/source/logo-kit-sheet.png",
+    "kind": "interim raster",
+    "supplied": "2026-10-03",
+    "replaceWith": [
+      "brand/logo-horizontal-light.svg",
+      "brand/logo-horizontal-dark.svg",
+      "brand/app-icon.svg"
+    ]
+  },
+  "rules": {
+    "clearSpace": 0.25,
+    "minInkHeightPx": {
+      "lockup": 20,
+      "icon": 16
+    }
+  },
+  "colors": {
+    "cream": "#f5f1e6",
+    "ink": "#14231e",
+    "beige": "#ede5d8",
+    "red": "#d9432a",
+    "teal": "#3fab94",
+    "tan": "#c9a47a"
+  },
+  "lockupOnLight": {
+    "src": "brand/logo-on-light.webp",
+    "png": "brand/logo-on-light.png",
+    "width": 678,
+    "height": 278,
+    "inkHeight": 179,
+    "inkBox": [
+      48,
+      226,
+      52,
+      623
+    ],
+    "inkThreshold": 24,
+    "background": "#f5f1e6",
+    "renditions": [
+      {
+        "src": "brand/logo-on-light-h80.webp",
+        "height": 80
+      },
+      {
+        "src": "brand/logo-on-light-h192.webp",
+        "height": 192
+      }
+    ]
+  },
+  "lockupOnDark": {
+    "src": "brand/logo-on-dark.webp",
+    "png": "brand/logo-on-dark.png",
+    "width": 407,
+    "height": 150,
+    "inkHeight": 97,
+    "inkBox": [
+      27,
+      123,
+      32,
+      375
+    ],
+    "inkThreshold": 24,
+    "background": "#14231e",
+    "renditions": [
+      {
+        "src": "brand/logo-on-dark-h80.webp",
+        "height": 80
+      }
+    ]
+  },
+  "icon": {
+    "src": "brand/app-icon.webp",
+    "png": "brand/app-icon.png",
+    "width": 181,
+    "height": 181,
+    "background": "#14231e",
+    "renditions": [
+      {
+        "src": "brand/app-icon-96.webp",
+        "height": 96
+      }
+    ]
+  },
+  "derived": {
+    "favicon-32.png": {
+      "size": 32,
+      "scale": 0.177,
+      "upscaled": false
+    },
+    "icon-192.png": {
+      "size": 192,
+      "scale": 1.061,
+      "upscaled": true
+    },
+    "icon-512.png": {
+      "size": 512,
+      "scale": 2.829,
+      "upscaled": true
+    },
+    "icon-maskable-512.png": {
+      "size": 512,
+      "scale": 2.829,
+      "upscaled": true
+    },
+    "apple-touch-icon.png": {
+      "size": 180,
+      "scale": 0.994,
+      "upscaled": false
+    },
+    "favicon.ico": {
+      "size": [
+        16,
+        32,
+        48
+      ],
+      "scale": 0.265,
+      "upscaled": false
+    }
+  },
+  "og": {
+    "src": "brand/og-image.png",
+    "width": 1200,
+    "height": 630
+  }
+}

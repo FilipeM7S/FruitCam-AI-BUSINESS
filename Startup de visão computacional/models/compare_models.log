@@ -1,0 +1,6 @@
+masks {'grabcut': 1330, 'ellipse': 25}; blue test 649, blue val 706, unlabelled belt views from validation fruit 2712; 227 s
+belt_v1 {"field_photo_test": 0.42989214175654855, "field_photo_test_boxes_24px_or_more": 0.4845360824742268, "held_out_blue_belt_composites": 0.28197226502311246, "simulated_belt_masked_fruit": 0.3862144420131291, "simulated_belt_old_disc_crops": 0.3660130718954248} 1165 s
+belt_v1+adabn {"held_out_blue_belt_composites": 0.2942989214175655, "simulated_belt_masked_fruit": 0.3293216630196937} 1642 s
+belt_v2_clean {"field_photo_test": 0.6317411402157165, "field_photo_test_boxes_24px_or_more": 0.6134020618556701, "held_out_blue_belt_composites": 0.3235747303543914, "simulated_belt_masked_fruit": 0.47155361050328226, "simulated_belt_old_disc_crops": 0.3638344226579521} 2497 s
+belt_v2 {"field_photo_test": 0.5423728813559322, "field_photo_test_boxes_24px_or_more": 0.520618556701031, "held_out_blue_belt_composites": 0.41140215716486905, "simulated_belt_masked_fruit": 0.43982494529540483, "simulated_belt_old_disc_crops": 0.3801742919389978} 3223 s
+belt_v2+adabn {"held_out_blue_belt_composites": 0.43297380585516176, "simulated_belt_masked_fruit": 0.4387308533916849} 3646 s

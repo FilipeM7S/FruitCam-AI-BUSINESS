@@ -1,0 +1,364 @@
+{
+ "what": "Real industrial potato sorting belt (Zenodo 17494608), used to check the FruitCam segmentation rule and training recipe on real belt imagery. Not cashew; tracking and counting cannot be tested because the dataset has only single-object 50x50 crops.",
+ "data": {
+  "source": {
+   "doi": "10.5281/zenodo.17494608",
+   "url": "https://zenodo.org/records/17494608",
+   "title": "Potatoes Dataset",
+   "authors": "Štursa, Dominik; Doležel, Petr; Ksiažek, Jakub (University of Pardubice)",
+   "license": "CC BY 4.0",
+   "zip_md5": "6e75a6ed39e929ee646dd002767531e7"
+  },
+  "files": 4145,
+  "image_size": [
+   50,
+   50
+  ],
+  "exact_unique_images": 1294,
+  "unique_up_to_rotation_and_flip": 757,
+  "near_duplicate_pairs_merged": 51,
+  "near_duplicate_rule": "8x8 grey signature correlation > 0.95 under any rotation/flip",
+  "object_groups": 712,
+  "objects_per_class": {
+   "Good": 560,
+   "Damaged": 110,
+   "Plant": 44,
+   "Stone": 43
+  },
+  "objects_by_official_split_membership": {
+   "train": 353,
+   "val": 70,
+   "test1 + test3 + train + val": 67,
+   "test2 + test3 + train + val": 54,
+   "train + val": 46,
+   "test2 + test3": 34,
+   "test2": 30,
+   "test1 + train + val": 26,
+   "test2 + train + val": 19,
+   "test2 + train": 17,
+   "test2 + test3 + train": 16,
+   "test1 + test3 + train": 15,
+   "test1 + train": 5,
+   "test2 + val": 3,
+   "test2 + test3 + val": 2
+  },
+  "test_objects_also_in_train_or_val": 224,
+  "test_objects_total": 288,
+  "contains_full_frames_or_sequences": false
+ },
+ "segmentation": {
+  "belt_lab_opencv": [
+   91.0,
+   127.0,
+   126.0
+  ],
+  "threshold": 14.0,
+  "lightness_weight": 0.5,
+  "rule": "object centre (16x16 px) at least 90% foreground with the detector's own Lab rule, belt colour = median of crop corners",
+  "per_class": {
+   "Good": {
+    "n": 560,
+    "centre_separated": 200,
+    "centre_separated_share": 0.35714285714285715,
+    "centre_separated_ci95": [
+     0.3185540500064595,
+     0.3976782392660391
+    ],
+    "median_centre_distance_to_belt": 15.173948287963867,
+    "median_mask_share": 0.5246
+   },
+   "Damaged": {
+    "n": 110,
+    "centre_separated": 36,
+    "centre_separated_share": 0.32727272727272727,
+    "centre_separated_ci95": [
+     0.24671132553263087,
+     0.4194911250207909
+    ],
+    "median_centre_distance_to_belt": 14.320003509521484,
+    "median_mask_share": 0.5418000000000001
+   },
+   "Plant": {
+    "n": 44,
+    "centre_separated": 24,
+    "centre_separated_share": 0.5454545454545454,
+    "centre_separated_ci95": [
+     0.4006618309120573,
+     0.6829476595494435
+    ],
+    "median_centre_distance_to_belt": 16.220827102661133,
+    "median_mask_share": 0.7544
+   },
+   "Stone": {
+    "n": 43,
+    "centre_separated": 7,
+    "centre_separated_share": 0.16279069767441862,
+    "centre_separated_ci95": [
+     0.08116627302914933,
+     0.29972406017992526
+    ],
+    "median_centre_distance_to_belt": 11.858530044555664,
+    "median_mask_share": 0.4968
+   }
+  },
+  "sweep": [
+   {
+    "lightness_weight": 0.5,
+    "threshold": 6.0,
+    "potato_centres_separated": 0.991044776119403,
+    "stone_centres_separated": 0.9767441860465116,
+    "plant_centres_separated": 1.0,
+    "corner_pixels_marked_foreground": 0.9391306142668429
+   },
+   {
+    "lightness_weight": 0.5,
+    "threshold": 8.0,
+    "potato_centres_separated": 0.9119402985074627,
+    "stone_centres_separated": 0.813953488372093,
+    "plant_centres_separated": 1.0,
+    "corner_pixels_marked_foreground": 0.8532240752972259
+   },
+   {
+    "lightness_weight": 0.5,
+    "threshold": 10.0,
+    "potato_centres_separated": 0.7208955223880597,
+    "stone_centres_separated": 0.6511627906976745,
+    "plant_centres_separated": 0.9545454545454546,
+    "corner_pixels_marked_foreground": 0.7254169418758256
+   },
+   {
+    "lightness_weight": 0.5,
+    "threshold": 12.0,
+    "potato_centres_separated": 0.5238805970149254,
+    "stone_centres_separated": 0.37209302325581395,
+    "plant_centres_separated": 0.8636363636363636,
+    "corner_pixels_marked_foreground": 0.6026461360634082
+   },
+   {
+    "lightness_weight": 0.5,
+    "threshold": 14.0,
+    "potato_centres_separated": 0.3522388059701492,
+    "stone_centres_separated": 0.16279069767441862,
+    "plant_centres_separated": 0.5454545454545454,
+    "corner_pixels_marked_foreground": 0.47424042272126815
+   },
+   {
+    "lightness_weight": 0.5,
+    "threshold": 18.0,
+    "potato_centres_separated": 0.1626865671641791,
+    "stone_centres_separated": 0.06976744186046512,
+    "plant_centres_separated": 0.09090909090909091,
+    "corner_pixels_marked_foreground": 0.2823026750330251
+   },
+   {
+    "lightness_weight": 1.0,
+    "threshold": 6.0,
+    "potato_centres_separated": 0.9985074626865672,
+    "stone_centres_separated": 1.0,
+    "plant_centres_separated": 1.0,
+    "corner_pixels_marked_foreground": 0.9891223579920739
+   },
+   {
+    "lightness_weight": 1.0,
+    "threshold": 8.0,
+    "potato_centres_separated": 0.9865671641791045,
+    "stone_centres_separated": 1.0,
+    "plant_centres_separated": 1.0,
+    "corner_pixels_marked_foreground": 0.9714126486129459
+   },
+   {
+    "lightness_weight": 1.0,
+    "threshold": 10.0,
+    "potato_centres_separated": 0.9462686567164179,
+    "stone_centres_separated": 0.9069767441860465,
+    "plant_centres_separated": 1.0,
+    "corner_pixels_marked_foreground": 0.9348579920739762
+   },
+   {
+    "lightness_weight": 1.0,
+    "threshold": 12.0,
+    "potato_centres_separated": 0.8343283582089552,
+    "stone_centres_separated": 0.813953488372093,
+    "plant_centres_separated": 0.9318181818181818,
+    "corner_pixels_marked_foreground": 0.8798092800528402
+   },
+   {
+    "lightness_weight": 1.0,
+    "threshold": 14.0,
+    "potato_centres_separated": 0.6850746268656717,
+    "stone_centres_separated": 0.7674418604651163,
+    "plant_centres_separated": 0.8636363636363636,
+    "corner_pixels_marked_foreground": 0.8149356010568032
+   },
+   {
+    "lightness_weight": 1.0,
+    "threshold": 18.0,
+    "potato_centres_separated": 0.4388059701492537,
+    "stone_centres_separated": 0.5581395348837209,
+    "plant_centres_separated": 0.4090909090909091,
+    "corner_pixels_marked_foreground": 0.6928046565389696
+   }
+  ],
+  "cashew_colour_vs_this_belt": {
+   "what": "median Lab distance between the centre of each real cashew crop (field photos, box without margin, label files with the paper's class numbering only, boxes >= 16 px) and the colour of this real potato belt, with the detector's formula",
+   "lightness_weight": 0.5,
+   "per_source_label": {
+    "premature": {
+     "n": 647,
+     "median_distance": 49.331783294677734,
+     "share_above": {
+      "14.0": 1.0,
+      "20.0": 1.0
+     }
+    },
+    "ripe": {
+     "n": 470,
+     "median_distance": 47.50186729431152,
+     "share_above": {
+      "14.0": 1.0,
+      "20.0": 0.9936170212765958
+     }
+    },
+    "spoilt": {
+     "n": 3251,
+     "median_distance": 45.221656799316406,
+     "share_above": {
+      "14.0": 0.9996924023377423,
+      "20.0": 0.9913872654567826
+     }
+    },
+    "unripe": {
+     "n": 249,
+     "median_distance": 57.06678771972656,
+     "share_above": {
+      "14.0": 1.0,
+      "20.0": 1.0
+     }
+    }
+   }
+  }
+ },
+ "classification": {
+  "protocol": "5-fold cross-validation, folds by object group (rotated/flipped copies and near-duplicates kept together); in each fold 1/7 of the training groups is validation for checkpoint choice and temperature",
+  "img_size": 128,
+  "epochs": 20,
+  "n": 757,
+  "groups": 712,
+  "accuracy": 0.9062087186261559,
+  "accuracy_ci95_group_bootstrap": [
+   0.885179766570481,
+   0.9266119095256685
+  ],
+  "balanced_accuracy": 0.8412630247659316,
+  "balanced_accuracy_ci95_group_bootstrap": [
+   0.8035197996380326,
+   0.8742372512679191
+  ],
+  "majority_baseline_accuracy": 0.7397622192866579,
+  "confusion": [
+   [
+    547,
+    13,
+    0,
+    0
+   ],
+   [
+    52,
+    58,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    43,
+    0
+   ],
+   [
+    2,
+    3,
+    0,
+    38
+   ]
+  ],
+  "per_class": {
+   "Good": {
+    "support": 560,
+    "recall": 0.9767857142857143,
+    "recall_ci95": [
+     0.9606906002629502,
+     0.9863841342900858
+    ],
+    "precision": 0.9101497504159733,
+    "precision_ci95": [
+     0.8846064717844572,
+     0.9304831566808996
+    ]
+   },
+   "Damaged": {
+    "support": 110,
+    "recall": 0.5272727272727272,
+    "recall_ci95": [
+     0.4346369427492597,
+     0.6180679334791473
+    ],
+    "precision": 0.7733333333333333,
+    "precision_ci95": [
+     0.666644644362578,
+     0.8533863213470971
+    ]
+   },
+   "Plant": {
+    "support": 44,
+    "recall": 0.9772727272727273,
+    "recall_ci95": [
+     0.8819229018613075,
+     0.9959767479844506
+    ],
+    "precision": 1.0,
+    "precision_ci95": [
+     0.9179901955865446,
+     1.0
+    ]
+   },
+   "Stone": {
+    "support": 43,
+    "recall": 0.8837209302325582,
+    "recall_ci95": [
+     0.7552083806668636,
+     0.9492957229228102
+    ],
+    "precision": 1.0,
+    "precision_ci95": [
+     0.9081901304590217,
+     1.0000000000000002
+    ]
+   }
+  },
+  "good_vs_not_good_on_potatoes": {
+   "n": 670,
+   "accuracy": 0.9029850746268657,
+   "accuracy_ci95": [
+    0.878222456100151,
+    0.923152990427734
+   ]
+  },
+  "damaged_predicted_good": {
+   "k": 52,
+   "n": 110,
+   "rate_ci95": [
+    0.38193206652085265,
+    0.5653630572507403
+   ]
+  },
+  "ece": 0.03924670665959653,
+  "temperatures": [
+   0.9689314365386963,
+   1.1827465295791626,
+   1.247217059135437,
+   1.1463946104049683,
+   1.400540828704834
+  ]
+ },
+ "seconds": 2018
+}

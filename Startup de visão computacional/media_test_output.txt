@@ -1,0 +1,424 @@
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Found 49 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: rest_framework, staticfiles
+  Apply all migrations: auth, contenttypes, core, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying core.0001_initial... OK
+  Applying sessions.0001_initial...test_chart_data_matches_ground_truth (core.test_dashboard.ChartDataTests.test_chart_data_matches_ground_truth) ... ok
+test_every_referenced_asset_is_served_with_type_compression_and_cache_policy (core.test_media.StaticDeliveryTests.test_every_referenced_asset_is_served_with_type_compression_and_cache_policy) ... ok
+test_html_has_csp_social_preview_icons_and_boot_splash (core.test_media.StaticDeliveryTests.test_html_has_csp_social_preview_icons_and_boot_splash) ... ok
+test_csrf_enforced_and_cookie_flags (core.tests.AuthTests.test_csrf_enforced_and_cookie_flags) ... Forbidden: /api/auth/login
+Forbidden: /api/analyze
+Bad Request: /api/analyze
+ok
+test_login_rate_limit (core.tests.AuthTests.test_login_rate_limit) ... Bad Request: /api/auth/login
+Bad Request: /api/auth/login
+Bad Request: /api/auth/login
+Bad Request: /api/auth/login
+Bad Request: /api/auth/login
+Too Many Requests: /api/auth/login
+Too Many Requests: /api/auth/login
+Too Many Requests: /api/auth/login
+ok
+test_logout (core.tests.AuthTests.test_logout) ... Forbidden: /api/auth/me
+ok
+test_password_is_hashed (core.tests.AuthTests.test_password_is_hashed) ... ok
+test_protected_endpoints_without_login (core.tests.AuthTests.test_protected_endpoints_without_login) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/logout
+Forbidden: /api/analyze
+Forbidden: /api/sectors
+Forbidden: /api/stats/deformity
+Forbidden: /api/stats/forecast
+Forbidden: /api/stats/fruits
+Forbidden: /api/stats/growth
+Forbidden: /api/stats/recurring
+Forbidden: /api/stats/gaussian
+Forbidden: /api/stats/overview
+ok
+test_settings_come_from_environment (core.tests.AuthTests.test_settings_come_from_environment) ... ok
+test_wrong_password_rejected (core.tests.AuthTests.test_wrong_password_rejected) ... Bad Request: /api/auth/login
+Bad Request: /api/auth/login
+Forbidden: /api/auth/me
+ok
+test_adduser (core.tests.CommandTests.test_adduser) ... ok
+test_json_errors (core.tests.ErrorTests.test_json_errors) ... Not Found: /api/nope
+Not Found: /api/stats/nope
+Method Not Allowed: /api/analyze
+Bad Request: /api/stats/growth
+Bad Request: /api/stats/growth
+Bad Request: /api/stats/growth
+ok
+test_unhandled_exception_hides_details (core.tests.ErrorTests.test_unhandled_exception_hides_details) ... Internal Server Error: /api/analyze
+Traceback (most recent call last):
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\rest_framework\views.py", line 526, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\rest_framework\views.py", line 474, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\rest_framework\views.py", line 485, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\rest_framework\views.py", line 523, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Filipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\Filipe\OneDrive\Desktop\Documentos\PROJECTS\Startup de visão computacional\core\views.py", line 142, in analyze
+    result = run_model(settings.UPLOAD_DIR / name, img)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    raise effect
+RuntimeError: internal secret path C:/model
+ok
+test_endpoint_equals_direct_infer_call (core.tests.InferenceTests.test_endpoint_equals_direct_infer_call) ... ok
+test_model_loaded_once (core.tests.InferenceTests.test_model_loaded_once) ... ok
+test_wsgi_startup_loads_model (core.tests.InferenceTests.test_wsgi_startup_loads_model) ... ok
+test_saved_row_matches_response (core.tests.PersistenceTests.test_saved_row_matches_response) ... ok
+test_dominant_deformity_known (core.tests.StatsTests.test_dominant_deformity_known) ... ok
+test_forecast_known_trend (core.tests.StatsTests.test_forecast_known_trend) ... ok
+test_forecast_small_sample_marked_unreliable (core.tests.StatsTests.test_forecast_small_sample_marked_unreliable) ... ok
+test_fruit_counts_and_date_filter (core.tests.StatsTests.test_fruit_counts_and_date_filter) ... ok
+test_gaussian_known_and_single_sector (core.tests.StatsTests.test_gaussian_known_and_single_sector) ...  OK
+System check identified no issues (0 silenced).
+    forecast payload: rising history_n = [1000] (expected [1000])
+    overview payload sectors = [{'sector': 'A', 'n': 3000, 'rotten_rate': 0.1}, {'sector': 'B', 'n': 3000, 'rotten_rate': 0.3}]
+     highlighted = true dominant in 18/18 weeks; max |share-0.6| = 0.0533; empty weeks [12]; stacked sums = 1
+     rising: point 0.7691 (truth 0.77), fan [0.7341, 0.8040], max |history - truth| = 0.0300, n per period = 1000
+     short: ok=false, observed=5, fan all null
+     values [2500,900,400], winner caju; tie scenario winners [true,true,false]
+     max |bar - 0.1| = 1.3e-4, n/a at [0], shared range ±0.200
+     max |bar - 0.2| = 3.9e-4, n/a at [0], shared range ±0.200
+     good n/a [0,2], rotten n/a [0,1,2], good Feb -1, rotten Apr 0.5
+     month peaks: rotten 9 (0.3018), good 1; season peaks: good summer (0.4560), rotten winter (0.7300)
+     A: mean 0.2030 (truth 0.2), std 0.0518 (expected 0.0489), histogram area 1, bins count 104 periods, flagged=false
+     B: mean 0.3465 (truth 0.35), std 0.0640 (expected 0.0687), histogram area 1, bins count 104 periods, flagged=false
+     C: flagged=true reasons=["not_normal","outside_01"], curve starts at -19.7% (impossible zone drawn)
+     rate per period [0.2,0.2,0.2], sectors ["B","A"] rates [0.3,0.1], total 6000
+     checked 11 keyframes and 13 transition declarations
+✔ 1 deformity: the highlighted segment is the true dominant type of every week (5.3555ms)
+✔ 2 forecast: history, fan and forecast point match the known trend (1.7834ms)
+✔ 3 fruits: bar values and the emphasized winner match the known counts (0.7489ms)
+✔ 4 growth good: bars equal the known +10% per month, first period is n/a (1.4794ms)
+✔ 5 growth rotten: bars equal the known +20% per month, first period is n/a (0.5379ms)
+✔ 4/5 growth with previous = 0: n/a markers exactly where growth is undefined, never zero (0.7277ms)
+✔ 6 recurring: peak bins match the known seasonal pattern in every view (0.7352ms)
+✔ 7 gaussian: mean, std, sigma bands and histogram match the generator (2.0196ms)
+✔ 8 overview: per-period rate and per-sector rates match the known counts (0.866ms)
+✔ motion budget: every keyframe and transition animates only transform or opacity (3.5141ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 165.0583
+
+
+    .avif          32 files  on disk    627.3 KB  sent    627.3 KB  immutable 32/32
+    .css            1 files  on disk     29.8 KB  sent      6.3 KB  immutable 1/1
+    .ico            1 files  on disk      4.0 KB  sent      4.0 KB  immutable 0/1
+    .jpg           32 files  on disk   1413.5 KB  sent   1413.5 KB  immutable 32/32
+    .js             3 files  on disk    143.6 KB  sent     49.8 KB  immutable 2/3
+    .mp4            1 files  on disk   1275.6 KB  sent   1275.6 KB  immutable 1/1
+    .png           15 files  on disk   3142.9 KB  sent   3142.9 KB  immutable 6/15
+    .svg            6 files  on disk   1418.4 KB  sent    587.3 KB  immutable 6/6
+    .vtt            1 files  on disk      0.7 KB  sent      0.7 KB  immutable 1/1
+    .webm           1 files  on disk    798.8 KB  sent    798.8 KB  immutable 1/1
+    .webmanifest    1 files  on disk      0.7 KB  sent      0.7 KB  immutable 0/1
+    .webp          40 files  on disk   1132.1 KB  sent   1132.1 KB  immutable 33/40
+    134 referenced static files checked
+    CSP: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+    og:image -> http://testserver/static/brand/og-image.png
+    manifest: FruitCam_ai, icons ['192x192 any', '512x512 any', '512x512 maskable']
+    login without CSRF token -> 403 csrf_failed; with token -> 200
+    analyze without token -> 403 csrf_failed; with token -> 400 image_required
+    sessionid httponly=True samesite=Lax; csrftoken httponly=True; token rotated on login=True
+    7 wrong attempts -> [400, 400, 400, 400, 400, 429, 429]; correct password afterwards -> 429 {'error': {'code': 'throttled', 'detail': 'Pedido foi suprimido. Espera-se que esteja diponível em 55 segundos.', 'wait_seconds': 56}}
+    /me before=200 logout=200 /me after=403
+    stored password field starts with 'pbkdf2_sha256', 3 '$' separators
+    /api/auth/me             -> 403 not_authenticated
+    /api/auth/logout         -> 403 not_authenticated
+    /api/analyze             -> 403 not_authenticated
+    /api/sectors             -> 403 not_authenticated
+    /api/stats/deformity     -> 403 not_authenticated
+    /api/stats/forecast      -> 403 not_authenticated
+    /api/stats/fruits        -> 403 not_authenticated
+    /api/stats/growth        -> 403 not_authenticated
+    /api/stats/recurring     -> 403 not_authenticated
+    /api/stats/gaussian      -> 403 not_authenticated
+    /api/stats/overview      -> 403 not_authenticated
+    no DJANGO_SECRET_KEY -> exit 1, ImproperlyConfigured in stderr=True
+    key set, nothing else -> DEBUG HTTPS session_secure csrf_secure ssl_redirect hsts = False True True True True 31536000
+    wrong password -> 400 {'error': {'code': 'invalid_credentials'}}; unknown user -> 400; /me after -> 403
+    right password -> 200; /me -> 200 {'user': {'username': 'ana'}}
+    created joao check_password=True hashed=True; duplicate -> user 'joao' already exists; weak -> Esta senha é muito curta. Ela precisa conter pelo menos 10 caracteres.; Esta senha é muito comum.; Esta senha é inteiramente numérica.
+    GET /api/nope        -> 404 not_found
+    GET /api/stats/nope  -> 404 not_found
+    GET /api/analyze     -> 405 method_not_allowed
+    period=year          -> 400 invalid_filter
+    start=31/12/2025     -> 400 invalid_filter
+    source=fake          -> 400 invalid_filter
+    status=500 body={"error": {"code": "server_error"}}
+    tmpj4mecka1/synthetic_dark.png: direct=(podre, 0.99842346, [80, 60, 240, 180]) endpoint=(podre, 0.99842346, [80, 60, 240, 180]) |dconf|=0.0e+00
+    tmpj4mecka1/synthetic_light.jpg: direct=(podre, 0.95883030, [0, 0, 399, 299]) endpoint=(podre, 0.95883030, [0, 0, 399, 299]) |dconf|=0.0e+00
+    nao_podre/Image_1282_resized_11.jpg: direct=(podre, 0.72530663, [0, 0, 54, 42]) endpoint=(podre, 0.72530663, [0, 0, 54, 42]) |dconf|=0.0e+00
+    podre/Image_1034_resized_6.jpg: direct=(podre, 0.99941456, [0, 0, 31, 45]) endpoint=(podre, 0.99941456, [0, 0, 31, 45]) |dconf|=0.0e+00
+    worst |confidence difference| over 4 images = 0.0e+00 (tolerance 1e-6)
+    3 requests -> [201, 201, 201]; load_model calls = 1
+    after importing fruitcam.wsgi: get_model cache misses=1 size=1
+    db row  = {'timestamp': '2026-10-04T00:27:25.243602-03:00', 'sector': 'setor norte', 'fruit_type': 'castanha', 'is_good': False, 'deformity_type': 'podre', 'confidence': 0.9984234571456909, 'user': 'ana', 'is_demo': False}
+    response= {'id': 1, 'timestamp': '2026-10-04T00:27:25.243602-03:00', 'sector': 'setor norte', 'fruit_type': 'castanha', 'is_good': False, 'deformity_type': 'podre', 'confidence': 0.9984234571456909, 'user': 'ana', 'is_demo': False}
+    dominant correct 18/18; max |share-0.6|=0.0533; empty week -> none, share=None, n=0; tie week tie=True
+    rising: pred=0.7691 (truth 0.77) PI=[0.7341, 0.8040] P(rotten>good)=1.0000 reliable=True bt_mae=0.0140 naive=0.0232
+    flat: pred=0.1032 (truth 0.10) P=4.21e-25; short: status=insufficient_data n_periods=5 pred=None P=None reasons=['insufficient_data']
+    endpoint vs direct fruit_analytics.forecast: |dpred| rising=0.0e+00
+    10 weeks: rising status=ok reliable=False reasons=['few_periods']
+    all: [('caju', 2500), ('melao', 900), ('castanha', 400)] top=caju
+    Jan: [('melao', 900), ('caju', 500), ('castanha', 300)] top=melao; empty window -> no_data n=0
+    A: mean=0.2030 (truth 0.2) std=0.0518 (expected 0.0489) n=104 shapiro_p=0.129 flagged=False reasons=[]
+    B: mean=0.3465 (truth 0.35) std=0.0640 (expected 0.0687) n=104 shapiro_p=0.449 flagged=False reasons=[]
+    C (skewed): flagged=True reasons=['not_normal', 'outside_01'] mass_outside=0.294ok
+test_growth_known_rate_matches_analytics (core.tests.StatsTests.test_growth_known_rate_matches_analytics) ... ok
+test_no_data_and_demo_separation (core.tests.StatsTests.test_no_data_and_demo_separation) ... ok
+test_partial_boundary_periods_excluded (core.tests.StatsTests.test_partial_boundary_periods_excluded) ... ok
+test_previous_zero_and_empty_period (core.tests.StatsTests.test_previous_zero_and_empty_period) ... ok
+test_recurring_known_pattern (core.tests.StatsTests.test_recurring_known_pattern) ... ok
+test_client_filename_never_used (core.tests.UploadTests.test_client_filename_never_used) ... ok
+test_rejected_uploads (core.tests.UploadTests.test_rejected_uploads) ... Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Content Too Large: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+Bad Request: /api/analyze
+ok
+test_valid_image_returns_result (core.tests.UploadTests.test_valid_image_returns_result) ... ok
+test_demo_and_small_sample_badges (core.test_dashboard.DashboardBrowserTests.test_demo_and_small_sample_badges) ... Forbidden: /api/auth/me
+ok
+test_empty_database_shows_designed_empty_state_in_every_card (core.test_dashboard.DashboardBrowserTests.test_empty_database_shows_designed_empty_state_in_every_card) ... Forbidden: /api/auth/me
+ok
+test_every_statistic_is_only_charts (core.test_dashboard.DashboardBrowserTests.test_every_statistic_is_only_charts) ... Forbidden: /api/auth/me
+ok
+test_failed_normality_check_is_visible (core.test_dashboard.DashboardBrowserTests.test_failed_normality_check_is_visible) ... Forbidden: /api/auth/me
+ok
+test_filter_change_morphs_existing_chart (core.test_dashboard.DashboardBrowserTests.test_filter_change_morphs_existing_chart) ... Forbidden: /api/auth/me
+ok
+test_forecast_below_minimum_and_single_sector (core.test_dashboard.DashboardBrowserTests.test_forecast_below_minimum_and_single_sector) ... Forbidden: /api/auth/me
+ok
+test_legible_at_360px (core.test_dashboard.DashboardBrowserTests.test_legible_at_360px) ... Forbidden: /api/auth/me
+ok
+test_previous_zero_shows_na_markers_never_zero (core.test_dashboard.DashboardBrowserTests.test_previous_zero_shows_na_markers_never_zero) ... Forbidden: /api/auth/me
+ok
+test_reduced_motion_disables_animation (core.test_dashboard.DashboardBrowserTests.test_reduced_motion_disables_animation) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+ok
+test_walkthrough_plays_and_is_skippable (core.test_dashboard.DashboardBrowserTests.test_walkthrough_plays_and_is_skippable) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+ok
+test_360px_layout_and_page_weight_budgets (core.test_media.MediaBrowserTests.test_360px_layout_and_page_weight_budgets) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+
+    sector=A filter: gaussian sectors=['A'] mean=0.2030; forecast sectors=['A'] status=ok
+    10-week window: n per sector=[10, 10, 10] reasons=[['small_n'], ['small_n'], ['small_n', 'not_normal', 'outside_01']]
+    n=62558 periods=12 max errors: good count growth vs 0.10=1.3e-04, rotten count growth vs 0.20=3.9e-04, rotten prop growth vs analytic=3.0e-04, good prop growth vs analytic=1.0e-04
+    endpoint vs direct fruit_analytics.growth: max diff 0.0e+00; first period growth = None
+    no events: deformity=no_data/n=0/demo=False, forecast=no_data/n=0/demo=False, fruits=no_data/n=0/demo=False, growth=no_data/n=0/demo=False, recurring=no_data/n=0/demo=False, gaussian=no_data/n=0/demo=False, overview=no_data/n=0/demo=False
+    real n=2 demo=False | demo n=634 demo=True | all n=636 demo=True | demo rows after 2 seeds=634 (first seed 634)
+    sectors?source=real -> ['real-sector']
+    data 2024-01-15..2024-04-10: growth labels=['2024-02', '2024-03'] good=[1000, 1100] growth=[None, 0.1] n=2310 excluded=720
+    recurring month buckets=['2', '3'] excluded=720; season buckets=[] n=0 (summer run Feb-Mar is incomplete)
+    labels=['2024-01', '2024-02', '2024-03', '2024-04'] good=[100, 0, 50, 60] rotten=[0, 0, 20, 30]
+    good count growth=[None, -1.0, None, 0.2] rotten count growth=[None, None, None, 0.5] rotten prop growth=[None, None, None, 0.16666666666666666]
+    month buckets=['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'] max err good/rotten=0.0e+00/0.0e+00; season buckets=['summer', 'autumn', 'winter', 'spring'] max err=5.6e-17/5.6e-17; week max_n=3
+    status=201 saved=['076048ba5142412a80cb8bb85cd9b7d4.png'] event.image=076048ba5142412a80cb8bb85cd9b7d4.png files outside upload dir=[]
+    text bytes named .png          -> 400 invalid_image
+    svg/html declared png          -> 400 invalid_image
+    png declared text/plain        -> 400 unsupported_type
+    real gif declared gif          -> 400 unsupported_type
+    real gif declared png          -> 400 unsupported_type
+    truncated png                  -> 400 invalid_image
+    truncated jpeg                 -> 400 invalid_image
+    oversized file (limit 10 KB)   -> 413 file_too_large
+    too many pixels (limit 10k)    -> 400 image_too_large
+    no image                       -> 400 image_required
+    fruit not allowed              -> 400 invalid_fruit_type
+    empty sector                   -> 400 invalid_sector
+    sector > 50 chars              -> 400 invalid_sector
+    events created: 0, files saved: 0
+    status=201 detections=[{'box': [80, 60, 240, 180], 'label': 'podre', 'is_good': False, 'deformity_type': 'podre', 'confidence': 0.9984234571456909}] inference_ms=34.6 saved=['999dee2622d24e3a90386662f9d87901.png']
+    deformity      demo badge=True small/unreliable/poor badges=1
+    forecast       demo badge=True small/unreliable/poor badges=3
+    fruits         demo badge=True small/unreliable/poor badges=0
+    growth-good    demo badge=True small/unreliable/poor badges=0
+    growth-rotten  demo badge=True small/unreliable/poor badges=0
+    recurring      demo badge=True small/unreliable/poor badges=1
+    gaussian       demo badge=True small/unreliable/poor badges=3
+    overview       demo badge=True small/unreliable/poor badges=0
+    page-level demo badge visible = True
+    deformity      designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    forecast       designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    fruits         designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    growth-good    designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    growth-rotten  designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    recurring      designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    gaussian       designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    overview       designed empty state=1 canvases=0 text='Sem dados\nNenhuma inspeção corresponde aos filtros escolhidos.'
+    gaussian charts created before scrolling = 0, after scrolling = 6 (lazy render below the fold)
+    deformity      canvases=1 frames=1 labelled=1 overlays=1 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: Na semana de 22/07/24, Quebrada domina com 48,3% das frutas podres.
+    forecast       canvases=3 frames=3 labelled=3 overlays=9 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: hills: previsão de 3,2% de podres no próximo período; chance de mais podres que boas < 1%.
+    fruits         canvases=1 frames=1 labelled=1 overlays=3 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: Caju é a mais recebida: 2.730 frutas (50,4%).
+    growth-good    canvases=1 frames=1 labelled=1 overlays=2 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: Boas: -9,5% em 22/07/24 em relação ao período anterior.
+    growth-rotten  canvases=1 frames=1 labelled=1 overlays=2 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: Podres: -3,3% em 22/07/24 em relação ao período anterior.
+    recurring      canvases=1 frames=1 labelled=1 overlays=2 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: Por Mês: pico das podres em jun (+32,6%); das boas em mar (+6,1%).
+    gaussian       canvases=6 frames=6 labelled=6 overlays=21 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: hills: média de 2,7% de podres, desvio 5,2%, 30 períodos. Ajuste ruim: não trate como curva normal.
+    overview       canvases=3 frames=3 labelled=3 overlays=7 tables/lists=0 text paragraphs=1 n-badge=True how-to=True
+                   aria-label: Volume por período: 5.419 frutas inspecionadas no período filtrado.
+    gaussian A: flagged=False poor-fit stamps on charts=0 badge='' first callout='média 20,2%'
+    gaussian B: flagged=False poor-fit stamps on charts=0 badge='' first callout='média 35,3%'
+    gaussian C: flagged=True poor-fit stamps on charts=2 badge='Ajuste ruim' first callout='média 5,5%'
+    same canvas element after period switch = True; still animating right after the switch = True
+    aria-label before: Boas: -9,5% em 22/07/24 em relação ao período anterior.
+    aria-label after:  Boas: -6,8% em jun/24 em relação ao período anterior.
+    forecast frame flat     canvas=True unreliable-badge=False empty-state=''
+    forecast frame rising   canvas=True unreliable-badge=False empty-state=''
+    forecast frame short    canvas=True unreliable-badge=True empty-state='Dados insuficientes\n5 de 8 períodos mínimos (com ≥ 30 frutas cada)'
+    sector=rising: forecast charts=1 gaussian sectors=1
+    360px: horizontal overflow=0px, rightmost canvas edge=323px, charts rendered=17
+    growth-good n/a markers=['n/d', 'n/d'] growth-rotten n/a markers=['n/d', 'n/d', 'n/d']
+    prefers-reduced-motion=no-preference: chart pixels changed between creation and +1.8s = True; {'motion': 'on', 'cardAnimation': 'card-in', 'overlayTransition': '0.35s, 0.6s', 'overlayDelay': '0.7s, 0s'}
+    prefers-reduced-motion=reduce: chart pixels changed between creation and +1.8s = False; {'motion': 'off', 'cardAnimation': 'none', 'overlayTransition': '1e-05s', 'overlayDelay': '0s'}
+    reduced=False: opened at 'PASSO 1 DE 4', spotlight width 1058px, after 3.3s 'PASSO 2 DE 4', after arrows 'PASSO 4 DE 4' ('n = total de frutas podres por trás do gráfico.'), Esc closed=True, focus back on button=True
+    reduced=True: opened at 'PASSO 1 DE 4', spotlight width 1058px, after 3.3s 'PASSO 1 DE 4', after arrows 'PASSO 4 DE 4' ('n = total de frutas podres por trás do gráfico.'), Esc closed=True, focus back on button=True
+      360px /login                               109.4 KB transferred (budget 150 KB)  horizontal overflow 0px  images without width/height 0  nav fits Trueok
+test_logo_variant_follows_theme_blends_with_page_and_theme_persists (core.test_media.MediaBrowserTests.test_logo_variant_follows_theme_blends_with_page_and_theme_persists) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+ok
+test_pages_have_no_csp_violations_errors_or_missing_credits (core.test_media.MediaBrowserTests.test_pages_have_no_csp_violations_errors_or_missing_credits) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+ok
+test_reduced_motion_is_fully_static (core.test_media.MediaBrowserTests.test_reduced_motion_is_fully_static) ... Forbidden: /api/auth/me
+Forbidden: /api/auth/me
+ok
+test_scan_line_boxes_meter_pipeline_and_video_animate_when_allowed (core.test_media.MediaBrowserTests.test_scan_line_boxes_meter_pipeline_and_video_animate_when_allowed) ... Forbidden: /api/auth/me
+ok
+test_alt_text_captions_and_data_labels (core.test_media.MediaManifestTests.test_alt_text_captions_and_data_labels) ... ok
+test_brand_rules_have_one_source_and_every_logo_use_respects_them (core.test_media.MediaManifestTests.test_brand_rules_have_one_source_and_every_logo_use_respects_them) ... ok
+test_every_published_file_has_a_license_entry_and_no_orphans (core.test_media.MediaManifestTests.test_every_published_file_has_a_license_entry_and_no_orphans) ... ok
+test_figures_regenerate_identically_and_carry_data_labels (core.test_media.MediaManifestTests.test_figures_regenerate_identically_and_carry_data_labels) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 256.835s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
+      360px /                                    118.1 KB transferred (budget 150 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+      360px /painel                              172.2 KB transferred (budget 220 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+      360px /como-funciona                       140.2 KB transferred (budget 360 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+      360px /como-funciona (tudo, com vídeo)    1165.7 KB transferred (budget 1400 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+      360px /creditos                             97.3 KB transferred (budget 130 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+     1366px /login                               117.8 KB transferred (budget 150 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+     1366px /                                    118.1 KB transferred (budget 150 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+     1366px /painel                              172.2 KB transferred (budget 220 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+     1366px /como-funciona                       311.7 KB transferred (budget 360 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+     1366px /como-funciona (tudo, com vídeo)    1238.0 KB transferred (budget 1400 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+     1366px /creditos                             97.3 KB transferred (budget 130 KB)  horizontal overflow 0px  images without width/height 0  nav fits True
+    light: logo on-light (logo-on-light-h192.webp), logo corner rgb(245, 241, 230) vs page rgb(245, 241, 230); footer logo on-dark
+    dark : logo on-dark (logo-on-dark.webp), logo corner rgb(20, 35, 30) vs page rgb(20, 35, 30); footer logo on-dark
+    after reload: data-theme=dark (already set before the app script ran: dark)
+    /login          illustrative photos on page: 1; with 'Imagem ilustrativa' badge: 1; with credit link: 1
+    /               illustrative photos on page: 7; with 'Imagem ilustrativa' badge: 7; with credit link: 7
+    /painel         illustrative photos on page: 0; with 'Imagem ilustrativa' badge: 0; with credit link: 0
+    /como-funciona  illustrative photos on page: 1; with 'Imagem ilustrativa' badge: 1; with credit link: 1
+    /creditos       illustrative photos on page: 0; with 'Imagem ilustrativa' badge: 0; with credit link: 0
+    CSP violations: []; page errors/console errors: []
+    reduced motion /login               running animations: []
+    reduced motion / while analyzing    running animations: []
+    reduced motion / result             running animations: []
+    reduced motion /como-funciona       running animations: []
+    reduced motion /como-funciona: pipeline=done, unrevealed blocks=0, <video> elements=0, video mode=poster
+    reduced motion /como-funciona: viewport screenshots 0.7 s apart identical: [('.how-banner', True), ('.pipeline', True), ('.figure-list', True), ('.video-figure', True)]
+    scan             [['scan', 'running']]
+    skeleton         4
+    result           [['.annotated .box', ['box-in']], ['.verdict', ['pop']], ['.meter span', ['meter-in']]]
+    box_delay        0.15s
+    pipeline_running 12
+    preload          none
+    poster_before    None
+    track            {'mode': 'showing', 'lang': 'pt-BR', 'cues': 6}
+    video: 1280x720, 6 caption cues, 6 transcript lines, poster media/demo-poster.1280.93870f465a.webp
+    App.vue                lockup on light height  40px -> ink 25.8px (min 20)
+    App.vue                lockup on dark  height  40px -> ink 25.9px (min 20)
+    App.vue                lockup on dark  height  40px -> ink 25.9px (min 20)
+    DashboardView.vue      icon   on light height  48px -> ink 48px (min 16)
+    DashboardView.vue      icon   on dark  height  48px -> ink 48px (min 16)
+    LoginView.vue          lockup on light height  96px -> ink 61.8px (min 20)
+    LoginView.vue          lockup on dark  height  96px -> ink 62.1px (min 20)
+    brand/logo-on-light.webp         678x278  visible ink height 179px  smallest margin 48px  required 44.8px
+    brand/logo-on-light.png          678x278  visible ink height 179px  smallest margin 48px  required 44.8px
+    brand/logo-on-light-h80.webp     195x80  visible ink height 51px  smallest margin 14px  required 12.8px
+    brand/logo-on-light-h192.webp    468x192  visible ink height 124px  smallest margin 33px  required 31.0px
+    brand/logo-on-dark.webp          407x150  visible ink height 97px  smallest margin 26px  required 24.2px
+    brand/logo-on-dark.png           407x150  visible ink height 97px  smallest margin 26px  required 24.2px
+    brand/logo-on-dark-h80.webp      217x80  visible ink height 53px  smallest margin 13px  required 13.2px
+    every logo plate and rendition: border is exactly the page color and the visible ink keeps the clear space
+    files on disk under media/, figures/, brand/ + manifest: 130; listed in licenses.json: 130
+    third-party photos: 9 -> caju-pacajus (CC BY-SA 4.0), caju-arvore (CC BY 2.0), caju-vermelho (CC0), castanha (CC0), melao (CC BY-SA 4.0), guia-bom (CC BY-SA 4.0), guia-varias (CC BY-SA 3.0), guia-longe (CC BY 2.0), guia-escuro (CC BY-SA 4.0)
+    first-party entries: ['brand', 'demo-video', 'figures']
+    third-party assets visible anywhere (app, figures, video, stills): ['caju-arvore', 'caju-pacajus', 'caju-vermelho', 'castanha', 'guia-bom', 'guia-escuro', 'guia-longe', 'guia-varias', 'melao']
+    regenerated 6 figures in 19 s
+    fig1-pipeline              2161x1047 px  mean |diff| 0.00000  identical pixels 100.0000%  svg label ['schematic']
+    fig2-classificacao         2161x1511 px  mean |diff| 0.00000  identical pixels 100.0000%  svg label ['example']
+    fig3-evento-estatistica    2161x755 px  mean |diff| 0.00000  identical pixels 100.0000%  svg label ['synthetic']
+    fig4-previsao              2161x779 px  mean |diff| 0.00000  identical pixels 100.0000%  svg label ['synthetic']
+    fig5-gaussiana             2161x1370 px  mean |diff| 0.00000  identical pixels 99.9984%  svg label ['synthetic']
+    fig6-qualidade             2161x1464 px  mean |diff| 0.00000  identical pixels 100.0000%  svg label ['real']

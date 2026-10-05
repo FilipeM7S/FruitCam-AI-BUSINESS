@@ -1,0 +1,15 @@
+{
+  "clearSpace": 0.25,
+  "minInkHeightPx": { "lockup": 20, "icon": 16 },
+  "source": {
+    "file": "brand/source/logo-kit-sheet.png",
+    "kind": "interim raster",
+    "supplied": "2026-10-03",
+    "replaceWith": ["brand/logo-horizontal-light.svg", "brand/logo-horizontal-dark.svg", "brand/app-icon.svg"]
+  },
+  "regions": {
+    "lockupOnLight": { "box": [225, 169, 811, 355], "background": "#f5f1e6" },
+    "lockupOnDark": { "box": [192, 606, 549, 706], "background": "#14231e" },
+    "icon": { "box": [784, 569, 964, 750], "background": "#ede5d8", "cornerRadiusPx": 47 }
+  }
+}

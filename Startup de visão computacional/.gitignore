@@ -1,0 +1,4 @@
+data/**
+!data/**/
+!data/label_map.json
+!data/external/*/SOURCE.md

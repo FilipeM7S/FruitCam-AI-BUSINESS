@@ -1,0 +1,8 @@
+demo.webm            1430919 B
+demo.mp4             1413500 B
+demo-poster.png       262284 B
+demo.vtt                1172 B
+pipeline.mp4          148222 B
+pipeline.gif         1146611 B
+demo 40.2 s, model said {'label': 'Boa', 'confidence': '69,4%', 'review': True}; pipeline clip {'width': 1096, 'height': 348, 'duration': 6.7}
+poster (1280, 720)

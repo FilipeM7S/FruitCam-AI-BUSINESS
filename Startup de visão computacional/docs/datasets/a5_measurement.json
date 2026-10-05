@@ -1,0 +1,281 @@
+{
+ "model": {
+  "file": "belt_v2.pt",
+  "version": "belt_v2",
+  "temperature": 1.6055644750595093,
+  "reject_below": null
+ },
+ "masking": "background = pixels outside the pipeline's Lab-distance mask (BeltDetector: threshold 14, lightness weight 0.5, open 3x3, close 9x9), with the background colour taken as the median of a 4-pixel border of each crop; background pixels set to RGB (128, 128, 128)",
+ "sets": {
+  "potatoes": {
+   "n": 670,
+   "as_published": {
+    "n": 670,
+    "confusion": {
+     "good": {
+      "boa": 23,
+      "baixa_qualidade": 303,
+      "podre": 234
+     },
+     "poor_or_rotten": {
+      "boa": 14,
+      "baixa_qualidade": 30,
+      "podre": 66
+     }
+    },
+    "per_class": {
+     "good": {
+      "n": 560,
+      "correct": 23,
+      "rate": 0.04107142857142857,
+      "ci95": [
+       0.027521672977213203,
+       0.06087455631068842
+      ]
+     },
+     "poor_or_rotten": {
+      "n": 110,
+      "correct": 96,
+      "rate": 0.8727272727272727,
+      "ci95": [
+       0.7976497887061056,
+       0.9226501864154579
+      ]
+     }
+    },
+    "binary_good_vs_not_good": {
+     "accuracy": 0.17761194029850746,
+     "balanced": 0.4568993506493506,
+     "recall_good": 0.04107142857142857,
+     "recall_not_good": 0.8727272727272727
+    },
+    "predicted": {
+     "podre": 300,
+     "boa": 37,
+     "baixa_qualidade": 333
+    }
+   },
+   "background_grey": {
+    "n": 670,
+    "confusion": {
+     "good": {
+      "boa": 2,
+      "baixa_qualidade": 372,
+      "podre": 186
+     },
+     "poor_or_rotten": {
+      "boa": 3,
+      "baixa_qualidade": 56,
+      "podre": 51
+     }
+    },
+    "per_class": {
+     "good": {
+      "n": 560,
+      "correct": 2,
+      "rate": 0.0035714285714285713,
+      "ci95": [
+       0.0009799615186781314,
+       0.012927243703254371
+      ]
+     },
+     "poor_or_rotten": {
+      "n": 110,
+      "correct": 107,
+      "rate": 0.9727272727272728,
+      "ci95": [
+       0.9228691577444634,
+       0.9906820302145929
+      ]
+     }
+    },
+    "binary_good_vs_not_good": {
+     "accuracy": 0.1626865671641791,
+     "balanced": 0.48814935064935067,
+     "recall_good": 0.0035714285714285713,
+     "recall_not_good": 0.9727272727272728
+    },
+    "predicted": {
+     "podre": 237,
+     "baixa_qualidade": 428,
+     "boa": 5
+    }
+   },
+   "predictions_changed_by_masking": {
+    "k": 224,
+    "n": 670,
+    "share": 0.33432835820895523
+   },
+   "note": "Reading: the mask is poor on this belt. It cuts holes into the potatoes and keeps parts of the grey-blue belt (see the examples), the same colour-segmentation failure measured on this dataset in CAMERA.md section 7. The grey-background numbers therefore mix background removal with damage to the fruit image and are not a clean background effect. As published, the model calls almost every potato not good.",
+   "mask_quality": {
+    "median_foreground_share": 0.48590087890625,
+    "share_with_centre_foreground": 0.5537313432835821,
+    "share_masking_nothing": 0.0,
+    "share_masking_almost_all": 0.0
+   }
+  },
+  "lemons": {
+   "n": 2690,
+   "as_published": {
+    "n": 2690,
+    "confusion": {
+     "good": {
+      "boa": 56,
+      "baixa_qualidade": 58,
+      "podre": 10
+     },
+     "poor": {
+      "boa": 172,
+      "baixa_qualidade": 214,
+      "podre": 84
+     },
+     "rotten": {
+      "boa": 345,
+      "baixa_qualidade": 166,
+      "podre": 173
+     },
+     "poor_or_rotten": {
+      "boa": 482,
+      "baixa_qualidade": 647,
+      "podre": 283
+     }
+    },
+    "per_class": {
+     "good": {
+      "n": 124,
+      "correct": 56,
+      "rate": 0.45161290322580644,
+      "ci95": [
+       0.3667887437794408,
+       0.5393449932335082
+      ]
+     },
+     "poor": {
+      "n": 470,
+      "correct": 214,
+      "rate": 0.4553191489361702,
+      "ci95": [
+       0.4108404349409867,
+       0.5005223231866816
+      ]
+     },
+     "rotten": {
+      "n": 684,
+      "correct": 173,
+      "rate": 0.25292397660818716,
+      "ci95": [
+       0.22178967009350442,
+       0.2868180248399726
+      ]
+     },
+     "poor_or_rotten": {
+      "n": 1412,
+      "correct": 930,
+      "rate": 0.6586402266288952,
+      "ci95": [
+       0.6335075255508548,
+       0.682912082866305
+      ]
+     }
+    },
+    "binary_good_vs_not_good": {
+     "accuracy": 0.6033457249070632,
+     "balanced": 0.5311455007165665,
+     "recall_good": 0.45161290322580644,
+     "recall_not_good": 0.6106780982073265
+    },
+    "predicted": {
+     "boa": 1055,
+     "baixa_qualidade": 1085,
+     "podre": 550
+    }
+   },
+   "background_grey": {
+    "n": 2690,
+    "confusion": {
+     "good": {
+      "boa": 118,
+      "baixa_qualidade": 2,
+      "podre": 4
+     },
+     "poor": {
+      "boa": 435,
+      "baixa_qualidade": 11,
+      "podre": 24
+     },
+     "rotten": {
+      "boa": 613,
+      "baixa_qualidade": 44,
+      "podre": 27
+     },
+     "poor_or_rotten": {
+      "boa": 1307,
+      "baixa_qualidade": 21,
+      "podre": 84
+     }
+    },
+    "per_class": {
+     "good": {
+      "n": 124,
+      "correct": 118,
+      "rate": 0.9516129032258065,
+      "ci95": [
+       0.898447531615991,
+       0.9776375895964853
+      ]
+     },
+     "poor": {
+      "n": 470,
+      "correct": 11,
+      "rate": 0.023404255319148935,
+      "ci95": [
+       0.013117858374032352,
+       0.04141822832109505
+      ]
+     },
+     "rotten": {
+      "n": 684,
+      "correct": 27,
+      "rate": 0.039473684210526314,
+      "ci95": [
+       0.027268434922272395,
+       0.0568228307821375
+      ]
+     },
+     "poor_or_rotten": {
+      "n": 1412,
+      "correct": 105,
+      "rate": 0.07436260623229461,
+      "ci95": [
+       0.061802827767697986,
+       0.0892320621487615
+      ]
+     }
+    },
+    "binary_good_vs_not_good": {
+     "accuracy": 0.12230483271375464,
+     "balanced": 0.5169210268272446,
+     "recall_good": 0.9516129032258065,
+     "recall_not_good": 0.08222915042868277
+    },
+    "predicted": {
+     "boa": 2473,
+     "podre": 139,
+     "baixa_qualidade": 78
+    }
+   },
+   "predictions_changed_by_masking": {
+    "k": 1538,
+    "n": 2690,
+    "share": 0.5717472118959108
+   },
+   "note": "Reading: the mask cuts each lemon out cleanly (see the examples), so this is a clean background swap. With the dataset's black background the answers are spread over the three classes; with a grey background the model calls almost every lemon boa, defective or not. For these crops, the model's output depends more on the background than on the fruit.",
+   "mask_quality": {
+    "median_foreground_share": 0.166839599609375,
+    "share_with_centre_foreground": 0.9074349442379183,
+    "share_masking_nothing": 0.0,
+    "share_masking_almost_all": 0.0
+   }
+  }
+ }
+}

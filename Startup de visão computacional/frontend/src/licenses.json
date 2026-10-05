@@ -1,0 +1,461 @@
+{
+ "third_party": [
+  {
+   "id": "caju-pacajus",
+   "title": "Plantação de caju em Pacajus (CE)",
+   "commons_title": "File:Plantação de caju em Pacajus.jpg",
+   "author": "Porto Neto",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Planta%C3%A7%C3%A3o_de_caju_em_Pacajus.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Planta%C3%A7%C3%A3o_de_caju_em_Pacajus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2023-05-28 14:41:22",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Plantação de caju em Pacajus”, por Porto Neto (Porto Neto), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Plantação_de_caju_em_Pacajus.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Página Como funciona (faixa de abertura)"
+   ],
+   "files": [
+    "media/banner-pacajus.640.f7846e7301.avif",
+    "media/banner-pacajus.640.c514e7108c.webp",
+    "media/banner-pacajus.640.e9ca74c1a3.jpg",
+    "media/banner-pacajus.960.51e80762d5.avif",
+    "media/banner-pacajus.960.ef09866057.webp",
+    "media/banner-pacajus.960.987c5455af.jpg",
+    "media/banner-pacajus.1280.967ff47f38.avif",
+    "media/banner-pacajus.1280.ec8e9c1f7d.webp",
+    "media/banner-pacajus.1280.b5baec8a05.jpg",
+    "media/banner-pacajus.1600.1c4850da32.avif",
+    "media/banner-pacajus.1600.3acca3d8b6.webp",
+    "media/banner-pacajus.1600.4a9f39dd2a.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "caju-arvore",
+   "title": "Cajus com castanha no cajueiro",
+   "commons_title": "File:Cashew apple with nut - Caju.jpg",
+   "author": "Ben Tavener",
+   "license": "CC BY 2.0",
+   "license_url": "https://creativecommons.org/licenses/by/2.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Cashew_apple_with_nut_-_Caju.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Cashew_apple_with_nut_-_Caju.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2011-09-07 14:55:31",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Cashew apple with nut - Caju”, por Ben Tavener (Ben Tavener), CC BY 2.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cashew_apple_with_nut_-_Caju.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Inspeção por foto (faixa do topo)",
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)"
+   ],
+   "files": [
+    "media/hero-caju.640.02529e774e.avif",
+    "media/hero-caju.640.d7fd194ee6.webp",
+    "media/hero-caju.640.8ed1a40b66.jpg",
+    "media/hero-caju.960.5ba737d79e.avif",
+    "media/hero-caju.960.d03b89615d.webp",
+    "media/hero-caju.960.dea47b31dd.jpg",
+    "media/hero-caju.1440.8d9aa5c850.avif",
+    "media/hero-caju.1440.5f8b64b704.webp",
+    "media/hero-caju.1440.b3430b76b4.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "caju-vermelho",
+   "title": "Caju vermelho no cajueiro",
+   "commons_title": "File:Anacardium occidentale from Margarita island.jpg",
+   "author": "Wilfredor",
+   "license": "CC0",
+   "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Anacardium_occidentale_from_Margarita_island.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Anacardium_occidentale_from_Margarita_island.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2013-05-13 16:39:58",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Anacardium occidentale from Margarita island”, por Wilfredor (Wilfredor), dedicada ao domínio público (CC0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Anacardium_occidentale_from_Margarita_island.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Tela de análise (cartão de fruta: caju)",
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+    "Figura 2 (Como funciona e kit do Summit)"
+   ],
+   "files": [
+    "media/fruta-caju.96.176a60e9c0.avif",
+    "media/fruta-caju.96.1e913eebc8.webp",
+    "media/fruta-caju.96.ffa1fe31f2.jpg",
+    "media/fruta-caju.176.6a56316e2a.avif",
+    "media/fruta-caju.176.5cfc5e6340.webp",
+    "media/fruta-caju.176.6193c64c6a.jpg",
+    "media/fruta-caju.264.e5cce37ca5.avif",
+    "media/fruta-caju.264.3bea3cae82.webp",
+    "media/fruta-caju.264.c4ff4cb097.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "castanha",
+   "title": "Castanhas de caju cruas",
+   "commons_title": "File:Raw cashew.jpg",
+   "author": "Fumikas Sagisavas",
+   "license": "CC0",
+   "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Raw_cashew.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Raw_cashew.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2024-07-21 17:50:24",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Raw cashew”, por Fumikas Sagisavas (Fumikas Sagisavas), dedicada ao domínio público (CC0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Raw_cashew.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Tela de análise (cartão de fruta: castanha)",
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)"
+   ],
+   "files": [
+    "media/fruta-castanha.96.176653c62b.avif",
+    "media/fruta-castanha.96.b85955e871.webp",
+    "media/fruta-castanha.96.30789bf575.jpg",
+    "media/fruta-castanha.176.84382594dd.avif",
+    "media/fruta-castanha.176.286db6d1f8.webp",
+    "media/fruta-castanha.176.03ee0b57f4.jpg",
+    "media/fruta-castanha.264.03134a7711.avif",
+    "media/fruta-castanha.264.7fde64c453.webp",
+    "media/fruta-castanha.264.8672e56625.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "melao",
+   "title": "Melões amarelos",
+   "commons_title": "File:Honeydew melon.jpg",
+   "author": "Salil Kumar Mukherjee",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Honeydew_melon.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Honeydew_melon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2023-06-04 09:53:14",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Honeydew melon”, por Salil Kumar Mukherjee (Salil Kumar Mukherjee), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Honeydew_melon.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (cartão de fruta: melão)",
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)"
+   ],
+   "files": [
+    "media/fruta-melao.96.8741940969.avif",
+    "media/fruta-melao.96.c1faed7d07.webp",
+    "media/fruta-melao.96.88ae2b7174.jpg",
+    "media/fruta-melao.176.58267a2970.avif",
+    "media/fruta-melao.176.b9db8b8d3d.webp",
+    "media/fruta-melao.176.8255e6aaea.jpg",
+    "media/fruta-melao.264.d74a5f0437.avif",
+    "media/fruta-melao.264.88bed02c23.webp",
+    "media/fruta-melao.264.1927e872ca.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "guia-bom",
+   "title": "Cajus sobre fundo branco",
+   "commons_title": "File:Cahew nut fruit 01.jpg",
+   "author": "Prabhupuducherry",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Cahew_nut_fruit_01.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Cahew_nut_fruit_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2020-04-15 19:55:01",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Cahew nut fruit 01”, por Prabhupuducherry (Prabhupuducherry), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cahew_nut_fruit_01.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (guia: exemplo bom)"
+   ],
+   "files": [
+    "media/guia-bom.240.fb47e41546.avif",
+    "media/guia-bom.240.3a79064386.webp",
+    "media/guia-bom.240.e32caf35d4.jpg",
+    "media/guia-bom.480.71e32d4e8e.avif",
+    "media/guia-bom.480.3a2038222c.webp",
+    "media/guia-bom.480.b0c418ba64.jpg",
+    "media/guia-bom.720.04f076fe62.avif",
+    "media/guia-bom.720.3b6181d9a1.webp",
+    "media/guia-bom.720.e190ba888a.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "guia-varias",
+   "title": "Cajus amontoados",
+   "commons_title": "File:Cajús.jpg",
+   "author": "Roberta Martins",
+   "license": "CC BY-SA 3.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Caj%C3%BAs.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Caj%C3%BAs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2013-09-23",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Cajús”, por Roberta Martins (Roberta Martins), CC BY-SA 3.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cajús.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (guia: várias frutas)"
+   ],
+   "files": [
+    "media/guia-varias.160.fbb25eab5d.avif",
+    "media/guia-varias.160.7a3fce0556.webp",
+    "media/guia-varias.160.15b4f6ec0c.jpg",
+    "media/guia-varias.320.408ec52e53.avif",
+    "media/guia-varias.320.2591ad721f.webp",
+    "media/guia-varias.320.8fa712e483.jpg",
+    "media/guia-varias.480.bf4fb13888.avif",
+    "media/guia-varias.480.888d97ab46.webp",
+    "media/guia-varias.480.4b773d6127.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "guia-longe",
+   "title": "Cajus pequenos entre folhas",
+   "commons_title": "File:Ripe cashew fruit (483016375).jpg",
+   "author": "Colleen Taugher from Lewiston Idaho, USA",
+   "license": "CC BY 2.0",
+   "license_url": "https://creativecommons.org/licenses/by/2.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Ripe_cashew_fruit_(483016375).jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Ripe_cashew_fruit_%28483016375%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2005-11-05 15:36",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Ripe cashew fruit (483016375)”, por Colleen Taugher (Colleen Taugher from Lewiston Idaho, USA), CC BY 2.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Ripe_cashew_fruit_(483016375).jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Tela de análise (guia: longe, entre folhas)"
+   ],
+   "files": [
+    "media/guia-longe.160.53dc0f2fdc.avif",
+    "media/guia-longe.160.e75d2c09e1.webp",
+    "media/guia-longe.160.4f66df6e4d.jpg",
+    "media/guia-longe.320.c929470043.avif",
+    "media/guia-longe.320.c117bdd1db.webp",
+    "media/guia-longe.320.a9cc59e9fc.jpg",
+    "media/guia-longe.480.7b743c5195.avif",
+    "media/guia-longe.480.4097c65e6f.webp",
+    "media/guia-longe.480.653ac07614.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "guia-escuro",
+   "title": "Cajus em cena com pouca luz",
+   "commons_title": "File:Cashew 2.jpg",
+   "author": "Ashay vb",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Cashew_2.jpg",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Cashew_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "2018-04-08 17:59:03",
+   "retrieved": "2026-10-03",
+   "attribution_text": "“Cashew 2”, por Ashay vb (Ashay vb), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cashew_2.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (guia: pouca luz)"
+   ],
+   "files": [
+    "media/guia-escuro.160.2f206a34ad.avif",
+    "media/guia-escuro.160.a50fba9d6a.webp",
+    "media/guia-escuro.160.8a9c4b1516.jpg",
+    "media/guia-escuro.320.a50bfbde8d.avif",
+    "media/guia-escuro.320.0eac006af0.webp",
+    "media/guia-escuro.320.b9c2f688b2.jpg",
+    "media/guia-escuro.480.dfa9f04a2c.avif",
+    "media/guia-escuro.480.9aaa10ad4a.webp",
+    "media/guia-escuro.480.2224520ca4.jpg"
+   ],
+   "illustrative": true
+  },
+  {
+   "id": "video-batatas",
+   "title": "Seleção de batatas em esteira (Montana, EUA)",
+   "commons_title": "File:Potatoes Sorting Montana2026 (55252116350).webm",
+   "author": "USDAgov",
+   "license": "Public domain",
+   "license_url": "https://commons.wikimedia.org/wiki/Template:PD-USGov-USDA",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Potatoes_Sorting_Montana2026_(55252116350).webm",
+   "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Potatoes_Sorting_Montana2026_%2855252116350%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "date": "Taken on 6 May 2026, 00:57:18",
+   "retrieved": "2026-10-04",
+   "attribution_text": "“Potatoes Sorting Montana2026 (55252116350)”, por USDA (USDAgov), em domínio público (Public domain), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Potatoes_Sorting_Montana2026_(55252116350).webm",
+   "modifications": "Trecho de 6 s a partir de 23 s, recortado para excluir mãos e rostos, reduzido para 960 px de largura, sem áudio; convertido para WebM (VP9) e MP4 (H.264); quadro central como pôster em AVIF, WebP e JPEG.",
+   "used_in": [
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+    "Tela de login (fundo em vídeo)"
+   ],
+   "files": [
+    "media/video/bg-esteira-real.e41a1b9ac2.webm",
+    "media/video/bg-esteira-real.ea62475755.mp4",
+    "media/bg-esteira-real-poster.640.3e248d7cc7.avif",
+    "media/bg-esteira-real-poster.640.ca953eb455.webp",
+    "media/bg-esteira-real-poster.640.6c62183856.jpg",
+    "media/bg-esteira-real-poster.960.dd1aa27f06.avif",
+    "media/bg-esteira-real-poster.960.d7f65c6c66.webp",
+    "media/bg-esteira-real-poster.960.666b6d9238.jpg"
+   ],
+   "illustrative": true
+  }
+ ],
+ "first_party": [
+  {
+   "id": "brand",
+   "title": "Logotipo FruitCam_ai (provisório)",
+   "license": "Marca da FruitCam; uso restrito",
+   "source": "brand/source/logo-kit-sheet.png (imagem do kit enviada pela equipe)",
+   "note": "Recortes exatos, sem alterar cores nem proporções, da imagem do kit enviada pela equipe; serão substituídos pelos arquivos vetoriais originais.",
+   "files": [
+    "brand/app-icon-96.webp",
+    "brand/app-icon.png",
+    "brand/app-icon.webp",
+    "brand/apple-touch-icon.png",
+    "brand/favicon-32.png",
+    "brand/favicon.ico",
+    "brand/icon-192.png",
+    "brand/icon-512.png",
+    "brand/icon-maskable-512.png",
+    "brand/logo-on-dark-h80.webp",
+    "brand/logo-on-dark.png",
+    "brand/logo-on-dark.webp",
+    "brand/logo-on-light-h192.webp",
+    "brand/logo-on-light-h80.webp",
+    "brand/logo-on-light.png",
+    "brand/logo-on-light.webp",
+    "brand/og-image.png",
+    "manifest.webmanifest"
+   ]
+  },
+  {
+   "id": "demo-video",
+   "title": "Vídeo de demonstração do app",
+   "license": "Material próprio da FruitCam; as fotos de terceiros visíveis na interface mantêm suas licenças, listadas acima",
+   "source": "Gravação de tela do app real em execução (tools/record_demo.py), com dados sintéticos",
+   "note": "Gravação de tela do app FruitCam_ai (tools/record_demo.py). A interface gravada exibe fotos de terceiros da Wikimedia Commons, que mantêm suas licenças; autores e licenças na página Créditos.",
+   "files": [
+    "media/video/demo.54e0834736.webm",
+    "media/video/demo.dcd7050a9e.mp4",
+    "media/video/demo.ba09b9d8c6.vtt",
+    "media/demo-poster.480.b637e983f9.avif",
+    "media/demo-poster.480.8b8d1f74b4.webp",
+    "media/demo-poster.480.dee76dd3f1.jpg",
+    "media/demo-poster.960.ac52e55b8a.avif",
+    "media/demo-poster.960.6162b6630f.webp",
+    "media/demo-poster.960.ce5320a6b3.jpg",
+    "media/demo-poster.1280.5fa7db4daf.avif",
+    "media/demo-poster.1280.e56e38e0a1.webp",
+    "media/demo-poster.1280.26d2beeb49.jpg"
+   ]
+  },
+  {
+   "id": "belt-sim",
+   "title": "Vídeo de simulação da esteira",
+   "license": "Material próprio da FruitCam",
+   "source": "Gerado por tools/record_belt.py: esteira e frutas desenhadas por código, processadas pelo mesmo pipeline da câmera",
+   "note": "Rótulos vêm da simulação, não do modelo de IA.",
+   "files": [
+    "media/video/bg-esteira-simulada.53c36ea8b6.webm",
+    "media/video/bg-esteira-simulada.338b1c432e.mp4",
+    "media/bg-esteira-simulada-poster.640.230d7ffef7.avif",
+    "media/bg-esteira-simulada-poster.640.4e82dafdbf.webp",
+    "media/bg-esteira-simulada-poster.640.ac354323b3.jpg",
+    "media/bg-esteira-simulada-poster.960.a5c5c7d646.avif",
+    "media/bg-esteira-simulada-poster.960.1ab0ea3a22.webp",
+    "media/bg-esteira-simulada-poster.960.190d20ea9c.jpg"
+   ]
+  },
+  {
+   "id": "figures",
+   "title": "Figuras científicas",
+   "license": "Material próprio da FruitCam",
+   "source": "Geradas por figures/make_figures.py a partir de dados sintéticos e de medições reais",
+   "note": "A Figura 2 contém a foto “caju-vermelho” (CC0).",
+   "files": [
+    "figures/fig1-pipeline.174eb74ca3.svg",
+    "figures/fig1-pipeline.89f2d915b5.png",
+    "figures/fig2-classificacao.0d00939568.webp",
+    "figures/fig2-classificacao.51847a83db.png",
+    "figures/fig2-classificacao.953a70ad69.svg",
+    "figures/fig3-evento-estatistica.7a1d4ccfc7.png",
+    "figures/fig3-evento-estatistica.bd11999172.svg",
+    "figures/fig4-previsao.6fc2b9c96f.svg",
+    "figures/fig4-previsao.ba7d2f3d2c.png",
+    "figures/fig5-gaussiana.8b43144a5c.png",
+    "figures/fig5-gaussiana.fd6f13b30a.svg",
+    "figures/fig6-qualidade.46b435afd8.png",
+    "figures/fig6-qualidade.c9496470a3.svg",
+    "figures/fig7-linha.7318a8d14d.svg",
+    "figures/fig7-linha.ae07e30f3a.png",
+    "figures/fig8-esteira.542516c791.svg",
+    "figures/fig8-esteira.85ea2a3655.png"
+   ]
+  }
+ ],
+ "datasets": [
+  {
+   "id": "potatoes",
+   "title": "Potatoes Dataset",
+   "authors": "Dominik Štursa, Petr Doležel, Jakub Ksiažek",
+   "institution": "University of Pardubice, Czech Republic",
+   "version": "Zenodo record 17494608 (published 2025-10-31)",
+   "doi": "10.5281/zenodo.17494608",
+   "page": "https://zenodo.org/records/17494608",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "licence_as_written": "Zenodo record licence field: cc-by-4.0; metadata file inside the zip: \"License: CC BY 4.0\"",
+   "commercial_use": "allowed with attribution",
+   "attribution": "Štursa, D.; Doležel, P.; Ksiažek, J. (2025). Potatoes Dataset. University of Pardubice. Zenodo. https://doi.org/10.5281/zenodo.17494608. Licensed under CC BY 4.0.",
+   "setting": "real industrial conveyor sorting line (Basler camera perpendicular to the belt)",
+   "fruit": "potato"
+  },
+  {
+   "id": "lemons",
+   "title": "Lemons quality control dataset",
+   "authors": "Maciej Adamiak (SoftwareMill)",
+   "institution": "SoftwareMill",
+   "version": "v1.0.0 (GitHub tag v1.0.0, archived on Zenodo 2020-07-29)",
+   "doi": "10.5281/zenodo.3965568",
+   "page": "https://github.com/softwaremill/lemon-dataset",
+   "licence": "MIT",
+   "licence_url": "https://opensource.org/licenses/MIT",
+   "licence_as_written": "README at tag v1.0.0: \"MIT License, Copyright (c) 2020 SoftwareMill\". The Zenodo record's licence field says \"other-open\".",
+   "commercial_use": "allowed; keep the copyright and permission notice",
+   "attribution": "Lemons quality control dataset, Maciej Adamiak, SoftwareMill (2020), https://github.com/softwaremill/lemon-dataset, doi:10.5281/zenodo.3965568. MIT License, Copyright (c) 2020 SoftwareMill.",
+   "setting": "lab rig, one lemon per image photographed from several angles; not a conveyor belt",
+   "fruit": "lemon"
+  },
+  {
+   "id": "fruitnet",
+   "title": "FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality)",
+   "authors": "Vishal Meshram, Kailas Patil",
+   "institution": "",
+   "version": "Mendeley Data version 3 (published 2022-03-08)",
+   "doi": "10.17632/b6fftwbr2v.3",
+   "page": "https://data.mendeley.com/datasets/b6fftwbr2v/3",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "licence_as_written": "Mendeley Data licence field on version 3: CC BY 4.0 (Creative Commons Attribution 4.0 International)",
+   "commercial_use": "allowed with attribution",
+   "attribution": "Meshram, V.; Patil, K. (2022). FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality). Mendeley Data, V3. https://doi.org/10.17632/b6fftwbr2v.3. Licensed under CC BY 4.0.",
+   "setting": "phone camera, varied backgrounds and lighting; not a conveyor belt",
+   "fruit": "apple, banana, guava, lime, orange, pomegranate"
+  },
+  {
+   "id": "cashew_makerere",
+   "title": "Coffee and Cashew Nut Dataset (cashew part)",
+   "authors": "Joyce Nakatumba-Nabende, Andrew Katumba, Rahman Sanya, Jeremy Tusubira, Sudi Murindanyi, Gloria Namanya, Ann Nabiryo",
+   "institution": "Makerere University, Uganda",
+   "version": "Mendeley Data version 1 (published 2023-11-10)",
+   "doi": "10.17632/r46c6bpfpf.1",
+   "page": "https://data.mendeley.com/datasets/r46c6bpfpf/1",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "licence_as_written": "Mendeley Data licence field on version 1: CC BY 4.0 (Creative Commons Attribution 4.0 International)",
+   "commercial_use": "allowed with attribution",
+   "attribution": "Nakatumba-Nabende, J.; Katumba, A.; Sanya, R.; Tusubira, J.; Murindanyi, S.; Namanya, G.; Nabiryo, A. (2023). Coffee and Cashew Nut Dataset. Mendeley Data, V1. https://doi.org/10.17632/r46c6bpfpf.1. Licensed under CC BY 4.0.",
+   "setting": "field photos of cashew trees taken from a drone at close range; not a conveyor belt",
+   "fruit": "cashew apple"
+  }
+ ]
+}

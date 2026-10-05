@@ -1,0 +1,54 @@
+{
+  "cameras": [
+    {
+      "slug": "linha-1",
+      "name": "Linha 1 · recepção",
+      "line": "linha 1",
+      "fruit_type": "caju",
+      "source": "sim",
+      "px_per_mm": 1.6,
+      "count_line": 0.62,
+      "direction": 1,
+      "belt_rows": [
+        70,
+        470
+      ],
+      "min_size_mm": null,
+      "max_rotten_share": 0.18,
+      "sim": {
+        "rate_per_s": 2.0,
+        "mix": [
+          0.62,
+          0.24,
+          0.14
+        ],
+        "seed": 1
+      }
+    },
+    {
+      "slug": "linha-2",
+      "name": "Linha 2 · seleção",
+      "line": "linha 2",
+      "fruit_type": "caju",
+      "source": "sim",
+      "px_per_mm": 1.6,
+      "count_line": 0.62,
+      "direction": 1,
+      "belt_rows": [
+        70,
+        470
+      ],
+      "min_size_mm": null,
+      "max_rotten_share": 0.18,
+      "sim": {
+        "rate_per_s": 1.4,
+        "mix": [
+          0.55,
+          0.33,
+          0.12
+        ],
+        "seed": 2
+      }
+    }
+  ]
+}
