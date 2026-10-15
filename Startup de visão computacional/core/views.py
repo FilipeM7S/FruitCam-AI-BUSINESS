@@ -1,10 +1,10 @@
 import re
+import uuid
 from datetime import date, datetime, time, timedelta
 
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.core.cache import cache
-from django.db.models import Count, Max, Q
 from django.http import HttpResponse, JsonResponse
 from django.middleware.csrf import get_token
 from django.utils import timezone
@@ -16,9 +16,9 @@ from rest_framework.response import Response
 from rest_framework.throttling import SimpleRateThrottle
 from rest_framework.views import exception_handler
 
-import fruit_analytics as FA
+from analytics import fruit_analytics as FA
 
-from . import stats
+from . import certificate_data, certificate_pdf, ingest, rollups, stats
 from .inference import UploadRejected, get_model, run_model, save_upload
 from .models import Event
 
@@ -144,7 +144,7 @@ def analyze(request):
         code = str(exc)
         return error(code, 413 if code == "file_too_large" else 400, max_mb=settings.MAX_UPLOAD_BYTES // (1024 * 1024))
     result = run_model(settings.UPLOAD_DIR / name, img)
-    event = Event.objects.create(
+    event = ingest.record(Event(
         sector=sector,
         fruit_type=fruit,
         is_good=result["is_good"],
@@ -157,7 +157,8 @@ def analyze(request):
         needs_review=result["needs_review"],
         decided_by="modelo",
         model_version=result["model_version"],
-    )
+        uid=uuid.uuid4().hex,
+    ))
     return Response({
         "event": event_json(event),
         "detections": [{k: result[k] for k in ("box", "label", "is_good", "deformity_type", "confidence", "probs", "needs_review")}],
@@ -198,13 +199,29 @@ def stats_view(request, name):
         period, source, sector, start, end = parse_filters(request.query_params)
     except ValueError:
         return error("invalid_filter", 400)
-    version = Event.objects.aggregate(n=Count("id"), last=Max("id"), pending=Count("id", filter=Q(needs_review=True)))
-    key = f"stats:{name}:{request.query_params.urlencode()}:{version['n']}:{version['last']}:{version['pending']}"
+    key = f"stats:{name}:{request.query_params.urlencode()}:{rollups.version()}"
     body = cache.get(key)
     if body is None:
-        events, has_demo = stats.load_events(source, sector, start, end)
+        events, has_demo = stats.load(source, sector, start, end)
         body = {"status": "no_data", "n": 0} if events.empty else stats.BUILDERS[name](events, period)
         body.update(period=period, source=source, sector=sector, demo=has_demo)
         body = stats.clean(body)
         cache.set(key, body, 300)
     return Response(body)
+
+
+@api_view(["GET"])
+def certificate(request):
+    try:
+        period, source, sector, start, end = parse_filters(request.query_params)
+    except ValueError:
+        return error("invalid_filter", 400)
+    data = certificate_data.collect(period, source, sector, start, end)
+    if not certificate_data.has_data(data):
+        return error("no_data", 404)
+    pdf, number = certificate_pdf.render(data, request.user.username, timezone.localtime())
+    response = HttpResponse(pdf, content_type="application/pdf")
+    response["Content-Disposition"] = f'attachment; filename="certificado-fruitcam-{number}.pdf"'
+    response["Cache-Control"] = "no-store"
+    response["X-Certificate-Number"] = number
+    return response

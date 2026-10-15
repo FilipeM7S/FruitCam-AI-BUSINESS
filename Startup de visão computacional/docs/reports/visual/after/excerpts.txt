@@ -1,0 +1,19 @@
+anonymous: {'/api/events': (403, 'not_authenticated'), '/api/events/thresholds': (403, 'not_authenticated'), '/api/events/1': (403, 'not_authenticated'), '/api/events/1/image': (403, 'not_authenticated')}
+15 invalid list queries -> [400]; 7 invalid threshold queries -> [400]
+classes ['baixa_qualidade', 'boa', 'podre']; n [10, 10, 410]; no confidence 3 of 433; 101 thresholds x 3 classes, mismatches 0; model {'version': 'belt_v2', 'reject_below': None}
+owner 200 image/jpeg (320, 240) cache 'private, no-store'; other user 404; demo/missing/hostile name [404, 404, 404]; other user's detail image flag False
+lots replayed to the line-page totals: L1-1006-01 n=10765 {'boa': 6497, 'baixa_qualidade': 2524, 'podre': 1415, 'revisar': 329}; L1-1006-02 n=10525 {'boa': 6373, 'baixa_qualidade': 2458, 'podre': 1403, 'revisar': 291}; lot list for the command bar: ['L1-1006-01', 'L1-1006-02']
+command bar: /historico      input focused True, 0 arrow presses, active 'PÁGINAS Histórico', still open after Enter False
+Esc closes True; 'L1-1006-01' -> 'Reprodução do lote L1-1006-01'; '#50898' -> 'Fruta #50898'; visible hint ['Control+K Meta+K', 'Ctrl K']; page errors []
+inspector camera #148481: fields shown ['label', 'confidence', 'deformity_type', 'timestamp', 'sector', 'fruit_type', 'lot', 'camera', 'track_id', 'size_mm', 'needs_review', 'decided_by', 'model_version', 'source', 'id']
+phases ['enviando', 'analisando', 'concluido']; strip 'Inferência 252,8 ms (medida no servidor) · Ida e volta 0,6 s (medida no navegador)'; response inference_ms 252.8 confidence 0.6944; counters {'conf': '69,4%', 'ms': '252,8 ms', 'ring': 'Confiança do modelo 69,4%', 'turn': 'matrix(-1, 0, 0, -1, 0, 0)'}
+what-if 0.57  page {boa: 14556, baixa_qualidade: 6642, podre: 3143, revisar: 88} = ORM {'boa': 14556, 'baixa_qualidade': 6642, 'podre': 3143, 'revisar': 88}
+replay L1-1006-01: table n 3.484, podres 14%, baixa 24,1% | replay at half ['1.065', '402', '223', '52'], at end {'boa': 2095, 'baixa_qualidade': 814, 'podre': 475, 'revisar': 100}, podres 14%
+drill on 'Frutas por trás de: Caju': '24.981 eventos; mostrando os 50 mais recentes'; ORM count 24981; connector drawn True
+trace /painel?source=demo [data-stat] > .badges .n-badge: 8 elements; focus shows ['Fonte: GET /api/stats/overview · período semana · setor todos os setores · dados demonstração · n = 26.169', 'trace-tip']
+axe light /painel?source=demo      no violations
+logos {'dark': {'variant': 'on-dark', 'corner': 'rgb(20, 35, 30)', 'bar': 'rgb(20, 35, 30)', 'footer': 'on-dark', 'html': 'dark'}, 'light': {'variant': 'on-light', 'corner': 'rgb(245, 241, 230)', 'bar': 'rgb(245, 241, 230)', 'footer': 'on-dark', 'html': 'light'}}; toggle -> ['light', 'light', 'on-light']; after reload light
+live toggle on /: before [1, 'video']; after [0, 'poster', 'reduced', 'true']; running animations after []
+video on /historico: {'id': 'primeira-analise', 'poster': '/static/media/primeira-analise-poster.1280.b2003ddf3b.webp', 'muted': True, 'track': True, 'transcript': 5, 'paused': True, 'pressed': 'false', 'badge': 'Gravação do app real · foto real (CC0)'}ok
+background video after Space on its pause button: paused True, aria-pressed true, label 'Reproduzir vídeo de fundo'
+360px: [('historico', 0), ('inspetor', [0, 360]), ('comandos', [0, 341])]; selection '2 selecionados · Baixa qualidade 1 · Boa 1 · confiança média 92,6%'; CSV 3 lines, header id;timestamp;sector;fruit_type;label;is_good;deformity_type;…

@@ -1,0 +1,164 @@
+{
+ "method": {
+  "viewport": "360x780 @2x, mobile, touch",
+  "cpu_slowdown": 4,
+  "network": "latency 150 ms, 1.6 Mbit/s down, 750 kbit/s up",
+  "cache": "disabled",
+  "runs": 3,
+  "browser": "Microsoft Edge (Playwright channel msedge), headless"
+ },
+ "pages": {
+  "/inspecao": {
+   "runs": [
+    {
+     "fcp": 1076,
+     "lcp": 2424,
+     "cls": 0,
+     "tbt": 473,
+     "longTasks": 2,
+     "bytes": 194915,
+     "kinds": {
+      "html": 2623,
+      "js": 72100,
+      "css": 13394,
+      "image": 89012,
+      "api": 642,
+      "other": 4408,
+      "font": 12736
+     },
+     "requests": 24
+    },
+    {
+     "fcp": 1028,
+     "lcp": 2288,
+     "cls": 0,
+     "tbt": 387,
+     "longTasks": 2,
+     "bytes": 194915,
+     "kinds": {
+      "html": 2623,
+      "js": 72100,
+      "css": 13394,
+      "image": 89012,
+      "api": 642,
+      "other": 4408,
+      "font": 12736
+     },
+     "requests": 24
+    },
+    {
+     "fcp": 1028,
+     "lcp": 2240,
+     "cls": 0,
+     "tbt": 326,
+     "longTasks": 2,
+     "bytes": 194915,
+     "kinds": {
+      "html": 2623,
+      "js": 72100,
+      "css": 13394,
+      "image": 89012,
+      "api": 642,
+      "other": 4408,
+      "font": 12736
+     },
+     "requests": 24
+    }
+   ],
+   "median": {
+    "fcp": 1028,
+    "lcp": 2288,
+    "cls": 0,
+    "tbt": 387,
+    "longTasks": 2,
+    "bytes": 194915,
+    "requests": 24
+   },
+   "kinds": {
+    "html": 2623,
+    "js": 72100,
+    "css": 13394,
+    "image": 89012,
+    "api": 642,
+    "other": 4408,
+    "font": 12736
+   }
+  },
+  "/painel?source=demo": {
+   "runs": [
+    {
+     "fcp": 992,
+     "lcp": 2240,
+     "cls": 0.06983363238731828,
+     "tbt": 1091,
+     "longTasks": 5,
+     "bytes": 233671,
+     "kinds": {
+      "html": 2623,
+      "js": 135661,
+      "css": 13394,
+      "image": 25610,
+      "api": 39239,
+      "other": 4408,
+      "font": 12736
+     },
+     "requests": 24
+    },
+    {
+     "fcp": 1068,
+     "lcp": 2232,
+     "cls": 0.06983363238731828,
+     "tbt": 638,
+     "longTasks": 5,
+     "bytes": 233671,
+     "kinds": {
+      "html": 2623,
+      "js": 135661,
+      "css": 13394,
+      "image": 25610,
+      "api": 39239,
+      "other": 4408,
+      "font": 12736
+     },
+     "requests": 24
+    },
+    {
+     "fcp": 1068,
+     "lcp": 2296,
+     "cls": 0.06983363238731828,
+     "tbt": 740,
+     "longTasks": 4,
+     "bytes": 233671,
+     "kinds": {
+      "html": 2623,
+      "js": 135661,
+      "css": 13394,
+      "image": 25610,
+      "api": 39239,
+      "other": 4408,
+      "font": 12736
+     },
+     "requests": 24
+    }
+   ],
+   "median": {
+    "fcp": 1068,
+    "lcp": 2240,
+    "cls": 0.06983363238731828,
+    "tbt": 740,
+    "longTasks": 5,
+    "bytes": 233671,
+    "requests": 24
+   },
+   "kinds": {
+    "html": 2623,
+    "js": 135661,
+    "css": 13394,
+    "image": 25610,
+    "api": 39239,
+    "other": 4408,
+    "font": 12736
+   }
+  }
+ }
+}

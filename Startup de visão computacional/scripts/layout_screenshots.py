@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from record_demo import PHOTO, Server, until
 
 WIDTHS = (360, 768, 1280)
-PAGES = (("login", "/login"), ("linha", "/"), ("inspecao", "/inspecao"), ("painel", "/painel"), ("como-funciona", "/como-funciona"), ("creditos", "/creditos"))
+PAGES = (("login", "/login"), ("linha", "/"), ("inspecao", "/inspecao"), ("painel", "/painel"), ("historico", "/historico?source=all"), ("como-funciona", "/como-funciona"), ("creditos", "/creditos"))
 
 
 def settle(page):
@@ -40,8 +40,10 @@ def login(page, server):
     page.wait_for_url(server.url + "/")
 
 
-def shoot(browser, server, out, width):
+def shoot(browser, server, out, width, theme="dark"):
     ctx = browser.new_context(viewport={"width": width, "height": 900}, reduced_motion="reduce", color_scheme="dark", device_scale_factor=1)
+    ctx.add_init_script(f"try {{ localStorage.setItem('fruitcam-theme', '{theme}'); }} catch (e) {{}}")
+    suffix = "" if theme == "dark" else f"-{theme}"
     page = ctx.new_page()
     for name, path in PAGES:
         if name == "linha":
@@ -61,7 +63,7 @@ def shoot(browser, server, out, width):
             until(page, "document.querySelectorAll('canvas').length >= 8", 60000)
             page.wait_for_timeout(1500)
         scroll_through(page)
-        page.screenshot(path=str(out / f"{name}-{width}.jpg"), full_page=True, type="jpeg", quality=82)
+        page.screenshot(path=str(out / f"{name}-{width}{suffix}.jpg"), full_page=True, type="jpeg", quality=82)
         if name == "inspecao":
             page.locator(".fruit-card", has_text="Caju").click()
             page.fill("input[list=sector-list]", "Linha 1")
@@ -70,13 +72,15 @@ def shoot(browser, server, out, width):
             until(page, "!!document.querySelector('.verdict')", 60000)
             page.wait_for_timeout(800)
             scroll_through(page)
-            page.screenshot(path=str(out / f"inspecao-resultado-{width}.jpg"), full_page=True, type="jpeg", quality=82)
+            page.screenshot(path=str(out / f"inspecao-resultado-{width}{suffix}.jpg"), full_page=True, type="jpeg", quality=82)
     ctx.close()
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("out")
+    parser.add_argument("--themes", default="dark")
+    parser.add_argument("--widths", default=",".join(map(str, WIDTHS)))
     args = parser.parse_args()
     out = ROOT / args.out
     out.mkdir(parents=True, exist_ok=True)
@@ -86,8 +90,9 @@ def main():
         server.warm_up()
         with sync_playwright() as pw:
             browser = pw.chromium.launch(channel="msedge")
-            for width in WIDTHS:
-                shoot(browser, server, out, width)
+            for theme in args.themes.split(","):
+                for width in map(int, args.widths.split(",")):
+                    shoot(browser, server, out, width, theme)
             browser.close()
     finally:
         server.close()

@@ -49,7 +49,7 @@ WSGI_APPLICATION = "fruitcam.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.environ.get("FRUITCAM_DB_PATH", str(BASE_DIR / "db.sqlite3")),
+        "NAME": os.environ.get("FRUITCAM_DB_PATH", str(BASE_DIR / "var" / "db.sqlite3")),
         "OPTIONS": {"timeout": 20, "transaction_mode": "IMMEDIATE", "init_command": "PRAGMA journal_mode=WAL;"},
     }
 }
@@ -72,7 +72,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.environ.get("FRUITCAM_STATIC_ROOT") or None
 STATICFILES_DIRS = [FRONTEND_DIST] if FRONTEND_DIST.exists() else []
 WHITENOISE_USE_FINDERS = True
-WHITENOISE_MIMETYPES = {".vtt": "text/vtt; charset=utf-8", ".webmanifest": "application/manifest+json"}
+WHITENOISE_MIMETYPES = {".vtt": "text/vtt; charset=utf-8", ".webmanifest": "application/manifest+json", ".woff2": "font/woff2"}
 WHITENOISE_IMMUTABLE_FILE_TEST = r"^/static/(assets/.+|(media|figures)/.+\.[0-9a-f]{10}\.\w+)$"
 
 SESSION_COOKIE_HTTPONLY = True
@@ -106,11 +106,11 @@ SECURE_CSP = {
 if env_bool("DJANGO_BEHIND_PROXY", False):
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-MODEL_PATH = Path(os.environ.get("FRUITCAM_MODEL_PATH", BASE_DIR / "models" / "belt_v2.pt"))
+MODEL_PATH = Path(os.environ.get("FRUITCAM_MODEL_PATH", BASE_DIR / "models" / "belt_v3.pt"))
 CAMERAS_FILE = Path(os.environ.get("FRUITCAM_CAMERAS_FILE", BASE_DIR / "config" / "cameras.json"))
-RUN_DIR = Path(os.environ.get("FRUITCAM_RUN_DIR", BASE_DIR / "run"))
+RUN_DIR = Path(os.environ.get("FRUITCAM_RUN_DIR", BASE_DIR / "var" / "run"))
 CAMERA_ONLINE_SECONDS = 5
-UPLOAD_DIR = Path(os.environ.get("FRUITCAM_UPLOAD_DIR", BASE_DIR / "uploads"))
+UPLOAD_DIR = Path(os.environ.get("FRUITCAM_UPLOAD_DIR", BASE_DIR / "var" / "uploads"))
 MAX_UPLOAD_BYTES = int(os.environ.get("FRUITCAM_MAX_UPLOAD_MB", 8)) * 1024 * 1024
 MAX_IMAGE_PIXELS = int(os.environ.get("FRUITCAM_MAX_IMAGE_MEGAPIXELS", 40)) * 1000 * 1000
 

@@ -1,17 +1,16 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
-import { api } from "../api.js";
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from "vue";
+import { api, upload } from "../api.js";
 import { confidence, num } from "../format.js";
-import { errorText, t } from "../strings.js";
+import { errorText, fill, t } from "../strings.js";
+import ConfidenceRing from "../components/ConfidenceRing.vue";
 import ResponsiveImage from "../components/ResponsiveImage.vue";
-import { credits } from "../media.js";
+import WhatIf from "../components/WhatIf.vue";
+import { openEvent, tween, vMagnetic, vTrace } from "../control.js";
 
 const TYPES = ["image/jpeg", "image/png", "image/webp"];
 const FRUITS = Object.keys(t.fruits);
 const BAD = ["guia-varias", "guia-longe", "guia-escuro"];
-const fruitCredits = credits(FRUITS.map((f) => `fruta-${f}`));
-const guideCredits = credits(["guia-bom", ...BAD]);
-const heroCredit = credits(["hero-caju"])[0].credit;
 
 const sector = ref("");
 const fruit = ref("");
@@ -24,12 +23,39 @@ const result = ref(null);
 const sectors = ref([]);
 const picker = ref(null);
 const camera = ref(null);
+const phase = ref("idle");
+const sent = ref(0);
+const timing = reactive({ start: 0, sent: 0, done: 0 });
+const tick = reactive({ conf: 0, ms: 0, probs: {} });
+const L = t.control.live;
+const STEPS = ["pronto", "enviando", "analisando", "concluido"];
 
 const ready = computed(() => file.value && sector.value.trim() && fruit.value && !busy.value);
 const det = computed(() => result.value?.detections[0]);
 const TONE = { boa: "good", nao_podre: "good", baixa_qualidade: "poor", podre: "rotten" };
 const tone = computed(() => (det.value?.needs_review ? "review" : TONE[det.value?.label] || "review"));
 const probs = computed(() => (result.value ? result.value.classes.map((c) => ({ c, p: det.value.probs[c] })) : []));
+const stage = computed(() => (phase.value === "idle" && ready.value ? "pronto" : phase.value));
+const trace = computed(() => (result.value ? fill(t.control.inspector.traceFresh, { id: result.value.event.id }) : ""));
+const roundTrip = computed(() => (timing.done && timing.start ? (timing.done - timing.start) / 1000 : null));
+
+watch(result, (r) => {
+  if (!r) return;
+  tween(0, det.value.confidence, 900, (v) => (tick.conf = v));
+  tween(0, r.inference_ms, 900, (v) => (tick.ms = v));
+  for (const c of r.classes) tween(0, det.value.probs[c], 900, (v) => (tick.probs[c] = v));
+});
+
+function reticle([x0, y0, x1, y1]) {
+  const X = x1 + 1;
+  const Y = y1 + 1;
+  const k = Math.max(4, Math.min(X - x0, Y - y0) * 0.22);
+  return `M${x0} ${y0 + k}V${y0}H${x0 + k}M${X - k} ${y0}H${X}V${y0 + k}M${X} ${Y - k}V${Y}H${X - k}M${x0 + k} ${Y}H${x0}V${Y - k}`;
+}
+
+function inspect(e) {
+  openEvent(result.value.event, { src: preview.value, box: det.value.box, probs: det.value.probs }, e.currentTarget);
+}
 
 onMounted(async () => {
   try {
@@ -44,6 +70,7 @@ function choose(f) {
   if (!f) return;
   message.value = "";
   result.value = null;
+  phase.value = "idle";
   if (!TYPES.includes(f.type)) {
     message.value = t.upload.badType;
     return;
@@ -66,14 +93,26 @@ async function submit() {
   busy.value = true;
   message.value = "";
   result.value = null;
+  phase.value = "enviando";
+  sent.value = 0;
+  Object.assign(timing, { start: performance.now(), sent: 0, done: 0 });
   const form = new FormData();
   form.append("image", file.value);
   form.append("sector", sector.value);
   form.append("fruit_type", fruit.value);
   try {
-    result.value = await api("/api/analyze", { method: "POST", body: form });
+    result.value = await upload("/api/analyze", form, (what, k) => {
+      sent.value = k;
+      if (what === "sent") {
+        timing.sent = performance.now();
+        phase.value = "analisando";
+      }
+    });
+    timing.done = performance.now();
+    phase.value = "concluido";
     if (!sectors.value.includes(result.value.event.sector)) sectors.value = [...sectors.value, result.value.event.sector].sort();
   } catch (err) {
+    phase.value = "erro";
     message.value = errorText(err);
   } finally {
     busy.value = false;
@@ -81,6 +120,7 @@ async function submit() {
 }
 
 function reset() {
+  phase.value = "idle";
   result.value = null;
   message.value = "";
   file.value = null;
@@ -97,11 +137,26 @@ function reset() {
         <h1>{{ t.upload.title }}</h1>
         <p class="lead">{{ t.upload.subtitle }}</p>
         <p class="bg-credit">
-          <span class="illustrative">{{ t.media.illustrative }}</span>
-          <RouterLink :to="{ path: '/creditos', hash: '#caju-arvore' }">{{ heroCredit }}</RouterLink>
+          <RouterLink class="illustrative" :to="{ path: '/creditos', hash: '#caju-arvore' }">{{ t.media.illustrative }}<span class="visually-hidden">{{ t.media.seeCredits }}</span></RouterLink>
         </p>
       </div>
     </header>
+
+    <section class="live-strip instrument" :aria-label="L.label" :data-phase="stage">
+      <ol class="live-steps">
+        <li v-for="(st, k) in STEPS" :key="st" :class="{ on: st === stage, past: STEPS.indexOf(stage) > k }" :aria-current="st === stage ? 'step' : undefined">
+          <span class="chip" :data-state="st === stage || STEPS.indexOf(stage) > k ? st : 'off'">{{ L.steps[st] }}</span>
+        </li>
+        <li v-if="stage === 'erro'" class="on"><span class="chip" data-state="erro">{{ L.steps.erro }}</span></li>
+      </ol>
+      <span class="live-progress" aria-hidden="true"><span :style="{ transform: `scaleX(${stage === 'enviando' ? sent : ['analisando', 'concluido'].includes(stage) ? 1 : 0})` }"></span></span>
+      <p class="live-facts num">
+        <template v-if="stage === 'enviando' || stage === 'analisando'">{{ fill(L.upload, { p: `${Math.round(sent * 100)}%` }) }}</template>
+        <template v-else-if="stage === 'concluido' && result">{{ fill(L.server, { ms: num(result.inference_ms) }) }} · {{ fill(L.total, { s: roundTrip.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) }) }}</template>
+        <template v-else-if="stage === 'idle'">{{ L.idle }}</template>
+      </p>
+      <p class="visually-hidden" role="status">{{ stage === "idle" ? "" : L.steps[stage] }}</p>
+    </section>
 
     <div class="analyze-grid">
       <form class="panel stack" @submit.prevent="submit" novalidate>
@@ -124,8 +179,7 @@ function reset() {
             </label>
           </div>
           <p class="group-credit">
-            <span class="illustrative">{{ t.media.illustrative }}</span>
-            <RouterLink v-for="c in fruitCredits" :key="c.asset" :to="{ path: '/creditos', hash: `#${c.asset}` }">{{ c.credit }}</RouterLink>
+            <RouterLink class="illustrative" :to="{ path: '/creditos', hash: '#midia' }">{{ t.media.illustrativeMany }}<span class="visually-hidden">{{ t.media.seeCredits }}</span></RouterLink>
           </p>
         </fieldset>
 
@@ -147,7 +201,20 @@ function reset() {
               vector-effect="non-scaling-stroke"
               rx="4"
             />
+            <path
+              v-for="(d, i) in result.detections"
+              :key="`r${i}`"
+              class="reticle"
+              :class="tone"
+              :style="{ animationDelay: `${0.1 + i * 0.18}s` }"
+              :d="reticle(d.box)"
+              fill="none"
+              stroke-width="4"
+              stroke-linecap="square"
+              vector-effect="non-scaling-stroke"
+            />
           </svg>
+          <button type="button" class="annotated-open" :aria-label="fill(t.control.history.open, { id: result.event.id })" @click="inspect"></button>
           <span v-for="(d, i) in result.detections" :key="i" class="box-tag" :class="tone" :style="{ left: `${(100 * d.box[0]) / result.image.width}%`, top: `${(100 * d.box[1]) / result.image.height}%`, animationDelay: `${0.45 + i * 0.18}s` }">
             {{ t.classes[d.label] || d.label }} · {{ confidence(d.confidence) }}
           </span>
@@ -194,7 +261,7 @@ function reset() {
             </svg>
             {{ t.upload.camera }}
           </button>
-          <button class="btn btn-primary grow" type="submit" :disabled="busy">
+          <button v-magnetic class="btn btn-primary grow" type="submit" :disabled="busy">
             <span v-if="busy" class="spinner" aria-hidden="true"></span>
             {{ busy ? t.upload.submitting : t.upload.submit }}
           </button>
@@ -215,6 +282,7 @@ function reset() {
         </div>
         <template v-else-if="result">
           <div class="verdict pop" :class="tone">
+            <ConfidenceRing :value="det.confidence" :tone="tone" :size="60" :label="`${t.upload.confidence} ${confidence(det.confidence)}`" />
             <span class="verdict-icon" aria-hidden="true">
               <svg v-if="tone === 'good'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10" /></svg>
               <svg v-else width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01" /><circle cx="12" cy="12" r="9" /></svg>
@@ -226,26 +294,26 @@ function reset() {
           </div>
           <p v-if="det.needs_review" class="notice review-note" role="status">{{ t.upload.review }}</p>
 
-          <div class="probs">
+          <div class="probs" v-trace="trace">
             <p class="probs-title">{{ t.upload.probs }}</p>
             <div v-for="row in probs" :key="row.c" class="prob-row" :class="TONE[row.c]">
               <span class="prob-name">{{ t.classes[row.c] || row.c }}</span>
               <span class="prob-bar" aria-hidden="true"><span :style="{ transform: `scaleX(${row.p})` }"></span></span>
-              <span class="prob-value">{{ confidence(row.p) }}</span>
+              <span class="prob-value">{{ confidence(tick.probs[row.c] ?? row.p) }}</span>
             </div>
           </div>
 
-          <dl class="facts">
+          <dl class="facts" v-trace="trace">
             <div>
               <dt>{{ t.upload.confidence }}</dt>
               <dd>
-                {{ confidence(det.confidence) }}
+                {{ confidence(tick.conf) }}
                 <span class="meter" aria-hidden="true"><span :style="{ transform: `scaleX(${det.confidence})` }"></span></span>
               </dd>
             </div>
             <div>
               <dt>{{ t.upload.time }}</dt>
-              <dd>{{ num(result.inference_ms) }} ms</dd>
+              <dd>{{ num(Math.round(tick.ms * 10) / 10) }} ms</dd>
             </div>
             <div>
               <dt>{{ t.upload.model }}</dt>
@@ -255,7 +323,9 @@ function reset() {
           <p class="hint">{{ t.upload.confidenceNote }}</p>
           <p class="hint">{{ t.upload.oneFruit }}</p>
           <p class="hint">{{ t.upload.saved }} #{{ result.event.id }}</p>
+          <button class="btn btn-secondary btn-block" type="button" @click="inspect">{{ fill(t.control.history.open, { id: result.event.id }) }}</button>
           <button class="btn btn-secondary btn-block" type="button" @click="reset">{{ t.upload.again }}</button>
+          <WhatIf :query="{ source: 'real', kind: 'foto', mine: '1' }" :filter="t.control.whatIf.mine" :highlight="det" />
         </template>
         <div v-else class="guide">
           <h2 class="guide-title">{{ t.guide.title }}</h2>
@@ -276,8 +346,7 @@ function reset() {
             </li>
           </ul>
           <p class="group-credit">
-            <span class="illustrative">{{ t.media.illustrative }}</span>
-            <RouterLink v-for="c in guideCredits" :key="c.asset" :to="{ path: '/creditos', hash: `#${c.asset}` }">{{ c.credit }}</RouterLink>
+            <RouterLink class="illustrative" :to="{ path: '/creditos', hash: '#midia' }">{{ t.media.illustrativeMany }}<span class="visually-hidden">{{ t.media.seeCredits }}</span></RouterLink>
           </p>
           <p class="hint">{{ t.guide.note }}</p>
           <p class="hint">{{ t.upload.oneFruit }}</p>

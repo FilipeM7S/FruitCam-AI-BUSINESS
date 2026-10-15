@@ -4,7 +4,34 @@ import media from "./media.json";
 
 const BASE = import.meta.env.BASE_URL;
 
-export const theme = reactive({ dark: true });
+const root = typeof document !== "undefined" ? document.documentElement : null;
+
+export const theme = reactive({ dark: root?.dataset.theme !== "light" });
+
+export const motion = reactive({ reduced: root?.dataset.motion === "reduced" });
+
+function remember(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    return;
+  }
+}
+
+export function setTheme(dark) {
+  theme.dark = dark;
+  if (dark) delete root.dataset.theme;
+  else root.dataset.theme = "light";
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", getComputedStyle(root).getPropertyValue("--bg").trim());
+  remember("fruitcam-theme", dark ? "dark" : "light");
+}
+
+export function setMotion(reduced) {
+  motion.reduced = reduced;
+  if (reduced) root.dataset.motion = "reduced";
+  else delete root.dataset.motion;
+  remember("fruitcam-motion", reduced ? "reduced" : "full");
+}
 
 export const BRAND = brand;
 
@@ -31,16 +58,8 @@ export function srcset(item, format) {
   return item.sources[format].map(([w, path]) => `${url(path)} ${w}w`).join(", ");
 }
 
-export function credits(ids) {
-  const seen = new Set();
-  return ids
-    .map((id) => media.items[id])
-    .filter((m) => m && !seen.has(m.asset) && seen.add(m.asset))
-    .map((m) => ({ asset: m.asset, credit: m.credit }));
-}
-
 export function reducedMotion() {
-  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  return motion.reduced || (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 }
 
 export function constrainedData() {

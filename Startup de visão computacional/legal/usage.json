@@ -1,0 +1,290 @@
+{
+ "caju-arvore": {
+  "used_in": [
+   "Inspeção por foto (faixa do topo)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+  ],
+  "cropped": false,
+  "clip": null,
+  "files": [
+   "media/hero-caju.640.02529e774e.avif",
+   "media/hero-caju.640.d7fd194ee6.webp",
+   "media/hero-caju.640.8ed1a40b66.jpg",
+   "media/hero-caju.960.5ba737d79e.avif",
+   "media/hero-caju.960.d03b89615d.webp",
+   "media/hero-caju.960.dea47b31dd.jpg",
+   "media/hero-caju.1440.8d9aa5c850.avif",
+   "media/hero-caju.1440.5f8b64b704.webp",
+   "media/hero-caju.1440.b3430b76b4.jpg"
+  ]
+ },
+ "caju-pacajus": {
+  "used_in": [
+   "Página Como funciona (faixa de abertura)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/banner-pacajus.640.f7846e7301.avif",
+   "media/banner-pacajus.640.c514e7108c.webp",
+   "media/banner-pacajus.640.e9ca74c1a3.jpg",
+   "media/banner-pacajus.960.51e80762d5.avif",
+   "media/banner-pacajus.960.ef09866057.webp",
+   "media/banner-pacajus.960.987c5455af.jpg",
+   "media/banner-pacajus.1280.967ff47f38.avif",
+   "media/banner-pacajus.1280.ec8e9c1f7d.webp",
+   "media/banner-pacajus.1280.b5baec8a05.jpg",
+   "media/banner-pacajus.1600.1c4850da32.avif",
+   "media/banner-pacajus.1600.3acca3d8b6.webp",
+   "media/banner-pacajus.1600.4a9f39dd2a.jpg"
+  ]
+ },
+ "caju-vermelho": {
+  "used_in": [
+   "Tela de análise (cartão de fruta: caju)",
+   "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)",
+   "Figura 2 (Como funciona e kit do Summit)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/fruta-caju.96.176a60e9c0.avif",
+   "media/fruta-caju.96.1e913eebc8.webp",
+   "media/fruta-caju.96.ffa1fe31f2.jpg",
+   "media/fruta-caju.176.6a56316e2a.avif",
+   "media/fruta-caju.176.5cfc5e6340.webp",
+   "media/fruta-caju.176.6193c64c6a.jpg",
+   "media/fruta-caju.264.e5cce37ca5.avif",
+   "media/fruta-caju.264.3bea3cae82.webp",
+   "media/fruta-caju.264.c4ff4cb097.jpg"
+  ]
+ },
+ "castanha": {
+  "used_in": [
+   "Tela de análise (cartão de fruta: castanha)",
+   "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/fruta-castanha.96.176653c62b.avif",
+   "media/fruta-castanha.96.b85955e871.webp",
+   "media/fruta-castanha.96.30789bf575.jpg",
+   "media/fruta-castanha.176.84382594dd.avif",
+   "media/fruta-castanha.176.286db6d1f8.webp",
+   "media/fruta-castanha.176.03ee0b57f4.jpg",
+   "media/fruta-castanha.264.03134a7711.avif",
+   "media/fruta-castanha.264.7fde64c453.webp",
+   "media/fruta-castanha.264.8672e56625.jpg"
+  ]
+ },
+ "melao": {
+  "used_in": [
+   "Tela de análise (cartão de fruta: melão)",
+   "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/fruta-melao.96.8741940969.avif",
+   "media/fruta-melao.96.c1faed7d07.webp",
+   "media/fruta-melao.96.88ae2b7174.jpg",
+   "media/fruta-melao.176.58267a2970.avif",
+   "media/fruta-melao.176.b9db8b8d3d.webp",
+   "media/fruta-melao.176.8255e6aaea.jpg",
+   "media/fruta-melao.264.d74a5f0437.avif",
+   "media/fruta-melao.264.88bed02c23.webp",
+   "media/fruta-melao.264.1927e872ca.jpg"
+  ]
+ },
+ "guia-bom": {
+  "used_in": [
+   "Tela de análise (guia: exemplo bom)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/guia-bom.240.fb47e41546.avif",
+   "media/guia-bom.240.3a79064386.webp",
+   "media/guia-bom.240.e32caf35d4.jpg",
+   "media/guia-bom.480.71e32d4e8e.avif",
+   "media/guia-bom.480.3a2038222c.webp",
+   "media/guia-bom.480.b0c418ba64.jpg",
+   "media/guia-bom.720.04f076fe62.avif",
+   "media/guia-bom.720.3b6181d9a1.webp",
+   "media/guia-bom.720.e190ba888a.jpg"
+  ]
+ },
+ "guia-varias": {
+  "used_in": [
+   "Tela de análise (guia: várias frutas)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/guia-varias.160.fbb25eab5d.avif",
+   "media/guia-varias.160.7a3fce0556.webp",
+   "media/guia-varias.160.15b4f6ec0c.jpg",
+   "media/guia-varias.320.408ec52e53.avif",
+   "media/guia-varias.320.2591ad721f.webp",
+   "media/guia-varias.320.8fa712e483.jpg",
+   "media/guia-varias.480.bf4fb13888.avif",
+   "media/guia-varias.480.888d97ab46.webp",
+   "media/guia-varias.480.4b773d6127.jpg"
+  ]
+ },
+ "guia-longe": {
+  "used_in": [
+   "Tela de análise (guia: longe, entre folhas)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/guia-longe.160.53dc0f2fdc.avif",
+   "media/guia-longe.160.e75d2c09e1.webp",
+   "media/guia-longe.160.4f66df6e4d.jpg",
+   "media/guia-longe.320.c929470043.avif",
+   "media/guia-longe.320.c117bdd1db.webp",
+   "media/guia-longe.320.a9cc59e9fc.jpg",
+   "media/guia-longe.480.7b743c5195.avif",
+   "media/guia-longe.480.4097c65e6f.webp",
+   "media/guia-longe.480.653ac07614.jpg"
+  ]
+ },
+ "guia-escuro": {
+  "used_in": [
+   "Tela de análise (guia: pouca luz)",
+   "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+  ],
+  "cropped": true,
+  "clip": null,
+  "files": [
+   "media/guia-escuro.160.2f206a34ad.avif",
+   "media/guia-escuro.160.a50fba9d6a.webp",
+   "media/guia-escuro.160.8a9c4b1516.jpg",
+   "media/guia-escuro.320.a50bfbde8d.avif",
+   "media/guia-escuro.320.0eac006af0.webp",
+   "media/guia-escuro.320.b9c2f688b2.jpg",
+   "media/guia-escuro.480.dfa9f04a2c.avif",
+   "media/guia-escuro.480.9aaa10ad4a.webp",
+   "media/guia-escuro.480.2224520ca4.jpg"
+  ]
+ },
+ "video-batatas": {
+  "used_in": [
+   "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+   "Tela de login (fundo em vídeo)"
+  ],
+  "cropped": false,
+  "clip": {
+   "start": 23,
+   "duration": 6,
+   "width": 960
+  },
+  "files": [
+   "media/video/bg-esteira-real.7dabf93e6d.webm",
+   "media/video/bg-esteira-real.ea62475755.mp4",
+   "media/bg-esteira-real-poster.640.3e248d7cc7.avif",
+   "media/bg-esteira-real-poster.640.ca953eb455.webp",
+   "media/bg-esteira-real-poster.640.6c62183856.jpg",
+   "media/bg-esteira-real-poster.960.dd1aa27f06.avif",
+   "media/bg-esteira-real-poster.960.d7f65c6c66.webp",
+   "media/bg-esteira-real-poster.960.666b6d9238.jpg"
+  ]
+ },
+ "brand": {
+  "files": [
+   "brand/app-icon-96.webp",
+   "brand/app-icon.png",
+   "brand/app-icon.webp",
+   "brand/apple-touch-icon.png",
+   "brand/favicon-32.png",
+   "brand/favicon.ico",
+   "brand/icon-192.png",
+   "brand/icon-512.png",
+   "brand/icon-maskable-512.png",
+   "brand/logo-on-dark-h80.webp",
+   "brand/logo-on-dark.png",
+   "brand/logo-on-dark.webp",
+   "brand/logo-on-light-h192.webp",
+   "brand/logo-on-light-h80.webp",
+   "brand/logo-on-light.png",
+   "brand/logo-on-light.webp",
+   "brand/og-image.png",
+   "manifest.webmanifest"
+  ]
+ },
+ "demo-video": {
+  "files": [
+   "media/video/demo.a3e3f88673.webm",
+   "media/video/demo.20ae69230f.mp4",
+   "media/video/demo.143bd211b3.vtt",
+   "media/demo-poster.480.b1fb331c22.avif",
+   "media/demo-poster.480.b820e7ba9a.webp",
+   "media/demo-poster.480.936f1733e2.jpg",
+   "media/demo-poster.960.ebae0d00ce.avif",
+   "media/demo-poster.960.5b34f383d3.webp",
+   "media/demo-poster.960.af5de077f1.jpg",
+   "media/demo-poster.1280.13bd0ade59.avif",
+   "media/demo-poster.1280.428eabda4f.webp",
+   "media/demo-poster.1280.5b75d11763.jpg"
+  ]
+ },
+ "primeira-analise-video": {
+  "files": [
+   "media/video/primeira-analise.bd921f73a0.webm",
+   "media/video/primeira-analise.6c25e91de1.mp4",
+   "media/video/primeira-analise.2c1f02f4a6.vtt",
+   "media/primeira-analise-poster.480.8f0750af27.avif",
+   "media/primeira-analise-poster.480.f648998cdb.webp",
+   "media/primeira-analise-poster.480.11eb46f273.jpg",
+   "media/primeira-analise-poster.960.f0d219a608.avif",
+   "media/primeira-analise-poster.960.bf3ebf4dbd.webp",
+   "media/primeira-analise-poster.960.cbd74c860e.jpg",
+   "media/primeira-analise-poster.1280.8378de8275.avif",
+   "media/primeira-analise-poster.1280.75a66f4117.webp",
+   "media/primeira-analise-poster.1280.832f53b1f7.jpg"
+  ]
+ },
+ "belt-sim": {
+  "files": [
+   "media/video/bg-esteira-simulada.53c36ea8b6.webm",
+   "media/video/bg-esteira-simulada.338b1c432e.mp4",
+   "media/bg-esteira-simulada-poster.640.230d7ffef7.avif",
+   "media/bg-esteira-simulada-poster.640.4e82dafdbf.webp",
+   "media/bg-esteira-simulada-poster.640.ac354323b3.jpg",
+   "media/bg-esteira-simulada-poster.960.a5c5c7d646.avif",
+   "media/bg-esteira-simulada-poster.960.1ab0ea3a22.webp",
+   "media/bg-esteira-simulada-poster.960.190d20ea9c.jpg"
+  ]
+ },
+ "figures": {
+  "files": [
+   "figures/fig1-pipeline.174eb74ca3.svg",
+   "figures/fig1-pipeline.89f2d915b5.png",
+   "figures/fig2-classificacao.6b47aaa044.webp",
+   "figures/fig2-classificacao.8c90090a98.png",
+   "figures/fig2-classificacao.c46115c417.svg",
+   "figures/fig3-evento-estatistica.7a1d4ccfc7.png",
+   "figures/fig3-evento-estatistica.bd11999172.svg",
+   "figures/fig4-previsao.6fc2b9c96f.svg",
+   "figures/fig4-previsao.ba7d2f3d2c.png",
+   "figures/fig5-gaussiana.8b43144a5c.png",
+   "figures/fig5-gaussiana.fd6f13b30a.svg",
+   "figures/fig6-qualidade.2d5465aef5.svg",
+   "figures/fig6-qualidade.8f463f867d.png",
+   "figures/fig7-linha.7318a8d14d.svg",
+   "figures/fig7-linha.ae07e30f3a.png",
+   "figures/fig8-esteira.6565718441.svg",
+   "figures/fig8-esteira.87c0c53c95.png",
+   "figures/fig9-podre.960cf66fc1.png",
+   "figures/fig9-podre.9d6eec66fc.svg"
+  ]
+ }
+}

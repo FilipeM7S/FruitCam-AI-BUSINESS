@@ -6,6 +6,7 @@ import { errorText, t } from "../strings.js";
 import BackgroundVideo from "../components/BackgroundVideo.vue";
 import BrandLogo from "../components/BrandLogo.vue";
 import { mediaItem } from "../media.js";
+import { vMagnetic } from "../control.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -36,7 +37,7 @@ async function submit() {
     <BackgroundVideo id="bg-esteira-real" />
     <div class="login-side">
       <div class="login-brand">
-        <BrandLogo :height="96" reveal />
+        <BrandLogo :height="96" on="dark" reveal />
         <p class="login-tagline">{{ t.app.tagline }}</p>
       </div>
       <div class="login-card">
@@ -52,7 +53,7 @@ async function submit() {
             <input v-model="password" name="password" type="password" autocomplete="current-password" required />
           </label>
           <p v-if="message" class="notice error" role="alert">{{ message }}</p>
-          <button class="btn btn-primary btn-block" type="submit" :disabled="busy || !username || !password">
+          <button v-magnetic class="btn btn-primary btn-block" type="submit" :disabled="busy || !username || !password">
             <span v-if="busy" class="spinner" aria-hidden="true"></span>
             {{ busy ? t.login.submitting : t.login.submit }}
           </button>
@@ -60,8 +61,7 @@ async function submit() {
       </div>
       <RouterLink class="login-how" to="/como-funciona">{{ t.app.navHow }} →</RouterLink>
       <p class="bg-credit">
-        <span class="illustrative">{{ t.media.illustrative }}</span>
-        <RouterLink :to="{ path: '/creditos', hash: `#${background.asset}` }">{{ background.credit }}</RouterLink>
+        <RouterLink class="illustrative" :to="{ path: '/creditos', hash: `#${background.asset}` }">{{ t.media.illustrative }}<span class="visually-hidden">{{ t.media.seeCredits }}</span></RouterLink>
       </p>
     </div>
   </section>

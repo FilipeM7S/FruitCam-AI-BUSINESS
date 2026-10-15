@@ -1,0 +1,721 @@
+{
+ "what": "comparison of the excluded first Uganda label batch with the two trusted sources; diagnosis only, nothing was retrained",
+ "labels": {
+  "ghana": {
+   "files": 4715,
+   "file_number_p10_p50_p90": [
+    472,
+    2358,
+    4243
+   ],
+   "classes": {
+    "0": {
+     "name_in_this_order": "flower",
+     "boxes": 16757,
+     "per_file": 3.5539766702014846,
+     "median_width": 0.045827,
+     "median_height": 0.054992
+    },
+    "1": {
+     "name_in_this_order": "premature",
+     "boxes": 11766,
+     "per_file": 2.495440084835631,
+     "median_width": 0.020349,
+     "median_height": 0.032012
+    },
+    "2": {
+     "name_in_this_order": "unripe",
+     "boxes": 4244,
+     "per_file": 0.9001060445387062,
+     "median_width": 0.0270725,
+     "median_height": 0.0441935
+    },
+    "3": {
+     "name_in_this_order": "ripe",
+     "boxes": 11721,
+     "per_file": 2.4858960763520677,
+     "median_width": 0.025415,
+     "median_height": 0.04025
+    },
+    "4": {
+     "name_in_this_order": "spoilt",
+     "boxes": 518,
+     "per_file": 0.10986214209968187,
+     "median_width": 0.040289,
+     "median_height": 0.059613
+    },
+    "5": {
+     "name_in_this_order": "tree",
+     "boxes": 1107,
+     "per_file": 0.23478260869565218,
+     "median_width": 0.543605,
+     "median_height": 0.890876
+    }
+   }
+  },
+  "uganda_a": {
+   "files": 1589,
+   "file_number_p10_p50_p90": [
+    162,
+    804,
+    1446
+   ],
+   "classes": {
+    "0": {
+     "name_in_this_order": "tree",
+     "boxes": 1672,
+     "per_file": 1.052234109502832,
+     "median_width": 0.997872,
+     "median_height": 0.995744
+    },
+    "1": {
+     "name_in_this_order": "flower",
+     "boxes": 20018,
+     "per_file": 12.597860289490246,
+     "median_width": 0.023069,
+     "median_height": 0.029246
+    },
+    "2": {
+     "name_in_this_order": "premature",
+     "boxes": 3422,
+     "per_file": 2.153555695405916,
+     "median_width": 0.012684,
+     "median_height": 0.02946
+    },
+    "3": {
+     "name_in_this_order": "unripe",
+     "boxes": 5177,
+     "per_file": 3.2580239144115795,
+     "median_width": 0.010325,
+     "median_height": 0.027278
+    },
+    "4": {
+     "name_in_this_order": "ripe",
+     "boxes": 5833,
+     "per_file": 3.670862177470107,
+     "median_width": 0.011546,
+     "median_height": 0.02455
+    },
+    "5": {
+     "name_in_this_order": "spoilt",
+     "boxes": 23873,
+     "per_file": 15.023914411579609,
+     "median_width": 0.013502,
+     "median_height": 0.033552
+    }
+   }
+  },
+  "uganda_b": {
+   "files": 1440,
+   "file_number_p10_p50_p90": [
+    1719,
+    2320,
+    2948
+   ],
+   "classes": {
+    "0": {
+     "name_in_this_order": "flower",
+     "boxes": 3539,
+     "per_file": 2.457638888888889,
+     "median_width": 0.094136,
+     "median_height": 0.124801
+    },
+    "1": {
+     "name_in_this_order": "premature",
+     "boxes": 2883,
+     "per_file": 2.002083333333333,
+     "median_width": 0.026583,
+     "median_height": 0.062548
+    },
+    "2": {
+     "name_in_this_order": "unripe",
+     "boxes": 17122,
+     "per_file": 11.890277777777778,
+     "median_width": 0.024647,
+     "median_height": 0.064571
+    },
+    "3": {
+     "name_in_this_order": "ripe",
+     "boxes": 112,
+     "per_file": 0.07777777777777778,
+     "median_width": 0.03499,
+     "median_height": 0.089243
+    },
+    "4": {
+     "name_in_this_order": "spoilt",
+     "boxes": 1528,
+     "per_file": 1.0611111111111111,
+     "median_width": 0.027706,
+     "median_height": 0.07081
+    },
+    "5": {
+     "name_in_this_order": "tree",
+     "boxes": 1753,
+     "per_file": 1.2173611111111111,
+     "median_width": 0.996065,
+     "median_height": 0.995662
+    }
+   }
+  },
+  "uganda_unknown": {
+   "files": 69,
+   "file_number_p10_p50_p90": [
+    1097,
+    2572,
+    2888
+   ],
+   "classes": {
+    "0": {
+     "name_in_this_order": null,
+     "boxes": 136,
+     "per_file": 1.9710144927536233,
+     "median_width": 0.149507,
+     "median_height": 0.2048815
+    },
+    "1": {
+     "name_in_this_order": null,
+     "boxes": 268,
+     "per_file": 3.8840579710144927,
+     "median_width": 0.0354005,
+     "median_height": 0.0626745
+    },
+    "2": {
+     "name_in_this_order": null,
+     "boxes": 656,
+     "per_file": 9.507246376811594,
+     "median_width": 0.030026,
+     "median_height": 0.0831625
+    },
+    "3": {
+     "name_in_this_order": null,
+     "boxes": 58,
+     "per_file": 0.8405797101449275,
+     "median_width": 0.009778,
+     "median_height": 0.026696
+    },
+    "4": {
+     "name_in_this_order": null,
+     "boxes": 120,
+     "per_file": 1.7391304347826086,
+     "median_width": 0.0274165,
+     "median_height": 0.06290200000000001
+    },
+    "5": {
+     "name_in_this_order": null,
+     "boxes": 194,
+     "per_file": 2.8115942028985508,
+     "median_width": 0.019231,
+     "median_height": 0.047463
+    }
+   }
+  }
+ },
+ "published_table_against_ids": {
+  "tree": {
+   "published": 5347,
+   "boxes_with_this_id_in_all_uganda_files": 5347
+  },
+  "flower": {
+   "published": 23169,
+   "boxes_with_this_id_in_all_uganda_files": 23169
+  },
+  "premature": {
+   "published": 21200,
+   "boxes_with_this_id_in_all_uganda_files": 21200
+  },
+  "unripe": {
+   "published": 5347,
+   "boxes_with_this_id_in_all_uganda_files": 5347
+  },
+  "ripe": {
+   "published": 7481,
+   "boxes_with_this_id_in_all_uganda_files": 7481
+  },
+  "spoilt": {
+   "published": 25820,
+   "boxes_with_this_id_in_all_uganda_files": 25820
+  }
+ },
+ "photos": {
+  "ghana": {
+   "photos_measured": 117,
+   "sizes": {
+    "1600x1300": 117
+   },
+   "lightness_mean": 41.289884468744766,
+   "lightness_sd": 3.6033050288272186,
+   "saturation_mean": 0.49848013029998317,
+   "sharpness_median": 2345.199246211582,
+   "hue_histogram_of_saturated_pixels": [
+    0.1073,
+    0.4674,
+    0.4158,
+    0.008,
+    0.0003,
+    0.0,
+    0.0,
+    0.0001,
+    0.0001,
+    0.0,
+    0.0,
+    0.0007
+   ]
+  },
+  "uganda_b": {
+   "photos_measured": 300,
+   "sizes": {
+    "640x480": 182,
+    "853x480": 118
+   },
+   "lightness_mean": 54.66795957584423,
+   "lightness_sd": 7.190682304035766,
+   "saturation_mean": 0.5409093532135076,
+   "sharpness_median": 1332.1231579192267,
+   "hue_histogram_of_saturated_pixels": [
+    0.0699,
+    0.1381,
+    0.5699,
+    0.2127,
+    0.0074,
+    0.0003,
+    0.0002,
+    0.0014,
+    0.0,
+    0.0,
+    0.0,
+    0.0001
+   ]
+  },
+  "uganda_a": {
+   "photos_measured": 300,
+   "sizes": {
+    "640x480": 299,
+    "853x480": 1
+   },
+   "lightness_mean": 55.90431273828976,
+   "lightness_sd": 7.4225615893975005,
+   "saturation_mean": 0.5200794197644335,
+   "sharpness_median": 1946.6522875267874,
+   "hue_histogram_of_saturated_pixels": [
+    0.0401,
+    0.2741,
+    0.608,
+    0.0673,
+    0.0023,
+    0.0003,
+    0.0043,
+    0.0031,
+    0.0,
+    0.0,
+    0.0001,
+    0.0003
+   ]
+  }
+ },
+ "crops_of_at_least_24_px": {
+  "ghana/premature": {
+   "crops": 5144,
+   "photos": 1059,
+   "measured": 400,
+   "median_short_side_px": 39.0,
+   "lightness": 59.468135977717296,
+   "red_minus_green": -5.0532860955873,
+   "yellow_minus_blue": 35.66643676752044,
+   "saturation": 0.5074774104710427,
+   "share_red": 0.08540985031394019,
+   "share_yellow": 0.8055921497356249,
+   "share_green": 0.0542528741308788,
+   "share_dark": 0.03704052583065074
+  },
+  "ghana/unripe": {
+   "crops": 3752,
+   "photos": 1250,
+   "measured": 400,
+   "median_short_side_px": 45.0,
+   "lightness": 61.763539571251805,
+   "red_minus_green": -6.8217759531171716,
+   "yellow_minus_blue": 36.84279411423927,
+   "saturation": 0.5061871196060959,
+   "share_red": 0.029722978654728817,
+   "share_yellow": 0.8608204086169284,
+   "share_green": 0.05441457005269107,
+   "share_dark": 0.05384214801094718
+  },
+  "ghana/ripe": {
+   "crops": 5134,
+   "photos": 1241,
+   "measured": 400,
+   "median_short_side_px": 47.0,
+   "lightness": 56.33267255224461,
+   "red_minus_green": 19.159220354196705,
+   "yellow_minus_blue": 35.25778411690248,
+   "saturation": 0.6092253465978291,
+   "share_red": 0.7444771278631933,
+   "share_yellow": 0.2122038456790856,
+   "share_green": 0.0031202845423747142,
+   "share_dark": 0.02903142220703885
+  },
+  "ghana/spoilt": {
+   "crops": 499,
+   "photos": 253,
+   "measured": 400,
+   "median_short_side_px": 64.0,
+   "lightness": 47.52904345511671,
+   "red_minus_green": 2.9613582353175683,
+   "yellow_minus_blue": 27.240999050262854,
+   "saturation": 0.5132702307281106,
+   "share_red": 0.3743837626620724,
+   "share_yellow": 0.49393549739611353,
+   "share_green": 0.041662890280406414,
+   "share_dark": 0.10450543509588105
+  },
+  "uganda_b/premature": {
+   "crops": 857,
+   "photos": 329,
+   "measured": 400,
+   "median_short_side_px": 30.0,
+   "lightness": 55.912556185055195,
+   "red_minus_green": -4.81992394246765,
+   "yellow_minus_blue": 26.04804823098455,
+   "saturation": 0.4528550869562211,
+   "share_red": 0.25594181633556334,
+   "share_yellow": 0.3530520220931782,
+   "share_green": 0.25078724214345804,
+   "share_dark": 0.06155898499404303
+  },
+  "uganda_b/unripe": {
+   "crops": 4388,
+   "photos": 1028,
+   "measured": 400,
+   "median_short_side_px": 31.0,
+   "lightness": 56.92688363240378,
+   "red_minus_green": -12.676724468619131,
+   "yellow_minus_blue": 30.8547554921908,
+   "saturation": 0.489266342543059,
+   "share_red": 0.06285283371433592,
+   "share_yellow": 0.3617886225246359,
+   "share_green": 0.46885308284740757,
+   "share_dark": 0.07607310546937936
+  },
+  "uganda_b/ripe": {
+   "crops": 57,
+   "photos": 48,
+   "measured": 57,
+   "median_short_side_px": 33.0,
+   "lightness": 65.77723041791721,
+   "red_minus_green": -3.034777125159123,
+   "yellow_minus_blue": 38.12980110209625,
+   "saturation": 0.5288952022706965,
+   "share_red": 0.2526017158504931,
+   "share_yellow": 0.523065919214657,
+   "share_green": 0.12509607503251793,
+   "share_dark": 0.047169499334338796
+  },
+  "uganda_b/spoilt": {
+   "crops": 553,
+   "photos": 305,
+   "measured": 400,
+   "median_short_side_px": 32.0,
+   "lightness": 49.24945215347594,
+   "red_minus_green": -7.8529486827810855,
+   "yellow_minus_blue": 25.172660228302103,
+   "saturation": 0.4669168511125963,
+   "share_red": 0.17443227925271984,
+   "share_yellow": 0.3391247095126946,
+   "share_green": 0.329560010337985,
+   "share_dark": 0.16110091427199272
+  },
+  "uganda_a/premature": {
+   "crops": 121,
+   "photos": 57,
+   "measured": 121,
+   "median_short_side_px": 29.0,
+   "lightness": 58.143251311475694,
+   "red_minus_green": -9.659812184730688,
+   "yellow_minus_blue": 30.86480239099333,
+   "saturation": 0.4936821744531081,
+   "share_red": 0.11412878239000832,
+   "share_yellow": 0.39329969965853345,
+   "share_green": 0.3623515362857206,
+   "share_dark": 0.07224308879191703
+  },
+  "uganda_a/unripe": {
+   "crops": 76,
+   "photos": 47,
+   "measured": 76,
+   "median_short_side_px": 30.0,
+   "lightness": 61.26715088631137,
+   "red_minus_green": -18.447997907972127,
+   "yellow_minus_blue": 40.51780594118778,
+   "saturation": 0.582976226510944,
+   "share_red": 0.01879507080238812,
+   "share_yellow": 0.3239329674674415,
+   "share_green": 0.5947292434941026,
+   "share_dark": 0.0251132800657038
+  },
+  "uganda_a/ripe": {
+   "crops": 149,
+   "photos": 70,
+   "measured": 149,
+   "median_short_side_px": 30.0,
+   "lightness": 57.08121733399894,
+   "red_minus_green": -7.4757486751718885,
+   "yellow_minus_blue": 30.620852436943096,
+   "saturation": 0.49233721938351416,
+   "share_red": 0.17108590046605088,
+   "share_yellow": 0.4073872937538622,
+   "share_green": 0.2905778080725782,
+   "share_dark": 0.06862767315608304
+  },
+  "uganda_a/spoilt": {
+   "crops": 948,
+   "photos": 349,
+   "measured": 400,
+   "median_short_side_px": 29.0,
+   "lightness": 58.08620669277212,
+   "red_minus_green": -8.075668203255294,
+   "yellow_minus_blue": 27.30521519105482,
+   "saturation": 0.44264050711810266,
+   "share_red": 0.1521649176292088,
+   "share_yellow": 0.35656501801773444,
+   "share_green": 0.29576071168271395,
+   "share_dark": 0.07780643949134318
+  }
+ },
+ "colour_probe": {
+  "what": "nearest class centre on eight colour measures taken inside the fruit mask; centres fitted on training-split crops of Ghana and the second Uganda batch",
+  "features": [
+   "lightness",
+   "red_minus_green",
+   "yellow_minus_blue",
+   "saturation",
+   "share_red",
+   "share_yellow",
+   "share_green",
+   "share_dark"
+  ],
+  "check_on_held_out_trusted_crops": {
+   "premature": {
+    "n": 122,
+    "answers": {
+     "premature": 43,
+     "unripe": 47,
+     "ripe": 8,
+     "spoilt": 24
+    }
+   },
+   "unripe": {
+    "n": 121,
+    "answers": {
+     "premature": 30,
+     "unripe": 65,
+     "ripe": 1,
+     "spoilt": 25
+    }
+   },
+   "ripe": {
+    "n": 67,
+    "answers": {
+     "premature": 3,
+     "unripe": 13,
+     "ripe": 48,
+     "spoilt": 3
+    }
+   },
+   "spoilt": {
+    "n": 165,
+    "answers": {
+     "premature": 53,
+     "unripe": 25,
+     "ripe": 17,
+     "spoilt": 70
+    }
+   }
+  },
+  "balanced_accuracy_on_held_out_trusted_crops": 0.5075773584320641,
+  "first_batch_by_its_label": {
+   "premature": {
+    "n": 121,
+    "answers": {
+     "premature": 30,
+     "unripe": 54,
+     "ripe": 5,
+     "spoilt": 32
+    }
+   },
+   "unripe": {
+    "n": 76,
+    "answers": {
+     "premature": 3,
+     "unripe": 69,
+     "ripe": 1,
+     "spoilt": 3
+    }
+   },
+   "ripe": {
+    "n": 149,
+    "answers": {
+     "premature": 36,
+     "unripe": 60,
+     "ripe": 7,
+     "spoilt": 46
+    }
+   },
+   "spoilt": {
+    "n": 400,
+    "answers": {
+     "premature": 130,
+     "unripe": 148,
+     "ripe": 19,
+     "spoilt": 103
+    }
+   }
+  }
+ },
+ "model_probe": {
+  "what": "answers of both models on every crop of at least 24 px from the first Uganda label batch (class ids read in the order given in the paper); share of each answer per annotated stage",
+  "crops": 1294,
+  "photos": 430,
+  "note": "belt_v2 was trained on part of these photos; belt_v3 on none of them",
+  "models": {
+   "belt_v2": {
+    "premature": {
+     "n": 121,
+     "boa": 0.14,
+     "baixa_qualidade": 0.645,
+     "podre": 0.215
+    },
+    "unripe": {
+     "n": 76,
+     "boa": 0.026,
+     "baixa_qualidade": 0.829,
+     "podre": 0.145
+    },
+    "ripe": {
+     "n": 149,
+     "boa": 0.517,
+     "baixa_qualidade": 0.295,
+     "podre": 0.188
+    },
+    "spoilt": {
+     "n": 948,
+     "boa": 0.124,
+     "baixa_qualidade": 0.252,
+     "podre": 0.623
+    }
+   },
+   "belt_v3": {
+    "premature": {
+     "n": 121,
+     "boa": 0.058,
+     "baixa_qualidade": 0.868,
+     "podre": 0.074
+    },
+    "unripe": {
+     "n": 76,
+     "boa": 0.0,
+     "baixa_qualidade": 1.0,
+     "podre": 0.0
+    },
+    "ripe": {
+     "n": 149,
+     "boa": 0.047,
+     "baixa_qualidade": 0.846,
+     "podre": 0.107
+    },
+    "spoilt": {
+     "n": 948,
+     "boa": 0.015,
+     "baixa_qualidade": 0.803,
+     "podre": 0.182
+    }
+   }
+  }
+ },
+ "original_photos": {
+  "photos": 10,
+  "bytes": 37143907,
+  "fetched_now": 10,
+  "check": "size and CRC-32 of every photo against the archive index",
+  "files": {
+   "uganda_a": [
+    "Image_12_resized",
+    "Image_570_resized",
+    "Image_15_resized",
+    "Image_276_resized",
+    "Image_153_resized"
+   ],
+   "uganda_b": [
+    "Image_1930_resized",
+    "Image_2731_resized",
+    "Image_2334_resized",
+    "Image_2961_resized",
+    "Image_2413_resized"
+   ]
+  },
+  "boxes": {
+   "uganda_a/1": {
+    "name_in_this_order": "flower",
+    "boxes_in_the_fetched_photos": 179,
+    "median_long_side_px_at_full_resolution": 70.14168000000001
+   },
+   "uganda_a/2": {
+    "name_in_this_order": "premature",
+    "boxes_in_the_fetched_photos": 43,
+    "median_long_side_px_at_full_resolution": 93.39623999999999
+   },
+   "uganda_a/3": {
+    "name_in_this_order": "unripe",
+    "boxes_in_the_fetched_photos": 78,
+    "median_long_side_px_at_full_resolution": 91.321776
+   },
+   "uganda_a/4": {
+    "name_in_this_order": "ripe",
+    "boxes_in_the_fetched_photos": 92,
+    "median_long_side_px_at_full_resolution": 70.14168000000001
+   },
+   "uganda_a/5": {
+    "name_in_this_order": "spoilt",
+    "boxes_in_the_fetched_photos": 66,
+    "median_long_side_px_at_full_resolution": 63.516096000000005
+   },
+   "uganda_b/0": {
+    "name_in_this_order": "flower",
+    "boxes_in_the_fetched_photos": 17,
+    "median_long_side_px_at_full_resolution": 393.458688
+   },
+   "uganda_b/1": {
+    "name_in_this_order": "premature",
+    "boxes_in_the_fetched_photos": 13,
+    "median_long_side_px_at_full_resolution": 70.536375
+   },
+   "uganda_b/2": {
+    "name_in_this_order": "unripe",
+    "boxes_in_the_fetched_photos": 75,
+    "median_long_side_px_at_full_resolution": 87.130125
+   },
+   "uganda_b/3": {
+    "name_in_this_order": "ripe",
+    "boxes_in_the_fetched_photos": 6,
+    "median_long_side_px_at_full_resolution": 125.841195
+   },
+   "uganda_b/4": {
+    "name_in_this_order": "spoilt",
+    "boxes_in_the_fetched_photos": 13,
+    "median_long_side_px_at_full_resolution": 66.604
+   }
+  }
+ },
+ "sheets": {
+  "crops_by_stage": {
+   "premature": "recortes_premature.jpg",
+   "unripe": "recortes_unripe.jpg",
+   "ripe": "recortes_ripe.jpg",
+   "spoilt": "recortes_spoilt.jpg"
+  },
+  "full_resolution_by_class_id": {
+   "uganda_a": "originais_uganda_a.jpg",
+   "uganda_b": "originais_uganda_b.jpg"
+  }
+ }
+}

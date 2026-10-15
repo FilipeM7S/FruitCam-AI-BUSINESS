@@ -4,20 +4,9 @@
 - Page: https://zenodo.org/records/17494608
 - DOI: https://doi.org/10.5281/zenodo.17494608
 - Version: Zenodo record 17494608 (published 2025-10-31)
-- Authors: Dominik Štursa, Petr Doležel, Jakub Ksiažek (University of Pardubice, Czech Republic)
 - Setting: real industrial conveyor sorting line (Basler camera perpendicular to the belt)
 - Fruit: potato
-- Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- Licence as written on the source: Zenodo record licence field: cc-by-4.0; metadata file inside the zip: "License: CC BY 4.0"
-- Commercial use: allowed with attribution
-
-## Required attribution
-
-Štursa, D.; Doležel, P.; Ksiažek, J. (2025). Potatoes Dataset. University of Pardubice. Zenodo. https://doi.org/10.5281/zenodo.17494608. Licensed under CC BY 4.0.
-
-## Citation
-
-Štursa D., Doležel P., Ksiažek J. Potatoes Dataset. Zenodo, 2025. doi:10.5281/zenodo.17494608
+- Licence, authors and required attribution: [LICENSES.md](../../../LICENSES.md), section 3, entry `potatoes`
 
 ## Files
 

@@ -11,8 +11,8 @@ from torch.utils.data import DataLoader, Dataset
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from train import build_model
-from train_belt import transforms_for
+from training.train import build_model
+from training.train_belt import transforms_for
 
 
 class Folder(Dataset):
@@ -48,8 +48,8 @@ def adapt(model, files, size, batch_size=64):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--init", default=str(ROOT / "models" / "belt_v2.pt"))
-    parser.add_argument("--crops", default=str(ROOT / "belt_data"), help="folder with unlabelled belt crops (labels are ignored)")
+    parser.add_argument("--init", default=str(ROOT / "models" / "belt_v3.pt"))
+    parser.add_argument("--crops", default=str(ROOT / "datasets" / "belt_data"), help="folder with unlabelled belt crops (labels are ignored)")
     parser.add_argument("--out")
     parser.add_argument("--min-crops", type=int, default=200)
     args = parser.parse_args()

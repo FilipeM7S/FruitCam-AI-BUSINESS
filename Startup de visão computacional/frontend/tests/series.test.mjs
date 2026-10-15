@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { test } from "node:test";
-import { deformitySeries, forecastSeries, fruitSeries, gaussianSeries, growthRange, growthSeries, overviewSeries, recurringSeries } from "../src/series.js";
+import { deformitySeries, forecastSeries, fruitSeries, gaussianSeries, growthRange, growthSeries, overviewSeries, recurringSeries, robustLimit } from "../src/series.js";
 
 const fixturePath = process.env.FRUITCAM_FIXTURES;
 const F = fixturePath ? JSON.parse(fs.readFileSync(fixturePath, "utf8")) : null;
@@ -141,7 +141,7 @@ test("8 overview: per-period rate and per-sector rates match the known counts", 
 });
 
 test("motion budget: every keyframe and transition animates only transform or opacity", () => {
-  const css = fs.readFileSync(new URL("../src/style.css", import.meta.url), "utf8");
+  const css = ["style.css", "control.css"].map((f) => fs.readFileSync(new URL(`../src/${f}`, import.meta.url), "utf8")).join(String.fromCharCode(10));
   const bad = [];
   let i = 0;
   while ((i = css.indexOf("@keyframes", i)) >= 0) {
@@ -160,4 +160,16 @@ test("motion budget: every keyframe and transition animates only transform or op
   for (const decl of transitions) for (const part of decl.split(/,(?![^(]*\))/)) if (!["opacity", "transform"].includes(part.trim().split(/\s+/)[0])) bad.push(`transition: ${part.trim()}`);
   say(`checked ${css.split("@keyframes").length - 1} keyframes and ${transitions.length} transition declarations`);
   assert.deepEqual(bad, []);
+});
+
+test("robustLimit cuts the scale only for extreme outliers", () => {
+  const weeks = Array.from({ length: 52 }, (_, i) => 1000 + 10 * i);
+  const flat = robustLimit(weeks);
+  const spiked = robustLimit([...weeks, 91000]);
+  const short = robustLimit([10, 20, 9000]);
+  say(`52 ordinary weeks -> max ${flat.max}, clipped ${flat.clipped}; plus one 91.000 week -> max ${spiked.max.toFixed(1)}, clipped ${spiked.clipped}; 3 values -> clipped ${short.clipped}`);
+  assert.deepEqual(flat, { max: 1510, clipped: false });
+  assert.equal(spiked.clipped, true);
+  near(spiked.max, 1.6 * 1494, 1e-9, "cut at 1.6 x the 95th percentile (1.490 + 0,4 x 10)");
+  assert.equal(short.clipped, false);
 });

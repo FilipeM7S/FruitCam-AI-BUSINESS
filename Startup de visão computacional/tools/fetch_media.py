@@ -10,11 +10,12 @@ from pathlib import Path
 
 from PIL import Image, ImageOps
 
+import build_legal
+
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "media_src" / "commons"
+OUT = ROOT / "assets" / "media_src" / "commons"
 UA = {"User-Agent": "FruitCamAssetTool/1.0 (educational startup prototype; media licensing check)"}
 MASTER_MAX = 2560
-ALLOWED = re.compile(r"^(CC0|Public domain|CC BY(-SA)? [0-9.]+)$")
 FILES = {
     "caju-pacajus": "File:Plantação de caju em Pacajus.jpg",
     "caju-arvore": "File:Cashew apple with nut - Caju.jpg",
@@ -71,14 +72,16 @@ def license_url(title, meta, license_name):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    path = ROOT / "media_src" / "sources.json"
+    path = ROOT / "assets" / "media_src" / "sources.json"
     previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     sources = {}
+    registry = build_legal.registry()
+    known = {e["id"]: e for e in registry["media"]}
     for key, title in {**FILES, **VIDEOS}.items():
         meta_raw = info(title)
         meta = meta_raw["extmetadata"]
         license_name = text(meta, "LicenseShortName")
-        assert ALLOWED.match(license_name), f"{title}: license {license_name!r} not allowed"
+        assert build_legal.allowed_media(license_name), f"{title}: license {license_name!r} not allowed"
         assert not text(meta, "Restrictions"), f"{title}: has restrictions {text(meta, 'Restrictions')}"
         video = key in VIDEOS
         master = OUT / (f"{key}.webm" if video else f"{key}.jpg")
@@ -98,26 +101,35 @@ def main():
             with Image.open(master) as im:
                 size = im.size
         sources[key] = {
-            "title": title,
-            "page": meta_raw["descriptionurl"],
-            "file_url": meta_raw["url"],
-            "author": text(meta, "Artist"),
-            "credit": text(meta, "Credit"),
-            "license": license_name,
-            "license_url": license_url(title, meta, license_name),
-            "attribution_required": text(meta, "AttributionRequired") != "false",
-            "date": text(meta, "DateTimeOriginal") or text(meta, "DateTime"),
             "original_size": [meta_raw["width"], meta_raw["height"]],
             "original_sha1": meta_raw["sha1"],
-            "master": f"media_src/commons/{master.name}",
+            "master": f"assets/media_src/commons/{master.name}",
             "master_size": list(size),
             "master_note": "Arquivo original, sem alteração." if video else f"Original reduzido para no máximo {MASTER_MAX} px no maior lado, sem metadados EXIF.",
-            "retrieved": previous.get(key, {}).get("retrieved") or datetime.date.today().isoformat(),
             "kind": "video" if video else "image",
             "duration_s": meta_raw.get("duration"),
         }
-        print(f"{key:14s} {license_name:14s} {sources[key]['author'][:40]:40s} {size}")
-    (ROOT / "media_src" / "sources.json").write_text(json.dumps(sources, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        entry = known.get(key)
+        if entry is None:
+            entry = {"id": key, "title": title.removeprefix("File:").rsplit(".", 1)[0], "credit_name": text(meta, "Artist")}
+            registry["media"].append(entry)
+        entry.update(
+            kind="video" if video else "image",
+            original_title=title,
+            author=text(meta, "Artist"),
+            license=license_name,
+            license_url=license_url(title, meta, license_name),
+            attribution_required=text(meta, "AttributionRequired") != "false",
+            source="Wikimedia Commons",
+            source_url=meta_raw["descriptionurl"],
+            file_url=meta_raw["url"],
+            date=text(meta, "DateTimeOriginal") or text(meta, "DateTime"),
+            retrieved=entry.get("retrieved") or datetime.date.today().isoformat(),
+        )
+        entry["attribution"] = build_legal.attribution(title, entry["credit_name"], entry["author"], license_name, entry["source_url"])
+        print(f"{key:14s} {license_name:14s} {entry['author'][:40]:40s} {size}")
+    (ROOT / "assets" / "media_src" / "sources.json").write_text(json.dumps(sources, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    build_legal.write(build_legal.REGISTRY, build_legal.dump(registry))
 
 
 if __name__ == "__main__":

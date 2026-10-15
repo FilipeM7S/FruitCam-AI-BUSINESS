@@ -1,0 +1,30 @@
+{
+  "width": 1280,
+  "height": 720,
+  "duration": 17.3,
+  "alt": "Gravação de tela do app FruitCam_ai: inspeção de uma foto de caju com a faixa de estado, o resultado com a confiança, o inspetor da fruta e o registro aparecendo no Histórico.",
+  "posterAlt": "Resultado de uma inspeção por foto: caju com a caixa marcada, o veredito do modelo e o anel de confiança.",
+  "caption": "Gravação do app real em execução (17 s, sem áudio), feita com Playwright. A foto é real e o resultado é a saída real do modelo.",
+  "transcript": [
+    "Inspeção por foto: escolha a fruta, o setor e a foto. Uma fruta por foto.",
+    "A faixa de estado mostra as etapas reais do pedido: envio, análise e conclusão, com o tempo medido.",
+    "Resultado: saída real do modelo para esta foto: boa. O sistema não decide sozinho: a fruta vai para revisão manual.",
+    "O inspetor mostra só os campos salvos no banco e o recorte que o modelo recebeu.",
+    "O registro aparece no Histórico, com filtros, seleção e exportação em CSV."
+  ],
+  "contains": [
+    "caju-arvore",
+    "caju-vermelho",
+    "castanha",
+    "guia-bom",
+    "guia-escuro",
+    "guia-longe",
+    "guia-varias",
+    "melao"
+  ],
+  "result": {
+    "label": "Boa",
+    "review": true,
+    "ms": "Inferência 324,9 ms (medida no servidor) · Ida e volta 0,8 s (medida no navegador)"
+  }
+}

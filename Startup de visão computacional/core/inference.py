@@ -8,7 +8,7 @@ import torch
 from django.conf import settings
 from PIL import Image, ImageOps
 
-from Bbox import detect_bbox
+from .bbox import detect_bbox
 from belt.classify import GOOD, CropClassifier
 
 FORMATS = {"JPEG", "PNG", "WEBP"}

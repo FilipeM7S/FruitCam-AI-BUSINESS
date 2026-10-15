@@ -1,4 +1,3 @@
-import sys
 from pathlib import Path
 
 import cv2
@@ -6,9 +5,7 @@ import numpy as np
 import torch
 from PIL import Image
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-from train import build_model
+from .mobilenet import MobileNetV3Small
 
 GOOD = ("boa", "nao_podre")
 
@@ -24,7 +21,7 @@ class CropClassifier:
         self.mean = np.array(ck.get("mean", [0.485, 0.456, 0.406]), np.float32)
         self.std = np.array(ck.get("std", [0.229, 0.224, 0.225]), np.float32)
         self.device = device
-        self.model = build_model(len(self.classes), pretrained=False)
+        self.model = MobileNetV3Small(len(self.classes))
         self.model.load_state_dict(ck["model_state"])
         self.model.to(device).eval()
 

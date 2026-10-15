@@ -1,0 +1,442 @@
+{
+ "test": {
+  "crops": 3016,
+  "photos": 417,
+  "by_source_and_class": {
+   "uganda_b/baixa_qualidade": 786,
+   "ghana/baixa_qualidade": 1248,
+   "ghana/boa": 768,
+   "uganda_b/podre": 105,
+   "ghana/podre": 102,
+   "uganda_b/boa": 7
+  },
+  "rule": "photos held out by hash; at most 1500 crops per source and class"
+ },
+ "legacy_test": {
+  "crops": 187,
+  "photos": 69,
+  "rule": "crops of at least 24 px from the photos that were the test set of belt_v2 (first Uganda label batch, class ids read in the order given in the paper); neither model was trained on these photos"
+ },
+ "real_video_backgrounds": {
+  "pictures": 58,
+  "from": "citrus packing clip of the set usda_line_videos and the clip of the set apple_grading_video; never used in training"
+ },
+ "models": {
+  "belt_v2": {
+   "field_photo_test": {
+    "n": 3016,
+    "accuracy": 0.5895225464190982,
+    "balanced_accuracy": 0.5640167916802851,
+    "recall": {
+     "boa": 0.7535483870967742,
+     "baixa_qualidade": 0.5471976401179941,
+     "podre": 0.391304347826087
+    },
+    "confusion": [
+     [
+      584,
+      41,
+      150
+     ],
+     [
+      221,
+      1113,
+      700
+     ],
+     [
+      61,
+      65,
+      81
+     ]
+    ],
+    "rotten_called_good": 0.2946859903381642,
+    "accuracy_ci95": [
+     0.561022031496063,
+     0.6181708739354754
+    ],
+    "balanced_accuracy_ci95": [
+     0.534245912411949,
+     0.5950682524070776
+    ],
+    "photos": 417
+   },
+   "field_photo_test_ghana": {
+    "n": 2118,
+    "accuracy": 0.5788479697828139,
+    "balanced_accuracy": 0.6041647027400704,
+    "recall": {
+     "boa": 0.75390625,
+     "baixa_qualidade": 0.4703525641025641,
+     "podre": 0.5882352941176471
+    },
+    "confusion": [
+     [
+      579,
+      40,
+      149
+     ],
+     [
+      107,
+      587,
+      554
+     ],
+     [
+      13,
+      29,
+      60
+     ]
+    ],
+    "rotten_called_good": 0.12745098039215685
+   },
+   "field_photo_test_uganda_b": {
+    "n": 898,
+    "accuracy": 0.6146993318485523,
+    "balanced_accuracy": 0.5278323034048225,
+    "recall": {
+     "boa": 0.7142857142857143,
+     "baixa_qualidade": 0.6692111959287532,
+     "podre": 0.2
+    },
+    "confusion": [
+     [
+      5,
+      1,
+      1
+     ],
+     [
+      114,
+      526,
+      146
+     ],
+     [
+      48,
+      36,
+      21
+     ]
+    ],
+    "rotten_called_good": 0.45714285714285713
+   },
+   "held_out_blue_belts": {
+    "n": 3016,
+    "accuracy": 0.5460875331564987,
+    "balanced_accuracy": 0.5347314815964048,
+    "recall": {
+     "boa": 0.8348387096774194,
+     "baixa_qualidade": 0.46017699115044247,
+     "podre": 0.30917874396135264
+    },
+    "confusion": [
+     [
+      647,
+      15,
+      113
+     ],
+     [
+      731,
+      936,
+      367
+     ],
+     [
+      89,
+      54,
+      64
+     ]
+    ],
+    "rotten_called_good": 0.42995169082125606,
+    "accuracy_ci95": [
+     0.5155890987748746,
+     0.576795676489612
+    ],
+    "balanced_accuracy_ci95": [
+     0.5084023074618315,
+     0.5609409189097022
+    ],
+    "photos": 417,
+    "same_answer_as_on_the_plain_crop": 0.6057692307692307
+   },
+   "held_out_real_video_backgrounds": {
+    "n": 3016,
+    "accuracy": 0.34714854111405835,
+    "balanced_accuracy": 0.3960373785892286,
+    "recall": {
+     "boa": 0.9406451612903226,
+     "baixa_qualidade": 0.14601769911504425,
+     "podre": 0.10144927536231885
+    },
+    "confusion": [
+     [
+      729,
+      15,
+      31
+     ],
+     [
+      1665,
+      297,
+      72
+     ],
+     [
+      173,
+      13,
+      21
+     ]
+    ],
+    "rotten_called_good": 0.8357487922705314,
+    "accuracy_ci95": [
+     0.3139255558423362,
+     0.38085062908928813
+    ],
+    "balanced_accuracy_ci95": [
+     0.38035015761389374,
+     0.41225189748606705
+    ],
+    "photos": 417,
+    "same_answer_as_on_the_plain_crop": 0.3670424403183024
+   },
+   "legacy_first_batch_test": {
+    "n": 187,
+    "accuracy": 0.5026737967914439,
+    "balanced_accuracy": 0.41789947842579417,
+    "recall": {
+     "boa": 0.2631578947368421,
+     "baixa_qualidade": 0.45,
+     "podre": 0.5405405405405406
+    },
+    "confusion": [
+     [
+      5,
+      7,
+      7
+     ],
+     [
+      5,
+      9,
+      6
+     ],
+     [
+      28,
+      40,
+      80
+     ]
+    ],
+    "rotten_called_good": 0.1891891891891892,
+    "accuracy_ci95": [
+     0.40883383829382763,
+     0.5900283251231525
+    ],
+    "balanced_accuracy_ci95": [
+     0.3215350210316653,
+     0.5241414820245464
+    ],
+    "photos": 69
+   }
+  },
+  "belt_v3": {
+   "field_photo_test": {
+    "n": 3016,
+    "accuracy": 0.8958885941644562,
+    "balanced_accuracy": 0.8916151373356999,
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8962635201573255,
+     "podre": 0.8792270531400966
+    },
+    "confusion": [
+     [
+      697,
+      31,
+      47
+     ],
+     [
+      38,
+      1823,
+      173
+     ],
+     [
+      8,
+      17,
+      182
+     ]
+    ],
+    "rotten_called_good": 0.03864734299516908,
+    "accuracy_ci95": [
+     0.8781052155155313,
+     0.912153467081651
+    ],
+    "balanced_accuracy_ci95": [
+     0.866691440802594,
+     0.914646819232062
+    ],
+    "photos": 417
+   },
+   "field_photo_test_ghana": {
+    "n": 2118,
+    "accuracy": 0.9197355996222851,
+    "balanced_accuracy": 0.9000616672951232,
+    "recall": {
+     "boa": 0.90234375,
+     "baixa_qualidade": 0.9350961538461539,
+     "podre": 0.8627450980392157
+    },
+    "confusion": [
+     [
+      693,
+      29,
+      46
+     ],
+     [
+      33,
+      1167,
+      48
+     ],
+     [
+      5,
+      9,
+      88
+     ]
+    ],
+    "rotten_called_good": 0.049019607843137254
+   },
+   "field_photo_test_uganda_b": {
+    "n": 898,
+    "accuracy": 0.8396436525612472,
+    "balanced_accuracy": 0.7670907548770144,
+    "recall": {
+     "boa": 0.5714285714285714,
+     "baixa_qualidade": 0.8346055979643766,
+     "podre": 0.8952380952380953
+    },
+    "confusion": [
+     [
+      4,
+      2,
+      1
+     ],
+     [
+      5,
+      656,
+      125
+     ],
+     [
+      3,
+      8,
+      94
+     ]
+    ],
+    "rotten_called_good": 0.02857142857142857
+   },
+   "held_out_blue_belts": {
+    "n": 3016,
+    "accuracy": 0.8567639257294429,
+    "balanced_accuracy": 0.8260439659955603,
+    "recall": {
+     "boa": 0.8154838709677419,
+     "baixa_qualidade": 0.880039331366765,
+     "podre": 0.782608695652174
+    },
+    "confusion": [
+     [
+      632,
+      77,
+      66
+     ],
+     [
+      26,
+      1790,
+      218
+     ],
+     [
+      6,
+      39,
+      162
+     ]
+    ],
+    "rotten_called_good": 0.028985507246376812,
+    "accuracy_ci95": [
+     0.837459683772151,
+     0.8751263495124638
+    ],
+    "balanced_accuracy_ci95": [
+     0.7985719959000879,
+     0.853199621103681
+    ],
+    "photos": 417,
+    "same_answer_as_on_the_plain_crop": 0.8905835543766578
+   },
+   "held_out_real_video_backgrounds": {
+    "n": 3016,
+    "accuracy": 0.7761936339522546,
+    "balanced_accuracy": 0.7848625355860149,
+    "recall": {
+     "boa": 0.7458064516129033,
+     "baixa_qualidade": 0.7826941986234022,
+     "podre": 0.8260869565217391
+    },
+    "confusion": [
+     [
+      578,
+      63,
+      134
+     ],
+     [
+      68,
+      1592,
+      374
+     ],
+     [
+      6,
+      30,
+      171
+     ]
+    ],
+    "rotten_called_good": 0.028985507246376812,
+    "accuracy_ci95": [
+     0.7527525695412551,
+     0.7986013352298182
+    ],
+    "balanced_accuracy_ci95": [
+     0.7585397508700629,
+     0.810353685520042
+    ],
+    "photos": 417,
+    "same_answer_as_on_the_plain_crop": 0.8163129973474801
+   },
+   "legacy_first_batch_test": {
+    "n": 187,
+    "accuracy": 0.2727272727272727,
+    "balanced_accuracy": 0.31666666666666665,
+    "recall": {
+     "boa": 0.0,
+     "baixa_qualidade": 0.7,
+     "podre": 0.25
+    },
+    "confusion": [
+     [
+      0,
+      18,
+      1
+     ],
+     [
+      3,
+      14,
+      3
+     ],
+     [
+      3,
+      108,
+      37
+     ]
+    ],
+    "rotten_called_good": 0.02027027027027027,
+    "accuracy_ci95": [
+     0.21022273246160234,
+     0.34616477272727264
+    ],
+    "balanced_accuracy_ci95": [
+     0.2306397288547719,
+     0.3930569452716563
+    ],
+    "photos": 69
+   }
+  }
+ }
+}

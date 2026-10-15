@@ -1,0 +1,64 @@
+$ python tools/capture_tray.py --session teste-pipeline-clipes --sector ensaio --pipeline-test --px-per-mm 0.35 --frames-every 4 --tray boa-A --label boa --source data/external/apple_grading_video/raw/apple_grading.webm --roi 0.5 0.12 1.0 0.92 --rotate 90 --seconds 8.5
+sessão teste-pipeline-clipes · bandeja boa-A (boa): 5 frutas, 11 recortes, 3 quadros inteiros, 511 quadros lidos em 8.5 s; 14 arquivos com soma de verificação em C:\Users\<usuário>\FruitCamData\belt_sessions\teste-pipeline-clipes
+TESTE DE PIPELINE: os rótulos desta sessão não valem e nenhum número dela é desempenho
+bandejas gravadas até agora: boa 1
+
+$ python tools/capture_tray.py --session teste-pipeline-clipes --sector ensaio --pipeline-test --px-per-mm 0.35 --frames-every 4 --tray boa-B --label boa --source data/external/apple_grading_video/raw/apple_grading.webm --roi 0.5 0.12 1.0 0.92 --rotate 90 --start 8.5
+sessão teste-pipeline-clipes · bandeja boa-B (boa): 0 frutas, 0 recortes, 3 quadros inteiros, 517 quadros lidos em 8.6 s; 3 arquivos com soma de verificação em C:\Users\<usuário>\FruitCamData\belt_sessions\teste-pipeline-clipes
+TESTE DE PIPELINE: os rótulos desta sessão não valem e nenhum número dela é desempenho
+nenhuma fruta cruzou a linha: confira --px-per-mm, --belt-rows, --roi, --direction e --count-line
+bandejas gravadas até agora: boa 2
+
+$ python tools/capture_tray.py --session teste-pipeline-clipes --sector ensaio --pipeline-test --px-per-mm 0.35 --frames-every 4 --tray baixa_qualidade-A --label baixa_qualidade --source data/external/usda_line_videos/raw/citrus_packing_facility.webm --roi 0.04 0.56 0.62 1.0 --direction -1 --start 122 --seconds 12
+sessão teste-pipeline-clipes · bandeja baixa_qualidade-A (baixa_qualidade): 6 frutas, 25 recortes, 4 quadros inteiros, 361 quadros lidos em 12.0 s; 29 arquivos com soma de verificação em C:\Users\<usuário>\FruitCamData\belt_sessions\teste-pipeline-clipes
+TESTE DE PIPELINE: os rótulos desta sessão não valem e nenhum número dela é desempenho
+bandejas gravadas até agora: baixa_qualidade 1, boa 2
+
+$ python tools/capture_tray.py --session teste-pipeline-clipes --sector ensaio --pipeline-test --px-per-mm 0.35 --frames-every 4 --tray baixa_qualidade-B --label baixa_qualidade --source data/external/usda_line_videos/raw/citrus_packing_facility.webm --roi 0.04 0.56 0.62 1.0 --direction -1 --start 134 --seconds 13
+sessão teste-pipeline-clipes · bandeja baixa_qualidade-B (baixa_qualidade): 57 frutas, 249 recortes, 4 quadros inteiros, 391 quadros lidos em 13.0 s; 253 arquivos com soma de verificação em C:\Users\<usuário>\FruitCamData\belt_sessions\teste-pipeline-clipes
+TESTE DE PIPELINE: os rótulos desta sessão não valem e nenhum número dela é desempenho
+bandejas gravadas até agora: baixa_qualidade 2, boa 2
+
+$ python tools/capture_tray.py --session teste-pipeline-clipes --sector ensaio --pipeline-test --px-per-mm 0.35 --frames-every 4 --tray podre-A --label podre --source data/external/usda_line_videos/raw/potato_0921.webm --roi 0.0 0.30 0.88 1.0
+sessão teste-pipeline-clipes · bandeja podre-A (podre): 15 frutas, 31 recortes, 3 quadros inteiros, 219 quadros lidos em 9.09 s; 34 arquivos com soma de verificação em C:\Users\<usuário>\FruitCamData\belt_sessions\teste-pipeline-clipes
+TESTE DE PIPELINE: os rótulos desta sessão não valem e nenhum número dela é desempenho
+bandejas gravadas até agora: baixa_qualidade 2, boa 2, podre 1
+
+$ python tools/capture_tray.py --session teste-pipeline-clipes --sector ensaio --pipeline-test --px-per-mm 0.35 --frames-every 4 --tray podre-B --label podre --source data/external/usda_line_videos/raw/potato_0920.webm --roi 0.28 0.62 0.72 0.98 --rotate 90 --direction -1
+sessão teste-pipeline-clipes · bandeja podre-B (podre): 10 frutas, 28 recortes, 3 quadros inteiros, 254 quadros lidos em 10.55 s; 31 arquivos com soma de verificação em C:\Users\<usuário>\FruitCamData\belt_sessions\teste-pipeline-clipes
+TESTE DE PIPELINE: os rótulos desta sessão não valem e nenhum número dela é desempenho
+bandejas gravadas até agora: baixa_qualidade 2, boa 2, podre 2
+
+$ python tools/capture_tray.py --verify <sessão>
+371 arquivos conferidos em C:/Users/<usuário>/FruitCamData/belt_sessions/teste-pipeline-clipes: todos íntegros
+exit 0
+
+$ python tools/eval_real_belt.py <sessão>
+TESTE DE PIPELINE: os rótulos são de mentira; nenhum número aqui é desempenho
+modelo belt_v3.pt · 1 sessão(ões), 5 bandejas, 85 frutas com recorte (de 93 contadas na gravação), 344 recortes
+por classe: boa: 1 bandejas, 3 frutas; baixa_qualidade: 2 bandejas, 59 frutas; podre: 2 bandejas, 23 frutas
+acurácia 31.8% (n = 85; IC 95% 25.9% a 37.6%, bootstrap por fruta)
+acurácia balanceada 32.1% (classes presentes: 3; IC 95% 26.5% a 37.0%; alguma classe tem uma bandeja só: reamostra frutas dentro de cada bandeja, o que ignora a diferença entre bandejas e deixa o intervalo estreito demais)
+  boa              sensibilidade 0.0% (n = 3; IC 95% 0.0% a 56.1%)   precisão n/d (n = 0; IC 95% n/d a n/d)
+  baixa_qualidade  sensibilidade 13.6% (n = 59; IC 95% 7.0% a 24.5%)   precisão 66.7% (n = 12; IC 95% 39.1% a 86.2%)
+  podre            sensibilidade 82.6% (n = 23; IC 95% 62.9% a 93.0%)   precisão 26.0% (n = 73; IC 95% 17.3% a 37.1%)
+matriz de confusão (linhas: verdadeiro; colunas: resposta) boa: [0, 0, 3] | baixa_qualidade: [0, 8, 51] | podre: [0, 4, 19]
+podres chamadas de boas: 0 de 23 (0.0%; IC 95% 0.0% a 14.3%)
+corte de confiança  frutas decididas  cobertura  acerto nas decididas  podres chamadas de boas
+  0.35                 85 de 85       100.0%      31.8%               0 de 23
+  0.40                 85 de 85       100.0%      31.8%               0 de 23
+  0.45                 84 de 85        98.8%      32.1%               0 de 22
+  0.50                 78 de 85        91.8%      32.1%               0 de 18
+  0.55                 74 de 85        87.1%      32.4%               0 de 18
+  0.60                 56 de 85        65.9%      33.9%               0 de 13
+  0.65                 26 de 85        30.6%      26.9%               0 de 3
+  0.70                 11 de 85        12.9%      27.3%               0 de 0
+  0.75                  0 de 85         0.0%        n/d               0 de 0
+  0.80                  0 de 85         0.0%        n/d               0 de 0
+  0.85                  0 de 85         0.0%        n/d               0 de 0
+  0.90                  0 de 85         0.0%        n/d               0 de 0
+  0.95                  0 de 85         0.0%        n/d               0 de 0
+  0.99                  0 de 85         0.0%        n/d               0 de 0
+corte medido em bandejas separadas: não disponível (é preciso ter pelo menos duas bandejas de cada classe para escolher o corte numas e medir noutras)
+recortes idênticos em duas bandejas: 0
+relatório completo: C:\Users\<usuário>\FruitCamData\belt_sessions\teste-pipeline-clipes\eval\belt_v3.json

@@ -4,7 +4,6 @@
    "asset": "caju-arvore",
    "alt": "Dois cajus maduros, alaranjados, pendurados no cajueiro, cada um com a castanha na ponta.",
    "illustrative": true,
-   "credit": "Foto: Ben Tavener · CC BY 2.0 · Wikimedia Commons",
    "width": 1440,
    "height": 964,
    "sources": {
@@ -57,7 +56,6 @@
    "asset": "caju-pacajus",
    "alt": "Plantação de cajueiros em Pacajus, no Ceará: árvores baixas sobre solo arenoso, com estacas de cerca.",
    "illustrative": true,
-   "credit": "Foto: Porto Neto · CC BY-SA 4.0 · Wikimedia Commons",
    "width": 1600,
    "height": 480,
    "sources": {
@@ -122,7 +120,6 @@
    "asset": "caju-vermelho",
    "alt": "Caju vermelho maduro com a castanha, entre folhas verdes.",
    "illustrative": true,
-   "credit": "Foto: Wilfredor · CC0 · Wikimedia Commons",
    "width": 264,
    "height": 264,
    "sources": {
@@ -175,7 +172,6 @@
    "asset": "castanha",
    "alt": "Castanhas de caju cruas, cor de creme, amontoadas.",
    "illustrative": true,
-   "credit": "Foto: Fumikas Sagisavas · CC0 · Wikimedia Commons",
    "width": 264,
    "height": 264,
    "sources": {
@@ -228,7 +224,6 @@
    "asset": "melao",
    "alt": "Melão amarelo redondo entre outros melões.",
    "illustrative": true,
-   "credit": "Foto: Salil Kumar Mukherjee · CC BY-SA 4.0 · Wikimedia Commons",
    "width": 264,
    "height": 264,
    "sources": {
@@ -281,7 +276,6 @@
    "asset": "guia-bom",
    "alt": "Exemplo bom: um caju sozinho, bem iluminado, sobre fundo branco liso, ocupando quase toda a foto.",
    "illustrative": true,
-   "credit": "Foto: Prabhupuducherry · CC BY-SA 4.0 · Wikimedia Commons",
    "width": 720,
    "height": 1041,
    "sources": {
@@ -334,7 +328,6 @@
    "asset": "guia-varias",
    "alt": "Exemplo a evitar: muitos cajus amontoados na mesma foto.",
    "illustrative": true,
-   "credit": "Foto: Roberta Martins · CC BY-SA 3.0 · Wikimedia Commons",
    "width": 480,
    "height": 389,
    "sources": {
@@ -387,7 +380,6 @@
    "asset": "guia-longe",
    "alt": "Exemplo a evitar: cajus pequenos e distantes no meio de muitas folhas.",
    "illustrative": true,
-   "credit": "Foto: Colleen Taugher · CC BY 2.0 · Wikimedia Commons",
    "width": 480,
    "height": 360,
    "sources": {
@@ -440,7 +432,6 @@
    "asset": "guia-escuro",
    "alt": "Exemplo a evitar: cajus em cena escura, com pouca luz.",
    "illustrative": true,
-   "credit": "Foto: Ashay vb · CC BY-SA 4.0 · Wikimedia Commons",
    "width": 480,
    "height": 412,
    "sources": {
@@ -493,83 +484,153 @@
    "asset": "demo-video",
    "alt": "Monitor da linha: quadro da câmera simulada com caixas coloridas nas frutas e indicadores de frutas por minuto e porcentagem de cada classe.",
    "illustrative": false,
-   "credit": "Gravação de tela do app FruitCam_ai (tools/record_demo.py). A interface gravada exibe fotos de terceiros da Wikimedia Commons, que mantêm suas licenças; autores e licenças na página Créditos.",
    "width": 1280,
    "height": 720,
    "sources": {
     "avif": [
      [
       480,
-      "media/demo-poster.480.b637e983f9.avif"
+      "media/demo-poster.480.b1fb331c22.avif"
      ],
      [
       960,
-      "media/demo-poster.960.ac52e55b8a.avif"
+      "media/demo-poster.960.ebae0d00ce.avif"
      ],
      [
       1280,
-      "media/demo-poster.1280.5fa7db4daf.avif"
+      "media/demo-poster.1280.13bd0ade59.avif"
      ]
     ],
     "webp": [
      [
       480,
-      "media/demo-poster.480.8b8d1f74b4.webp"
+      "media/demo-poster.480.b820e7ba9a.webp"
      ],
      [
       960,
-      "media/demo-poster.960.6162b6630f.webp"
+      "media/demo-poster.960.5b34f383d3.webp"
      ],
      [
       1280,
-      "media/demo-poster.1280.e56e38e0a1.webp"
+      "media/demo-poster.1280.428eabda4f.webp"
      ]
     ],
     "jpeg": [
      [
       480,
-      "media/demo-poster.480.dee76dd3f1.jpg"
+      "media/demo-poster.480.936f1733e2.jpg"
      ],
      [
       960,
-      "media/demo-poster.960.ce5320a6b3.jpg"
+      "media/demo-poster.960.af5de077f1.jpg"
      ],
      [
       1280,
-      "media/demo-poster.1280.26d2beeb49.jpg"
+      "media/demo-poster.1280.5b75d11763.jpg"
      ]
     ]
    },
-   "fallback": "media/demo-poster.1280.26d2beeb49.jpg"
+   "fallback": "media/demo-poster.1280.5b75d11763.jpg"
   },
   "demo": {
    "kind": "video",
    "asset": "demo-video",
    "poster": "demo-poster",
-   "posterSrc": "media/demo-poster.1280.e56e38e0a1.webp",
+   "posterSrc": "media/demo-poster.1280.428eabda4f.webp",
    "width": 1280,
    "height": 720,
    "alt": "Gravação de tela do app FruitCam_ai: login, página da linha com a explicação da câmera, monitor ao vivo de uma câmera simulada com indicadores e gráficos, o guia do usuário e a inspeção de uma foto de caju.",
-   "caption": "Gravação do app real em execução (40 s, sem áudio). A câmera e os dados da linha são simulados e sintéticos; a foto da inspeção é real (CC0) e o resultado é a saída real do modelo.",
+   "caption": "Gravação do app real em execução (40 s, sem áudio). A câmera e os dados da linha são simulados e sintéticos; a foto da inspeção é real e o resultado é a saída real do modelo.",
    "transcript": [
-    "Login do FruitCam_ai. Ao fundo, vídeo ilustrativo de uma esteira de seleção (USDA, domínio público).",
+    "Login do FruitCam_ai. Ao fundo, vídeo ilustrativo de uma esteira de seleção.",
     "Página Linha: a câmera fixa sobre a esteira conta e classifica cada fruta. Ao fundo, a simulação processada pelo mesmo código.",
     "Linha ao vivo: quadro da câmera simulada, frutas por minuto e porcentagem de cada classe com intervalo de confiança. Dados sintéticos.",
     "Carta de controle da % de podres, alarmes e aceite de cada lote pelo intervalo de confiança.",
     "Como a câmera funciona: separa a fruta da esteira, segue a fruta entre quadros, classifica com IA e conta uma vez na linha tracejada.",
     "O botão ? abre o guia do usuário em qualquer página.",
-    "Inspeção por foto: uma foto real de caju (Wilfredor, CC0) passa pelo mesmo classificador de três classes.",
-    "Saída real do modelo: boa, confiança 69,4%, sem confiança suficiente para decidir sozinho: vai para revisão manual. A foto tem folhas ao fundo, diferente da esteira."
+    "Inspeção por foto: uma foto real de caju passa pelo mesmo classificador de três classes.",
+    "Saída real do modelo: boa, confiança 70,3%. O sistema não decide sozinho: a fruta vai para revisão manual. A foto tem folhas ao fundo, diferente da esteira."
    ],
-   "webm": "media/video/demo.54e0834736.webm",
-   "mp4": "media/video/demo.dcd7050a9e.mp4",
-   "captions": "media/video/demo.ba09b9d8c6.vtt"
+   "webm": "media/video/demo.a3e3f88673.webm",
+   "mp4": "media/video/demo.20ae69230f.mp4",
+   "captions": "media/video/demo.143bd211b3.vtt"
+  },
+  "primeira-analise-poster": {
+   "asset": "primeira-analise-video",
+   "alt": "Resultado de uma inspeção por foto: caju com a caixa marcada, o veredito do modelo e o anel de confiança.",
+   "illustrative": false,
+   "width": 1280,
+   "height": 720,
+   "sources": {
+    "avif": [
+     [
+      480,
+      "media/primeira-analise-poster.480.8f0750af27.avif"
+     ],
+     [
+      960,
+      "media/primeira-analise-poster.960.f0d219a608.avif"
+     ],
+     [
+      1280,
+      "media/primeira-analise-poster.1280.8378de8275.avif"
+     ]
+    ],
+    "webp": [
+     [
+      480,
+      "media/primeira-analise-poster.480.f648998cdb.webp"
+     ],
+     [
+      960,
+      "media/primeira-analise-poster.960.bf3ebf4dbd.webp"
+     ],
+     [
+      1280,
+      "media/primeira-analise-poster.1280.75a66f4117.webp"
+     ]
+    ],
+    "jpeg": [
+     [
+      480,
+      "media/primeira-analise-poster.480.11eb46f273.jpg"
+     ],
+     [
+      960,
+      "media/primeira-analise-poster.960.cbd74c860e.jpg"
+     ],
+     [
+      1280,
+      "media/primeira-analise-poster.1280.832f53b1f7.jpg"
+     ]
+    ]
+   },
+   "fallback": "media/primeira-analise-poster.1280.832f53b1f7.jpg"
+  },
+  "primeira-analise": {
+   "kind": "video",
+   "asset": "primeira-analise-video",
+   "poster": "primeira-analise-poster",
+   "posterSrc": "media/primeira-analise-poster.1280.75a66f4117.webp",
+   "width": 1280,
+   "height": 720,
+   "alt": "Gravação de tela do app FruitCam_ai: inspeção de uma foto de caju com a faixa de estado, o resultado com a confiança, o inspetor da fruta e o registro aparecendo no Histórico.",
+   "caption": "Gravação do app real em execução (17 s, sem áudio), feita com Playwright. A foto é real e o resultado é a saída real do modelo.",
+   "transcript": [
+    "Inspeção por foto: escolha a fruta, o setor e a foto. Uma fruta por foto.",
+    "A faixa de estado mostra as etapas reais do pedido: envio, análise e conclusão, com o tempo medido.",
+    "Resultado: saída real do modelo para esta foto: boa. O sistema não decide sozinho: a fruta vai para revisão manual.",
+    "O inspetor mostra só os campos salvos no banco e o recorte que o modelo recebeu.",
+    "O registro aparece no Histórico, com filtros, seleção e exportação em CSV."
+   ],
+   "webm": "media/video/primeira-analise.bd921f73a0.webm",
+   "mp4": "media/video/primeira-analise.6c25e91de1.mp4",
+   "captions": "media/video/primeira-analise.2c1f02f4a6.vtt"
   },
   "bg-esteira-real-poster": {
    "asset": "video-batatas",
    "alt": "Batatas passando em uma esteira de seleção, em close.",
    "illustrative": true,
-   "credit": "Vídeo: USDA · domínio público · Wikimedia Commons",
    "width": 960,
    "height": 540,
    "sources": {
@@ -610,7 +671,6 @@
    "kind": "background",
    "asset": "video-batatas",
    "illustrative": true,
-   "credit": "Vídeo: USDA · domínio público · Wikimedia Commons",
    "alt": "Batatas passando em uma esteira de seleção, em close.",
    "poster": "bg-esteira-real-poster",
    "posterSrc": "media/bg-esteira-real-poster.960.d7f65c6c66.webp",
@@ -622,18 +682,17 @@
      "type": "video/mp4"
     },
     {
-     "src": "media/video/bg-esteira-real.e41a1b9ac2.webm",
+     "src": "media/video/bg-esteira-real.7dabf93e6d.webm",
      "type": "video/webm"
     }
    ],
-   "webm": "media/video/bg-esteira-real.e41a1b9ac2.webm",
+   "webm": "media/video/bg-esteira-real.7dabf93e6d.webm",
    "mp4": "media/video/bg-esteira-real.ea62475755.mp4"
   },
   "bg-esteira-simulada-poster": {
    "asset": "belt-sim",
    "alt": "Simulação de esteira vista de cima: frutas desenhadas recebem caixas coloridas ao cruzar a linha de contagem.",
    "illustrative": false,
-   "credit": "Simulação própria da FruitCam (tools/record_belt.py)",
    "width": 960,
    "height": 540,
    "sources": {
@@ -674,7 +733,6 @@
    "kind": "background",
    "asset": "belt-sim",
    "illustrative": false,
-   "credit": "Simulação própria da FruitCam (tools/record_belt.py)",
    "alt": "Simulação de esteira vista de cima: frutas desenhadas recebem caixas coloridas ao cruzar a linha de contagem.",
    "poster": "bg-esteira-simulada-poster",
    "posterSrc": "media/bg-esteira-simulada-poster.960.1ab0ea3a22.webp",

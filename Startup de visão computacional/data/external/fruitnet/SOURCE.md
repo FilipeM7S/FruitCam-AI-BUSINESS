@@ -4,20 +4,9 @@
 - Page: https://data.mendeley.com/datasets/b6fftwbr2v/3
 - DOI: https://doi.org/10.17632/b6fftwbr2v.3
 - Version: Mendeley Data version 3 (published 2022-03-08)
-- Authors: Vishal Meshram, Kailas Patil
 - Setting: phone camera, varied backgrounds and lighting; not a conveyor belt
 - Fruit: apple, banana, guava, lime, orange, pomegranate
-- Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- Licence as written on the source: Mendeley Data licence field on version 3: CC BY 4.0 (Creative Commons Attribution 4.0 International)
-- Commercial use: allowed with attribution
-
-## Required attribution
-
-Meshram, V.; Patil, K. (2022). FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality). Mendeley Data, V3. https://doi.org/10.17632/b6fftwbr2v.3. Licensed under CC BY 4.0.
-
-## Citation
-
-Meshram V., Patil K. FruitNet: Indian fruits image dataset with quality for machine learning applications. Data in Brief 40 (2022) 107686. doi:10.1016/j.dib.2021.107686
+- Licence, authors and required attribution: [LICENSES.md](../../../LICENSES.md), section 3, entry `fruitnet`
 
 ## Files
 

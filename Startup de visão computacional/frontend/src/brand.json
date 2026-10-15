@@ -1,13 +1,13 @@
 {
   "interim": true,
   "source": {
-    "file": "brand/source/logo-kit-sheet.png",
+    "file": "assets/brand/source/logo-kit-sheet.png",
     "kind": "interim raster",
     "supplied": "2026-10-03",
     "replaceWith": [
-      "brand/logo-horizontal-light.svg",
-      "brand/logo-horizontal-dark.svg",
-      "brand/app-icon.svg"
+      "assets/brand/logo-horizontal-light.svg",
+      "assets/brand/logo-horizontal-dark.svg",
+      "assets/brand/app-icon.svg"
     ]
   },
   "rules": {

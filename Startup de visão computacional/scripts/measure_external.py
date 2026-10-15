@@ -17,8 +17,8 @@ from belt.detect import BeltDetector
 from belt.stats import wilson
 
 PROCESSED = ROOT / "data" / "processed"
-DOCS = ROOT / "docs" / "datasets"
-MODEL = Path(os.environ.get("FRUITCAM_MODEL_PATH", ROOT / "models" / "belt_v2.pt"))
+DOCS = ROOT / "docs" / "data" / "datasets"
+MODEL = Path(os.environ.get("FRUITCAM_MODEL_PATH", ROOT / "models" / "belt_v3.pt"))
 SETS = ("potatoes", "lemons")
 PRED = ("boa", "baixa_qualidade", "podre")
 TRUE = ("good", "poor", "rotten", "poor_or_rotten")

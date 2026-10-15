@@ -1,10 +1,11 @@
 <script setup>
 import LoopVideo from "../components/LoopVideo.vue";
 import PipelineAnimation from "../components/PipelineAnimation.vue";
+import PipelineFlow from "../components/PipelineFlow.vue";
 import ResponsiveImage from "../components/ResponsiveImage.vue";
 import figures from "../figures.json";
 import media from "../media.json";
-import { credits, url, vReveal } from "../media.js";
+import { url, vReveal } from "../media.js";
 import { num, pct } from "../format.js";
 import { fill, t } from "../strings.js";
 
@@ -13,11 +14,19 @@ const ev = figures.modelEval;
 const tt = ev.test;
 const measured = fill(t.how.measured, { n: num(tt.n), photos: num(tt.photos), acc: pct(tt.accuracy), lo: pct(tt.accuracy_ci95[0]), hi: pct(tt.accuracy_ci95[1]), base: pct(tt.majority_baseline_accuracy), bal: pct(tt.balanced_accuracy) });
 const perClass = fill(t.how.perClass, { boa: pct(tt.recall.boa), poor: pct(tt.recall.baixa_qualidade), rotten: pct(tt.recall.podre), rg: pct(tt.rotten_as_good.k / tt.rotten_as_good.n), rglo: pct(tt.rotten_as_good.rate_ci95[0]), rghi: pct(tt.rotten_as_good.rate_ci95[1]) });
-const review = tt.with_reject.threshold == null ? t.how.reviewNone : fill(t.how.review, { thr: pct(tt.with_reject.threshold, 0), cov: pct(tt.with_reject.coverage, 0), accd: pct(tt.with_reject.accuracy_on_accepted) });
+const cut = tt.field_photo_threshold;
+const review = tt.with_reject.threshold != null
+  ? fill(t.how.review, { thr: pct(tt.with_reject.threshold, 0), cov: pct(tt.with_reject.coverage, 0), accd: pct(tt.with_reject.accuracy_on_accepted) })
+  : cut
+    ? fill(t.how.reviewMeasured, { thr: pct(cut.threshold, 0), cov: pct(cut.coverage, 0), accd: pct(cut.accuracy_on_accepted) })
+    : t.how.reviewNone;
+const rot = ev.rotten;
+const rotten = rot && rot.tried
+  ? fill(rot.holds ? t.how.rottenHolds : t.how.rottenFails, { cut: pct(rot.cut, 0), p0: pct(rot.now.rotten_precision), p1: pct(rot.tried.rotten_precision), r0: pct(rot.now.rotten_recall), r1: pct(rot.tried.rotten_recall), g0: pct(rot.now.rotten_called_good), g1: pct(rot.tried.rotten_called_good), limit: pct(rot.limit, 0), n: num(rot.n_rotten) })
+  : "";
 const beltAfter = ev.belt.with_review.n_decided ? fill(t.how.beltReview, { cov: pct(ev.belt.with_review.coverage, 0), accd: pct(ev.belt.with_review.accuracy_on_decided) }) : t.how.beltReviewNone;
 const beltText = fill(t.how.beltText, { crossed: num(ev.belt.counting.fruits_that_crossed_the_line), counted: num(ev.belt.counting.counted), double: num(ev.belt.counting.double_counts), acc: pct(ev.belt.multi_view.accuracy), direct: pct(tt.accuracy), after: beltAfter });
 const hasDemo = Boolean(media.items.demo);
-const bannerCredit = credits(["banner-pacajus"])[0].credit;
 </script>
 
 <template>
@@ -28,8 +37,7 @@ const bannerCredit = credits(["banner-pacajus"])[0].credit;
         <h1>{{ t.how.title }}</h1>
         <p class="lead">{{ t.how.lead }}</p>
         <p class="bg-credit">
-          <span class="illustrative">{{ t.media.illustrative }}</span>
-          <RouterLink :to="{ path: '/creditos', hash: '#caju-pacajus' }">{{ bannerCredit }}</RouterLink>
+          <RouterLink class="illustrative" :to="{ path: '/creditos', hash: '#caju-pacajus' }">{{ t.media.illustrative }}<span class="visually-hidden">{{ t.media.seeCredits }}</span></RouterLink>
         </p>
       </div>
     </header>
@@ -38,6 +46,7 @@ const bannerCredit = credits(["banner-pacajus"])[0].credit;
       <header class="section-head">
         <h2>{{ t.how.pipelineTitle }}</h2>
       </header>
+      <PipelineFlow />
       <PipelineAnimation />
     </section>
 
@@ -75,6 +84,7 @@ const bannerCredit = credits(["banner-pacajus"])[0].credit;
         <p>{{ measured }}</p>
         <p>{{ perClass }}</p>
         <p>{{ review }}</p>
+        <p v-if="rotten">{{ rotten }}</p>
         <p>{{ beltText }}</p>
         <p class="warn-text">{{ t.how.limits }}</p>
       </div>

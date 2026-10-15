@@ -1,4 +1,5 @@
 import math
+from pathlib import Path
 
 import cv2
 import numpy as np
@@ -10,6 +11,21 @@ LOOKS = {
     "podre": {"body": ((30, 55, 95), (45, 80, 125)), "length_mm": (42, 58)},
 }
 BELT_BGR = (40, 46, 42)
+
+
+def crop_pool(folder):
+    pool = {c: [] for c in CLASSES}
+    for c in CLASSES:
+        for path in sorted((Path(folder) / c).glob("*.png")):
+            rgba = cv2.imread(str(path), cv2.IMREAD_UNCHANGED)
+            if rgba is None or rgba.shape[2] != 4:
+                continue
+            for k in range(4):
+                for flip in (False, True):
+                    view = np.rot90(rgba, k)
+                    view = np.ascontiguousarray(view[:, ::-1] if flip else view)
+                    pool[c].append((np.ascontiguousarray(view[..., :3]), (view[..., 3] > 127).astype(np.uint8)))
+    return pool if all(pool.values()) else None
 
 
 class SimulatedBelt:
@@ -28,6 +44,17 @@ class SimulatedBelt:
         self.frame_index = 0
         self.next_arrival = self.rng.exponential(1 / rate_per_s) if rate_per_s > 0 else math.inf
         self.texture = self._texture()
+        look = np.random.default_rng(seed + 1000)
+        light = self._light()
+        self.exposure = [np.clip(np.repeat(light * (1 + look.normal(0, 0.05, light.shape)), 3, axis=2) * 128, 0, 255).astype(np.uint8) for _ in range(4)]
+        rail = np.linspace(1.25, 0.6, 8, dtype=np.float32)[:, None, None] * np.array((74, 78, 76), np.float32)
+        self.rails = (np.repeat(rail, width, axis=1).astype(np.uint8), np.repeat(rail[::-1], width, axis=1).astype(np.uint8))
+
+    def _light(self):
+        yy, xx = np.mgrid[0:self.height, 0:self.width].astype(np.float32)
+        r = np.hypot((xx - self.width / 2) / (self.width / 2), (yy - self.height / 2) / (self.height / 2))
+        lamp = 1 + 0.07 * (0.5 - xx / self.width) + 0.05 * (0.5 - yy / self.height)
+        return np.clip((1 - 0.13 * r ** 2) * lamp, 0.78, 1.1)[..., None]
 
     def _texture(self):
         h, w = self.bottom - self.top, self.width * 2
@@ -104,6 +131,8 @@ class SimulatedBelt:
             y = self.rng.uniform(self.top + half + 4, self.bottom - half - 4)
             x = -half
             if all(math.hypot(f["x"] - x, f["y"] - y) > f["half"] + half + self.gap for f in self.fruits):
+                sprite = cv2.blur(sprite, (3, 1))
+                alpha = cv2.blur(alpha, (3, 1))
                 fruit = {"id": self.next_id, "label": label, "length_mm": length, "area_mm2": float(alpha.sum()) / self.px_per_mm ** 2, "x": x, "y": y, "half": half, "t0": t, "x0": x, "sprite": sprite, "alpha": alpha, "shadow": cv2.GaussianBlur(alpha, (0, 0), 3) * 0.35}
                 self.fruits.append(fruit)
                 self.next_id += 1
@@ -134,11 +163,11 @@ class SimulatedBelt:
         frame[:] = (24, 28, 26)
         offset = int(self.speed * t) % (self.texture.shape[1] // 2)
         frame[self.top:self.bottom] = self.texture[:, self.texture.shape[1] // 2 - offset:self.texture.shape[1] // 2 - offset + self.width]
-        frame[self.top - 8:self.top] = (70, 74, 72)
-        frame[self.bottom:self.bottom + 8] = (70, 74, 72)
+        frame[self.top - 8:self.top] = self.rails[0]
+        frame[self.bottom:self.bottom + 8] = self.rails[1]
         for f in self.fruits:
             self._paste(frame, f)
-        return t, frame
+        return t, cv2.multiply(frame, self.exposure[self.frame_index % len(self.exposure)], scale=1 / 128)
 
     def _paste(self, frame, f):
         s = f["sprite"].shape[0]

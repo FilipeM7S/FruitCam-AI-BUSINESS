@@ -8,18 +8,18 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from train_belt import tree_as_five
+from training.train_belt import tree_as_five
 
 PAPER = ["tree", "flower", "premature", "unripe", "ripe", "spoilt"]
-OUT = ROOT / "docs" / "datasets" / "cashew_label_audit"
+OUT = ROOT / "docs" / "data" / "datasets" / "cashew_label_audit"
 
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    flagged = tree_as_five(ROOT / "Labels")
+    flagged = tree_as_five(ROOT / "datasets" / "cashew" / "labels")
     rows, sides = [], {g: {c: [] for c in range(6)} for g in ("tree_as_5", "paper_order")}
     total = np.zeros(6, int)
-    for f in sorted((ROOT / "Labels").glob("*.txt")):
+    for f in sorted((ROOT / "datasets" / "cashew" / "labels").glob("*.txt")):
         boxes = [r.split() for r in f.read_text().splitlines() if r.strip()]
         group = "tree_as_5" if f.stem in flagged else "paper_order"
         counts = np.zeros(6, int)
@@ -34,7 +34,7 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
     summary = {
-        "dataset": "Coffee and Cashew Nut Dataset, cashew part (doi:10.17632/r46c6bpfpf.1, CC BY 4.0)",
+        "dataset": "Coffee and Cashew Nut Dataset, cashew part (doi:10.17632/r46c6bpfpf.1)",
         "files": len(rows),
         "boxes_per_id": {f"{c} ({PAPER[c]})": int(total[c]) for c in range(6)},
         "rule": "a file is 'tree_as_5' when it has a class-5 box whose longer side covers at least 60% of the photo",

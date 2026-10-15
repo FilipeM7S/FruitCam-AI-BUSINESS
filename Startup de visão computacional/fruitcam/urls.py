@@ -1,7 +1,7 @@
 from django.urls import path, re_path
 from django.views.generic import RedirectView
 
-from core import line_views, views
+from core import event_views, line_views, views
 
 urlpatterns = [
     path("api/auth/csrf", views.csrf),
@@ -11,9 +11,17 @@ urlpatterns = [
     path("api/analyze", views.analyze),
     path("api/sectors", views.sectors),
     path("api/stats/<str:name>", views.stats_view),
+    path("api/certificate", views.certificate),
+    path("api/events", event_views.events),
+    path("api/events/thresholds", event_views.thresholds),
+    path("api/events/<int:pk>", event_views.event_detail),
+    path("api/events/<int:pk>/image", event_views.event_image),
     path("api/cameras", line_views.camera_list),
     path("api/cameras/<slug:slug>/frame", line_views.camera_frame),
+    path("api/cameras/<slug:slug>/stream", line_views.camera_stream),
     path("api/line", line_views.line_summary),
+    path("api/line/live", line_views.line_live),
+    path("api/health", line_views.health),
     re_path(r"^api/", views.api_not_found),
     path("favicon.ico", RedirectView.as_view(url="/static/brand/favicon.ico", permanent=True)),
     re_path(r"^(?!static/).*$", views.spa),

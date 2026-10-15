@@ -1,0 +1,517 @@
+{
+ "own": [
+  {
+   "id": "codigo",
+   "title": "Código-fonte, documentação e modelo treinado",
+   "license": "Material próprio da FruitCam. A equipe ainda não escolheu uma licença de distribuição; até lá vale a regra padrão: todos os direitos reservados.",
+   "source": "Este repositório",
+   "note": "O modelo foi treinado com o conjunto Coffee and Cashew Nut, listado em Conjuntos de dados; o crédito a esse conjunto acompanha qualquer uso do modelo.",
+   "files": 0
+  },
+  {
+   "id": "brand",
+   "title": "Logotipo FruitCam_ai (provisório)",
+   "license": "Marca da FruitCam; uso restrito",
+   "source": "assets/brand/source/logo-kit-sheet.png (imagem do kit enviada pela equipe)",
+   "note": "Recortes exatos, sem alterar cores nem proporções, da imagem do kit enviada pela equipe; serão substituídos pelos arquivos vetoriais originais.",
+   "files": 18
+  },
+  {
+   "id": "demo-video",
+   "title": "Vídeo de demonstração do app",
+   "license": "Material próprio da FruitCam; as fotos de terceiros visíveis na interface mantêm suas licenças, listadas em Fotos e vídeos de terceiros",
+   "source": "Gravação de tela do app real em execução (tools/record_demo.py), com dados sintéticos",
+   "note": "Gravação de tela do app FruitCam_ai (tools/record_demo.py). A interface gravada exibe fotos de terceiros da Wikimedia Commons, que mantêm suas licenças; autores e licenças em Fotos e vídeos de terceiros.",
+   "files": 12
+  },
+  {
+   "id": "primeira-analise-video",
+   "title": "Vídeo da primeira análise",
+   "license": "Material próprio da FruitCam; as fotos de terceiros visíveis na interface mantêm suas licenças, listadas em Fotos e vídeos de terceiros",
+   "source": "Gravação de tela do app real em execução (tools/record_clip.py, Playwright recordVideo); foto real e saída real do modelo",
+   "note": "Gravação de tela do app FruitCam_ai (tools/record_clip.py). A interface gravada exibe fotos de terceiros da Wikimedia Commons, que mantêm suas licenças; autores e licenças em Fotos e vídeos de terceiros.",
+   "files": 12
+  },
+  {
+   "id": "belt-sim",
+   "title": "Vídeo de simulação da esteira",
+   "license": "Material próprio da FruitCam",
+   "source": "Gerado por tools/record_belt.py: esteira e frutas desenhadas por código, processadas pelo mesmo pipeline da câmera",
+   "note": "Rótulos vêm da simulação, não do modelo de IA.",
+   "files": 8
+  },
+  {
+   "id": "figures",
+   "title": "Figuras científicas",
+   "license": "Material próprio da FruitCam",
+   "source": "Geradas por assets/figures/make_figures.py a partir de dados sintéticos e de medições reais",
+   "note": "A Figura 2 contém a foto “caju-vermelho”, listada em Fotos e vídeos de terceiros.",
+   "files": 19
+  },
+  {
+   "id": "esteira-ao-vivo",
+   "title": "Esteira simulada ao vivo (página Linha)",
+   "license": "Material próprio da FruitCam; os recortes de caju vêm do conjunto Coffee and Cashew Nut, listado em Conjuntos de dados",
+   "source": "Gerada em tempo real por belt/simulate.py com os recortes de assets/media_src/belt_crops",
+   "note": "As classes mostradas vêm das anotações do conjunto, não do modelo de IA.",
+   "files": 0
+  }
+ ],
+ "media": [
+  {
+   "id": "caju-pacajus",
+   "title": "Plantação de caju em Pacajus (CE)",
+   "author": "Porto Neto",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Planta%C3%A7%C3%A3o_de_caju_em_Pacajus.jpg",
+   "date": "2023-05-28 14:41:22",
+   "retrieved": "2026-10-03",
+   "attribution": "“Plantação de caju em Pacajus”, por Porto Neto (Porto Neto), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Plantação_de_caju_em_Pacajus.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Página Como funciona (faixa de abertura)"
+   ],
+   "files": 12
+  },
+  {
+   "id": "caju-arvore",
+   "title": "Cajus com castanha no cajueiro",
+   "author": "Ben Tavener",
+   "license": "CC BY 2.0",
+   "license_url": "https://creativecommons.org/licenses/by/2.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Cashew_apple_with_nut_-_Caju.jpg",
+   "date": "2011-09-07 14:55:31",
+   "retrieved": "2026-10-03",
+   "attribution": "“Cashew apple with nut - Caju”, por Ben Tavener (Ben Tavener), CC BY 2.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cashew_apple_with_nut_-_Caju.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Inspeção por foto (faixa do topo)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "caju-vermelho",
+   "title": "Caju vermelho no cajueiro",
+   "author": "Wilfredor",
+   "license": "CC0",
+   "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Anacardium_occidentale_from_Margarita_island.jpg",
+   "date": "2013-05-13 16:39:58",
+   "retrieved": "2026-10-03",
+   "attribution": "“Anacardium occidentale from Margarita island”, por Wilfredor (Wilfredor), dedicada ao domínio público (CC0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Anacardium_occidentale_from_Margarita_island.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Tela de análise (cartão de fruta: caju)",
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)",
+    "Figura 2 (Como funciona e kit do Summit)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "castanha",
+   "title": "Castanhas de caju cruas",
+   "author": "Fumikas Sagisavas",
+   "license": "CC0",
+   "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Raw_cashew.jpg",
+   "date": "2024-07-21 17:50:24",
+   "retrieved": "2026-10-03",
+   "attribution": "“Raw cashew”, por Fumikas Sagisavas (Fumikas Sagisavas), dedicada ao domínio público (CC0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Raw_cashew.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Tela de análise (cartão de fruta: castanha)",
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "melao",
+   "title": "Melões amarelos",
+   "author": "Salil Kumar Mukherjee",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Honeydew_melon.jpg",
+   "date": "2023-06-04 09:53:14",
+   "retrieved": "2026-10-03",
+   "attribution": "“Honeydew melon”, por Salil Kumar Mukherjee (Salil Kumar Mukherjee), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Honeydew_melon.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (cartão de fruta: melão)",
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "guia-bom",
+   "title": "Cajus sobre fundo branco",
+   "author": "Prabhupuducherry",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Cahew_nut_fruit_01.jpg",
+   "date": "2020-04-15 19:55:01",
+   "retrieved": "2026-10-03",
+   "attribution": "“Cahew nut fruit 01”, por Prabhupuducherry (Prabhupuducherry), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cahew_nut_fruit_01.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (guia: exemplo bom)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "guia-varias",
+   "title": "Cajus amontoados",
+   "author": "Roberta Martins",
+   "license": "CC BY-SA 3.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Caj%C3%BAs.jpg",
+   "date": "2013-09-23",
+   "retrieved": "2026-10-03",
+   "attribution": "“Cajús”, por Roberta Martins (Roberta Martins), CC BY-SA 3.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cajús.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (guia: várias frutas)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "guia-longe",
+   "title": "Cajus pequenos entre folhas",
+   "author": "Colleen Taugher from Lewiston Idaho, USA",
+   "license": "CC BY 2.0",
+   "license_url": "https://creativecommons.org/licenses/by/2.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Ripe_cashew_fruit_(483016375).jpg",
+   "date": "2005-11-05 15:36",
+   "retrieved": "2026-10-03",
+   "attribution": "“Ripe cashew fruit (483016375)”, por Colleen Taugher (Colleen Taugher from Lewiston Idaho, USA), CC BY 2.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Ripe_cashew_fruit_(483016375).jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras.",
+   "used_in": [
+    "Tela de análise (guia: longe, entre folhas)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "guia-escuro",
+   "title": "Cajus em cena com pouca luz",
+   "author": "Ashay vb",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Cashew_2.jpg",
+   "date": "2018-04-08 17:59:03",
+   "retrieved": "2026-10-03",
+   "attribution": "“Cashew 2”, por Ashay vb (Ashay vb), CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Cashew_2.jpg",
+   "modifications": "Original reduzido para no máximo 2560 px e sem metadados; recortado; convertido para AVIF, WebP e JPEG em várias larguras. Os derivados seguem a mesma licença (CC BY-SA).",
+   "used_in": [
+    "Tela de análise (guia: pouca luz)",
+    "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"
+   ],
+   "files": 9
+  },
+  {
+   "id": "video-batatas",
+   "title": "Seleção de batatas em esteira (Montana, EUA)",
+   "author": "USDAgov",
+   "license": "Public domain",
+   "license_url": "https://commons.wikimedia.org/wiki/Template:PD-USGov-USDA",
+   "source_url": "https://commons.wikimedia.org/wiki/File:Potatoes_Sorting_Montana2026_(55252116350).webm",
+   "date": "Taken on 6 May 2026, 00:57:18",
+   "retrieved": "2026-10-04",
+   "attribution": "“Potatoes Sorting Montana2026 (55252116350)”, por USDA (USDAgov), em domínio público (Public domain), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Potatoes_Sorting_Montana2026_(55252116350).webm",
+   "modifications": "Trecho de 6 s a partir de 23 s, recortado para excluir mãos e rostos, reduzido para 960 px de largura, sem áudio; convertido para WebM (VP9) e MP4 (H.264); quadro central como pôster em AVIF, WebP e JPEG.",
+   "used_in": [
+    "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)",
+    "Tela de login (fundo em vídeo)"
+   ],
+   "files": 8
+  }
+ ],
+ "datasets": [
+  {
+   "id": "cashew_makerere",
+   "title": "Coffee and Cashew Nut Dataset (cashew part)",
+   "authors": "Joyce Nakatumba-Nabende, Andrew Katumba, Rahman Sanya, Jeremy Tusubira, Sudi Murindanyi, Gloria Namanya, Ann Nabiryo",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "page": "https://data.mendeley.com/datasets/r46c6bpfpf/1",
+   "attribution": "Nakatumba-Nabende, J.; Katumba, A.; Sanya, R.; Tusubira, J.; Murindanyi, S.; Namanya, G.; Nabiryo, A. (2023). Coffee and Cashew Nut Dataset. Mendeley Data, V1. https://doi.org/10.17632/r46c6bpfpf.1. Licensed under CC BY 4.0.",
+   "use": "Treino, validação e teste do classificador de três classes (fotos de Uganda).",
+   "modifications": "Recortes quadrados das caixas de frutos, com os estágios do fruto agrupados em boa, baixa qualidade e podre. No modelo atual (belt_v3) entram os 1.440 arquivos de rótulo com as classes em ordem alfabética (segundo lote). Os 1.589 arquivos do primeiro lote e os 69 sem ordem identificável ficam de fora.",
+   "derived": [
+    {
+     "title": "Recortes de caju da esteira simulada",
+     "used_in": "Página Linha (esteira simulada ao vivo)",
+     "modifications": "Recorte quadrado em volta da caixa anotada, fundo removido por máscara (GrabCut), ampliado para 128 px (Lanczos e leve aumento de nitidez). Só entram máscaras compactas (solidez ≥ 0,92) e lisas (textura < 4), o que exclui tufos de folhas anotados como fruta.",
+     "note": "As classes vêm das anotações do conjunto (podem ter erros), não do modelo."
+    },
+    {
+     "title": "Folhas de contato do diagnóstico dos rótulos",
+     "used_in": "Relatório interno docs/reports/uganda_diagnosis/report.md; não aparece no site",
+     "modifications": "Recortes quadrados das caixas anotadas, reduzidos para 96 px e montados em grade com o nome da origem e da classe.",
+     "note": "As classes são as das anotações do conjunto, que este relatório põe em dúvida para um dos lotes."
+    }
+   ]
+  },
+  {
+   "id": "potatoes",
+   "title": "Potatoes Dataset",
+   "authors": "Dominik Štursa, Petr Doležel, Jakub Ksiažek",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "page": "https://zenodo.org/records/17494608",
+   "attribution": "Štursa, D.; Doležel, P.; Ksiažek, J. (2025). Potatoes Dataset. University of Pardubice. Zenodo. https://doi.org/10.5281/zenodo.17494608. Licensed under CC BY 4.0.",
+   "use": "Somente avaliação: segmentação, receita de treino e sensibilidade ao fundo numa esteira industrial real (batatas). Não entra no modelo do app.",
+   "modifications": "Cópias rotacionadas, espelhadas e quase idênticas agrupadas; nova divisão sem repetição entre treino e teste; recortes redimensionados para 128 px.",
+   "derived": []
+  },
+  {
+   "id": "lemons",
+   "title": "Lemons quality control dataset",
+   "authors": "Maciej Adamiak (SoftwareMill)",
+   "license": "MIT",
+   "license_url": "https://opensource.org/licenses/MIT",
+   "page": "https://github.com/softwaremill/lemon-dataset",
+   "attribution": "Lemons quality control dataset, Maciej Adamiak, SoftwareMill (2020), https://github.com/softwaremill/lemon-dataset, doi:10.5281/zenodo.3965568. MIT License, Copyright (c) 2020 SoftwareMill.",
+   "use": "Somente avaliação: sensibilidade ao fundo (bancada de laboratório, não esteira). Não entra no modelo do app.",
+   "modifications": "Rótulo por imagem a partir das regiões anotadas (o pior defeito decide); todas as fotos de um mesmo limão no mesmo conjunto; imagens redimensionadas para 128 px.",
+   "derived": []
+  },
+  {
+   "id": "fruitnet",
+   "title": "FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality)",
+   "authors": "Vishal Meshram, Kailas Patil",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "page": "https://data.mendeley.com/datasets/b6fftwbr2v/3",
+   "attribution": "Meshram, V.; Patil, K. (2022). FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality). Mendeley Data, V3. https://doi.org/10.17632/b6fftwbr2v.3. Licensed under CC BY 4.0.",
+   "use": "Baixado para avaliação futura (fotos de celular, não esteira). Não entra no modelo do app.",
+   "modifications": "Imagens “Mistas” excluídas; fotos quase idênticas agrupadas antes da divisão; imagens redimensionadas para 128 px.",
+   "derived": []
+  },
+  {
+   "id": "cashew_drone_full",
+   "title": "Drone-based Agricultural Dataset for Crop Yield Estimation (partes de caju)",
+   "authors": "KaraAgro AI Foundation (Gana); Makerere AI Lab, Uganda Marconi Lab, National Coffee Research Institute e National Crops Resources Research Institute (Uganda)",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "page": "https://huggingface.co/datasets/KaraAgroAI/Drone-based-Agricultural-Dataset-for-Crop-Yield-Estimation",
+   "attribution": "KaraAgro AI Foundation; Makerere AI Lab; Uganda Marconi Lab; National Coffee Research Institute; National Crops Resources Research Institute (2023). Drone-based Agricultural Dataset for Crop Yield Estimation. Hugging Face. https://doi.org/10.57967/hf/0959. Licensed under CC BY 4.0.",
+   "use": "Treino, validação e teste do classificador belt_v3: fotos de Gana (resolução original) e conferência da ordem das classes nos rótulos de Uganda. É a fonte original, em resolução cheia, do conjunto Coffee and Cashew Nut listado acima.",
+   "modifications": "Só parte das fotos de Gana foi baixada (1.712 de 4.715, escolhidas pelas anotações); recortes quadrados das caixas de frutos com lado de pelo menos 24 px, reduzidos para até 160 px; os quatro estágios do fruto foram agrupados em boa, baixa qualidade e podre.",
+   "derived": [
+    {
+     "title": "Folhas de contato do diagnóstico dos rótulos",
+     "used_in": "Relatório interno docs/reports/uganda_diagnosis/report.md; não aparece no site",
+     "modifications": "Recortes quadrados das caixas anotadas, reduzidos para 96 px e montados em grade com o nome da origem e da classe.",
+     "note": "As classes são as das anotações do conjunto, que este relatório põe em dúvida para um dos lotes."
+    }
+   ]
+  },
+  {
+   "id": "usda_line_videos",
+   "title": "Vídeos de linhas de seleção e embalagem (batata-semente e cítricos)",
+   "authors": "U.S. Department of Agriculture (USDA)",
+   "license": "Public domain",
+   "license_url": "https://commons.wikimedia.org/wiki/Template:PD-USGov-USDA",
+   "page": "https://commons.wikimedia.org/wiki/Category:Files_from_U.S._Department_of_Agriculture_Flickr_stream",
+   "attribution": "U.S. Department of Agriculture (USDA), via Wikimedia Commons. Public domain.",
+   "use": "Fundos reais para o classificador belt_v3: quadros dos clipes de batata entram no treino como fundo dos recortes de caju; quadros do clipe de cítricos ficam só para teste. Os vídeos não têm rótulos e não ensinam o que é fruta boa ou ruim. Enquanto a revisão da licença na origem não terminar, nenhum quadro desses vídeos entra no site, no material de divulgação nem no repositório: eles ficam só no disco de dados. Os pesos do belt_v3 foram treinados com esses quadros como fundo; se a revisão for negativa, o modelo deve ser treinado de novo sem eles (python -m training.train_v3 --video-share 0).",
+   "modifications": "Quadros extraídos a 2 por segundo, recortados nas regiões com produto e esteira (sem rostos) e reduzidos para 360 px no lado menor.",
+   "derived": []
+  },
+  {
+   "id": "apple_grading_video",
+   "title": "Apple grading and packing (vídeo)",
+   "authors": "Amanpanta1990 (Wikimedia Commons)",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Apple_grading_and_packing.webm",
+   "attribution": "“Apple grading and packing”, por Amanpanta1990, CC BY-SA 4.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Apple_grading_and_packing.webm",
+   "use": "Somente teste: fundos reais para medir se a resposta do classificador muda quando o fundo muda. Não entra no treino de nenhum modelo, por causa da cláusula de compartilhamento pela mesma licença.",
+   "modifications": "Quadros extraídos a 2 por segundo e recortados na região das maçãs; usados só durante a avaliação.",
+   "derived": []
+  }
+ ],
+ "fonts": [
+  {
+   "id": "fonte-fraunces",
+   "title": "Fraunces",
+   "author": "Undercase Type (Phaedra Charles e Flavia Zimbardi)",
+   "license": "SIL Open Font License 1.1",
+   "license_url": "https://openfontlicense.org",
+   "source_url": "https://github.com/google/fonts/tree/main/ofl/fraunces",
+   "modifications": "Instâncias estáticas da fonte variável; no site, subconjunto com letras latinas e acentos do português, em WOFF2 (12 KB).",
+   "used_in": "Títulos do site e do certificado em PDF"
+  },
+  {
+   "id": "fonte-inter",
+   "title": "Inter",
+   "author": "Rasmus Andersson",
+   "license": "SIL Open Font License 1.1",
+   "license_url": "https://openfontlicense.org",
+   "source_url": "https://github.com/google/fonts/tree/main/ofl/inter",
+   "modifications": "Instâncias estáticas (regular, medium, semibold, bold) da fonte variável.",
+   "used_in": "Texto, tabelas e gráficos do certificado em PDF"
+  },
+  {
+   "id": "fonte-jetbrains-mono",
+   "title": "JetBrains Mono",
+   "author": "JetBrains",
+   "license": "SIL Open Font License 1.1",
+   "license_url": "https://openfontlicense.org",
+   "source_url": "https://github.com/google/fonts/tree/main/ofl/jetbrainsmono",
+   "modifications": "Instâncias estáticas (regular e semibold) da fonte variável.",
+   "used_in": "Números, códigos e impressão digital do certificado em PDF"
+  }
+ ],
+ "software": [
+  {
+   "name": "Django",
+   "license": "BSD-3-Clause",
+   "url": "https://www.djangoproject.com",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "djangorestframework",
+   "license": "BSD-3-Clause",
+   "url": "https://www.django-rest-framework.org",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "whitenoise",
+   "license": "MIT",
+   "url": "https://whitenoise.readthedocs.io",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "torch",
+   "license": "BSD-3-Clause",
+   "url": "https://pytorch.org",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "torchvision",
+   "license": "BSD-3-Clause",
+   "url": "https://github.com/pytorch/vision",
+   "role": "Treino e construção",
+   "note": "Usado só no treino. A rede em belt/mobilenet.py reproduz a arquitetura MobileNetV3-Small dessa biblioteca."
+  },
+  {
+   "name": "opencv-python",
+   "license": "Apache-2.0",
+   "url": "https://github.com/opencv/opencv-python",
+   "role": "Produto em execução",
+   "note": "O pacote inclui bibliotecas de terceiros com licenças próprias, entre elas o FFmpeg (LGPL)."
+  },
+  {
+   "name": "pillow",
+   "license": "MIT-CMU",
+   "url": "https://python-pillow.github.io",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "numpy",
+   "license": "BSD-3-Clause",
+   "url": "https://numpy.org",
+   "role": "Produto em execução",
+   "note": "O pacote inclui componentes sob 0BSD, MIT, Zlib e CC0-1.0."
+  },
+  {
+   "name": "pandas",
+   "license": "BSD-3-Clause",
+   "url": "https://pandas.pydata.org",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "scipy",
+   "license": "BSD-3-Clause",
+   "url": "https://scipy.org",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "reportlab",
+   "license": "BSD-3-Clause",
+   "url": "https://www.reportlab.com",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "matplotlib",
+   "license": "Matplotlib License (baseada na PSF)",
+   "url": "https://matplotlib.org",
+   "role": "Treino e construção"
+  },
+  {
+   "name": "imageio-ffmpeg",
+   "license": "BSD-2-Clause",
+   "url": "https://github.com/imageio/imageio-ffmpeg",
+   "role": "Treino e construção",
+   "note": "O pacote traz um executável do FFmpeg, que tem licença própria (LGPL ou GPL, conforme a compilação). É usado só para converter vídeos na construção das mídias; não é distribuído com o produto."
+  },
+  {
+   "name": "requests",
+   "license": "Apache-2.0",
+   "url": "https://requests.readthedocs.io",
+   "role": "Treino e construção"
+  },
+  {
+   "name": "playwright",
+   "license": "Apache-2.0",
+   "url": "https://github.com/microsoft/playwright-python",
+   "role": "Somente testes"
+  },
+  {
+   "name": "pypdf",
+   "license": "BSD-3-Clause",
+   "url": "https://github.com/py-pdf/pypdf",
+   "role": "Somente testes"
+  },
+  {
+   "name": "vue",
+   "license": "MIT",
+   "url": "https://vuejs.org",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "vue-router",
+   "license": "MIT",
+   "url": "https://router.vuejs.org",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "chart.js",
+   "license": "MIT",
+   "url": "https://www.chartjs.org",
+   "role": "Produto em execução"
+  },
+  {
+   "name": "vite",
+   "license": "MIT",
+   "url": "https://vite.dev",
+   "role": "Treino e construção"
+  },
+  {
+   "name": "@vitejs/plugin-vue",
+   "license": "MIT",
+   "url": "https://github.com/vitejs/vite-plugin-vue",
+   "role": "Treino e construção"
+  },
+  {
+   "name": "axe-core",
+   "license": "MPL-2.0",
+   "url": "https://www.deque.com/axe/",
+   "role": "Somente testes"
+  }
+ ],
+ "rules": [
+  "Toda mídia de terceiros é hospedada neste servidor; nada é carregado de outros sites.",
+  "Só entram mídias e conjuntos de dados com licença que permite uso comercial e adaptação.",
+  "Foto ou vídeo de terceiros aparece no site com o rótulo “Imagem ilustrativa”, que leva à página Créditos.",
+  "Conteúdo que sai do repositório sozinho (kit do Summit) leva a própria lista de créditos, gerada a partir deste registro."
+ ]
+}

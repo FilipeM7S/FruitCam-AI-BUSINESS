@@ -76,8 +76,35 @@ def lot_verdict(k, n, max_share):
     return "inconclusivo"
 
 
+def lot_row(lot, k, first, last, max_rotten):
+    n = sum(k[c] for c in LABELS)
+    return {
+        "lot": lot,
+        "first": first.isoformat(),
+        "last": last.isoformat(),
+        "n": int(sum(k.values())),
+        "counts": k,
+        "rotten": {"share": k["podre"] / n if n else None, "ci95": wilson(k["podre"], n)},
+        "poor": {"share": k["baixa_qualidade"] / n if n else None, "ci95": wilson(k["baixa_qualidade"], n)},
+        "verdict": lot_verdict(k["podre"], n, max_rotten) if max_rotten is not None else None,
+    }
+
+
+def lot_rows(df, max_rotten):
+    lots = []
+    if len(df) and "lot" in df:
+        for lot, g in df[df["lot"].fillna("") != ""].groupby("lot"):
+            cat = classify_rows(g)
+            k = {c: int((cat == c).sum()) for c in (*LABELS, "revisar")}
+            lots.append(lot_row(lot, k, g["timestamp"].min(), g["timestamp"].max(), max_rotten))
+    return lots
+
+
 def summary(df, start, end, minutes=1, max_rotten=None, center=None):
-    table = windows(df, start, end, minutes)
+    return report(windows(df, start, end, minutes), lot_rows(df, max_rotten), end, minutes, max_rotten, center)
+
+
+def report(table, lots, end, minutes=1, max_rotten=None, center=None):
     complete = table[table["start"] + pd.Timedelta(minutes=minutes) <= end].reset_index(drop=True)
     total = int(complete["n"].sum())
     counts = {c: int(complete[c].sum()) for c in (*LABELS, "revisar")}
@@ -85,22 +112,6 @@ def summary(df, start, end, minutes=1, max_rotten=None, center=None):
     shares = {c: {"k": counts[c], "n": decided, "share": counts[c] / decided if decided else None, "ci95": wilson(counts[c], decided)} for c in LABELS}
     chart = p_chart(complete["podre"].to_numpy(), (complete["n"] - complete["revisar"]).to_numpy(), center)
     span = len(complete) * minutes
-    lots = []
-    if len(df) and "lot" in df:
-        for lot, g in df[df["lot"].fillna("") != ""].groupby("lot"):
-            cat = classify_rows(g)
-            k = {c: int((cat == c).sum()) for c in (*LABELS, "revisar")}
-            n = sum(k[c] for c in LABELS)
-            lots.append({
-                "lot": lot,
-                "first": g["timestamp"].min().isoformat(),
-                "last": g["timestamp"].max().isoformat(),
-                "n": int(len(g)),
-                "counts": k,
-                "rotten": {"share": k["podre"] / n if n else None, "ci95": wilson(k["podre"], n)},
-                "poor": {"share": k["baixa_qualidade"] / n if n else None, "ci95": wilson(k["baixa_qualidade"], n)},
-                "verdict": lot_verdict(k["podre"], n, max_rotten) if max_rotten is not None else None,
-            })
     return {
         "window_minutes": minutes,
         "windows": [{"start": r["start"].isoformat(), "n": int(r["n"]), **{c: int(r[c]) for c in (*LABELS, "revisar")}} for _, r in complete.iterrows()],

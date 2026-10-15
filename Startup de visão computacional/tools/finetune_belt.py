@@ -16,23 +16,39 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from belt.dataset import read_manifest, split_by_batch
-from train import build_model
-from train_belt import CLASSES, MEAN, STD, Crops, fit_temperature, load_crops, logits_of, recalls, reject_threshold, report, transforms_for
+from training import cashew_data
+from training.train import build_model
+from training.train_belt import CLASSES, MEAN, STD, Crops, fit_temperature, logits_of, recalls, reject_threshold, report, transforms_for
 
 
 def items_of(root, rows):
     return [{"photo": r["fruit"], "split": None, "label": CLASSES.index(r["label"]), "source": r["label"], "image": Image.open(Path(root) / r["file"]).convert("RGB")} for r in rows]
 
 
+def field_items(init, per_class, seed):
+    if not (cashew_data.OUT / "manifest.csv").exists():
+        raise SystemExit(f"--mix-field needs the field crops in {cashew_data.OUT}; build them with: python tools/fetch_cashew_drone.py and python -m training.cashew_data")
+    report = Path(init).with_name(Path(init).stem + "_eval.json")
+    sources = json.loads(report.read_text(encoding="utf-8"))["data"].get("sources_used") if report.exists() else None
+    sources = sources or ["ghana", "uganda_b"]
+    rows = [r for r in cashew_data.manifest() if r["split"] == "train" and r["source"] in sources]
+    files = cashew_data.CropFiles([], None)
+    picked = []
+    for label in CLASSES:
+        picked += sorted((r for r in rows if r["label"] == label), key=lambda r: cashew_data.rank(f"{seed}:{r['key']}"))[:per_class]
+    return [{"photo": f"{r['source']}:{r['photo']}", "split": "train", "label": CLASSES.index(r["label"]), "source": r["stage"], "image": files.image(r)} for r in picked], sources
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data", default=str(ROOT / "belt_data"))
-    parser.add_argument("--init", default=str(ROOT / "models" / "belt_v2.pt"))
+    parser.add_argument("--data", default=str(ROOT / "datasets" / "belt_data"))
+    parser.add_argument("--init", default=str(ROOT / "models" / "belt_v3.pt"))
     parser.add_argument("--out", default=str(ROOT / "models" / "belt_ft.pt"))
     parser.add_argument("--epochs", type=int, default=8)
     parser.add_argument("--lr", type=float, default=3e-4)
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--mix-field", action="store_true", help="also train on the field-photo training crops, to keep what the model already knows")
+    parser.add_argument("--field-per-class", type=int, default=600, help="with --mix-field: how many field crops of each class to add")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--target-accuracy", type=float, default=0.95)
     parser.add_argument("--bootstrap", type=int, default=2000)
@@ -55,8 +71,12 @@ def main():
     size = int(ck["img_size"])
     data = {s: items_of(args.data, part) for s, part in splits.items()}
     train_items = list(data["train"])
+    field = {"used": False}
     if args.mix_field:
-        train_items += [it for it in load_crops(ROOT / "images", ROOT / "Labels", 24, 0.15, 0) if it["split"] == "train"]
+        extra, sources = field_items(args.init, args.field_per_class, args.seed)
+        train_items += extra
+        field = {"used": True, "sources": sources, "crops": {c: sum(it["label"] == i for it in extra) for i, c in enumerate(CLASSES)}}
+        print(f"field crops mixed into training: {field['crops']} from {sources}", flush=True)
     train_tf, plain = transforms_for(size)
     loaders = {s: DataLoader(Crops(v, plain), batch_size=128) for s, v in data.items()}
     model = build_model(len(CLASSES), pretrained=False)
@@ -93,7 +113,7 @@ def main():
     torch.save({"model_state": model.state_dict(), "classes": CLASSES, "img_size": size, "temperature": temperature, "reject_below": reject_below, "mean": MEAN, "std": STD, "version": out.stem, "class_map": ck.get("class_map"), "fine_tuned_from": Path(args.init).name}, out)
     evaluation = {
         "model": {"file": out.name, "sha256": hashlib.sha256(out.read_bytes()).hexdigest(), "fine_tuned_from": Path(args.init).name, "temperature": temperature, "reject_below": reject_below},
-        "data": {"root": str(args.data), "split": "by tray (batch): each class's trays are ranked by hash; first tray = test, second = validation when there are 3 or more", **info, "counts": {s: {c: sum(r["label"] == c for r in part) for c in CLASSES} for s, part in splits.items()}, "fruits": {s: len({r["fruit"] for r in part}) for s, part in splits.items()}, "mix_field": args.mix_field},
+        "data": {"root": str(args.data), "split": "by tray (batch): each class's trays are ranked by hash; first tray = test, second = validation when there are 3 or more", **info, "counts": {s: {c: sum(r["label"] == c for r in part) for c in CLASSES} for s, part in splits.items()}, "fruits": {s: len({r["fruit"] for r in part}) for s, part in splits.items()}, "mix_field": args.mix_field, "field_mix": field},
         "training": {"epochs": args.epochs, "lr": args.lr, "history": history, "seconds": round(time.perf_counter() - start)},
         "test_before": before,
         "test_after": after,

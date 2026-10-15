@@ -7,7 +7,8 @@
   "fig5-gaussiana",
   "fig6-qualidade",
   "fig7-linha",
-  "fig8-esteira"
+  "fig8-esteira",
+  "fig9-podre"
  ],
  "items": {
   "fig1-pipeline": {
@@ -28,15 +29,15 @@
    "label": "example",
    "title": "O que o classificador recebe e devolve",
    "alt": "Quatro painéis: foto real de um caju com o recorte da fruta marcado; o recorte reduzido à entrada do modelo com o mapa Grad-CAM; as probabilidades das três classes para o recorte e para uma imagem sintética; e a imagem sintética, uma elipse escura.",
-   "caption": "(a) Foto real de caju (Wilfredor, CC0) com o recorte da fruta, como a esteira produziria. (b) A entrada do modelo: o recorte reduzido a 128×128 px, com o mapa Grad-CAM da classe prevista; o mapa mostra onde o gradiente se concentra e não prova causa. (c) Probabilidades calibradas devolvidas pelo modelo atual (belt_v2). Para este caju, que parece maduro e são, o modelo responde “boa” com 0,72. Como nenhum limiar de confiança atingiu 95% de acerto na validação, mesmo assim a fruta iria para conferência manual. (d) Uma elipse escura sintética, fora da distribuição de treino, recebe “podre” com 0,43. Exemplos individuais; não são métrica de desempenho.",
+   "caption": "(a) Foto real de caju, de terceiros, com o recorte da fruta, como a esteira produziria. (b) A entrada do modelo: o recorte reduzido a 128×128 px, com o mapa Grad-CAM da classe prevista; o mapa mostra onde o gradiente se concentra e não prova causa. (c) Probabilidades calibradas devolvidas pelo modelo atual (belt_v3). Para este caju, que parece maduro e são, o modelo responde “boa” com 0,98. Mesmo assim a fruta iria para conferência manual: nenhum corte de confiança está ligado, porque o modelo ainda não foi medido em esteira real. (d) Uma elipse escura sintética, fora da distribuição de treino, recebe “baixa qualidade” com 0,63: o modelo responde com alguma classe mesmo para o que não é fruta. Exemplos individuais; não são métrica de desempenho.",
    "assets": [
     "caju-vermelho"
    ],
    "width": 692,
    "height": 484,
-   "svg": "figures/fig2-classificacao.953a70ad69.svg",
-   "png": "figures/fig2-classificacao.51847a83db.png",
-   "web": "figures/fig2-classificacao.0d00939568.webp"
+   "svg": "figures/fig2-classificacao.c46115c417.svg",
+   "png": "figures/fig2-classificacao.8c90090a98.png",
+   "web": "figures/fig2-classificacao.6b47aaa044.webp"
   },
   "fig3-evento-estatistica": {
    "number": 3,
@@ -81,14 +82,14 @@
    "number": 6,
    "label": "test",
    "title": "Qualidade do modelo no conjunto de teste",
-   "alt": "Quatro painéis: matriz de confusão de três classes no teste; sensibilidade e precisão por classe com intervalos de confiança e a acurácia comparada ao palpite da classe mais comum; diagrama de confiabilidade após a calibração; e a curva de acerto conforme a fração decidida automaticamente, com o aviso de que nenhum limiar atinge a meta.",
-   "caption": "Medição real com models/belt_v2.pt em recortes de teste: fotos de origem que não aparecem no treino nem na validação (divisão por foto), só entre as 1.632 fotos cuja numeração de classes segue o artigo do conjunto (as outras 1.466 foram excluídas por terem a numeração trocada). (a) Matriz de confusão; cada célula mostra a contagem e a fração da linha. (b) Sensibilidade e precisão por classe (IC 95% de Wilson) e acurácia (IC 95% por bootstrap de fotos), contra o palpite “sempre podre”, a classe mais comum do teste; por isso a acurácia balanceada é a medida mais justa. (c) Diagrama de confiabilidade após a calibração por temperatura, ajustada na validação. (d) Acerto entre as frutas decididas automaticamente conforme a fração decidida; nenhum limiar atinge 95% de acerto na validação, então todas as frutas vão para revisão. Limitações: as fotos são de cajus no pé (campo), não de esteira; “baixa qualidade” corresponde a frutos imaturos; teste pequeno nas classes raras (649 recortes de 149 fotos). Desempenho em esteira real não avaliado.",
+   "alt": "Quatro painéis: matriz de confusão de três classes no teste; sensibilidade e precisão por classe com intervalos de confiança e a acurácia comparada ao palpite da classe mais comum; diagrama de confiabilidade após a calibração; e a curva de acerto conforme a fração decidida automaticamente, com o corte de confiança medido e a nota de que ele não está ligado.",
+   "caption": "Medição real com models/belt_v3.pt em recortes de teste: fotos de origem que não aparecem no treino nem na validação (divisão por foto). Os dados são fotos de cajueiros de Gana e do segundo lote de Uganda (14.033 recortes no treino, 3.335 na validação e 3.016 no teste); o primeiro lote de Uganda (1.589 fotos) ficou de fora porque seus rótulos não batem com os dos outros lotes. (a) Matriz de confusão; cada célula mostra a contagem e a fração da linha. (b) Sensibilidade e precisão por classe (IC 95% de Wilson) e acurácia (IC 95% por bootstrap de fotos), contra o palpite “sempre baixa qualidade”, a classe mais comum do teste (67%). A precisão de “podre” é baixa (45%): há poucas frutas estragadas, e mais da metade dos alarmes de “podre” é fruta de outra classe. (c) Diagrama de confiabilidade após a calibração por temperatura, ajustada na validação. (d) Acerto entre as frutas decididas automaticamente conforme a fração decidida. O losango marca o corte de confiança escolhido na validação para 95% de acerto (0,76): no teste ele cobre 85% das frutas com 94,8% de acerto. Esse corte não está ligado; todas as frutas vão para revisão. Limitações: as fotos são de cajus no pé (campo), não de esteira; “baixa qualidade” corresponde a frutos imaturos ou verdes; desempenho em esteira real não avaliado.",
    "assets": [],
    "width": 692,
    "height": 469,
-   "svg": "figures/fig6-qualidade.c9496470a3.svg",
-   "png": "figures/fig6-qualidade.46b435afd8.png",
-   "web": "figures/fig6-qualidade.c9496470a3.svg"
+   "svg": "figures/fig6-qualidade.2d5465aef5.svg",
+   "png": "figures/fig6-qualidade.8f463f867d.png",
+   "web": "figures/fig6-qualidade.2d5465aef5.svg"
   },
   "fig7-linha": {
    "number": 7,
@@ -108,18 +109,31 @@
    "label": "simulation",
    "title": "Validação da câmera em esteira simulada",
    "alt": "Três painéis: barras comparando frutas que cruzaram a linha, frutas contadas, frutas distintas e contagens duplicadas; matriz de confusão da classificação ponta a ponta; e o acerto com uma vista e com a média de várias vistas, sem frutas decididas automaticamente.",
-   "caption": "O pipeline completo da câmera (segmentação, rastreamento, contagem na linha e o classificador belt_v2) rodando em uma esteira simulada que carrega frutas reais de teste, nunca usadas no treino, recortadas sem as folhas e em proporção 1:1:1. (a) Contagem: frutas que cruzaram a linha, contadas, distintas e contadas duas vezes. (b) Matriz de confusão ponta a ponta. (c) Acerto com a primeira vista e com a média das vistas; nenhuma fruta é decidida sozinha, porque não há limiar de revisão confiável. Na simulação cada fruta mantém a mesma imagem enquanto anda, então as vistas extras trazem pouca informação nova; numa esteira real a fruta gira e a luz varia. Simulação, não é medição em esteira real.",
+   "caption": "O pipeline completo da câmera (segmentação, separação de frutas encostadas, rastreamento, contagem na linha e o classificador belt_v3) rodando em uma esteira simulada que carrega frutas reais de teste, nunca usadas no treino, recortadas sem as folhas e em proporção 1:1:1. (a) Contagem: frutas que cruzaram a linha, contadas, distintas e contadas duas vezes (0 em 891, com a regra do rastreador que conta como uma só duas manchas coladas da mesma fruta; sem ela eram 2). (b) Matriz de confusão ponta a ponta. (c) Acerto com a primeira vista e com a média das vistas; nenhuma fruta é decidida sozinha, porque nenhum corte de confiança está ligado. Na simulação cada fruta mantém a mesma imagem enquanto anda, então as vistas extras trazem pouca informação nova; numa esteira real a fruta gira e a luz varia. O acerto aqui é menor que o do teste em fotos porque a fruta aparece pequena, recortada do fundo original e colada sobre a esteira. Simulação, não é medição em esteira real.",
    "assets": [],
    "width": 692,
    "height": 265,
-   "svg": "figures/fig8-esteira.542516c791.svg",
-   "png": "figures/fig8-esteira.85ea2a3655.png",
-   "web": "figures/fig8-esteira.542516c791.svg"
+   "svg": "figures/fig8-esteira.6565718441.svg",
+   "png": "figures/fig8-esteira.87c0c53c95.png",
+   "web": "figures/fig8-esteira.6565718441.svg"
+  },
+  "fig9-podre": {
+   "number": 9,
+   "label": "test",
+   "title": "Alarme de podre: confiança, precisão e o corte que não passou",
+   "alt": "Três painéis: a fração de frutas realmente podres em cada faixa de probabilidade de podre dada pelo modelo, abaixo da diagonal; a curva de precisão contra sensibilidade da classe podre com a regra atual e o corte testado marcados; e a taxa de podres chamadas de boas para cada corte, com o limite de 5% e o corte testado acima dele.",
+   "caption": "Medição real com models/belt_v3.pt nos 3.016 recortes de teste, de fotos de fruto no pé. (a) Para cada faixa da probabilidade de “podre” dada pelo modelo, a fração de frutas que eram mesmo podres (IC 95% de Wilson). Quando o modelo diz de 90% a 100%, 74% eram podres (n = 157). A calibração por temperatura acerta a confiança da resposta em geral, mas não a da classe rara. (b) Precisão contra sensibilidade da classe “podre” conforme se exige mais probabilidade para dar o alarme. O círculo é a regra atual, que responde a classe mais provável; o losango é o corte de 0,80 escolhido na validação. (c) Podres chamadas de boas para cada corte (IC 95%). Com 0,80 a taxa no teste foi 5,8%, acima do limite de 5% fixado antes de medir; por isso a regra não mudou. O teste tem 207 frutas podres: os intervalos são largos, e nem a regra atual pode ser garantida abaixo de 5%. Desempenho em esteira real não avaliado.",
+   "assets": [],
+   "width": 692,
+   "height": 272,
+   "svg": "figures/fig9-podre.9d6eec66fc.svg",
+   "png": "figures/fig9-podre.960cf66fc1.png",
+   "web": "figures/fig9-podre.9d6eec66fc.svg"
   }
  },
  "modelEval": {
   "model": {
-   "file": "belt_v2.pt",
+   "file": "belt_v3.pt",
    "architecture": "MobileNetV3-Small (ImageNet pretrained)",
    "img_size": 128,
    "classes": [
@@ -127,109 +141,114 @@
     "baixa_qualidade",
     "podre"
    ],
-   "temperature": 1.6055644750595093,
+   "temperature": 1.402194619178772,
    "reject_below": null
   },
   "data": {
    "class_map": {
-    "ripe": "boa",
     "premature": "baixa_qualidade",
     "unripe": "baixa_qualidade",
+    "ripe": "boa",
     "spoilt": "podre"
    },
    "counts": {
     "train": {
-     "boa": 330,
-     "baixa_qualidade": 700,
-     "podre": 2232
+     "boa": 3637,
+     "baixa_qualidade": 9734,
+     "podre": 662
     },
     "val": {
-     "boa": 84,
-     "baixa_qualidade": 112,
-     "podre": 510
+     "boa": 779,
+     "baixa_qualidade": 2373,
+     "podre": 183
     },
     "test": {
-     "boa": 56,
-     "baixa_qualidade": 84,
-     "podre": 509
+     "boa": 775,
+     "baixa_qualidade": 2034,
+     "podre": 207
     }
    },
    "photos": {
-    "train": 741,
-    "val": 157,
-    "test": 149
+    "train": 1995,
+    "val": 451,
+    "test": 417
    },
-   "split": "by source photo (sha256 of file name), 70/15/15; no photo appears in two splits",
-   "selection": "checkpoint with best validation balanced accuracy; temperature and reject threshold fitted on validation; test used once"
+   "split": "by source photo (sha256 of seed, source and file name), 70/15/15; no photo appears in two splits",
+   "selection": "checkpoint with best validation balanced accuracy; temperature fitted on validation; test used once"
   },
   "test": {
-   "n": 649,
-   "photos": 149,
-   "accuracy": 0.5423728813559322,
+   "n": 3016,
+   "photos": 417,
+   "accuracy": 0.8958885941644562,
    "accuracy_ci95": [
-    0.4854064997050464,
-    0.5969952054048163
+    0.8781052155155313,
+    0.912153467081651
    ],
-   "balanced_accuracy": 0.5332273053294664,
-   "majority_baseline_accuracy": 0.7842835130970724,
+   "balanced_accuracy": 0.8916151373356999,
+   "majority_baseline_accuracy": 0.6744031830238727,
    "recall": {
-    "boa": 0.6071428571428571,
-    "baixa_qualidade": 0.44047619047619047,
-    "podre": 0.5520628683693517
+    "boa": 0.8993548387096775,
+    "baixa_qualidade": 0.8962635201573255,
+    "podre": 0.8792270531400966
    },
    "precision": {
-    "boa": 0.22818791946308725,
-    "baixa_qualidade": 0.2032967032967033,
-    "podre": 0.8836477987421384
+    "boa": 0.9380888290713324,
+    "baixa_qualidade": 0.9743452699091395,
+    "podre": 0.4527363184079602
    },
    "rotten_as_good": {
-    "k": 96,
-    "n": 509,
+    "k": 8,
+    "n": 207,
     "rate_ci95": [
-     0.15700030017686417,
-     0.22487494701649136
+     0.01971105324785778,
+     0.07439500628413759
     ]
    },
-   "ece": 0.043996679815323375,
-   "ece_uncalibrated": 0.1011651356942912,
+   "ece": 0.011174495069644002,
+   "ece_uncalibrated": 0.04015487789804631,
    "with_reject": {
     "threshold": null,
     "coverage": 0.0,
     "accuracy_on_accepted": null,
-    "n_accepted": 0,
-    "note": "no confidence threshold reached the 95% target on validation, so every fruit goes to manual review"
+    "n_accepted": 0
+   },
+   "field_photo_threshold": {
+    "threshold": 0.76,
+    "coverage": 0.8491379310344828,
+    "accuracy_on_accepted": 0.9484576337368216,
+    "n_accepted": 2561
    }
   },
   "belt": {
    "counting": {
-    "fruits_that_crossed_the_line": 914,
-    "counted": 914,
-    "matched_to_a_true_fruit": 914,
-    "distinct_true_fruits": 914,
+    "fruits_that_crossed_the_line": 891,
+    "counted": 891,
+    "matched_to_a_true_fruit": 891,
+    "distinct_true_fruits": 891,
     "double_counts": 0
    },
    "multi_view": {
-    "n": 914,
-    "accuracy": 0.43982494529540483,
+    "n": 891,
+    "accuracy": 0.7934904601571269,
     "accuracy_ci95": [
-     0.4079639044554828,
-     0.4721896896804014
+     0.7656780365071078,
+     0.8187830373615964
     ],
-    "balanced_accuracy": 0.4402158677406202
+    "balanced_accuracy": 0.7967338946047081
    },
-   "single_view_accuracy": 0.44529540481400437,
+   "single_view_accuracy": 0.7867564534231201,
    "with_review": {
     "threshold": null,
     "coverage": 0.0,
     "accuracy_on_decided": null,
     "n_decided": 0
    },
-   "size_ratio_median": 1.028878091612086
+   "size_ratio_median": 1.0189891894694734
   },
   "classificationExample": {
    "crop": {
     "label": "boa",
-    "confidence": 0.7223935127258301,
+    "confidence": 0.9790812730789185,
     "box": [
      474,
      672,
@@ -237,14 +256,30 @@
      1440
     ],
     "probs": {
-     "boa": 0.7223935127258301,
-     "baixa_qualidade": 0.13791941106319427,
-     "podre": 0.13968707621097565
+     "boa": 0.9790812730789185,
+     "baixa_qualidade": 0.020483653992414474,
+     "podre": 0.0004349631490185857
     }
    },
    "synthetic": {
-    "label": "podre",
-    "confidence": 0.42701148986816406
+    "label": "baixa_qualidade",
+    "confidence": 0.6260573863983154
+   }
+  },
+  "rotten": {
+   "limit": 0.05,
+   "cut": 0.8,
+   "holds": false,
+   "n_rotten": 207,
+   "now": {
+    "rotten_precision": 0.4527363184079602,
+    "rotten_recall": 0.8792270531400966,
+    "rotten_called_good": 0.03864734299516908
+   },
+   "tried": {
+    "rotten_precision": 0.6595744680851063,
+    "rotten_recall": 0.748792270531401,
+    "rotten_called_good": 0.057971014492753624
    }
   },
   "forecastCoverage": 0.9340909090909089,

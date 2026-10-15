@@ -1,10 +1,10 @@
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
-import { constrainedData, mediaItem, reducedMotion, url } from "../media.js";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { constrainedData, mediaItem, motion, reducedMotion, url } from "../media.js";
 import { t } from "../strings.js";
 import ResponsiveImage from "./ResponsiveImage.vue";
 
-const props = defineProps({ id: { type: String, required: true } });
+const props = defineProps({ id: { type: String, required: true }, badge: { type: String, default: "" } });
 
 const item = computed(() => mediaItem(props.id));
 const fallback = ref(reducedMotion() || constrainedData());
@@ -52,6 +52,13 @@ onMounted(() => {
   observer.observe(box.value);
 });
 
+watch(() => motion.reduced, (r) => {
+  if (!r) return;
+  pause();
+  observer?.disconnect();
+  fallback.value = true;
+});
+
 onBeforeUnmount(() => {
   observer?.disconnect();
   nearObserver?.disconnect();
@@ -86,7 +93,7 @@ onBeforeUnmount(() => {
       </button>
     </div>
     <figcaption class="video-caption">
-      <span class="illustrative synthetic">{{ t.media.syntheticDemo }}</span>
+      <span class="illustrative synthetic">{{ badge || t.media.syntheticDemo }}</span>
       <span>{{ item.caption }}</span>
       <details class="transcript">
         <summary>{{ t.media.transcript }}</summary>

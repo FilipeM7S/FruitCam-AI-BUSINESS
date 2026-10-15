@@ -3,7 +3,6 @@ import csv
 import hashlib
 import json
 import re
-import shutil
 import sys
 from collections import Counter
 from functools import lru_cache
@@ -20,7 +19,7 @@ EXTERNAL = ROOT / "data" / "external"
 PROCESSED = ROOT / "data" / "processed"
 LABEL_MAP = json.loads((ROOT / "data" / "label_map.json").read_text(encoding="utf-8"))
 META = {d["id"]: d for d in json.loads((ROOT / "scripts" / "datasets.json").read_text(encoding="utf-8"))["datasets"]}
-CARDS = ROOT / "docs" / "datasets"
+CARDS = ROOT / "docs" / "data" / "datasets"
 SIZE = 128
 NEAR = 6
 CONFIRM = 0.99
@@ -224,7 +223,7 @@ CARD_TEXT = {
             "`Damaged` mixes cut, rotten and diseased potatoes; it stays one merged label (`poor_or_rotten`).",
             "Potato, not cashew; the belt is grey-blue and close to potato colour.",
         ],
-        "may": ["test how a classifier or a segmentation rule behaves on real belt imagery (background, lighting, motion blur, touching neighbours)", "pre-train or evaluate a good-versus-damaged head and a foreign-object detector for belts", "commercial use, with the attribution in SOURCE.md (CC BY 4.0)"],
+        "may": ["test how a classifier or a segmentation rule behaves on real belt imagery (background, lighting, motion blur, touching neighbours)", "pre-train or evaluate a good-versus-damaged head and a foreign-object detector for belts", "commercial use, under the conditions recorded in LICENSES.md"],
         "may_not": ["be presented as cashew data or as cashew-on-belt data", "be used to report accuracy of the cashew product", "be evaluated on its official splits as if they were independent"],
     },
     "lemons": {
@@ -236,7 +235,7 @@ CARD_TEXT = {
             "Grouping by fruit number gives only 35 groups (5 to 197 photos each; 117 number+letter combinations, and the letters are undocumented). Split by group, validation and test hold 3 fruit numbers each and the test split has only 2 good photos: for any evaluation use cross-validation by fruit number, not this single split.",
             "Lemon, not cashew.",
         ],
-        "may": ["study defect regions and background sensitivity on a uniform background", "build compositing material (the defect polygons are in the raw COCO file)", "commercial use, keeping the MIT copyright and permission notice (see SOURCE.md)"],
+        "may": ["study defect regions and background sensitivity on a uniform background", "build compositing material (the defect polygons are in the raw COCO file)", "commercial use, under the conditions recorded in LICENSES.md"],
         "may_not": ["be presented as belt data or as cashew data", "be used to report accuracy of the cashew product"],
     },
     "fruitnet": {
@@ -249,7 +248,7 @@ CARD_TEXT = {
             "The processed folders mix 256-px images with 564 full-resolution originals (381 at 3000x4000 and 183 at 8000x6000); all are resized to 128 px here.",
             "Most photos show 2 to 5 fruits of the same quality, and some show hands; a label describes the whole photo, not one fruit.",
         ],
-        "may": ["test background sensitivity and pre-train generic good-versus-bad features", "commercial use, with the attribution in SOURCE.md (CC BY 4.0)"],
+        "may": ["test background sensitivity and pre-train generic good-versus-bad features", "commercial use, under the conditions recorded in LICENSES.md"],
         "may_not": ["be presented as belt data or as cashew data", "be used to report accuracy of the cashew product"],
     },
 }
@@ -258,7 +257,7 @@ CARD_TEXT = {
 def card(ds_id, sets, before, dup):
     m = META[ds_id]
     t = CARD_TEXT[ds_id]
-    lines = [f"# Dataset card: {m['title']}", "", f"Source, licence, hashes and attribution: [data/external/{ds_id}/SOURCE.md](../../data/external/{ds_id}/SOURCE.md). Label mapping: [data/label_map.json](../../data/label_map.json). Produced by `python scripts/convert_external.py`.", "", f"- Setting: **{m['setting']}**", f"- Fruit: {m['fruit']}", f"- Licence: [{m['licence']}]({m['licence_url']}) ({m['commercial_use']})", f"- Processed images: {SIZE}x{SIZE} px RGB PNG, the classifier's input size, in `data/processed/<set>/images/<split>/<label>/`, with `manifest.csv`", "", "## Before mapping", "", "```json", json.dumps(before, ensure_ascii=False, indent=1, default=dict), "```", "", "## After mapping (counts of files on disk)", ""]
+    lines = [f"# Dataset card: {m['title']}", "", f"Source and hashes: [data/external/{ds_id}/SOURCE.md](../../../data/external/{ds_id}/SOURCE.md). Licence and attribution: [LICENSES.md](../../../LICENSES.md). Label mapping: [data/label_map.json](../../../data/label_map.json). Produced by `python scripts/convert_external.py`.", "", f"- Setting: **{m['setting']}**", f"- Fruit: {m['fruit']}", f"- Processed images: {SIZE}x{SIZE} px RGB PNG, the classifier's input size, in `data/processed/<set>/images/<split>/<label>/`, with `manifest.csv`", "", "## Before mapping", "", "```json", json.dumps(before, ensure_ascii=False, indent=1, default=dict), "```", "", "## After mapping (counts of files on disk)", ""]
     for name, rows in sets.items():
         labels = [l for l in ORDER if any(r["label"] == l for r in rows)]
         lines += [f"### `{name}`", "", *table(rows, labels), ""]
@@ -269,8 +268,9 @@ def card(ds_id, sets, before, dup):
 
 def write(name, rows, images):
     out = PROCESSED / name
-    if out.exists():
-        shutil.rmtree(out)
+    for old in (out.rglob("*") if out.exists() else ()):
+        if old.is_file():
+            old.unlink()
     for r in rows:
         save(load_rgb(images[(name, Path(r["file"]).name)]), out / r["file"])
     with (out / "manifest.csv").open("w", newline="", encoding="utf-8") as f:

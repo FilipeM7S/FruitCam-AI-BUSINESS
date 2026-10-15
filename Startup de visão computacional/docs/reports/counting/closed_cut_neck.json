@@ -1,0 +1,251 @@
+{
+ "what": "counting on the simulated belt; nothing here was measured on a real belt",
+ "variants": {
+  "corte fechado, passagem 0,5, fusão": {
+   "seal": true,
+   "neck": 0.5,
+   "merge": 0.25,
+   "merge_window": 0.05
+  },
+  "corte fechado, passagem 0,6, fusão": {
+   "seal": true,
+   "neck": 0.6,
+   "merge": 0.25,
+   "merge_window": 0.05
+  }
+ },
+ "drawn_fruit": {
+  "corte fechado, passagem 0,5, fusão": {
+   "espaçamento normal": {
+    "gap_mm": 18.0,
+    "rate_per_s": 2.0,
+    "seconds": 60.0,
+    "crossed": 108,
+    "counted": 108,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.03434736026980092
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 0,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174268235975068,
+    "frames_per_second": 48.987062023776
+   },
+   "sobreposição até 10 mm": {
+    "gap_mm": -10.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 305,
+    "counted": 305,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.01243828757709785
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 207,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0179591402348502,
+    "frames_per_second": 33.690373883493095
+   },
+   "sobreposição até 25 mm": {
+    "gap_mm": -25.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 308,
+    "counted": 308,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.012318627853643637
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 688,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0172702732307508,
+    "frames_per_second": 34.71838174237317
+   },
+   "sobreposição até 40 mm": {
+    "gap_mm": -40.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 339,
+    "counted": 304,
+    "error": -0.10324483775811209,
+    "double_counts": 3,
+    "double_count_rate_ci95": [
+     0.0030141227699001013,
+     0.025691445434741875
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1086,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0179218509597372,
+    "frames_per_second": 32.25152737428503
+   },
+   "sobreposição até 40 mm, 10 por segundo": {
+    "gap_mm": -40.0,
+    "rate_per_s": 10.0,
+    "seconds": 60.0,
+    "crossed": 545,
+    "counted": 433,
+    "error": -0.20550458715596331,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     4.336808689942018e-19,
+     0.006999214106612953
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1446,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 2,
+    "size_ratio_median": 1.0193422251178197,
+    "frames_per_second": 22.87812927452489
+   }
+  },
+  "corte fechado, passagem 0,6, fusão": {
+   "espaçamento normal": {
+    "gap_mm": 18.0,
+    "rate_per_s": 2.0,
+    "seconds": 60.0,
+    "crossed": 108,
+    "counted": 108,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.03434736026980092
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 0,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174268235975068,
+    "frames_per_second": 46.12047252843019
+   },
+   "sobreposição até 10 mm": {
+    "gap_mm": -10.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 305,
+    "counted": 305,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.01243828757709785
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 207,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0179591402348502,
+    "frames_per_second": 30.014532136019376
+   },
+   "sobreposição até 25 mm": {
+    "gap_mm": -25.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 308,
+    "counted": 308,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.012318627853643637
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 702,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0172702732307508,
+    "frames_per_second": 31.173513122835388
+   },
+   "sobreposição até 40 mm": {
+    "gap_mm": -40.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 339,
+    "counted": 311,
+    "error": -0.08259587020648967,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.011204767631752642
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1162,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0176926257376497,
+    "frames_per_second": 32.74619679014614
+   },
+   "sobreposição até 40 mm, 10 por segundo": {
+    "gap_mm": -40.0,
+    "rate_per_s": 10.0,
+    "seconds": 60.0,
+    "crossed": 545,
+    "counted": 462,
+    "error": -0.15229357798165138,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     4.336808689942018e-19,
+     0.006999214106612953
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1457,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 2,
+    "size_ratio_median": 1.018456157785642,
+    "frames_per_second": 24.492302930505108
+   }
+  }
+ },
+ "real_fruit_crops": {
+  "corte fechado, passagem 0,5, fusão": {
+   "minutes": 8.0,
+   "seed": 11,
+   "crossed": 891,
+   "counted": 893,
+   "error": 0.002244668911335578,
+   "double_counts": 2,
+   "double_count_rate_ci95": [
+    0.0006157851545882656,
+    0.008147173695238784
+   ],
+   "counted_without_a_fruit_under_them": 0,
+   "frames_with_a_cut": 128,
+   "frames_with_a_bridge": 0,
+   "counts_merged_by_the_tracker": 2,
+   "size_ratio_median": 1.0190064173085411,
+   "frames_per_second": 59.968731943358456
+  },
+  "corte fechado, passagem 0,6, fusão": {
+   "minutes": 8.0,
+   "seed": 11,
+   "crossed": 891,
+   "counted": 895,
+   "error": 0.004489337822671156,
+   "double_counts": 4,
+   "double_count_rate_ci95": [
+    0.0017471591339583087,
+    0.01148586529039038
+   ],
+   "counted_without_a_fruit_under_them": 0,
+   "frames_with_a_cut": 264,
+   "frames_with_a_bridge": 0,
+   "counts_merged_by_the_tracker": 2,
+   "size_ratio_median": 1.0189806073795873,
+   "frames_per_second": 59.67190085575224
+  }
+ }
+}

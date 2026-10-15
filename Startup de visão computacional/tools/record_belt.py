@@ -13,7 +13,7 @@ from belt.classify import TruthDecider
 from belt.pipeline import BeltPipeline
 from belt.simulate import SimulatedBelt
 
-OUT = ROOT / "media_src" / "video"
+OUT = ROOT / "assets" / "media_src" / "video"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 SECONDS = 12
 WARMUP = 6

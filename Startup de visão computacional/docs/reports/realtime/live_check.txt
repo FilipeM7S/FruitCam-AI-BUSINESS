@@ -1,0 +1,18 @@
+camera online; the page opened the live stream after 1 ordinary requests to /api/line
+t= 10.1 s  API total 6933 up to 20:17  page shows 6933  (equal, 0.0 s after asking)  | 20.1 quadros/s · 28 frutas contadas nesta sessão · decisão: simulação
+t= 20.1 s  API total 6933 up to 20:17  page shows 6933  (equal, 0.0 s after asking)  | 20 quadros/s · 51 frutas contadas nesta sessão · decisão: simulação
+t= 30.2 s  API total 6933 up to 20:17  page shows 6933  (equal, 0.0 s after asking)  | 20 quadros/s · 71 frutas contadas nesta sessão · decisão: simulação
+t= 40.2 s  API total 6933 up to 20:17  page shows 6933  (equal, 0.0 s after asking)  | 20 quadros/s · 93 frutas contadas nesta sessão · decisão: simulação
+t= 50.3 s  API total 6941 up to 20:18  page shows 6941  (equal, 0.0 s after asking)  | 20 quadros/s · 118 frutas contadas nesta sessão · decisão: simulação
+t= 60.3 s  API total 6941 up to 20:18  page shows 6941  (equal, 0.0 s after asking)  | 20 quadros/s · 138 frutas contadas nesta sessão · decisão: simulação
+t= 70.4 s  API total 6941 up to 20:18  page shows 6941  (equal, 0.0 s after asking)  | 20 quadros/s · 157 frutas contadas nesta sessão · decisão: simulação
+t= 80.4 s  API total 6941 up to 20:18  page shows 6941  (equal, 0.0 s after asking)  | 20 quadros/s · 177 frutas contadas nesta sessão · decisão: simulação
+t= 90.5 s  API total 6941 up to 20:18  page shows 6941  (equal, 0.0 s after asking)  | 20 quadros/s · 196 frutas contadas nesta sessão · decisão: simulação
+t=100.5 s  API total 6941 up to 20:18  page shows 6941  (equal, 0.0 s after asking)  | 20 quadros/s · 212 frutas contadas nesta sessão · decisão: simulação
+t=110.6 s  API total 6933 up to 20:19  page shows 6933  (equal, 0.0 s after asking)  | 20 quadros/s · 232 frutas contadas nesta sessão · decisão: simulação
+t=120.6 s  API total 6933 up to 20:19  page shows 6933  (equal, 0.0 s after asking)  | 20 quadros/s · 247 frutas contadas nesta sessão · decisão: simulação
+live stream: 1 connection, 95 status messages and 25 summaries, for the minutes ending ['20:17', '20:18', '20:19']
+page equal to the API in 12 of 12 checks; requests to /api/line made by the page itself after the stream opened: 0
+the line under the video changed in 11 of 11 consecutive checks, without a reload
+/api/health: status ok; aggregates in step True; camera linha-1 state running, counted 250, stored 250, queue 0 B, database busy 0, dropped frames 0
+page errors: []

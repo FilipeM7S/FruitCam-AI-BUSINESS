@@ -1,0 +1,330 @@
+{
+ "moves": [
+  {
+   "from": "docs/reorg/baseline_test_output.txt",
+   "to": "docs/reports/reorg/baseline_test_output.txt"
+  },
+  {
+   "from": "test_fruit_analytics_output.txt",
+   "to": "docs/reports/tests/test_fruit_analytics_output.txt"
+  },
+  {
+   "from": "dataset_layout_test_output.txt",
+   "to": "docs/reports/tests/dataset_layout_test_output.txt"
+  },
+  {
+   "from": "core/test_control_browser.py",
+   "to": "core/tests/test_control_browser.py"
+  },
+  {
+   "from": "certificate_test_output.txt",
+   "to": "docs/reports/tests/certificate_test_output.txt"
+  },
+  {
+   "from": "docs/control_and_motion.md",
+   "to": "docs/guides/control_and_motion.md"
+  },
+  {
+   "from": "docs/dataset_and_layout.md",
+   "to": "docs/guides/dataset_and_layout.md"
+  },
+  {
+   "from": "dashboard_test_output.txt",
+   "to": "docs/reports/tests/dashboard_test_output.txt"
+  },
+  {
+   "from": "analytics_demo_synthetic",
+   "to": "analytics/demo_output"
+  },
+  {
+   "from": "core/test_certificate.py",
+   "to": "core/tests/test_certificate.py"
+  },
+  {
+   "from": "test_fruit_analytics.py",
+   "to": "analytics/test_fruit_analytics.py"
+  },
+  {
+   "from": "camera_test_output.txt",
+   "to": "docs/reports/tests/camera_test_output.txt"
+  },
+  {
+   "from": "webapp_test_output.txt",
+   "to": "docs/reports/tests/webapp_test_output.txt"
+  },
+  {
+   "from": "core/test_dashboard.py",
+   "to": "core/tests/test_dashboard.py"
+  },
+  {
+   "from": "media_test_output.txt",
+   "to": "docs/reports/tests/media_test_output.txt"
+  },
+  {
+   "from": "core/test_datasets.py",
+   "to": "core/tests/test_datasets.py"
+  },
+  {
+   "from": "core/test_showcase.py",
+   "to": "core/tests/test_showcase.py"
+  },
+  {
+   "from": "docs/control_plan.md",
+   "to": "docs/plans/control_room.md"
+  },
+  {
+   "from": "audit_small_boxes.py",
+   "to": "training/audit_small_boxes.py"
+  },
+  {
+   "from": "core/test_control.py",
+   "to": "core/tests/test_control.py"
+  },
+  {
+   "from": "docs/layout/plan.md",
+   "to": "docs/plans/layout.md"
+  },
+  {
+   "from": "core/test_layout.py",
+   "to": "core/tests/test_layout.py"
+  },
+  {
+   "from": "DATA_COLLECTION.md",
+   "to": "docs/data/collection.md"
+  },
+  {
+   "from": "docs/reorg/plan.md",
+   "to": "docs/plans/reorg_realtime_licenses.md"
+  },
+  {
+   "from": "fruit_analytics.py",
+   "to": "analytics/fruit_analytics.py"
+  },
+  {
+   "from": "core/test_media.py",
+   "to": "core/tests/test_media.py"
+  },
+  {
+   "from": "bundle_before.txt",
+   "to": "docs/reports/bundle/bundle_before.txt"
+  },
+  {
+   "from": "core/test_belt.py",
+   "to": "core/tests/test_belt.py"
+  },
+  {
+   "from": "DATA_REQUESTS.md",
+   "to": "docs/data/requests.md"
+  },
+  {
+   "from": "bundle_after.txt",
+   "to": "docs/reports/bundle/bundle_after.txt"
+  },
+  {
+   "from": "test_pipeline.py",
+   "to": "training/test_pipeline.py"
+  },
+  {
+   "from": "data_cropped_out",
+   "to": "datasets/cropped_out"
+  },
+  {
+   "from": "crop_dataset.py",
+   "to": "training/crop_dataset.py"
+  },
+  {
+   "from": "CERTIFICATE.md",
+   "to": "docs/guides/certificate.md"
+  },
+  {
+   "from": "test_vizualise",
+   "to": "training/test_vizualise.py"
+  },
+  {
+   "from": "docs/datasets",
+   "to": "docs/data/datasets"
+  },
+  {
+   "from": "train_belt.py",
+   "to": "training/train_belt.py"
+  },
+  {
+   "from": "data_synth.py",
+   "to": "training/data_synth.py"
+  },
+  {
+   "from": "core/tests.py",
+   "to": "core/tests/test_api.py"
+  },
+  {
+   "from": "ANALYTICS.md",
+   "to": "docs/guides/analytics.md"
+  },
+  {
+   "from": "DASHBOARD.md",
+   "to": "docs/guides/dashboard.md"
+  },
+  {
+   "from": "size_test.py",
+   "to": "training/size_test.py"
+  },
+  {
+   "from": "visualize.py",
+   "to": "training/visualize.py"
+  },
+  {
+   "from": "SHOWCASE.md",
+   "to": "docs/guides/showcase.md"
+  },
+  {
+   "from": "docs/layout",
+   "to": "docs/reports/layout"
+  },
+  {
+   "from": "docs/visual",
+   "to": "docs/reports/visual"
+  },
+  {
+   "from": "summit_pack",
+   "to": "deliverables/summit_pack"
+  },
+  {
+   "from": "records.py",
+   "to": "analytics/records.py"
+  },
+  {
+   "from": "data_cache",
+   "to": "datasets/cache"
+  },
+  {
+   "from": "db.sqlite3",
+   "to": "var/db.sqlite3"
+  },
+  {
+   "from": "CAMERA.md",
+   "to": "docs/guides/camera.md"
+  },
+  {
+   "from": "DESIGN.md",
+   "to": "docs/guides/design.md"
+  },
+  {
+   "from": "WEBAPP.md",
+   "to": "docs/guides/webapp.md"
+  },
+  {
+   "from": "data_real",
+   "to": "datasets/real_crops"
+  },
+  {
+   "from": "media_src",
+   "to": "assets/media_src"
+  },
+  {
+   "from": "MEDIA.md",
+   "to": "docs/guides/media.md"
+  },
+  {
+   "from": "train.py",
+   "to": "training/train.py"
+  },
+  {
+   "from": "infer.py",
+   "to": "training/infer.py"
+  },
+  {
+   "from": "model.pt",
+   "to": "models/model.pt"
+  },
+  {
+   "from": "Bbox.py",
+   "to": "core/bbox.py"
+  },
+  {
+   "from": "figures",
+   "to": "assets/figures"
+  },
+  {
+   "from": "uploads",
+   "to": "var/uploads"
+  },
+  {
+   "from": "images",
+   "to": "datasets/cashew/images"
+  },
+  {
+   "from": "Labels",
+   "to": "datasets/cashew/labels"
+  },
+  {
+   "from": "brand",
+   "to": "assets/brand"
+  },
+  {
+   "from": "logs",
+   "to": "legacy/logs"
+  },
+  {
+   "from": "run",
+   "to": "var/run"
+  }
+ ],
+ "new_files": [
+  "analytics/__init__.py",
+  "core/tests/__init__.py",
+  "training/__init__.py"
+ ],
+ "rewritten_code": {
+  "analytics/test_fruit_analytics.py": 3,
+  "assets/figures/make_figures.py": 8,
+  "core/certificate_charts.py": 1,
+  "core/certificate_data.py": 1,
+  "core/certificate_pdf.py": 2,
+  "core/event_views.py": 1,
+  "core/inference.py": 1,
+  "core/showcase.py": 1,
+  "core/stats.py": 1,
+  "core/views.py": 1,
+  "core/management/commands/record_tray.py": 1,
+  "core/management/commands/seed_demo.py": 2,
+  "core/tests/test_api.py": 3,
+  "core/tests/test_belt.py": 5,
+  "core/tests/test_certificate.py": 4,
+  "core/tests/test_control.py": 1,
+  "core/tests/test_control_browser.py": 4,
+  "core/tests/test_dashboard.py": 3,
+  "core/tests/test_datasets.py": 2,
+  "core/tests/test_layout.py": 5,
+  "core/tests/test_media.py": 10,
+  "core/tests/test_showcase.py": 1,
+  "fruitcam/settings.py": 3,
+  "scripts/convert_external.py": 1,
+  "scripts/measure_external.py": 1,
+  "tools/adapt_bn.py": 3,
+  "tools/audit_cashew_labels.py": 4,
+  "tools/build_brand.py": 1,
+  "tools/build_fonts.py": 1,
+  "tools/build_media.py": 3,
+  "tools/build_sim_crops.py": 4,
+  "tools/build_summit_pack.py": 4,
+  "tools/compare_models.py": 3,
+  "tools/eval_belt.py": 3,
+  "tools/eval_potatoes.py": 5,
+  "tools/fetch_media.py": 3,
+  "tools/finetune_belt.py": 4,
+  "tools/record_belt.py": 1,
+  "tools/record_demo.py": 2,
+  "training/audit_small_boxes.py": 1,
+  "training/infer.py": 2,
+  "training/test_pipeline.py": 3,
+  "training/test_vizualise.py": 4,
+  "training/train_belt.py": 5,
+  "training/visualize.py": 2,
+  "config/cameras.json": "text",
+  "assets/media_src/catalog.json": "text",
+  "assets/brand/rules.json": "text",
+  "scripts/datasets.json": "text",
+  "assets/media_src/sources.json": "text",
+  "assets/media_src/belt_crops/sources.json": "text"
+ }
+}

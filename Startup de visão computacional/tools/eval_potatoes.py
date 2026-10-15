@@ -17,13 +17,13 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from belt.detect import BeltDetector
-from train import build_model
-from train_belt import cluster_bootstrap, ece, fit_temperature, logits_of, transforms_for, wilson
+from training.train import build_model
+from training.train_belt import cluster_bootstrap, ece, fit_temperature, logits_of, transforms_for, wilson
 
 DATA = ROOT / "data" / "external" / "potatoes" / "extracted" / "dataset_potatoes" / "dataset_potatoes"
-OUT = ROOT / "docs" / "datasets" / "potatoes"
+OUT = ROOT / "docs" / "data" / "datasets" / "potatoes"
 CLASSES = ["Good", "Damaged", "Plant", "Stone"]
-SOURCE = {"doi": "10.5281/zenodo.17494608", "url": "https://zenodo.org/records/17494608", "title": "Potatoes Dataset", "authors": "Štursa, Dominik; Doležel, Petr; Ksiažek, Jakub (University of Pardubice)", "license": "CC BY 4.0", "zip_md5": "6e75a6ed39e929ee646dd002767531e7"}
+SOURCE = {"doi": "10.5281/zenodo.17494608", "url": "https://zenodo.org/records/17494608", "title": "Potatoes Dataset", "authors": "Štursa, Dominik; Doležel, Petr; Ksiažek, Jakub (University of Pardubice)", "zip_md5": "6e75a6ed39e929ee646dd002767531e7"}
 
 
 def variants(a):
@@ -122,8 +122,8 @@ def sweep(items):
 
 
 def cashew_contrast(belt, weight, thresholds):
-    from train_belt import load_crops, tree_as_five
-    items = load_crops(ROOT / "images", ROOT / "Labels", 16, 0.0, 0, tree_as_five(ROOT / "Labels"))
+    from training.train_belt import load_crops, tree_as_five
+    items = load_crops(ROOT / "datasets" / "cashew" / "images", ROOT / "datasets" / "cashew" / "labels", 16, 0.0, 0, tree_as_five(ROOT / "datasets" / "cashew" / "labels"))
     dist = {}
     for it in items:
         a = np.asarray(it["image"].resize((32, 32), Image.BILINEAR))[8:24, 8:24]

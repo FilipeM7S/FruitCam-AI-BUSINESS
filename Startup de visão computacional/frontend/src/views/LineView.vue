@@ -6,11 +6,13 @@ import BackgroundVideo from "../components/BackgroundVideo.vue";
 import CameraDiagram from "../components/CameraDiagram.vue";
 import { num, pct } from "../format.js";
 import { reducedMotion, vReveal } from "../media.js";
+import { openReplay, vTrace } from "../control.js";
 import { fill, t } from "../strings.js";
 
 const SPANS = [30, 60, 240, 480, 1440];
 const WINDOW = { 30: 1, 60: 1, 240: 5, 480: 15, 1440: 60 };
 const CLASSES = ["boa", "baixa_qualidade", "podre", "revisar"];
+const OFFLINE_AFTER = 3;
 const COLORS = { boa: C.good, baixa_qualidade: C.poor, podre: C.rotten, revisar: C.review };
 
 const cameras = ref([]);
@@ -27,10 +29,12 @@ let flowChart = null;
 let pChart = null;
 let summaryTimer = 0;
 let frameTimer = 0;
+let stream = null;
 
 const cam = computed(() => cameras.value.find((c) => c.slug === slug.value));
 const status = computed(() => summary.value?.status || cam.value?.status || { online: false });
-const frameUrl = computed(() => `/api/cameras/${slug.value}/frame?t=${frameTick.value}`);
+const live = !reducedMotion();
+const frameUrl = computed(() => (live ? `/api/cameras/${slug.value}/stream?k=${frameTick.value}` : `/api/cameras/${slug.value}/frame?t=${frameTick.value}`));
 const decided = computed(() => (summary.value ? CLASSES.slice(0, 3).reduce((s, c) => s + summary.value.counts[c], 0) : 0));
 const kpis = computed(() => {
   const s = summary.value;
@@ -51,6 +55,12 @@ const sizeText = computed(() => {
   return z ? fill(t.line.size, { m: num(Math.round(z.median)), lo: num(Math.round(z.p10)), hi: num(Math.round(z.p90)) }) : "";
 });
 
+const trace = computed(() => (summary.value ? `${t.control.source}: GET /api/line · ${cam.value?.name || slug.value} · ${t.line.periods[minutes.value]} · ${fill(t.line.flowTitle, { w: WINDOW[minutes.value] }).toLowerCase()} · ${t.line.sources[source.value]} · n = ${num(summary.value.total)}` : ""));
+
+function replay(l, e) {
+  openReplay({ camera: slug.value, lot: l.lot, source: source.value, since: summary.value.start, until: summary.value.end }, e.currentTarget);
+}
+
 function clock(iso) {
   return iso.slice(11, 16);
 }
@@ -61,13 +71,46 @@ async function loadCameras() {
   if (!slug.value && cameras.value.length) slug.value = cameras.value[0].slug;
 }
 
+function closeStream() {
+  stream?.close();
+  stream = null;
+}
+
+function openStream() {
+  closeStream();
+  if (!slug.value || !status.value.online || typeof EventSource === "undefined") return;
+  const query = new URLSearchParams({ camera: slug.value, minutes: minutes.value, window: WINDOW[minutes.value], source: source.value });
+  const feed = new EventSource(`/api/line/live?${query}`);
+  let silent = 0;
+  const steady = (next) => {
+    silent = next.online ? 0 : silent + 1;
+    return next.online || silent >= OFFLINE_AFTER ? next : summary.value?.status || next;
+  };
+  stream = feed;
+  feed.addEventListener("summary", (e) => {
+    const body = JSON.parse(e.data);
+    summary.value = { ...body, status: steady(body.status) };
+    failed.value = "";
+    draw();
+  });
+  feed.addEventListener("status", (e) => {
+    const next = steady(JSON.parse(e.data));
+    if (summary.value) summary.value = { ...summary.value, status: next };
+    if (!next.online && stream === feed) closeStream();
+  });
+  feed.onerror = () => {
+    if (stream === feed && feed.readyState === 2) closeStream();
+  };
+}
+
 async function loadSummary() {
-  if (!slug.value || loading.value) return;
+  if (!slug.value || loading.value || stream) return;
   loading.value = true;
   try {
     summary.value = await api("/api/line", { query: { camera: slug.value, minutes: minutes.value, window: WINDOW[minutes.value], source: source.value } });
     failed.value = "";
     draw();
+    openStream();
   } catch (err) {
     failed.value = err.message || "erro";
   } finally {
@@ -91,7 +134,7 @@ function draw() {
     flowChart = new Chart(flowCanvas.value, {
       type: "bar",
       data: flow,
-      options: { animation, scales: { x: { stacked: true, grid: { display: false }, ticks: { maxTicksLimit: 8 } }, y: { stacked: true, beginAtZero: true, title: { display: true, text: t.line.fruitsAxis } } }, plugins: { legend: { position: "bottom" } } },
+      options: { animation, scales: { x: { stacked: true, grid: { display: false }, ticks: { maxTicksLimit: 8 } }, y: { stacked: true, beginAtZero: true, title: { display: true, text: t.line.fruitsAxis } } }, plugins: { legend: { position: "bottom" }, tooltip: { callbacks: { footer: () => trace.value } } } },
     });
   }
   const pc = s.p_chart;
@@ -111,7 +154,7 @@ function draw() {
     pChart = new Chart(pCanvas.value, {
       type: "line",
       data: pData,
-      options: { animation, scales: { y: { beginAtZero: true, ticks: { callback: (v) => pct(v, 0) } }, x: { grid: { display: false }, ticks: { maxTicksLimit: 8 } } }, plugins: { legend: { position: "bottom" }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${pct(c.raw)}` } } } },
+      options: { animation, scales: { y: { beginAtZero: true, ticks: { callback: (v) => pct(v, 0) } }, x: { grid: { display: false }, ticks: { maxTicksLimit: 8 } } }, plugins: { legend: { position: "bottom" }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${pct(c.raw)}`, footer: () => trace.value } } } },
     });
   }
 }
@@ -119,11 +162,12 @@ function draw() {
 function restart() {
   clearInterval(summaryTimer);
   clearInterval(frameTimer);
+  closeStream();
   loadSummary();
   summaryTimer = setInterval(loadSummary, 15000);
   frameTimer = setInterval(() => {
     if (status.value.online) frameTick.value += 1;
-  }, 1000);
+  }, live ? 300000 : 1000);
 }
 
 watch([slug, minutes, source], () => {
@@ -141,6 +185,7 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => {
+  closeStream();
   clearInterval(summaryTimer);
   clearInterval(frameTimer);
   flowChart?.destroy();
@@ -202,15 +247,18 @@ onBeforeUnmount(() => {
               <strong>{{ t.line.offline }}</strong>
               <code>{{ fill(t.line.offlineHelp, { slug }) }}</code>
             </div>
-            <span class="live-pill" :class="status.online ? 'on' : 'off'">{{ status.online ? (status.source === "simulação" ? t.line.simulated : t.line.online) : t.line.offline }}</span>
+            <span class="live-pill" :class="status.online ? 'on' : 'off'"><span v-if="status.online" class="sonar" aria-hidden="true"></span>{{ status.online ? (status.source === "simulação" ? t.line.simulated : t.line.online) : t.line.offline }}</span>
           </div>
-          <figcaption v-if="status.online" class="live-meta">{{ fill(t.line.frameMeta, { fps: status.fps, passages: num(status.passages), decider: status.decider }) }}</figcaption>
+          <figcaption v-if="status.online" class="live-meta">
+            {{ fill(t.line.frameMeta, { fps: status.fps, passages: num(status.passages), decider: status.decider }) }}
+            <span v-if="status.real_crops" class="live-credit">{{ t.line.cropsNote }} <RouterLink :to="{ path: '/creditos', hash: '#dados-cashew_makerere' }">{{ t.line.cropsLink }}</RouterLink></span>
+          </figcaption>
         </figure>
 
         <div class="kpis" aria-live="polite">
           <div v-for="k in kpis" :key="k.key" class="kpi paper" :class="k.tone ? `tone-${k.tone}` : ''">
             <span class="kpi-label">{{ t.line.kpi[k.key] }}</span>
-            <strong class="kpi-value">{{ k.value }}</strong>
+            <strong class="kpi-value" v-trace="trace">{{ k.value }}</strong>
             <span class="kpi-sub">{{ k.sub }}</span>
           </div>
           <p v-if="summary && !summary.total" class="notice kpi-empty">{{ t.line.empty }}<br /><code v-if="source !== 'real'">{{ t.line.emptyDemo }}</code></p>
@@ -244,6 +292,7 @@ onBeforeUnmount(() => {
             <thead>
               <tr>
                 <th v-for="(label, key) in t.line.lotCols" :key="key" scope="col">{{ label }}</th>
+                <th scope="col"><span class="visually-hidden">{{ t.control.commands.lotCol }}</span></th>
               </tr>
             </thead>
             <tbody>
@@ -253,6 +302,7 @@ onBeforeUnmount(() => {
                 <td>{{ pct(l.rotten.share) }} <span class="muted">({{ pct(l.rotten.ci95[0]) }}–{{ pct(l.rotten.ci95[1]) }})</span></td>
                 <td>{{ pct(l.poor.share) }}</td>
                 <td><span class="verdict-pill" :class="l.verdict">{{ t.line.verdicts[l.verdict] || "—" }}</span></td>
+                <td><button class="btn btn-secondary btn-sm lot-replay" type="button" :aria-label="fill(t.control.commands.lotLabel, { lot: l.lot })" @click="replay(l, $event)">▶ {{ t.control.commands.lotButton }}</button></td>
               </tr>
             </tbody>
           </table>

@@ -31,9 +31,8 @@ const item = computed(() => mediaItem(props.id));
         decoding="async"
       />
     </picture>
-    <figcaption v-if="caption" class="media-credit">
-      <span v-if="item.illustrative" class="illustrative">{{ t.media.illustrative }}</span>
-      <RouterLink :to="{ path: '/creditos', hash: `#${item.asset}` }">{{ item.credit }}</RouterLink>
+    <figcaption v-if="caption && item.illustrative" class="media-credit">
+      <RouterLink class="illustrative" :to="{ path: '/creditos', hash: `#${item.asset}` }">{{ t.media.illustrative }}<span class="visually-hidden">{{ t.media.seeCredits }}</span></RouterLink>
     </figcaption>
   </figure>
 </template>

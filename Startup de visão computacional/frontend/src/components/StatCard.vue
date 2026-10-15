@@ -1,5 +1,6 @@
 <script setup>
 import { computed, nextTick, provide, ref, shallowRef } from "vue";
+import { vTrace } from "../control.js";
 import Walkthrough from "./Walkthrough.vue";
 import { num } from "../format.js";
 import { errorText, fill, t } from "../strings.js";
@@ -17,12 +18,16 @@ const props = defineProps({
   steps: { type: Array, default: () => [] },
   emptyText: { type: String, default: "" },
   refreshing: { type: Boolean, default: false },
+  trace: { type: String, default: "" },
 });
 
 const card = ref(null);
 const howBtn = ref(null);
 const touring = ref(false);
 const boxes = shallowRef([]);
+
+const fullTrace = computed(() => (props.trace && state.value !== "loading" && state.value !== "error" ? `${props.trace} · n = ${num(props.n ?? props.result.data.n)}` : ""));
+provide("chartTrace", fullTrace);
 
 provide("registerChart", (box) => {
   boxes.value = [...boxes.value, box];
@@ -39,7 +44,7 @@ const allBadges = computed(() => {
   if (state.value === "loading" || state.value === "error") return [];
   const d = props.result.data;
   return [
-    { text: fill(t.badges.n, { n: num(props.n ?? d.n) }), cls: "n-badge", title: props.unit },
+    { text: fill(t.badges.n, { n: num(props.n ?? d.n) }), cls: "n-badge", title: props.unit, trace: fullTrace.value },
     ...(d.demo ? [{ text: t.badges.demo, tone: "demo", cls: "demo-tag", title: t.app.demoBadgeHint }] : []),
     ...(state.value === "ok" ? props.badges : []),
   ];
@@ -71,7 +76,7 @@ function closeTour() {
       </button>
     </header>
     <div v-if="allBadges.length" class="badges">
-      <span v-for="b in allBadges" :key="b.text" class="badge" :class="[b.tone, b.cls]" :title="b.title">{{ b.text }}</span>
+      <span v-for="b in allBadges" :key="b.text" v-trace="b.trace" class="badge" :class="[b.tone, b.cls]" :title="b.trace ? undefined : b.title">{{ b.text }}</span>
     </div>
     <div v-if="state === 'loading'" class="skeleton" :class="`sk-${shape}`" :aria-label="t.dashboard.loading">
       <span v-for="i in 12" :key="i"></span>

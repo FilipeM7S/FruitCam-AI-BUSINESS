@@ -17,8 +17,8 @@ const labels = { boa: "boa", poor: "baixa qual.", podre: "podre" };
     <svg viewBox="0 0 760 330" role="img" :aria-label="t.line.diagramAlt">
       <defs>
         <linearGradient id="cam-fov" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#9ad9b3" stop-opacity="0.32" />
-          <stop offset="1" stop-color="#9ad9b3" stop-opacity="0.04" />
+          <stop offset="0" class="cam-stop" stop-opacity="0.32" />
+          <stop offset="1" class="cam-stop" stop-opacity="0.04" />
         </linearGradient>
         <clipPath id="cam-belt-clip"><rect x="64" y="176" width="632" height="96" /></clipPath>
       </defs>

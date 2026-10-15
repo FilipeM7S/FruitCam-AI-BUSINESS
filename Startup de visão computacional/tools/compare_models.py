@@ -18,7 +18,7 @@ from belt.composite import HELD_OUT_BELTS, composite
 from belt.pipeline import BeltPipeline
 from belt.simulate import SimulatedBelt
 from eval_belt import CLASSES, simulate
-from train_belt import attach_masks, cluster_bootstrap, load_crops, tree_as_five, wilson
+from training.train_belt import attach_masks, cluster_bootstrap, load_crops, tree_as_five, wilson
 
 TEST_SEED, ADAPT_SEED = 11, 23
 
@@ -100,8 +100,8 @@ def main():
     parser.add_argument("--out", default=str(ROOT / "models" / "compare_models.json"))
     args = parser.parse_args()
     start = time.perf_counter()
-    excluded = tree_as_five(ROOT / "Labels")
-    items = [it for it in load_crops(ROOT / "images", ROOT / "Labels", args.min_side, 0.15, 0, excluded) if it["split"] in ("val", "test")]
+    excluded = tree_as_five(ROOT / "datasets" / "cashew" / "labels")
+    items = [it for it in load_crops(ROOT / "datasets" / "cashew" / "images", ROOT / "datasets" / "cashew" / "labels", args.min_side, 0.15, 0, excluded) if it["split"] in ("val", "test")]
     masks = attach_masks(items)
     field = [(it, np.asarray(it["image"])) for it in items if it["split"] == "test"]
     field_24 = [(it, img) for it, img in field if min(it["inner"][2] - it["inner"][0], it["inner"][3] - it["inner"][1]) >= 24]

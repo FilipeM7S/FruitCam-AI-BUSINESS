@@ -5,6 +5,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils import timezone
 
+from ... import rollups
 from ...cameras import cameras
 from ...models import Event
 
@@ -57,4 +58,5 @@ class Command(BaseCommand):
         with transaction.atomic():
             Event.objects.filter(is_demo=True, source="camera").delete()
             Event.objects.bulk_create(rows, batch_size=5000)
+            rollups.rebuild()
         self.stdout.write(f"line demo events: {len(rows)} over {hours:g} h for {len(cameras())} cameras (lot {shift_lot} of the first camera has a rotten-rate shift)")

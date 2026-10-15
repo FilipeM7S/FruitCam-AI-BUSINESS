@@ -7,9 +7,10 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-import fruit_analytics as FA
-from test_fruit_analytics import BASE, demo_events
+from analytics import fruit_analytics as FA
+from analytics.test_fruit_analytics import BASE, demo_events
 
+from ... import rollups
 from ...models import Event
 
 SECTOR_NAMES = {"north": "norte", "south": "sul", "hills": "serra"}
@@ -45,6 +46,7 @@ class Command(BaseCommand):
                 ],
                 batch_size=5000,
             )
+            rollups.rebuild()
         self.stdout.write(f"demo events: {len(events)} ({ts.min().date()} to {ts.max().date()})")
         if "FRUITCAM_DEMO_PASSWORD" not in os.environ:
             self.stdout.write(f"demo user: {username}  password: {password}")

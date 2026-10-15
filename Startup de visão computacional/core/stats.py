@@ -1,18 +1,23 @@
 import numpy as np
 import pandas as pd
 from django.conf import settings
+from django.db import connection
+from django.db.models import CharField
+from django.db.models.functions import Cast
+from django.utils import timezone
 from scipy import stats as st
 
-import fruit_analytics as FA
+from analytics import fruit_analytics as FA
 
+from . import rollups
 from .models import Event
 
 COLUMNS = ["timestamp", "sector", "fruit_type", "is_good", "deformity_type"]
 RELIABLE_PERIODS = FA.MIN_GAUSS_N
 
 
-def load_events(source="real", sector=None, start=None, end=None):
-    qs = Event.objects.filter(needs_review=False)
+def scope(source="real", sector=None, start=None, end=None):
+    qs = Event.objects.all()
     if source != "all":
         qs = qs.filter(is_demo=source == "demo")
     if sector:
@@ -21,11 +26,44 @@ def load_events(source="real", sector=None, start=None, end=None):
         qs = qs.filter(timestamp__gte=start)
     if end:
         qs = qs.filter(timestamp__lt=end)
-    df = pd.DataFrame(list(qs.values_list(*COLUMNS, "is_demo")), columns=[*COLUMNS, "is_demo"])
-    has_demo = bool(df["is_demo"].any())
-    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True).dt.tz_convert(settings.TIME_ZONE).dt.tz_localize(None)
+    return qs
+
+
+def rows(qs, columns):
+    sql, params = qs.values_list(Cast("timestamp", CharField()), *columns[1:]).query.sql_with_params()
+    with connection.cursor() as cursor:
+        cursor.execute(sql, params)
+        df = pd.DataFrame(cursor.fetchall(), columns=columns)
+    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True, format="ISO8601").dt.tz_convert(settings.TIME_ZONE).dt.tz_localize(None)
+    return df
+
+
+def load_events(source="real", sector=None, start=None, end=None):
+    df = rows(scope(source, sector, start, end).filter(needs_review=False), [*COLUMNS, "is_demo"])
+    has_demo = bool(df["is_demo"].astype(bool).any())
     df["is_good"] = df["is_good"].astype(bool)
     return df[COLUMNS].sort_values("timestamp", kind="stable").reset_index(drop=True), has_demo
+
+
+def load(source="real", sector=None, start=None, end=None):
+    tz = timezone.get_current_timezone()
+    if rollups.usable(start) and rollups.midnight(start, tz) and rollups.midnight(end, tz):
+        return rollups.days(source, sector, start, end)
+    return load_events(source, sector, start, end)
+
+
+def total(events):
+    return int(events["n"].sum()) if "n" in events.columns else len(events)
+
+
+def weights(events):
+    return events["n"] if "n" in events.columns else pd.Series(1, index=events.index)
+
+
+def tally(events, column):
+    if "n" not in events.columns:
+        return events[column].value_counts()
+    return events["n"].groupby(events[column]).sum().sort_values(ascending=False, kind="stable")
 
 
 def clean(x):
@@ -87,7 +125,7 @@ def forecast(events, period):
         })
     return {
         "status": "ok",
-        "n": len(events),
+        "n": total(events),
         "labels": FA.period_labels(props.index, period),
         "target_period": fc["target_period"].iloc[0],
         "min_periods": FA.MIN_PERIODS,
@@ -127,22 +165,22 @@ def whole_periods(events, period):
 def growth(events, period):
     whole = whole_periods(events, period)
     if whole.empty:
-        return {"status": "insufficient_data", "n": 0, "n_periods": 0, "excluded": len(events)}
+        return {"status": "insufficient_data", "n": 0, "n_periods": 0, "excluded": total(events)}
     g = FA.growth(whole, period)
-    out = {"status": "ok" if len(g) >= 2 else "insufficient_data", "n": len(whole), "excluded": len(events) - len(whole), "n_periods": len(g), "labels": FA.period_labels(g.index, period)}
+    out = {"status": "ok" if len(g) >= 2 else "insufficient_data", "n": total(whole), "excluded": total(events) - total(whole), "n_periods": len(g), "labels": FA.period_labels(g.index, period)}
     for k in ("good", "rotten"):
         out[k] = {"count": g[k], "prop": g[f"{k}_prop"], "count_growth": g[f"{k}_count_growth"], "prop_growth": g[f"{k}_prop_growth"]}
     return out
 
 
 def recurring(events, period):
-    out = {"status": "ok", "n": len(events), "seasons": list(dict.fromkeys(FA.SEASONS.values()))}
+    out = {"status": "ok", "n": total(events), "seasons": list(dict.fromkeys(FA.SEASONS.values()))}
     for p in ("week", "month", "season"):
         whole = whole_periods(events, p)
         t = FA.recurring_growth(whole, p) if len(whole) else pd.DataFrame(columns=["good_median_growth", "rotten_median_growth", "good_n", "rotten_n"])
         out[p] = {
-            "n": len(whole),
-            "excluded": len(events) - len(whole),
+            "n": total(whole),
+            "excluded": total(events) - total(whole),
             "buckets": [str(b) for b in t.index],
             "good": t["good_median_growth"],
             "rotten": t["rotten_median_growth"],
@@ -175,26 +213,29 @@ def gaussian(events, period):
                 qq={"theoretical": osm, "observed": osr, "slope": slope, "intercept": intercept},
             )
         sectors.append(item)
-    return {"status": "ok", "n": len(events), "min_n": FA.MIN_GAUSS_N, "alpha": FA.ALPHA, "max_outside": FA.MAX_OUTSIDE, "sectors": sectors}
+    return {"status": "ok", "n": total(events), "min_n": FA.MIN_GAUSS_N, "alpha": FA.ALPHA, "max_outside": FA.MAX_OUTSIDE, "sectors": sectors}
 
 
 def overview(events, period):
     c = FA.counts(events, period)
-    rotten = events.loc[~events["is_good"], "deformity_type"].value_counts()
-    fruit = events["fruit_type"].value_counts()
+    rotten = tally(events[~events["is_good"]], "deformity_type")
+    fruit = tally(events, "fruit_type")
+    w = weights(events)
+    n, n_good = int(w.sum()), int(w[events["is_good"]].sum())
+    by_sector = pd.DataFrame({"n": w, "bad": w.where(~events["is_good"], 0)}).groupby(events["sector"]).sum()
     return {
         "status": "ok",
-        "n": len(events),
-        "n_good": int(events["is_good"].sum()),
-        "n_rotten": int((~events["is_good"]).sum()),
-        "rotten_rate": float((~events["is_good"]).mean()),
+        "n": n,
+        "n_good": n_good,
+        "n_rotten": n - n_good,
+        "rotten_rate": (n - n_good) / n,
         "n_sectors": events["sector"].nunique(),
         "top_fruit": fruit.index[0] if len(fruit) and (len(fruit) == 1 or fruit.iloc[0] > fruit.iloc[1]) else None,
         "top_deformity": rotten.index[0] if len(rotten) and (len(rotten) == 1 or rotten.iloc[0] > rotten.iloc[1]) else None,
         "labels": FA.period_labels(c.index, period),
         "good": c["good"],
         "rotten": c["rotten"],
-        "sectors": [{"sector": k, "n": len(g), "rotten_rate": float((~g["is_good"]).mean())} for k, g in events.groupby("sector")],
+        "sectors": [{"sector": k, "n": int(r["n"]), "rotten_rate": float(r["bad"] / r["n"])} for k, r in by_sector.iterrows()],
     }
 
 

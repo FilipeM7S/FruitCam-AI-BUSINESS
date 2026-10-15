@@ -1,0 +1,33 @@
+
+> build
+> vite build && node scripts/compress.mjs dist
+
+[36mvite v8.3.2 [32mbuilding client environment for production...[36m[39m
+transforming...
+✓ 62 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                2.33 kB │ gzip:  0.88 kB
+dist/assets/fraunces-display-B9ylqC9y.woff2   12.43 kB
+dist/assets/control-CE51Y5RS.css              10.47 kB │ gzip:  2.66 kB
+dist/assets/index-B1MogB9n.css                61.02 kB │ gzip: 13.40 kB
+dist/assets/format-B0JWYRC_.js                 0.87 kB │ gzip:  0.45 kB
+dist/assets/ConfidenceRing-DIvRimuP.js         2.45 kB │ gzip:  1.02 kB
+dist/assets/LoopVideo-D-jT5PEs.js              2.63 kB │ gzip:  1.31 kB
+dist/assets/CommandBar-CkhbrGPm.js             4.31 kB │ gzip:  1.97 kB
+dist/assets/WhatIf-CXJ3Udk7.js                 4.51 kB │ gzip:  2.06 kB
+dist/assets/LotReplay-BNvuV9ZK.js              4.95 kB │ gzip:  2.38 kB
+dist/assets/FruitInspector-C0HkBIvp.js         8.46 kB │ gzip:  3.46 kB
+dist/assets/HistoryView-Bcl6B4Uw.js           10.05 kB │ gzip:  3.77 kB
+dist/assets/LineView-DLlm88yC.js              14.32 kB │ gzip:  5.44 kB
+dist/assets/UploadView-C9d8UxE_.js            14.52 kB │ gzip:  5.20 kB
+dist/assets/media-BcqYbt7v.js                 17.53 kB │ gzip:  5.47 kB
+dist/assets/HowItWorksView-SyAObF5z.js        21.62 kB │ gzip:  8.48 kB
+dist/assets/CreditsView-CERHi2rZ.js           26.78 kB │ gzip:  6.67 kB
+dist/assets/DashboardView-Do6UUN2c.js         30.92 kB │ gzip: 10.00 kB
+dist/assets/index-Bou1K23h.js                 62.32 kB │ gzip: 23.87 kB
+dist/assets/strings-BXKBtGVL.js              101.00 kB │ gzip: 38.90 kB
+dist/assets/charts-DR_OpZEO.js               204.00 kB │ gzip: 69.85 kB
+
+[32m✓ built in 666ms[39m
+precompressed 28 files: 2227975 B -> 767272 B brotli (34.4%)

@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
-RULES = json.loads((ROOT / "brand" / "rules.json").read_text(encoding="utf-8"))
+RULES = json.loads((ROOT / "assets" / "brand" / "rules.json").read_text(encoding="utf-8"))
 PUBLIC = ROOT / "frontend" / "public"
 OUT = PUBLIC / "brand"
 FONTS = Path(matplotlib.get_data_path()) / "fonts" / "ttf"

@@ -22,7 +22,9 @@
           0.24,
           0.14
         ],
-        "seed": 1
+        "seed": 1,
+        "crops": "assets/media_src/belt_crops",
+        "fps": 20.0
       }
     },
     {
@@ -47,7 +49,9 @@
           0.33,
           0.12
         ],
-        "seed": 2
+        "seed": 2,
+        "crops": "assets/media_src/belt_crops",
+        "fps": 20.0
       }
     }
   ]

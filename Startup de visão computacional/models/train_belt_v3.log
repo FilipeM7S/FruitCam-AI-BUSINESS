@@ -1,0 +1,60 @@
+crops: {"train": {"ghana/baixa_qualidade": 6184, "ghana/boa": 3605, "ghana/podre": 314, "uganda_b/baixa_qualidade": 3550, "uganda_b/boa": 32, "uganda_b/podre": 348}, "val": {"ghana/baixa_qualidade": 1464, "ghana/boa": 761, "ghana/podre": 83, "uganda_b/baixa_qualidade": 909, "uganda_b/boa": 18, "uganda_b/podre": 100}, "test": {"ghana/baixa_qualidade": 1248, "ghana/boa": 768, "ghana/podre": 102, "uganda_b/baixa_qualidade": 786, "uganda_b/boa": 7, "uganda_b/podre": 105}}; photos {'train': 1995, 'val': 451, 'test': 417}
+real video backgrounds for compositing: 82 pictures, used in 50% of the composites
+epoch  0 loss 0.5873 val balanced 0.7582 recall {'boa': 0.666, 'baixa_qualidade': 0.936, 'podre': 0.672} 222 s
+epoch  1 loss 0.4138 val balanced 0.8441 recall {'boa': 0.959, 'baixa_qualidade': 0.896, 'podre': 0.678} 213 s
+epoch  2 loss 0.3603 val balanced 0.8633 recall {'boa': 0.878, 'baixa_qualidade': 0.925, 'podre': 0.787} 218 s
+epoch  3 loss 0.3124 val balanced 0.8636 recall {'boa': 0.915, 'baixa_qualidade': 0.85, 'podre': 0.825} 218 s
+epoch  4 loss 0.2849 val balanced 0.8663 recall {'boa': 0.874, 'baixa_qualidade': 0.889, 'podre': 0.836} 218 s
+epoch  5 loss 0.2630 val balanced 0.8894 recall {'boa': 0.915, 'baixa_qualidade': 0.895, 'podre': 0.858} 196 s
+epoch  6 loss 0.2386 val balanced 0.8677 recall {'boa': 0.891, 'baixa_qualidade': 0.947, 'podre': 0.765} 215 s
+epoch  7 loss 0.2120 val balanced 0.8951 recall {'boa': 0.911, 'baixa_qualidade': 0.9, 'podre': 0.874} 218 s
+epoch  8 loss 0.2018 val balanced 0.8884 recall {'boa': 0.919, 'baixa_qualidade': 0.926, 'podre': 0.82} 218 s
+epoch  9 loss 0.2069 val balanced 0.8895 recall {'boa': 0.923, 'baixa_qualidade': 0.926, 'podre': 0.82} 183 s
+C:\Users\Filipe\OneDrive\Desktop\Documentos\Estudos\Engenharia de Inteligência Artificial\ML Zoomcamp\FruitCam AI BUSINESS\Startup de visão computacional\training\train_belt.py:151: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  return float(log_t.exp())
+test n=3016 photos=417 acc=0.896 [0.8781052155155313, 0.912153467081651] balanced=0.892 baseline=0.674 ece=0.011 T=1.40 threshold for 95%: 0.76
+  ghana      n=2118 balanced=0.900 acc=0.920
+  uganda_b   n=898 balanced=0.767 acc=0.840
+{
+ "boa": {
+  "support": 775,
+  "recall": 0.8993548387096775,
+  "recall_ci95": [
+   0.8761641772250283,
+   0.9186060458305249
+  ],
+  "precision": 0.9380888290713324,
+  "precision_ci95": [
+   0.9184053566610343,
+   0.9532655880333613
+  ]
+ },
+ "baixa_qualidade": {
+  "support": 2034,
+  "recall": 0.8962635201573255,
+  "recall_ci95": [
+   0.8822567458362481,
+   0.9087763313320473
+  ],
+  "precision": 0.9743452699091395,
+  "precision_ci95": [
+   0.9661510777402363,
+   0.9805956413445492
+  ]
+ },
+ "podre": {
+  "support": 207,
+  "recall": 0.8792270531400966,
+  "recall_ci95": [
+   0.827793208488342,
+   0.9168421247759341
+  ],
+  "precision": 0.4527363184079602,
+  "precision_ci95": [
+   0.40475425403608484,
+   0.501613123745507
+  ]
+ }
+}
+exit 0

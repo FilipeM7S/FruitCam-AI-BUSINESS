@@ -13,6 +13,21 @@ export function peakIndex(values) {
   return k;
 }
 
+export function quantile(sorted, q) {
+  const pos = (sorted.length - 1) * q;
+  const lo = Math.floor(pos);
+  return sorted[lo] + (sorted[Math.ceil(pos)] - sorted[lo]) * (pos - lo);
+}
+
+export function robustLimit(values, floor = 1) {
+  const v = values.filter((x) => x != null && Number.isFinite(x)).map(Math.abs).sort((a, b) => a - b);
+  if (!v.length) return { max: floor, clipped: false };
+  const top = Math.max(floor, v[v.length - 1]);
+  if (v.length < 12) return { max: top, clipped: false };
+  const q = Math.max(floor, quantile(v, 0.95));
+  return top > q * 3 ? { max: q * 1.6, clipped: true } : { max: top, clipped: false };
+}
+
 export function deformitySeries(d) {
   const top = d.weeks.map((_, j) => Math.max(0, ...d.types.map((type) => d.counts[type][j])));
   const latest = lastIndex(d.n_rotten, (n) => n > 0);
@@ -134,6 +149,7 @@ export function overviewSeries(o) {
     good: o.good,
     rotten: o.rotten,
     totals,
+    volume: robustLimit(totals),
     rate: totals.map((n, i) => (n ? o.rotten[i] / n : null)),
     total: o.n,
     rottenRate: o.rotten_rate,

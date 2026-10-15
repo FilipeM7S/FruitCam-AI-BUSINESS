@@ -1,0 +1,2052 @@
+{
+ "what": "simulated domain shift: the classifier was trained on field photos; the target is the same fruit cut out and pasted on frames of real sorting-line video. Nothing here was measured on a real belt.",
+ "model": "belt_v3.pt",
+ "flag": "FRUITCAM_TTST=1 set by this tool only",
+ "stream_unlabelled_for_the_model": {
+  "crops": 1284,
+  "photos": 221,
+  "split": "validation photos, first half by hash",
+  "per_class": {
+   "boa": 400,
+   "baixa_qualidade": 800,
+   "podre": 84
+  }
+ },
+ "control_never_trained_on": {
+  "crops": 705,
+  "photos": 204,
+  "split": "validation photos, second half by hash",
+  "per_class": {
+   "boa": 206,
+   "baixa_qualidade": 400,
+   "podre": 99
+  }
+ },
+ "target_test": {
+  "crops": 2568,
+  "photos": 416,
+  "split": "test photos",
+  "per_class": {
+   "boa": 775,
+   "baixa_qualidade": 1586,
+   "podre": 207
+  }
+ },
+ "photos_shared": {
+  "stream_and_control": 0,
+  "stream_and_test": 0,
+  "control_and_test": 0
+ },
+ "background_pictures": {
+  "stream_and_control": 29,
+  "target_test": 29,
+  "shared": 0,
+  "from": "held-out citrus and apple clips; none was used to train the classifier"
+ },
+ "settings": {
+  "threshold": 0.9,
+  "per_class": 400,
+  "min_per_class": 30,
+  "lr": 0.0001,
+  "steps": 60,
+  "max_update": 0.05,
+  "tolerance": 0.005,
+  "corrected": 0.1,
+  "flipped": 0.3,
+  "bootstrap": 1000,
+  "seeds": [
+   0,
+   1,
+   2
+  ]
+ },
+ "cases": [
+  {
+   "case": "pseudo-labels only",
+   "seed": 0,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 454,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 0,
+    "labels_flipped_on_purpose": 0,
+    "wrong_labels_in_the_buffer": 25,
+    "buffer_size": 454,
+    "counts": {
+     "boa": {
+      "pseudo": 145,
+      "operator": 0
+     },
+     "baixa_qualidade": {
+      "pseudo": 253,
+      "operator": 0
+     },
+     "podre": {
+      "pseudo": 56,
+      "operator": 0
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:32:19",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "accepted",
+    "reason": "no drop on the control set beyond the tolerance",
+    "buffer": {
+     "boa": {
+      "pseudo": 145,
+      "operator": 0
+     },
+     "baixa_qualidade": {
+      "pseudo": 253,
+      "operator": 0
+     },
+     "podre": {
+      "pseudo": 56,
+      "operator": 0
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     0.2547457814216614,
+     0.0017020049272105098
+    ],
+    "relative_change_before_limit": 0.06250525265932083,
+    "max_update": 0.05,
+    "relative_change_applied": 0.05,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.7712683468994149,
+     "rotten_recall": 0.797979797979798,
+     "n_rotten": 99,
+     "accuracy": 0.750354609929078
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.7798144260434744,
+    "balanced_accuracy_ci95": [
+     0.7523355984681246,
+     0.8052453066414789
+    ],
+    "recall": {
+     "boa": 0.792258064516129,
+     "baixa_qualidade": 0.7162673392181589,
+     "podre": 0.8309178743961353
+    },
+    "rotten_recall": {
+     "k": 172,
+     "n": 207,
+     "ci95": [
+      0.7739368040112821,
+      0.8758405250155065
+     ]
+    },
+    "rotten_called_good": {
+     "k": 12,
+     "n": 207,
+     "ci95": [
+      0.0334694005481824,
+      0.09857986067880795
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    -0.004018722789436559,
+    0.02365873029827123
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8834481430453196,
+    "balanced_accuracy_ci95": [
+     0.8600201162850436,
+     0.9052340398752249
+    ],
+    "recall": {
+     "boa": 0.8980645161290323,
+     "baixa_qualidade": 0.8682219419924337,
+     "podre": 0.8840579710144928
+    },
+    "rotten_recall": {
+     "k": 183,
+     "n": 207,
+     "ci95": [
+      0.8332830743102526,
+      0.9208380593777721
+     ]
+    },
+    "rotten_called_good": {
+     "k": 9,
+     "n": 207,
+     "ci95": [
+      0.023040045570312695,
+      0.08055181438543144
+     ]
+    }
+   },
+   "seconds": 39.4
+  },
+  {
+   "case": "with operator corrections",
+   "seed": 0,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 410,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 128,
+    "labels_flipped_on_purpose": 0,
+    "wrong_labels_in_the_buffer": 23,
+    "buffer_size": 538,
+    "counts": {
+     "boa": {
+      "pseudo": 125,
+      "operator": 44
+     },
+     "baixa_qualidade": {
+      "pseudo": 231,
+      "operator": 79
+     },
+     "podre": {
+      "pseudo": 54,
+      "operator": 5
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:32:57",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "rolled_back",
+    "reason": "rotten_recall fell by more than 0.005 on the control set",
+    "buffer": {
+     "boa": {
+      "pseudo": 125,
+      "operator": 44
+     },
+     "baixa_qualidade": {
+      "pseudo": 231,
+      "operator": 79
+     },
+     "podre": {
+      "pseudo": 54,
+      "operator": 5
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     0.36478161811828613,
+     0.027652226388454437
+    ],
+    "relative_change_before_limit": 0.06227521225810051,
+    "max_update": 0.05,
+    "relative_change_applied": 0.0,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.8058575234546108,
+     "rotten_recall": 0.6868686868686869,
+     "n_rotten": 99,
+     "accuracy": 0.8326241134751773
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    0.0,
+    0.0
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_if_the_update_had_been_kept": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.7941812046513953,
+    "balanced_accuracy_ci95": [
+     0.7666978866813728,
+     0.8211662771438664
+    ],
+    "recall": {
+     "boa": 0.8361290322580646,
+     "baixa_qualidade": 0.8266078184110971,
+     "podre": 0.7198067632850241
+    },
+    "rotten_recall": {
+     "k": 149,
+     "n": 207,
+     "ci95": [
+      0.6550510784862474,
+      0.7765528407943202
+     ]
+    },
+    "rotten_called_good": {
+     "k": 15,
+     "n": 207,
+     "ci95": [
+      0.0444026567878762,
+      0.11610400571036036
+     ]
+    }
+   },
+   "target_change_if_kept_ci95_paired_by_photo": [
+    0.0064529571668432125,
+    0.0440033690367255
+   ],
+   "seconds": 48.3
+  },
+  {
+   "case": "labels flipped on purpose",
+   "seed": 0,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 318,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 0,
+    "labels_flipped_on_purpose": 136,
+    "wrong_labels_in_the_buffer": 152,
+    "buffer_size": 454,
+    "counts": {
+     "boa": {
+      "pseudo": 104,
+      "operator": 33
+     },
+     "baixa_qualidade": {
+      "pseudo": 177,
+      "operator": 30
+     },
+     "podre": {
+      "pseudo": 37,
+      "operator": 73
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:33:45",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "rolled_back",
+    "reason": "balanced_accuracy fell by more than 0.005 on the control set",
+    "buffer": {
+     "boa": {
+      "pseudo": 104,
+      "operator": 33
+     },
+     "baixa_qualidade": {
+      "pseudo": 177,
+      "operator": 30
+     },
+     "podre": {
+      "pseudo": 37,
+      "operator": 73
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     4.162445545196533,
+     0.8256831765174866
+    ],
+    "relative_change_before_limit": 0.06905497610569,
+    "max_update": 0.05,
+    "relative_change_applied": 0.0,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.6621786636592462,
+     "rotten_recall": 0.7676767676767676,
+     "n_rotten": 99,
+     "accuracy": 0.6283687943262412
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    0.0,
+    0.0
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_if_the_update_had_been_kept": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.6704830872020994,
+    "balanced_accuracy_ci95": [
+     0.6432678783155399,
+     0.699694134782581
+    ],
+    "recall": {
+     "boa": 0.6012903225806452,
+     "baixa_qualidade": 0.5889029003783102,
+     "podre": 0.821256038647343
+    },
+    "rotten_recall": {
+     "k": 170,
+     "n": 207,
+     "ci95": [
+      0.7633566729130863,
+      0.8674490552662049
+     ]
+    },
+    "rotten_called_good": {
+     "k": 13,
+     "n": 207,
+     "ci95": [
+      0.03706559407351415,
+      0.10446946757722494
+     ]
+    }
+   },
+   "target_change_if_kept_ci95_paired_by_photo": [
+    -0.11785682095362199,
+    -0.08205105294382418
+   ],
+   "seconds": 53.7
+  },
+  {
+   "case": "pseudo-labels only",
+   "seed": 1,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 454,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 0,
+    "labels_flipped_on_purpose": 0,
+    "wrong_labels_in_the_buffer": 25,
+    "buffer_size": 454,
+    "counts": {
+     "boa": {
+      "pseudo": 145,
+      "operator": 0
+     },
+     "baixa_qualidade": {
+      "pseudo": 253,
+      "operator": 0
+     },
+     "podre": {
+      "pseudo": 56,
+      "operator": 0
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:34:39",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "accepted",
+    "reason": "no drop on the control set beyond the tolerance",
+    "buffer": {
+     "boa": {
+      "pseudo": 145,
+      "operator": 0
+     },
+     "baixa_qualidade": {
+      "pseudo": 253,
+      "operator": 0
+     },
+     "podre": {
+      "pseudo": 56,
+      "operator": 0
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     0.1027839407324791,
+     0.0017414770554751158
+    ],
+    "relative_change_before_limit": 0.06299848854541779,
+    "max_update": 0.05,
+    "relative_change_applied": 0.05,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.7712683468994149,
+     "rotten_recall": 0.797979797979798,
+     "n_rotten": 99,
+     "accuracy": 0.750354609929078
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.7830740893367064,
+    "balanced_accuracy_ci95": [
+     0.7563576882732931,
+     0.8069612882933523
+    ],
+    "recall": {
+     "boa": 0.7974193548387096,
+     "baixa_qualidade": 0.7112232030264817,
+     "podre": 0.8405797101449275
+    },
+    "rotten_recall": {
+     "k": 174,
+     "n": 207,
+     "ci95": [
+      0.7845744801043675,
+      0.8841744497699184
+     ]
+    },
+    "rotten_called_good": {
+     "k": 13,
+     "n": 207,
+     "ci95": [
+      0.03706559407351415,
+      0.10446946757722494
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    -0.0021674287910779465,
+    0.027731313328363105
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8813336108119176,
+    "balanced_accuracy_ci95": [
+     0.8592475464598324,
+     0.9013456212631811
+    ],
+    "recall": {
+     "boa": 0.896774193548387,
+     "baixa_qualidade": 0.8486759142496847,
+     "podre": 0.8985507246376812
+    },
+    "rotten_recall": {
+     "k": 186,
+     "n": 207,
+     "ci95": [
+      0.8498938114090119,
+      0.932684723550259
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "seconds": 38.1
+  },
+  {
+   "case": "with operator corrections",
+   "seed": 1,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 405,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 128,
+    "labels_flipped_on_purpose": 0,
+    "wrong_labels_in_the_buffer": 23,
+    "buffer_size": 533,
+    "counts": {
+     "boa": {
+      "pseudo": 126,
+      "operator": 45
+     },
+     "baixa_qualidade": {
+      "pseudo": 224,
+      "operator": 78
+     },
+     "podre": {
+      "pseudo": 55,
+      "operator": 5
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:35:21",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "rolled_back",
+    "reason": "rotten_recall fell by more than 0.005 on the control set",
+    "buffer": {
+     "boa": {
+      "pseudo": 126,
+      "operator": 45
+     },
+     "baixa_qualidade": {
+      "pseudo": 224,
+      "operator": 78
+     },
+     "podre": {
+      "pseudo": 55,
+      "operator": 5
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     0.08657057583332062,
+     0.06367620825767517
+    ],
+    "relative_change_before_limit": 0.061193760484457016,
+    "max_update": 0.05,
+    "relative_change_applied": 0.0,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.7991571867542743,
+     "rotten_recall": 0.6767676767676768,
+     "n_rotten": 99,
+     "accuracy": 0.825531914893617
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.74318796211885,
+     0.7957615739925071
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    0.0,
+    0.0
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8641050595441568,
+     0.9116141674043013
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_if_the_update_had_been_kept": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.79504267215807,
+    "balanced_accuracy_ci95": [
+     0.7689780291289136,
+     0.8211256486228179
+    ],
+    "recall": {
+     "boa": 0.8748387096774194,
+     "baixa_qualidade": 0.8291298865069356,
+     "podre": 0.6811594202898551
+    },
+    "rotten_recall": {
+     "k": 141,
+     "n": 207,
+     "ci95": [
+      0.6148677877154215,
+      0.7408497281751562
+     ]
+    },
+    "rotten_called_good": {
+     "k": 21,
+     "n": 207,
+     "ci95": [
+      0.06731527644974092,
+      0.1501061885909881
+     ]
+    }
+   },
+   "target_change_if_kept_ci95_paired_by_photo": [
+    0.006359178604261656,
+    0.043951896822862324
+   ],
+   "seconds": 54.0
+  },
+  {
+   "case": "labels flipped on purpose",
+   "seed": 1,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 318,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 0,
+    "labels_flipped_on_purpose": 136,
+    "wrong_labels_in_the_buffer": 154,
+    "buffer_size": 454,
+    "counts": {
+     "boa": {
+      "pseudo": 105,
+      "operator": 44
+     },
+     "baixa_qualidade": {
+      "pseudo": 175,
+      "operator": 27
+     },
+     "podre": {
+      "pseudo": 38,
+      "operator": 65
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:36:13",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "rolled_back",
+    "reason": "balanced_accuracy fell by more than 0.005 on the control set",
+    "buffer": {
+     "boa": {
+      "pseudo": 105,
+      "operator": 44
+     },
+     "baixa_qualidade": {
+      "pseudo": 175,
+      "operator": 27
+     },
+     "podre": {
+      "pseudo": 38,
+      "operator": 65
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     2.5020911693573,
+     1.0560269355773926
+    ],
+    "relative_change_before_limit": 0.06917059421539307,
+    "max_update": 0.05,
+    "relative_change_applied": 0.0,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.6190502108463274,
+     "rotten_recall": 0.7878787878787878,
+     "n_rotten": 99,
+     "accuracy": 0.573049645390071
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.74318796211885,
+     0.7957615739925071
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    0.0,
+    0.0
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8641050595441568,
+     0.9116141674043013
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_if_the_update_had_been_kept": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.6459257988464987,
+    "balanced_accuracy_ci95": [
+     0.6215345966657541,
+     0.6697028322641765
+    ],
+    "recall": {
+     "boa": 0.5329032258064517,
+     "baixa_qualidade": 0.5353089533417402,
+     "podre": 0.8695652173913043
+    },
+    "rotten_recall": {
+     "k": 180,
+     "n": 207,
+     "ci95": [
+      0.8168771095452556,
+      0.9087866228715229
+     ]
+    },
+    "rotten_called_good": {
+     "k": 11,
+     "n": 207,
+     "ci95": [
+      0.02992841238893862,
+      0.09263504841430299
+     ]
+    }
+   },
+   "target_change_if_kept_ci95_paired_by_photo": [
+    -0.14377751304109862,
+    -0.10509864247038597
+   ],
+   "seconds": 53.5
+  },
+  {
+   "case": "pseudo-labels only",
+   "seed": 2,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 454,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 0,
+    "labels_flipped_on_purpose": 0,
+    "wrong_labels_in_the_buffer": 25,
+    "buffer_size": 454,
+    "counts": {
+     "boa": {
+      "pseudo": 145,
+      "operator": 0
+     },
+     "baixa_qualidade": {
+      "pseudo": 253,
+      "operator": 0
+     },
+     "podre": {
+      "pseudo": 56,
+      "operator": 0
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:37:05",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "accepted",
+    "reason": "no drop on the control set beyond the tolerance",
+    "buffer": {
+     "boa": {
+      "pseudo": 145,
+      "operator": 0
+     },
+     "baixa_qualidade": {
+      "pseudo": 253,
+      "operator": 0
+     },
+     "podre": {
+      "pseudo": 56,
+      "operator": 0
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     0.12099853903055191,
+     0.0033443854190409184
+    ],
+    "relative_change_before_limit": 0.06253961473703384,
+    "max_update": 0.05,
+    "relative_change_applied": 0.05,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.7746838939557387,
+     "rotten_recall": 0.8080808080808081,
+     "n_rotten": 99,
+     "accuracy": 0.7531914893617021
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.7774924543314858,
+    "balanced_accuracy_ci95": [
+     0.7516616523356583,
+     0.801812082371556
+    ],
+    "recall": {
+     "boa": 0.7819354838709678,
+     "baixa_qualidade": 0.7099621689785625,
+     "podre": 0.8405797101449275
+    },
+    "rotten_recall": {
+     "k": 174,
+     "n": 207,
+     "ci95": [
+      0.7845744801043675,
+      0.8841744497699184
+     ]
+    },
+    "rotten_called_good": {
+     "k": 12,
+     "n": 207,
+     "ci95": [
+      0.0334694005481824,
+      0.09857986067880795
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    -0.008087857022524366,
+    0.022403084883783356
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8850261144947646,
+    "balanced_accuracy_ci95": [
+     0.8625709497989608,
+     0.9061785691654628
+    ],
+    "recall": {
+     "boa": 0.8941935483870967,
+     "baixa_qualidade": 0.8575031525851198,
+     "podre": 0.9033816425120773
+    },
+    "rotten_recall": {
+     "k": 187,
+     "n": 207,
+     "ci95": [
+      0.8554823761887428,
+      0.9365819591942769
+     ]
+    },
+    "rotten_called_good": {
+     "k": 7,
+     "n": 207,
+     "ci95": [
+      0.016475432849968545,
+      0.06814482625827811
+     ]
+    }
+   },
+   "seconds": 37.6
+  },
+  {
+   "case": "with operator corrections",
+   "seed": 2,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 409,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 128,
+    "labels_flipped_on_purpose": 0,
+    "wrong_labels_in_the_buffer": 20,
+    "buffer_size": 537,
+    "counts": {
+     "boa": {
+      "pseudo": 128,
+      "operator": 35
+     },
+     "baixa_qualidade": {
+      "pseudo": 235,
+      "operator": 82
+     },
+     "podre": {
+      "pseudo": 46,
+      "operator": 11
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:37:43",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "rolled_back",
+    "reason": "rotten_recall fell by more than 0.005 on the control set",
+    "buffer": {
+     "boa": {
+      "pseudo": 128,
+      "operator": 35
+     },
+     "baixa_qualidade": {
+      "pseudo": 235,
+      "operator": 82
+     },
+     "podre": {
+      "pseudo": 46,
+      "operator": 11
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     0.20839647948741913,
+     0.04960505664348602
+    ],
+    "relative_change_before_limit": 0.06250452995300293,
+    "max_update": 0.05,
+    "relative_change_applied": 0.0,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.784676293681148,
+     "rotten_recall": 0.6868686868686869,
+     "n_rotten": 99,
+     "accuracy": 0.8099290780141843
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7443002301270196,
+     0.7946141002335869
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    0.0,
+    0.0
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647595245557758,
+     0.913514770545876
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_if_the_update_had_been_kept": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8038396813109986,
+    "balanced_accuracy_ci95": [
+     0.7751941443412037,
+     0.8301711424809537
+    ],
+    "recall": {
+     "boa": 0.8270967741935484,
+     "baixa_qualidade": 0.8114754098360656,
+     "podre": 0.7729468599033816
+    },
+    "rotten_recall": {
+     "k": 160,
+     "n": 207,
+     "ci95": [
+      0.7112087267736573,
+      0.8247389971681465
+     ]
+    },
+    "rotten_called_good": {
+     "k": 13,
+     "n": 207,
+     "ci95": [
+      0.03706559407351415,
+      0.10446946757722494
+     ]
+    }
+   },
+   "target_change_if_kept_ci95_paired_by_photo": [
+    0.015449406822886095,
+    0.05109277213425241
+   ],
+   "seconds": 49.4
+  },
+  {
+   "case": "labels flipped on purpose",
+   "seed": 2,
+   "buffer": {
+    "stream": 1284,
+    "accepted_as_pseudo_label": 318,
+    "refused_below_the_confidence_threshold": 830,
+    "pseudo_labels_wrong_before_any_correction": 25,
+    "operator_corrections": 0,
+    "labels_flipped_on_purpose": 136,
+    "wrong_labels_in_the_buffer": 154,
+    "buffer_size": 454,
+    "counts": {
+     "boa": {
+      "pseudo": 105,
+      "operator": 47
+     },
+     "baixa_qualidade": {
+      "pseudo": 171,
+      "operator": 24
+     },
+     "podre": {
+      "pseudo": 42,
+      "operator": 65
+     }
+    }
+   },
+   "update": {
+    "at": "2026-10-12T22:38:31",
+    "update": 1,
+    "base_model": "belt_v3.pt",
+    "status": "rolled_back",
+    "reason": "balanced_accuracy and rotten_recall fell by more than 0.005 on the control set",
+    "buffer": {
+     "boa": {
+      "pseudo": 105,
+      "operator": 47
+     },
+     "baixa_qualidade": {
+      "pseudo": 171,
+      "operator": 24
+     },
+     "podre": {
+      "pseudo": 42,
+      "operator": 65
+     }
+    },
+    "buffer_threshold": 0.9,
+    "steps": 60,
+    "lr": 0.0001,
+    "loss_first_last": [
+     3.0165698528289795,
+     0.760709285736084
+    ],
+    "relative_change_before_limit": 0.06878872215747833,
+    "max_update": 0.05,
+    "relative_change_applied": 0.0,
+    "control_before": {
+     "n": 705,
+     "balanced_accuracy": 0.7516191036579386,
+     "rotten_recall": 0.7575757575757576,
+     "n_rotten": 99,
+     "accuracy": 0.7475177304964539
+    },
+    "control_after": {
+     "n": 705,
+     "balanced_accuracy": 0.6423054983491876,
+     "rotten_recall": 0.7474747474747475,
+     "n_rotten": 99,
+     "accuracy": 0.6085106382978723
+    }
+   },
+   "target_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7430318093843162,
+     0.797084376691919
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.769768480280057,
+    "balanced_accuracy_ci95": [
+     0.7443002301270196,
+     0.7946141002335869
+    ],
+    "recall": {
+     "boa": 0.7329032258064516,
+     "baixa_qualidade": 0.7503152585119798,
+     "podre": 0.8260869565217391
+    },
+    "rotten_recall": {
+     "k": 171,
+     "n": 207,
+     "ci95": [
+      0.7686397791027388,
+      0.8716517495003011
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_gain_ci95_paired_by_photo": [
+    0.0,
+    0.0
+   ],
+   "source_test_before": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647668735918508,
+     0.9121367990997404
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "source_test_after": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.8892036318776254,
+    "balanced_accuracy_ci95": [
+     0.8647595245557758,
+     0.913514770545876
+    ],
+    "recall": {
+     "boa": 0.8993548387096775,
+     "baixa_qualidade": 0.8890290037831021,
+     "podre": 0.8792270531400966
+    },
+    "rotten_recall": {
+     "k": 182,
+     "n": 207,
+     "ci95": [
+      0.827793208488342,
+      0.9168421247759341
+     ]
+    },
+    "rotten_called_good": {
+     "k": 8,
+     "n": 207,
+     "ci95": [
+      0.01971105324785778,
+      0.07439500628413759
+     ]
+    }
+   },
+   "target_test_if_the_update_had_been_kept": {
+    "n": 2568,
+    "photos": 416,
+    "balanced_accuracy": 0.6671132997594728,
+    "balanced_accuracy_ci95": [
+     0.6421044188303664,
+     0.6949115486640453
+    ],
+    "recall": {
+     "boa": 0.5909677419354838,
+     "baixa_qualidade": 0.5939470365699874,
+     "podre": 0.8164251207729468
+    },
+    "rotten_recall": {
+     "k": 169,
+     "n": 207,
+     "ci95": [
+      0.7580870563806923,
+      0.86323287137485
+     ]
+    },
+    "rotten_called_good": {
+     "k": 15,
+     "n": 207,
+     "ci95": [
+      0.0444026567878762,
+      0.11610400571036036
+     ]
+    }
+   },
+   "target_change_if_kept_ci95_paired_by_photo": [
+    -0.12238787061806763,
+    -0.08228593411206317
+   ],
+   "seconds": 48.1
+  }
+ ],
+ "seconds": 450.0
+}

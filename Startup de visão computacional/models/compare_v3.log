@@ -1,0 +1,4 @@
+test crops 3016 from 417 photos; legacy crops 187 from 69 photos; real video backgrounds for testing: 58 pictures; prepared in 13 s
+belt_v2      balanced accuracy: field_photo_test 0.564  held_out_blue_belts 0.535  held_out_real_video_backgrounds 0.396  legacy_first_batch_test 0.418  | same answer on blue belts 0.606, on real video backgrounds 0.367  [45 s]
+belt_v3      balanced accuracy: field_photo_test 0.892  held_out_blue_belts 0.826  held_out_real_video_backgrounds 0.785  legacy_first_batch_test 0.317  | same answer on blue belts 0.891, on real video backgrounds 0.816  [78 s]
+exit 0

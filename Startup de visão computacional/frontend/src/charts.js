@@ -14,20 +14,25 @@ import {
 } from "chart.js";
 import { fill, t } from "./strings.js";
 import { dec, deformityName, fruitName, num, pct, periodLabel, prob, signedPct } from "./format.js";
+import { reducedMotion } from "./media.js";
 import { lastIndex } from "./series.js";
 
+const css = getComputedStyle(document.documentElement);
+export const token = (name) => css.getPropertyValue(name).trim();
+
 export const C = {
-  good: "#2fbf8f",
-  rotten: "#E8742A",
-  poor: "#E6B13C",
-  review: "#CC79A7",
-  up: "#56B4E9",
-  down: "#E69F00",
-  hist: "#56B4E9",
-  deformity: ["#E8742A", "#E6B13C", "#CC79A7", "#56B4E9", "#9ad0f0"],
-  ink: "#e4eee8",
-  muted: "#9fb3a7",
-  grid: "rgba(207, 224, 214, 0.12)",
+  good: token("--good"),
+  rotten: token("--rotten"),
+  poor: token("--poor"),
+  review: token("--review"),
+  up: token("--info"),
+  down: token("--down"),
+  hist: token("--info"),
+  deformity: ["--rotten", "--poor", "--review", "--info", "--deformity-5"].map(token),
+  ink: token("--chart-ink"),
+  muted: token("--chart-muted"),
+  grid: token("--chart-grid"),
+  hatch: token("--chart-hatch"),
 };
 
 export function alpha(hex, a) {
@@ -35,7 +40,7 @@ export function alpha(hex, a) {
   return `rgba(${v >> 16}, ${(v >> 8) & 255}, ${v & 255}, ${a})`;
 }
 
-export const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+export const reduced = reducedMotion;
 const narrow = () => typeof window !== "undefined" && window.innerWidth < 520;
 
 let batch = 0;
@@ -94,7 +99,7 @@ const dim = {
 };
 
 Chart.register(BarController, BarElement, CategoryScale, Filler, Legend, LinearScale, LineController, LineElement, PointElement, ScatterController, Tooltip, marks, dim);
-Chart.defaults.font.family = getComputedStyle(document.documentElement).getPropertyValue("--font").trim() || "system-ui, sans-serif";
+Chart.defaults.font.family = token("--font") || "system-ui, sans-serif";
 Chart.defaults.font.size = 12;
 Chart.defaults.color = C.muted;
 Chart.defaults.borderColor = C.grid;
@@ -103,12 +108,12 @@ Chart.defaults.plugins.legend.labels.boxWidth = 12;
 Chart.defaults.plugins.legend.labels.boxHeight = 12;
 Chart.defaults.plugins.legend.labels.useBorderRadius = true;
 Chart.defaults.plugins.legend.labels.borderRadius = 3;
-Chart.defaults.plugins.tooltip.backgroundColor = "#0b1511";
-Chart.defaults.plugins.tooltip.borderColor = "rgba(159, 211, 177, 0.35)";
+Chart.defaults.plugins.tooltip.backgroundColor = token("--chart-tip-bg");
+Chart.defaults.plugins.tooltip.borderColor = token("--chart-tip-border");
 Chart.defaults.plugins.tooltip.borderWidth = 1;
-Chart.defaults.plugins.tooltip.titleColor = "#e4eee8";
-Chart.defaults.plugins.tooltip.bodyColor = "#cfe0d6";
-Chart.defaults.plugins.tooltip.footerColor = "#9fb3a7";
+Chart.defaults.plugins.tooltip.titleColor = C.ink;
+Chart.defaults.plugins.tooltip.bodyColor = token("--chart-tip-body");
+Chart.defaults.plugins.tooltip.footerColor = C.muted;
 Chart.defaults.plugins.tooltip.padding = 10;
 Chart.defaults.plugins.tooltip.cornerRadius = 8;
 
@@ -295,6 +300,7 @@ export function fruitsSpec(s) {
         plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => fill(t.cards.fruits.tip, { n: num(c.raw), share: pct(s.shares[c.dataIndex]) }) } } },
       },
     },
+    drill: (i) => ({ title: fruitName(s.labels[i]), query: { fruit_type: s.labels[i] }, n: s.values[i] }),
     finding: s.tie ? t.cards.fruits.findingTie : win >= 0 ? fill(t.cards.fruits.finding, { fruit: fruitName(s.labels[win]), n: num(s.values[win]), share: pct(s.shares[win]) }) : t.dashboard.noData,
     overlays: (chart) =>
       s.values
@@ -337,7 +343,7 @@ export function growthSpec(s, kind, range, period) {
               generateLabels: () => [
                 { text: t.cards.growth.up, fillStyle: C.up, strokeStyle: C.up, lineWidth: 0, datasetIndex: 0 },
                 { text: t.cards.growth.down, fillStyle: C.down, strokeStyle: C.down, lineWidth: 0, datasetIndex: 0 },
-                { text: t.cards.growth.prop, fillStyle: "rgba(0,0,0,0)", strokeStyle: C.ink, lineWidth: 1.5, lineDash: [4, 3], datasetIndex: 1 },
+                { text: t.cards.growth.prop, fillStyle: "transparent", strokeStyle: C.ink, lineWidth: 1.5, lineDash: [4, 3], datasetIndex: 1 },
               ],
             },
           },
@@ -423,8 +429,8 @@ export function gaussianSpecs(s) {
     { from: s.sigma2[0], to: s.sigma2[1], color: alpha(C.up, 0.07) },
     { from: s.sigma1[0], to: s.sigma1[1], color: alpha(C.up, 0.13) },
   ];
-  if (s.range[0] < 0) bands.push({ from: s.range[0], to: 0, color: hatch("rgba(207, 224, 214, 0.28)") });
-  if (s.range[1] > 1) bands.push({ from: 1, to: s.range[1], color: hatch("rgba(207, 224, 214, 0.28)") });
+  if (s.range[0] < 0) bands.push({ from: s.range[0], to: 0, color: hatch(C.hatch) });
+  if (s.range[1] > 1) bands.push({ from: 1, to: s.range[1], color: hatch(C.hatch) });
   const tallest = s.bins.reduce((k, b, i) => (b.y > s.bins[k].y ? i : k), 0);
   const stamp = (chart) => ({ key: "stamp", kind: "stamp", x: chart.chartArea.right - 4, y: chart.chartArea.top + 4, place: "below-left", text: t.cards.gaussian.poor, sub: s.shapiroP != null ? fill(t.cards.gaussian.poorSub, { p: dec(s.shapiroP) }) : "" });
   const hist = {
@@ -507,6 +513,7 @@ export function overviewSpecs(s, period) {
   const last = lastIndex(s.rate);
   const counter = (key, value, format, label) => (chart) => [{ key, kind: "counter", value, format, x: chart.chartArea.left, y: 0, place: "below-right", text: label }];
   const head = { padding: { top: 48 } };
+  const cut = s.volume?.clipped ? Math.ceil(s.volume.max) : null;
   const volume = {
     config: {
       type: "bar",
@@ -520,12 +527,16 @@ export function overviewSpecs(s, period) {
       options: {
         layout: head,
         interaction: { mode: "index", intersect: false },
-        scales: { x: { stacked: true, ...xCat() }, y: { stacked: true, beginAtZero: true, ticks: { callback: (v) => num(v), maxTicksLimit: 4 } } },
+        scales: { x: { stacked: true, ...xCat() }, y: { stacked: true, beginAtZero: true, ...(cut ? { max: cut } : {}), ticks: { callback: (v) => num(v), maxTicksLimit: 4 } } },
         plugins: { legend: { position: "bottom" }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${num(c.raw)}`, footer: (items) => fill(t.charts.nFruits, { n: num(s.totals[items[0].dataIndex]) }) } } },
       },
     },
     finding: fill(t.cards.overview.findingVolume, { n: num(s.total) }),
-    overlays: counter("total", s.total, num, t.cards.overview.total),
+    overlays: (chart) => {
+      const out = counter("total", s.total, num, t.cards.overview.total)(chart);
+      if (cut) s.totals.forEach((v, i) => v > cut && out.push({ key: `cut${i}`, kind: "callout", tone: "rotten", x: chart.scales.x.getPixelForValue(i), y: chart.chartArea.top + 4, place: "below", text: `${num(v)} ▲`, sub: t.badges.clipped }));
+      return out;
+    },
   };
   const rate = {
     config: {
@@ -556,6 +567,7 @@ export function overviewSpecs(s, period) {
         plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => `${t.cards.overview.rate}: ${pct(c.raw)}`, footer: (items) => fill(t.charts.nFruits, { n: num(s.sectorN[items[0].dataIndex]) }) } } },
       },
     },
+    drill: (i) => ({ title: s.sectors[i], query: { sector: s.sectors[i] }, n: s.sectorN[i] }),
     finding: s.sectors.length ? fill(t.cards.overview.findingSectors, { sector: s.sectors[0], v: pct(s.sectorRates[0]) }) : t.dashboard.noData,
     overlays: (chart) => {
       const out = counter("count", s.sectors.length, num, t.cards.overview.sectorsCounter)(chart);

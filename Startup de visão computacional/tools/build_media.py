@@ -7,12 +7,12 @@ import tempfile
 from pathlib import Path
 
 import imageio_ffmpeg
-from urllib.parse import unquote
-
 from PIL import Image
 
+import build_legal
+
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "media_src"
+SRC = ROOT / "assets" / "media_src"
 PUBLIC = ROOT / "frontend" / "public"
 OUT = PUBLIC / "media"
 FRONT = ROOT / "frontend" / "src"
@@ -23,6 +23,12 @@ FORMATS = {
 }
 BUDGET = {"avif": 160_000, "webp": 220_000, "jpeg": 300_000}
 FLOOR = {"avif": 30, "webp": 50, "jpeg": 55}
+
+
+CLIPS = {
+    "demo": ("demo-video", "Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)"),
+    "primeira-analise": ("primeira-analise-video", "Vídeo da primeira análise, no Histórico vazio (aparece na interface gravada)"),
+}
 
 
 def digest(data):
@@ -73,12 +79,6 @@ def copy_hashed(src, stem):
     return rel
 
 
-def credit(asset, meta, catalog):
-    kind = "Vídeo" if meta.get("kind") == "video" else "Foto"
-    terms = "domínio público" if meta["license"].lower() == "public domain" else meta["license"]
-    return f"{kind}: {catalog['assets'][asset]['creditName']} · {terms} · Wikimedia Commons"
-
-
 def clip(master, start, duration, crop, width, out_stem, work):
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
     vf = (f"crop={crop}," if crop else "") + f"scale={width}:-2:flags=lanczos,fps=25,format=yuv420p"
@@ -94,19 +94,14 @@ def clip(master, start, duration, crop, width, out_stem, work):
     return files, poster
 
 
-def attribution(meta, catalog, asset):
-    title = meta["title"].removeprefix("File:").rsplit(".", 1)[0]
-    terms = "dedicada ao domínio público (CC0)" if meta["license"] == "CC0" else "em domínio público (Public domain)" if meta["license"].lower() == "public domain" else meta["license"]
-    return f"“{title}”, por {catalog['assets'][asset]['creditName']} ({meta['author']}), {terms}, via Wikimedia Commons: {unquote(meta['page'])}"
-
-
 def main():
     sources = json.loads((SRC / "sources.json").read_text(encoding="utf-8"))
     catalog = json.loads((SRC / "catalog.json").read_text(encoding="utf-8"))
     figures = json.loads((FRONT / "figures.json").read_text(encoding="utf-8")) if (FRONT / "figures.json").exists() else {"items": {}}
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    (OUT / "video").mkdir(parents=True)
+    for old in sorted(OUT.rglob("*"), reverse=True) if OUT.exists() else []:
+        if old.is_file():
+            old.unlink()
+    (OUT / "video").mkdir(parents=True, exist_ok=True)
     items, by_asset = {}, {}
     for variant, v in catalog["variants"].items():
         meta = sources[v["asset"]]
@@ -115,7 +110,6 @@ def main():
             "asset": v["asset"],
             "alt": v["alt"],
             "illustrative": True,
-            "credit": credit(v["asset"], meta, catalog),
             "width": size[0],
             "height": size[1],
             "sources": srcset,
@@ -125,17 +119,19 @@ def main():
         entry["used_in"].append(v["usedIn"])
         entry["files"] += files
         entry["cropped"] |= bool(v["crop"])
-    first_party = []
-    demo_meta = SRC / "video" / "demo.json"
-    if demo_meta.exists():
-        demo = json.loads(demo_meta.read_text(encoding="utf-8"))
-        poster_set, poster_files, poster_size = derivatives("demo-poster", SRC / "video" / "demo-poster.png", None, [480, 960, 1280])
-        items["demo-poster"] = {"asset": "demo-video", "alt": demo["posterAlt"], "illustrative": False, "credit": demo["credit"], "width": poster_size[0], "height": poster_size[1], "sources": poster_set, "fallback": poster_set["jpeg"][-1][1]}
-        video_files = {key: copy_hashed(SRC / "video" / f"demo.{ext}", "demo") for key, ext in (("webm", "webm"), ("mp4", "mp4"), ("captions", "vtt"))}
-        items["demo"] = {"kind": "video", "asset": "demo-video", "poster": "demo-poster", "posterSrc": poster_set["webp"][-1][1], "width": demo["width"], "height": demo["height"], "alt": demo["alt"], "caption": demo["caption"], "transcript": demo["transcript"], **video_files}
-        for asset in demo.get("contains", []):
-            by_asset.setdefault(asset, {"used_in": [], "files": [], "cropped": False})["used_in"].append("Vídeo de demonstração e capturas de tela do app (aparece na interface gravada)")
-        first_party.append({"id": "demo-video", "title": "Vídeo de demonstração do app", "license": "Material próprio da FruitCam; as fotos de terceiros visíveis na interface mantêm suas licenças, listadas acima", "source": "Gravação de tela do app real em execução (tools/record_demo.py), com dados sintéticos", "note": demo["credit"], "files": [*video_files.values(), *poster_files]})
+    owned = {}
+    for name, (asset_id, used) in CLIPS.items():
+        clip_meta = SRC / "video" / f"{name}.json"
+        if not clip_meta.exists():
+            continue
+        rec = json.loads(clip_meta.read_text(encoding="utf-8"))
+        poster_set, poster_files, poster_size = derivatives(f"{name}-poster", SRC / "video" / f"{name}-poster.png", None, [480, 960, 1280])
+        items[f"{name}-poster"] = {"asset": asset_id, "alt": rec["posterAlt"], "illustrative": False, "width": poster_size[0], "height": poster_size[1], "sources": poster_set, "fallback": poster_set["jpeg"][-1][1]}
+        video_files = {key: copy_hashed(SRC / "video" / f"{name}.{ext}", name) for key, ext in (("webm", "webm"), ("mp4", "mp4"), ("captions", "vtt"))}
+        items[name] = {"kind": "video", "asset": asset_id, "poster": f"{name}-poster", "posterSrc": poster_set["webp"][-1][1], "width": rec["width"], "height": rec["height"], "alt": rec["alt"], "caption": rec["caption"], "transcript": rec["transcript"], **video_files}
+        for asset in rec.get("contains", []):
+            by_asset.setdefault(asset, {"used_in": [], "files": [], "cropped": False})["used_in"].append(used)
+        owned[asset_id] = {"files": [*video_files.values(), *poster_files]}
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp)
         for bg, v in catalog.get("backgrounds", {}).items():
@@ -151,58 +147,31 @@ def main():
             poster_set, poster_files, size = derivatives(f"{bg}-poster", poster, None, [640, v["width"]])
             video_files = {key: copy_hashed(path, bg) for key, path in files.items()}
             illustrative = meta is not None
-            text = credit(asset, meta, catalog) if meta else "Simulação própria da FruitCam (tools/record_belt.py)"
-            items[f"{bg}-poster"] = {"asset": asset, "alt": v["alt"], "illustrative": illustrative, "credit": text, "width": size[0], "height": size[1], "sources": poster_set, "fallback": poster_set["jpeg"][-1][1]}
+            items[f"{bg}-poster"] = {"asset": asset, "alt": v["alt"], "illustrative": illustrative, "width": size[0], "height": size[1], "sources": poster_set, "fallback": poster_set["jpeg"][-1][1]}
             ordered = sorted(video_files.items(), key=lambda kv: (PUBLIC / kv[1]).stat().st_size)
-            items[bg] = {"kind": "background", "asset": asset, "illustrative": illustrative, "credit": text, "alt": v["alt"], "poster": f"{bg}-poster", "posterSrc": poster_set["webp"][-1][1], "width": size[0], "height": size[1], "sources": [{"src": rel, "type": f"video/{key}"} for key, rel in ordered], **video_files}
+            items[bg] = {"kind": "background", "asset": asset, "illustrative": illustrative, "alt": v["alt"], "poster": f"{bg}-poster", "posterSrc": poster_set["webp"][-1][1], "width": size[0], "height": size[1], "sources": [{"src": rel, "type": f"video/{key}"} for key, rel in ordered], **video_files}
             if meta:
                 entry = by_asset.setdefault(asset, {"used_in": [], "files": [], "cropped": False, "clip": None})
                 entry["used_in"].append(v["usedIn"])
                 entry["files"] += [*video_files.values(), *poster_files]
-                entry["clip"] = v
+                entry["clip"] = {k: v[k] for k in ("start", "duration", "width")}
             else:
-                first_party.append({"id": "belt-sim", "title": "Vídeo de simulação da esteira", "license": "Material próprio da FruitCam", "source": "Gerado por tools/record_belt.py: esteira e frutas desenhadas por código, processadas pelo mesmo pipeline da câmera", "note": "Rótulos vêm da simulação, não do modelo de IA.", "files": [*video_files.values(), *poster_files]})
+                owned["belt-sim"] = {"files": [*video_files.values(), *poster_files]}
     for fig in figures["items"].values():
         for asset in fig.get("assets", []):
             by_asset.setdefault(asset, {"used_in": [], "files": [], "cropped": False})["used_in"].append(f"Figura {fig['number']} (Como funciona e kit do Summit)")
-    third_party = []
-    for asset, meta in sources.items():
-        use = by_asset.get(asset)
-        if not use:
-            continue
-        if use.get("clip"):
-            v = use["clip"]
-            mods = f"Trecho de {v['duration']:g} s a partir de {str(v['start']).replace('.', ',')} s, recortado para excluir mãos e rostos, reduzido para {v['width']} px de largura, sem áudio; convertido para WebM (VP9) e MP4 (H.264); quadro central como pôster em AVIF, WebP e JPEG."
-        else:
-            mods = "Original reduzido para no máximo 2560 px e sem metadados" + ("; recortado" if use["cropped"] else "") + "; convertido para AVIF, WebP e JPEG em várias larguras."
-        if "SA" in meta["license"]:
-            mods += " Os derivados seguem a mesma licença (CC BY-SA)."
-        third_party.append({
-            "id": asset,
-            "title": catalog["assets"][asset]["title"],
-            "commons_title": meta["title"],
-            "author": meta["author"],
-            "license": meta["license"],
-            "license_url": meta["license_url"],
-            "source_url": meta["page"],
-            "file_url": meta["file_url"],
-            "date": meta["date"],
-            "retrieved": meta["retrieved"],
-            "attribution_text": attribution(meta, catalog, asset),
-            "modifications": mods,
-            "used_in": use["used_in"],
-            "files": use["files"],
-            "illustrative": True,
-        })
-    brand_files = sorted(f"brand/{p.name}" for p in (PUBLIC / "brand").iterdir())
-    first_party.insert(0, {"id": "brand", "title": "Logotipo FruitCam_ai (provisório)", "license": "Marca da FruitCam; uso restrito", "source": "brand/source/logo-kit-sheet.png (imagem do kit enviada pela equipe)", "note": "Recortes exatos, sem alterar cores nem proporções, da imagem do kit enviada pela equipe; serão substituídos pelos arquivos vetoriais originais.", "files": [*brand_files, "manifest.webmanifest"]})
+    usage = {asset: {"used_in": use["used_in"], "cropped": use["cropped"], "clip": use.get("clip"), "files": use["files"]} for asset, use in by_asset.items() if asset in sources}
+    usage["brand"] = {"files": [*sorted(f"brand/{p.name}" for p in (PUBLIC / "brand").iterdir()), "manifest.webmanifest"]}
+    usage.update(owned)
     if figures["items"]:
-        figure_files = sorted(f"figures/{p.name}" for p in (PUBLIC / "figures").iterdir() if p.is_file())
-        first_party.append({"id": "figures", "title": "Figuras científicas", "license": "Material próprio da FruitCam", "source": "Geradas por figures/make_figures.py a partir de dados sintéticos e de medições reais", "note": "A Figura 2 contém a foto “caju-vermelho” (CC0).", "files": figure_files})
-    (FRONT / "media.json").write_text(json.dumps({"items": items}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    meta = json.loads((ROOT / "scripts" / "datasets.json").read_text(encoding="utf-8"))
-    datasets = [{k: d[k] for k in ("id", "title", "authors", "institution", "version", "doi", "page", "licence", "licence_url", "licence_as_written", "commercial_use", "attribution", "setting", "fruit")} for d in meta["datasets"]]
-    (FRONT / "licenses.json").write_text(json.dumps({"third_party": third_party, "first_party": first_party, "datasets": datasets}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        usage["figures"] = {"files": sorted(f"figures/{p.name}" for p in (PUBLIC / "figures").iterdir() if p.is_file())}
+    registered = {e["id"] for section in ("media", "own") for e in build_legal.registry()[section]}
+    missing = sorted(set(usage) - registered)
+    assert not missing, f"sem registro em legal/registry.json: {missing}"
+    (FRONT / "media.json").write_text(json.dumps({"items": items}, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
+    build_legal.write(build_legal.USAGE, build_legal.dump(usage))
+    for path, text in build_legal.outputs().items():
+        build_legal.write(path, text)
     total = 0
     for variant, item in items.items():
         if item.get("kind") in ("video", "background"):

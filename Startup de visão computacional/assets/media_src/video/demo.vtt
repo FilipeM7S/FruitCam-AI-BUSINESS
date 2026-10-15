@@ -1,0 +1,25 @@
+WEBVTT
+
+00:00.000 --> 00:05.987
+Login do FruitCam_ai. Ao fundo, vídeo ilustrativo de uma esteira de seleção.
+
+00:05.987 --> 00:08.946
+Página Linha: a câmera fixa sobre a esteira conta e classifica cada fruta. Ao fundo, a simulação processada pelo mesmo código.
+
+00:08.946 --> 00:15.164
+Linha ao vivo: quadro da câmera simulada, frutas por minuto e porcentagem de cada classe com intervalo de confiança. Dados sintéticos.
+
+00:15.164 --> 00:20.708
+Carta de controle da % de podres, alarmes e aceite de cada lote pelo intervalo de confiança.
+
+00:20.708 --> 00:26.406
+Como a câmera funciona: separa a fruta da esteira, segue a fruta entre quadros, classifica com IA e conta uma vez na linha tracejada.
+
+00:26.406 --> 00:29.656
+O botão ? abre o guia do usuário em qualquer página.
+
+00:29.656 --> 00:35.823
+Inspeção por foto: uma foto real de caju passa pelo mesmo classificador de três classes.
+
+00:35.823 --> 00:40.199
+Saída real do modelo: boa, confiança 70,3%. O sistema não decide sozinho: a fruta vai para revisão manual. A foto tem folhas ao fundo, diferente da esteira.

@@ -1,0 +1,600 @@
+{
+ "what": "counting on the simulated belt; nothing here was measured on a real belt",
+ "variants": {
+  "atual": {},
+  "ponte no detector": {
+   "bridge": 0.6
+  },
+  "fusão no rastreador": {
+   "merge": 0.25,
+   "merge_window": 0.05
+  },
+  "corte fechado": {
+   "seal": true
+  },
+  "corte fechado e fusão": {
+   "seal": true,
+   "merge": 0.25,
+   "merge_window": 0.05
+  }
+ },
+ "drawn_fruit": {
+  "atual": {
+   "espaçamento normal": {
+    "gap_mm": 18.0,
+    "rate_per_s": 2.0,
+    "seconds": 60.0,
+    "crossed": 108,
+    "counted": 108,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.03434736026980092
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 0,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174268235975068,
+    "frames_per_second": 48.86560437770462
+   },
+   "sobreposição até 10 mm": {
+    "gap_mm": -10.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 305,
+    "counted": 303,
+    "error": -0.006557377049180328,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.01243828757709785
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 208,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0181044525709018,
+    "frames_per_second": 34.286447192779335
+   },
+   "sobreposição até 25 mm": {
+    "gap_mm": -25.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 308,
+    "counted": 301,
+    "error": -0.022727272727272728,
+    "double_counts": 2,
+    "double_count_rate_ci95": [
+     0.0017825636500695703,
+     0.023363095010669604
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 709,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174498392256577,
+    "frames_per_second": 33.134149894686
+   },
+   "sobreposição até 40 mm": {
+    "gap_mm": -40.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 339,
+    "counted": 268,
+    "error": -0.20943952802359883,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.011204767631752642
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1267,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0191942366113649,
+    "frames_per_second": 30.656557136905693
+   },
+   "sobreposição até 40 mm, 10 por segundo": {
+    "gap_mm": -40.0,
+    "rate_per_s": 10.0,
+    "seconds": 60.0,
+    "crossed": 545,
+    "counted": 376,
+    "error": -0.3100917431192661,
+    "double_counts": 1,
+    "double_count_rate_ci95": [
+     0.0003239717250864771,
+     0.010319281962786614
+    ],
+    "counted_without_a_fruit_under_them": 1,
+    "frames_with_a_cut": 1458,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0196255399082574,
+    "frames_per_second": 24.72271407696438
+   }
+  },
+  "ponte no detector": {
+   "espaçamento normal": {
+    "gap_mm": 18.0,
+    "rate_per_s": 2.0,
+    "seconds": 60.0,
+    "crossed": 108,
+    "counted": 108,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.03434736026980092
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 0,
+    "frames_with_a_bridge": 2,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174268235975068,
+    "frames_per_second": 43.346029722516874
+   },
+   "sobreposição até 10 mm": {
+    "gap_mm": -10.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 305,
+    "counted": 303,
+    "error": -0.006557377049180328,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.01243828757709785
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 208,
+    "frames_with_a_bridge": 4,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0181044525709018,
+    "frames_per_second": 27.566482121697494
+   },
+   "sobreposição até 25 mm": {
+    "gap_mm": -25.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 308,
+    "counted": 300,
+    "error": -0.025974025974025976,
+    "double_counts": 2,
+    "double_count_rate_ci95": [
+     0.0017825636500695703,
+     0.023363095010669604
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 742,
+    "frames_with_a_bridge": 42,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.017475829129075,
+    "frames_per_second": 29.019544452321657
+   },
+   "sobreposição até 40 mm": {
+    "gap_mm": -40.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 339,
+    "counted": 267,
+    "error": -0.21238938053097345,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.011204767631752642
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1267,
+    "frames_with_a_bridge": 75,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.019226722391583,
+    "frames_per_second": 30.438699831138113
+   },
+   "sobreposição até 40 mm, 10 por segundo": {
+    "gap_mm": -40.0,
+    "rate_per_s": 10.0,
+    "seconds": 60.0,
+    "crossed": 545,
+    "counted": 376,
+    "error": -0.3100917431192661,
+    "double_counts": 1,
+    "double_count_rate_ci95": [
+     0.0003239717250864771,
+     0.010319281962786614
+    ],
+    "counted_without_a_fruit_under_them": 1,
+    "frames_with_a_cut": 1458,
+    "frames_with_a_bridge": 91,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0196255399082574,
+    "frames_per_second": 23.134751984285494
+   }
+  },
+  "fusão no rastreador": {
+   "espaçamento normal": {
+    "gap_mm": 18.0,
+    "rate_per_s": 2.0,
+    "seconds": 60.0,
+    "crossed": 108,
+    "counted": 108,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.03434736026980092
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 0,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174268235975068,
+    "frames_per_second": 48.592615007153846
+   },
+   "sobreposição até 10 mm": {
+    "gap_mm": -10.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 305,
+    "counted": 303,
+    "error": -0.006557377049180328,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.01243828757709785
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 208,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0181044525709018,
+    "frames_per_second": 30.211831769045393
+   },
+   "sobreposição até 25 mm": {
+    "gap_mm": -25.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 308,
+    "counted": 301,
+    "error": -0.022727272727272728,
+    "double_counts": 2,
+    "double_count_rate_ci95": [
+     0.0017825636500695703,
+     0.023363095010669604
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 709,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174498392256577,
+    "frames_per_second": 32.19254894052546
+   },
+   "sobreposição até 40 mm": {
+    "gap_mm": -40.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 339,
+    "counted": 268,
+    "error": -0.20943952802359883,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.011204767631752642
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1267,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0191942366113649,
+    "frames_per_second": 32.69340654284433
+   },
+   "sobreposição até 40 mm, 10 por segundo": {
+    "gap_mm": -40.0,
+    "rate_per_s": 10.0,
+    "seconds": 60.0,
+    "crossed": 545,
+    "counted": 374,
+    "error": -0.3137614678899083,
+    "double_counts": 1,
+    "double_count_rate_ci95": [
+     0.0003239717250864771,
+     0.010319281962786614
+    ],
+    "counted_without_a_fruit_under_them": 1,
+    "frames_with_a_cut": 1458,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 2,
+    "size_ratio_median": 1.0196255399082574,
+    "frames_per_second": 24.402705868324748
+   }
+  },
+  "corte fechado": {
+   "espaçamento normal": {
+    "gap_mm": 18.0,
+    "rate_per_s": 2.0,
+    "seconds": 60.0,
+    "crossed": 108,
+    "counted": 108,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.03434736026980092
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 0,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174268235975068,
+    "frames_per_second": 47.10759374410535
+   },
+   "sobreposição até 10 mm": {
+    "gap_mm": -10.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 305,
+    "counted": 305,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.01243828757709785
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 208,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0179591402348502,
+    "frames_per_second": 34.78606471641164
+   },
+   "sobreposição até 25 mm": {
+    "gap_mm": -25.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 308,
+    "counted": 308,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.012318627853643637
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 709,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0172702732307508,
+    "frames_per_second": 34.9459433200724
+   },
+   "sobreposição até 40 mm": {
+    "gap_mm": -40.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 339,
+    "counted": 327,
+    "error": -0.035398230088495575,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.011204767631752642
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1267,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0170293073179624,
+    "frames_per_second": 32.46870506568242
+   },
+   "sobreposição até 40 mm, 10 por segundo": {
+    "gap_mm": -40.0,
+    "rate_per_s": 10.0,
+    "seconds": 60.0,
+    "crossed": 545,
+    "counted": 490,
+    "error": -0.10091743119266056,
+    "double_counts": 3,
+    "double_count_rate_ci95": [
+     0.0018737855579189907,
+     0.016057547292474373
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1458,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0176763428522986,
+    "frames_per_second": 23.76339890136381
+   }
+  },
+  "corte fechado e fusão": {
+   "espaçamento normal": {
+    "gap_mm": 18.0,
+    "rate_per_s": 2.0,
+    "seconds": 60.0,
+    "crossed": 108,
+    "counted": 108,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.03434736026980092
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 0,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0174268235975068,
+    "frames_per_second": 48.616470851947874
+   },
+   "sobreposição até 10 mm": {
+    "gap_mm": -10.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 305,
+    "counted": 305,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.01243828757709785
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 208,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0179591402348502,
+    "frames_per_second": 31.892908478089122
+   },
+   "sobreposição até 25 mm": {
+    "gap_mm": -25.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 308,
+    "counted": 308,
+    "error": 0.0,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.012318627853643637
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 709,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0172702732307508,
+    "frames_per_second": 34.62545849300434
+   },
+   "sobreposição até 40 mm": {
+    "gap_mm": -40.0,
+    "rate_per_s": 6.0,
+    "seconds": 60.0,
+    "crossed": 339,
+    "counted": 327,
+    "error": -0.035398230088495575,
+    "double_counts": 0,
+    "double_count_rate_ci95": [
+     0.0,
+     0.011204767631752642
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1267,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 0,
+    "size_ratio_median": 1.0170293073179624,
+    "frames_per_second": 32.745247319911414
+   },
+   "sobreposição até 40 mm, 10 por segundo": {
+    "gap_mm": -40.0,
+    "rate_per_s": 10.0,
+    "seconds": 60.0,
+    "crossed": 545,
+    "counted": 488,
+    "error": -0.10458715596330276,
+    "double_counts": 3,
+    "double_count_rate_ci95": [
+     0.0018737855579189907,
+     0.016057547292474373
+    ],
+    "counted_without_a_fruit_under_them": 0,
+    "frames_with_a_cut": 1458,
+    "frames_with_a_bridge": 0,
+    "counts_merged_by_the_tracker": 2,
+    "size_ratio_median": 1.0176763428522986,
+    "frames_per_second": 23.922555873492687
+   }
+  }
+ },
+ "real_fruit_crops": {
+  "atual": {
+   "minutes": 8.0,
+   "seed": 11,
+   "crossed": 891,
+   "counted": 893,
+   "error": 0.002244668911335578,
+   "double_counts": 2,
+   "double_count_rate_ci95": [
+    0.0006157851545882656,
+    0.008147173695238784
+   ],
+   "counted_without_a_fruit_under_them": 0,
+   "frames_with_a_cut": 353,
+   "frames_with_a_bridge": 0,
+   "counts_merged_by_the_tracker": 0,
+   "size_ratio_median": 1.0190064173085411,
+   "frames_per_second": 60.507406885132035
+  },
+  "ponte no detector": {
+   "minutes": 8.0,
+   "seed": 11,
+   "crossed": 891,
+   "counted": 894,
+   "error": 0.003367003367003367,
+   "double_counts": 3,
+   "double_count_rate_ci95": [
+    0.0011457314534658695,
+    0.009852260183622
+   ],
+   "counted_without_a_fruit_under_them": 0,
+   "frames_with_a_cut": 456,
+   "frames_with_a_bridge": 1571,
+   "counts_merged_by_the_tracker": 0,
+   "size_ratio_median": 1.0190803135116664,
+   "frames_per_second": 50.93371080170397
+  },
+  "fusão no rastreador": {
+   "minutes": 8.0,
+   "seed": 11,
+   "crossed": 891,
+   "counted": 891,
+   "error": 0.0,
+   "double_counts": 0,
+   "double_count_rate_ci95": [
+    0.0,
+    0.004292893275305412
+   ],
+   "counted_without_a_fruit_under_them": 0,
+   "frames_with_a_cut": 353,
+   "frames_with_a_bridge": 0,
+   "counts_merged_by_the_tracker": 2,
+   "size_ratio_median": 1.0190675130048683,
+   "frames_per_second": 58.83886253090375
+  },
+  "corte fechado": {
+   "minutes": 8.0,
+   "seed": 11,
+   "crossed": 891,
+   "counted": 899,
+   "error": 0.008978675645342313,
+   "double_counts": 8,
+   "double_count_rate_ci95": [
+    0.004556518889076472,
+    0.01761663668431549
+   ],
+   "counted_without_a_fruit_under_them": 0,
+   "frames_with_a_cut": 353,
+   "frames_with_a_bridge": 0,
+   "counts_merged_by_the_tracker": 0,
+   "size_ratio_median": 1.0188478008321338,
+   "frames_per_second": 59.88228412445026
+  },
+  "corte fechado e fusão": {
+   "minutes": 8.0,
+   "seed": 11,
+   "crossed": 891,
+   "counted": 897,
+   "error": 0.006734006734006734,
+   "double_counts": 6,
+   "double_count_rate_ci95": [
+    0.0030898029576039727,
+    0.014613287041266352
+   ],
+   "counted_without_a_fruit_under_them": 0,
+   "frames_with_a_cut": 353,
+   "frames_with_a_bridge": 0,
+   "counts_merged_by_the_tracker": 2,
+   "size_ratio_median": 1.0189574269101416,
+   "frames_per_second": 61.50273056517534
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "what": "answers of both models on every crop of at least 24 px from the first Uganda label batch (class ids read in the order given in the paper); share of each answer per annotated stage",
+ "crops": 1294,
+ "photos": 430,
+ "note": "belt_v2 was trained on part of these photos; belt_v3 on none of them",
+ "models": {
+  "belt_v2": {
+   "premature": {
+    "n": 121,
+    "boa": 0.14,
+    "baixa_qualidade": 0.645,
+    "podre": 0.215
+   },
+   "unripe": {
+    "n": 76,
+    "boa": 0.026,
+    "baixa_qualidade": 0.829,
+    "podre": 0.145
+   },
+   "ripe": {
+    "n": 149,
+    "boa": 0.517,
+    "baixa_qualidade": 0.295,
+    "podre": 0.188
+   },
+   "spoilt": {
+    "n": 948,
+    "boa": 0.124,
+    "baixa_qualidade": 0.252,
+    "podre": 0.623
+   }
+  },
+  "belt_v3": {
+   "premature": {
+    "n": 121,
+    "boa": 0.058,
+    "baixa_qualidade": 0.868,
+    "podre": 0.074
+   },
+   "unripe": {
+    "n": 76,
+    "boa": 0.0,
+    "baixa_qualidade": 1.0,
+    "podre": 0.0
+   },
+   "ripe": {
+    "n": 149,
+    "boa": 0.047,
+    "baixa_qualidade": 0.846,
+    "podre": 0.107
+   },
+   "spoilt": {
+    "n": 948,
+    "boa": 0.015,
+    "baixa_qualidade": 0.803,
+    "podre": 0.182
+   }
+  }
+ }
+}

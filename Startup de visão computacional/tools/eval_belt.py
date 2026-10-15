@@ -15,7 +15,8 @@ from belt.classify import CropClassifier, ModelDecider
 from belt.pipeline import BeltPipeline
 from belt.simulate import SimulatedBelt
 from belt.stats import wilson
-from train_belt import attach_masks, load_crops, tree_as_five
+from training import cashew_data
+from training.train_belt import attach_masks, load_crops, tree_as_five
 
 CLASSES = ["boa", "baixa_qualidade", "podre"]
 MINUTES = 8
@@ -23,7 +24,7 @@ SEED = 11
 
 
 def test_pool(min_side=16, masked=True):
-    items = [it for it in load_crops(ROOT / "images", ROOT / "Labels", min_side, 0.15, 0, tree_as_five(ROOT / "Labels")) if it["split"] == "test"]
+    items = [it for it in load_crops(ROOT / "datasets" / "cashew" / "images", ROOT / "datasets" / "cashew" / "labels", min_side, 0.15, 0, tree_as_five(ROOT / "datasets" / "cashew" / "labels")) if it["split"] == "test"]
     if masked:
         attach_masks(items)
     pool = {c: [] for c in CLASSES}
@@ -31,6 +32,15 @@ def test_pool(min_side=16, masked=True):
         crop = cv2.cvtColor(np.asarray(it["image"]), cv2.COLOR_RGB2BGR)
         pool[CLASSES[it["label"]]].append((crop, it["mask"]) if masked else crop)
     return pool, {c: len(v) for c, v in pool.items()}, len({it["photo"] for it in items})
+
+
+def test_pool_v3():
+    rows = [r for r in cashew_data.manifest() if r["split"] == "test" and r["source"] in ("ghana", "uganda_b")]
+    files = cashew_data.CropFiles(rows, None)
+    pool = {c: [] for c in CLASSES}
+    for r in rows:
+        pool[r["label"]].append((cv2.cvtColor(np.asarray(files.image(r)), cv2.COLOR_RGB2BGR), files.mask(r)))
+    return pool, {c: len(v) for c, v in pool.items()}, len({(r["source"], r["photo"]) for r in rows})
 
 
 def metrics(y, p):
@@ -92,11 +102,14 @@ def main():
     parser.add_argument("--discs", action="store_true", help="paste each crop as a disc with its leaves (the old setup) instead of the fruit mask")
     args = parser.parse_args()
     start = time.perf_counter()
-    pool, pool_sizes, photos = test_pool(args.min_side, not args.discs)
+    report = Path(args.model).with_name(Path(args.model).stem + "_eval.json")
+    second = report.exists() and "sources_used" in json.loads(report.read_text(encoding="utf-8"))["data"]
+    pool, pool_sizes, photos = test_pool_v3() if second else test_pool(args.min_side, not args.discs)
+    origin = "Ghana photos and the second Uganda label batch, class order checked against the published counts" if second else "label files with the paper's class numbering only"
     classifier = CropClassifier(args.model)
     result = {
         "setup": {
-            "what": f"simulated belt carrying real held-out TEST fruit (photo-disjoint from training; label files with the paper's class numbering only), {'pasted as discs with their leaves' if args.discs else 'cut out with their masks, no leaves'}, processed by the real camera pipeline and models/{Path(args.model).name}",
+            "what": f"simulated belt carrying real held-out TEST fruit (photo-disjoint from training; {origin}), {'pasted as discs with their leaves' if args.discs else 'cut out with their masks, no leaves'}, processed by the real camera pipeline and models/{Path(args.model).name}",
             "model": Path(args.model).stem,
             "minutes_simulated": MINUTES,
             "rate_per_s": 2.0,
@@ -109,7 +122,7 @@ def main():
         **simulate(classifier, pool),
         "seconds": round(time.perf_counter() - start, 1),
     }
-    out = ROOT / "figures" / "data" / "belt_eval.json"
+    out = ROOT / "assets" / "figures" / "data" / "belt_eval.json"
     out.write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
     print(json.dumps({k: v for k, v in result.items() if k != "setup"}, indent=1))
 

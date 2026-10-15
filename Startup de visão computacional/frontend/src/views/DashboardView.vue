@@ -1,20 +1,37 @@
 <script setup>
-import { computed, onMounted, reactive, ref, shallowRef, watch } from "vue";
-import { api } from "../api.js";
+import { computed, onMounted, provide, reactive, ref, shallowRef, watch } from "vue";
+import { onBeforeRouteLeave, useRoute, useRouter } from "vue-router";
+import { api, download } from "../api.js";
 import BrandLogo from "../components/BrandLogo.vue";
 import ChartBox from "../components/ChartBox.vue";
 import StatCard from "../components/StatCard.vue";
+import WhatIf from "../components/WhatIf.vue";
+import { vTrace } from "../control.js";
 import { deformitySpec, forecastSpec, fruitsSpec, gaussianSpecs, growthSpec, overviewSpecs, recurringSpec } from "../charts.js";
 import { num } from "../format.js";
 import { deformitySeries, forecastSeries, fruitSeries, gaussianSeries, growthRange, growthSeries, overviewSeries, recurringSeries, SMALL_N } from "../series.js";
-import { fill, t } from "../strings.js";
+import { errorText, fill, t } from "../strings.js";
 
 const NAMES = ["deformity", "forecast", "fruits", "growth", "recurring", "gaussian", "overview"];
-const filters = reactive({ period: "week", sector: "", start: "", end: "", source: "real" });
+const route = useRoute();
+const router = useRouter();
+const DEFAULTS = { period: "week", sector: "", start: "", end: "", source: "real" };
+const ALLOWED = { period: ["week", "month"], source: ["real", "demo", "all"] };
+const fromQuery = (q) => ({ ...DEFAULTS, ...Object.fromEntries(Object.keys(DEFAULTS).filter((k) => typeof q[k] === "string" && (!ALLOWED[k] || ALLOWED[k].includes(q[k]))).map((k) => [k, q[k]])) });
+const filters = reactive(fromQuery(route.query));
+const loadedAt = ref("");
+const MIN_REAL_DAYS = 14;
+const ready = ref(Boolean(route.query.source));
+let leaving = false;
+onBeforeRouteLeave(() => {
+  leaving = true;
+});
+const autoDemo = ref(null);
 const results = shallowRef({});
 const refreshing = ref(false);
 const sectors = ref([]);
 const recurringTab = ref("month");
+const cert = reactive({ busy: false, error: "", done: "" });
 let request = 0;
 
 const data = (n) => results.value[n]?.data;
@@ -41,14 +58,69 @@ async function load() {
   if (id !== request) return;
   results.value = Object.fromEntries(NAMES.map((n, i) => [n, settled[i].status === "fulfilled" ? { data: settled[i].value } : { error: settled[i].reason }]));
   refreshing.value = false;
+  loadedAt.value = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+}
+
+async function downloadCertificate() {
+  cert.busy = true;
+  cert.error = "";
+  cert.done = "";
+  try {
+    cert.done = fill(t.certificate.done, { name: await download("/api/certificate", { query: Object.fromEntries(Object.entries(filters).filter(([, v]) => v)) }) });
+  } catch (err) {
+    cert.error = errorText(err);
+  } finally {
+    cert.busy = false;
+  }
+}
+
+async function chooseSource() {
+  try {
+    const [first, last] = await Promise.all(["asc", "desc"].map((order) => api("/api/events", { query: { source: "real", order, size: 1 } })));
+    const a = first.events[0];
+    const b = last.events[0];
+    const days = a && b ? (new Date(b.timestamp) - new Date(a.timestamp)) / 86400000 : 0;
+    if (days < MIN_REAL_DAYS && !leaving) {
+      autoDemo.value = { n: first.total, days: Math.floor(days) + (a ? 1 : 0) };
+      filters.source = "demo";
+    }
+  } catch {
+    autoDemo.value = null;
+  }
 }
 
 onMounted(async () => {
+  if (!ready.value) {
+    await chooseSource();
+    ready.value = true;
+    if (autoDemo.value) return;
+  }
   await loadSectors();
   load();
 });
 watch(() => filters.source, loadSectors);
-watch(filters, load);
+watch(filters, () => {
+  load();
+  const query = Object.fromEntries(Object.entries(filters).filter(([k, v]) => v && v !== DEFAULTS[k]));
+  if (!leaving && JSON.stringify(query) !== JSON.stringify(route.query)) router.replace({ query });
+});
+watch(
+  () => route.query,
+  (q) => {
+    const next = fromQuery(q);
+    if (Object.keys(next).some((k) => next[k] !== filters[k])) Object.assign(filters, next);
+  },
+);
+
+const scope = computed(() => Object.fromEntries(Object.entries({ source: filters.source, sector: filters.sector, start: filters.start, end: filters.end }).filter(([, v]) => v)));
+provide("drillBase", scope);
+const filterText = computed(() => [`${t.filters.period.toLowerCase()} ${t.filters[filters.period].toLowerCase()}`, `${t.filters.sector.toLowerCase()} ${filters.sector || t.filters.allSectors.toLowerCase()}`, `${t.filters.source.toLowerCase()} ${t.filters[filters.source].toLowerCase()}`, ...(filters.start || filters.end ? [`${filters.start || "…"} a ${filters.end || "…"}`] : [])].join(" · "));
+const traceFor = (name) => `${t.control.source}: GET /api/stats/${name} · ${filterText.value}`;
+const status = computed(() => {
+  if (!loadedAt.value || refreshing.value) return "analisando";
+  return allEmpty.value ? "sem-dados" : "ativo";
+});
+const statusText = computed(() => ({ analisando: t.control.status.analisando, "sem-dados": t.control.status.semDados, ativo: fill(t.control.status.ativo, { time: loadedAt.value }) })[status.value]);
 
 const deformity = computed(() => {
   if (!ok("deformity")) return null;
@@ -130,7 +202,9 @@ const overview = computed(() => {
   if (!ok("overview")) return null;
   const d = data("overview");
   const s = overviewSeries(d);
-  return { specs: overviewSpecs(s, d.period), badges: s.total < SMALL_N ? [small(fill(t.badges.smallTotal, { n: s.total }))] : [] };
+  const badges = s.total < SMALL_N ? [small(fill(t.badges.smallTotal, { n: s.total }))] : [];
+  if (s.volume.clipped) badges.push({ text: t.badges.clipped, tone: "info", cls: "clipped-tag", title: fill(t.badges.clippedTitle, { m: num(Math.ceil(s.volume.max)) }) });
+  return { specs: overviewSpecs(s, d.period), badges, row: Math.max(170, 46 + 22 * s.sectors.length) };
 });
 </script>
 
@@ -141,13 +215,24 @@ const overview = computed(() => {
         <h1>{{ t.dashboard.title }}</h1>
         <p class="lead">{{ t.dashboard.subtitle }}</p>
       </div>
-      <div v-if="demo" class="page-head-actions">
-        <p class="demo-badge" role="status" :title="t.app.demoBadgeHint">
+      <div class="page-head-actions">
+        <span class="chip status-chip" :data-state="status" v-trace="statusText"><span v-if="status === 'ativo'" class="sonar" aria-hidden="true"></span>{{ t.control.chips[status === "sem-dados" ? "semDados" : status] }}</span>
+        <p v-if="demo" class="demo-badge" role="status" :title="t.app.demoBadgeHint">
           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3h6M10 3v6L4 19a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 19l-6-10V3" /></svg>
           <span>{{ t.app.demoBadge }}</span>
         </p>
+        <button class="btn btn-secondary btn-sm cert-btn" type="button" :disabled="cert.busy" :aria-busy="cert.busy" :title="t.certificate.hint" @click="downloadCertificate">
+          <span v-if="cert.busy" class="spinner" aria-hidden="true"></span>
+          <svg v-else width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M12 11v6M9 14l3 3 3-3" /></svg>
+          <span>{{ cert.busy ? t.certificate.busy : t.certificate.download }}</span>
+        </button>
       </div>
     </header>
+    <p v-if="cert.error" class="notice error cert-msg" role="alert">{{ cert.error }}</p>
+    <p v-else-if="cert.done" class="visually-hidden" role="status">{{ cert.done }}</p>
+    <div v-if="!ready" class="skeleton sk-bars" :aria-label="t.dashboard.loading"><span v-for="i in 12" :key="i"></span></div>
+    <template v-else>
+    <p v-if="autoDemo && filters.source === 'demo'" class="notice info auto-demo" role="status">{{ autoDemo.n ? fill(t.dashboard.autoDemo, { n: num(autoDemo.n), d: num(autoDemo.days) }) : t.dashboard.autoDemoNone }}</p>
 
     <form class="filters filter-bar" :aria-label="t.dashboard.filterBar" @submit.prevent>
       <fieldset class="field">
@@ -197,14 +282,22 @@ const overview = computed(() => {
         <p>{{ t.dashboard.sections.overview.lead }}</p>
       </header>
       <div class="cards">
-        <StatCard stat="overview" :title="t.cards.overview.title" :subtitle="t.cards.overview.subtitle" :result="results.overview" :unit="t.dashboard.fruitsUnit" :badges="overview?.badges" :steps="overview?.specs.steps" :refreshing="refreshing" shape="multiples">
+        <StatCard stat="overview" :trace="traceFor('overview')" :title="t.cards.overview.title" :subtitle="t.cards.overview.subtitle" :result="results.overview" :unit="t.dashboard.fruitsUnit" :badges="overview?.badges" :steps="overview?.specs.steps" :refreshing="refreshing" shape="multiples">
           <div v-if="overview" class="overview-grid">
-            <ChartBox :spec="overview.specs.volume" :caption="t.cards.overview.volume" :height="170" />
-            <ChartBox :spec="overview.specs.rate" :caption="t.cards.overview.rate" :height="150" />
-            <ChartBox :spec="overview.specs.sectors" :caption="t.cards.overview.sectors" :height="150" />
+            <ChartBox :spec="overview.specs.volume" :caption="t.cards.overview.volume" :height="overview.row" />
+            <ChartBox :spec="overview.specs.rate" :caption="t.cards.overview.rate" :height="overview.row - 20" />
+            <ChartBox :spec="overview.specs.sectors" :caption="t.cards.overview.sectors" :height="overview.row - 20" />
           </div>
         </StatCard>
       </div>
+    </section>
+
+    <section class="section" aria-labelledby="sec-whatif">
+      <header class="section-head">
+        <h2 id="sec-whatif">{{ t.control.whatIf.sectionTitle }}</h2>
+        <p>{{ t.control.whatIf.sectionLead }}</p>
+      </header>
+      <WhatIf :query="scope" :filter="filterText" />
     </section>
 
     <section class="section" aria-labelledby="sec-now">
@@ -213,10 +306,10 @@ const overview = computed(() => {
         <p>{{ t.dashboard.sections.now.lead }}</p>
       </header>
       <div class="cards">
-        <StatCard stat="deformity" :title="t.cards.deformity.title" :subtitle="t.cards.deformity.subtitle" :result="results.deformity" :unit="t.dashboard.rottenUnit" :badges="deformity?.badges" :steps="deformity?.spec.steps" :refreshing="refreshing" shape="bars" span="main">
+        <StatCard stat="deformity" :trace="traceFor('deformity')" :title="t.cards.deformity.title" :subtitle="t.cards.deformity.subtitle" :result="results.deformity" :unit="t.dashboard.rottenUnit" :badges="deformity?.badges" :steps="deformity?.spec.steps" :refreshing="refreshing" shape="bars" span="main">
           <ChartBox v-if="deformity" :spec="deformity.spec" :height="280" />
         </StatCard>
-        <StatCard stat="fruits" :title="t.cards.fruits.title" :subtitle="t.cards.fruits.subtitle" :result="results.fruits" :unit="t.dashboard.fruitsUnit" :badges="fruits?.badges" :steps="fruits?.spec.steps" :refreshing="refreshing" shape="hbars" span="side">
+        <StatCard stat="fruits" :trace="traceFor('fruits')" :title="t.cards.fruits.title" :subtitle="t.cards.fruits.subtitle" :result="results.fruits" :unit="t.dashboard.fruitsUnit" :badges="fruits?.badges" :steps="fruits?.spec.steps" :refreshing="refreshing" shape="hbars" span="side">
           <ChartBox v-if="fruits" :spec="fruits.spec" :height="220" />
         </StatCard>
       </div>
@@ -228,13 +321,13 @@ const overview = computed(() => {
         <p>{{ t.dashboard.sections.trends.lead }}</p>
       </header>
       <div class="cards">
-        <StatCard stat="growth-good" :title="t.cards.goodGrowth.title" :subtitle="t.cards.growth.subtitle" :result="results.growth" :unit="t.dashboard.fruitsUnit" :badges="growth?.badges" :steps="growth?.good.steps" :empty-text="t.cards.growth.insufficient" :refreshing="refreshing" shape="bars" span="half">
+        <StatCard stat="growth-good" :trace="traceFor('growth')" :title="t.cards.goodGrowth.title" :subtitle="t.cards.growth.subtitle" :result="results.growth" :unit="t.dashboard.fruitsUnit" :badges="growth?.badges" :steps="growth?.good.steps" :empty-text="t.cards.growth.insufficient" :refreshing="refreshing" shape="bars" span="half">
           <ChartBox v-if="growth" :spec="growth.good" :height="240" />
         </StatCard>
-        <StatCard stat="growth-rotten" :title="t.cards.rottenGrowth.title" :subtitle="t.cards.growth.subtitle" :result="results.growth" :unit="t.dashboard.fruitsUnit" :badges="growth?.badges" :steps="growth?.rotten.steps" :empty-text="t.cards.growth.insufficient" :refreshing="refreshing" shape="bars" span="half">
+        <StatCard stat="growth-rotten" :trace="traceFor('growth')" :title="t.cards.rottenGrowth.title" :subtitle="t.cards.growth.subtitle" :result="results.growth" :unit="t.dashboard.fruitsUnit" :badges="growth?.badges" :steps="growth?.rotten.steps" :empty-text="t.cards.growth.insufficient" :refreshing="refreshing" shape="bars" span="half">
           <ChartBox v-if="growth" :spec="growth.rotten" :height="240" />
         </StatCard>
-        <StatCard stat="recurring" :title="t.cards.recurring.title" :subtitle="t.cards.recurring.subtitle" :result="results.recurring" :n="recurring?.n" :unit="t.dashboard.fruitsUnit" :badges="recurring?.badges" :steps="recurring?.spec.steps" :refreshing="refreshing" shape="bars">
+        <StatCard stat="recurring" :trace="traceFor('recurring')" :title="t.cards.recurring.title" :subtitle="t.cards.recurring.subtitle" :result="results.recurring" :n="recurring?.n" :unit="t.dashboard.fruitsUnit" :badges="recurring?.badges" :steps="recurring?.spec.steps" :refreshing="refreshing" shape="bars">
           <template v-if="recurring">
             <div class="seg-tabs segmented small" role="radiogroup" :aria-label="t.cards.recurring.title">
               <label v-for="k in ['week', 'month', 'season']" :key="k" :class="{ active: recurringTab === k }">
@@ -254,7 +347,7 @@ const overview = computed(() => {
         <p>{{ t.dashboard.sections.distributions.lead }}</p>
       </header>
       <div class="cards">
-        <StatCard stat="gaussian" :title="t.cards.gaussian.title" :subtitle="t.cards.gaussian.subtitle" :result="results.gaussian" :unit="t.dashboard.fruitsUnit" :steps="gaussian?.steps" :refreshing="refreshing" shape="hist">
+        <StatCard stat="gaussian" :trace="traceFor('gaussian')" :title="t.cards.gaussian.title" :subtitle="t.cards.gaussian.subtitle" :result="results.gaussian" :unit="t.dashboard.fruitsUnit" :steps="gaussian?.steps" :refreshing="refreshing" shape="hist">
           <TransitionGroup v-if="gaussian" name="multi" tag="div" class="gauss-grid">
             <section v-for="item in gaussian.items" :key="item.key" class="gauss" :class="{ flagged: item.s.flagged }">
               <ChartBox :spec="item.specs?.hist ?? null" :empty="item.empty" :caption="item.key" :badges="item.badges" :height="210" />
@@ -271,12 +364,13 @@ const overview = computed(() => {
         <p>{{ t.dashboard.sections.forecast.lead }}</p>
       </header>
       <div class="cards">
-        <StatCard stat="forecast" :title="t.cards.forecast.title" :subtitle="t.cards.forecast.subtitle" :result="results.forecast" :unit="t.dashboard.fruitsUnit" :steps="forecast?.steps" :refreshing="refreshing" shape="multiples">
+        <StatCard stat="forecast" :trace="traceFor('forecast')" :title="t.cards.forecast.title" :subtitle="t.cards.forecast.subtitle" :result="results.forecast" :unit="t.dashboard.fruitsUnit" :steps="forecast?.steps" :refreshing="refreshing" shape="multiples">
           <TransitionGroup v-if="forecast" name="multi" tag="div" class="multiples">
             <ChartBox v-for="item in forecast.items" :key="item.key" :spec="item.spec" :empty="item.empty" :caption="item.key" :badges="item.badges" :height="200" />
           </TransitionGroup>
         </StatCard>
       </div>
     </section>
+    </template>
   </section>
 </template>

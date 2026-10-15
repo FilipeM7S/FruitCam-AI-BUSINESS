@@ -14,7 +14,7 @@ def square_crop(frame, box, margin=0.15):
 
 
 class Tracker:
-    def __init__(self, line_x, direction=1, max_missed=6, gate_px=60.0, views_every=2, max_views=6):
+    def __init__(self, line_x, direction=1, max_missed=6, gate_px=60.0, views_every=2, max_views=6, merge=0.25, merge_window=0.05):
         self.line = line_x
         self.direction = direction
         self.max_missed = max_missed
@@ -25,6 +25,10 @@ class Tracker:
         self.next_id = 1
         self.velocity = 0.0
         self.crossed = 0
+        self.merge = merge
+        self.merge_window = merge_window
+        self.merged = 0
+        self.counted = []
 
     def _predict(self, track, t):
         vx = track["vx"] if track["hits"] >= 2 else self.velocity
@@ -54,20 +58,35 @@ class Tracker:
                 tr["missed"] += 1
             if not tr["counted"] and self._crosses(tr):
                 tr["counted"] = True
+                if self.merge and self._same_fruit(tr, t):
+                    self.merged += 1
+                    continue
                 self.crossed += 1
                 crossed.append(tr)
+                self.counted.append((t, tr["box"], tr["cut"]))
+        self.counted = [c for c in self.counted if t - c[0] <= self.merge_window]
         moving = [tr["vx"] for tr in self.tracks if tr["hits"] >= 3]
         if moving:
             self.velocity = float(np.median(moving))
         self.tracks = [tr for tr in self.tracks if tr["missed"] <= self.max_missed]
         return crossed
 
+    def _same_fruit(self, tr, t):
+        if tr["cut"]:
+            return False
+        x0, y0, x1, y1 = tr["box"]
+        for _, (a0, b0, a1, b1), cut in self.counted:
+            shared = max(0, min(x1, a1) - max(x0, a0) + 1) * max(0, min(y1, b1) - max(y0, b0) + 1)
+            if not cut and shared >= self.merge * min((x1 - x0 + 1) * (y1 - y0 + 1), (a1 - a0 + 1) * (b1 - b0 + 1)):
+                return True
+        return False
+
     def _crosses(self, tr):
         a, b = tr["prev_cx"] - self.line, tr["cx"] - self.line
         return (a < 0 <= b) if self.direction > 0 else (a > 0 >= b)
 
     def _new(self, det, t, frame):
-        tr = {"id": self.next_id, "cx": det["centroid"][0], "cy": det["centroid"][1], "prev_cx": det["centroid"][0], "vx": self.velocity, "t": t, "t0": t, "hits": 1, "missed": 0, "counted": False, "views": [], "sizes": [], "box": det["box"]}
+        tr = {"id": self.next_id, "cx": det["centroid"][0], "cy": det["centroid"][1], "prev_cx": det["centroid"][0], "vx": self.velocity, "t": t, "t0": t, "hits": 1, "missed": 0, "counted": False, "cut": det.get("cut", False), "views": [], "sizes": [], "box": det["box"]}
         self.next_id += 1
         self._observe(tr, det, frame)
         return tr
@@ -83,6 +102,7 @@ class Tracker:
         tr["hits"] += 1
         tr["missed"] = 0
         tr["box"] = det["box"]
+        tr["cut"] = det.get("cut", False)
         self._observe(tr, det, frame)
 
     def _observe(self, tr, det, frame):

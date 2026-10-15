@@ -1,6 +1,8 @@
 <script setup>
 import { computed, inject, onBeforeUnmount, onMounted, reactive, ref, shallowRef, watch } from "vue";
 import { Chart, reduced, stagger } from "../charts.js";
+import { openDrill } from "../control.js";
+import { t } from "../strings.js";
 
 const props = defineProps({
   spec: { type: Object, default: null },
@@ -18,6 +20,8 @@ const shown = ref(false);
 const first = ref(true);
 const motion = ref(!reduced());
 const register = inject("registerChart", null);
+const trace = inject("chartTrace", null);
+const drillBase = inject("drillBase", null);
 let chart = null;
 let visible = false;
 let observer = null;
@@ -56,6 +60,20 @@ function prepare(spec, initial) {
     o.plugins.legend = { ...(o.plugins.legend || {}), onHover: (_, item) => dimTo(item.datasetIndex), onLeave: () => dimTo(null) };
   }
   o.onResize = () => schedule();
+  const tip = (o.plugins.tooltip.callbacks = { ...(o.plugins.tooltip.callbacks || {}) });
+  const footer = tip.footer;
+  if (trace?.value) tip.footer = (items) => [...[footer?.(items) ?? []].flat(), trace.value];
+  if (spec.drill && drillBase) {
+    o.onClick = (evt, els) => {
+      if (!els.length) return;
+      const d = spec.drill(els[0].index);
+      openDrill({ title: d.title, n: d.n, query: { ...drillBase.value, ...d.query, review: "no" }, trace: trace?.value || "", point: { x: evt.native.clientX, y: evt.native.clientY } }, frame.value);
+    };
+    o.onHover = ((hover) => (e, els, c) => {
+      hover?.(e, els, c);
+      c.canvas.style.cursor = els.length ? "pointer" : "";
+    })(o.onHover);
+  }
   return cfg;
 }
 
@@ -193,6 +211,7 @@ defineExpose({ chart: () => chart });
 
 <template>
   <div ref="frame" class="chart-frame" :class="{ shown, first }" :data-motion="motion ? 'on' : 'off'" tabindex="0" role="img" :aria-label="label">
+    <p v-if="spec?.drill && drillBase" class="drill-hint">{{ t.control.drill.hint }}</p>
     <div v-if="caption || badges.length" class="frame-head">
       <h3 v-if="caption">{{ caption }}</h3>
       <span v-for="b in badges" :key="b.text" class="badge" :class="[b.tone, b.cls]" :title="b.title">{{ b.text }}</span>

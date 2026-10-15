@@ -1,0 +1,86 @@
+{
+ "fps": 25.0,
+ "counting": {
+  "fruits_that_crossed_the_line": 891,
+  "counted": 891,
+  "matched_to_a_true_fruit": 891,
+  "distinct_true_fruits": 891,
+  "double_counts": 0
+ },
+ "multi_view": {
+  "n": 891,
+  "accuracy": 0.7934904601571269,
+  "accuracy_ci95": [
+   0.7656780365071078,
+   0.8187830373615964
+  ],
+  "balanced_accuracy": 0.7967338946047081,
+  "recall": {
+   "boa": 0.8795620437956204,
+   "baixa_qualidade": 0.7574750830564784,
+   "podre": 0.7531645569620253
+  },
+  "confusion": [
+   [
+    241,
+    12,
+    21
+   ],
+   [
+    20,
+    228,
+    53
+   ],
+   [
+    13,
+    65,
+    238
+   ]
+  ]
+ },
+ "single_view": {
+  "n": 891,
+  "accuracy": 0.7867564534231201,
+  "accuracy_ci95": [
+   0.7586602703480161,
+   0.8123906067971232
+  ],
+  "balanced_accuracy": 0.789547740349113,
+  "recall": {
+   "boa": 0.864963503649635,
+   "baixa_qualidade": 0.7441860465116279,
+   "podre": 0.759493670886076
+  },
+  "confusion": [
+   [
+    237,
+    11,
+    26
+   ],
+   [
+    21,
+    224,
+    56
+   ],
+   [
+    14,
+    62,
+    240
+   ]
+  ]
+ },
+ "with_review": {
+  "threshold": null,
+  "coverage": 0.0,
+  "accuracy_on_decided": null,
+  "n_decided": 0
+ },
+ "views_per_fruit": 6.0,
+ "size_ratio_median": 1.0189891894694734,
+ "size_ratio_p05_p95": [
+  0.9217317330272548,
+  1.0457031217842125
+ ],
+ "seconds": 294.2
+}
+exit 0

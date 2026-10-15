@@ -1,0 +1,324 @@
+{
+ "what": "Recortes de cajus de fotos reais, usados como frutas da esteira simulada (página Linha).",
+ "dataset": "cashew_makerere",
+ "crops": [
+  {
+   "file": "boa/Image_116_resized__9.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_116_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "boa/Image_514_resized__7.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_514_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "boa/Image_516_resized__6.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_516_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "boa/Image_1284_resized__9.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_1284_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "boa/Image_1286_resized__5.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_1286_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "boa/Image_1517_resized__0.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_1517_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "boa/Image_1282_resized__2.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_1282_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "boa/Image_1284_resized__11.png",
+   "class": "boa",
+   "photo": "datasets/cashew/images/Image_1284_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_2238_resized__0.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_2238_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_1522_resized__8.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_1522_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_508_resized__8.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_508_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_3018_resized__3.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_3018_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_502_resized__9.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_502_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_1026_resized__5.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_1026_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_2712_resized__12.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_2712_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_1452_resized__0.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_1452_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "baixa_qualidade/Image_2869_resized__7.png",
+   "class": "baixa_qualidade",
+   "photo": "datasets/cashew/images/Image_2869_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1102_resized__6.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1102_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_323_resized__42.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_323_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1503_resized__9.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1503_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1331_resized__13.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1331_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1491_resized__16.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1491_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_341_resized__0.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_341_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1571_resized__14.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1571_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1442_resized__8.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1442_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1505_resized__24.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1505_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1102_resized__4.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1102_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1106_resized__1.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1106_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1298_resized__4.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1298_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1437_resized__0.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1437_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1263_resized__15.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1263_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1300_resized__1.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1300_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1505_resized__26.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1505_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1567_resized__4.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1567_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_910_resized__1.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_910_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1503_resized__4.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1503_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1454_resized__1.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1454_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1506_resized__8.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1506_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1441_resized__10.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1441_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1506_resized__6.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1506_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_2837_resized__8.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_2837_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_504_resized__17.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_504_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1491_resized__17.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1491_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1573_resized__10.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1573_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1539_resized__2.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1539_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1456_resized__3.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1456_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_925_resized__0.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_925_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_356_resized__14.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_356_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1332_resized__2.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1332_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1442_resized__3.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1442_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1505_resized__30.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1505_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_317_resized__4.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_317_resized.jpg",
+   "dataset": "cashew_makerere"
+  },
+  {
+   "file": "podre/Image_1331_resized__9.png",
+   "class": "podre",
+   "photo": "datasets/cashew/images/Image_1331_resized.jpg",
+   "dataset": "cashew_makerere"
+  }
+ ]
+}

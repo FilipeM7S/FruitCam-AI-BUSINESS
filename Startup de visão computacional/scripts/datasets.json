@@ -5,17 +5,9 @@
       "title": "Potatoes Dataset",
       "setting": "real industrial conveyor sorting line (Basler camera perpendicular to the belt)",
       "fruit": "potato",
-      "authors": "Dominik Štursa, Petr Doležel, Jakub Ksiažek",
-      "institution": "University of Pardubice, Czech Republic",
       "version": "Zenodo record 17494608 (published 2025-10-31)",
       "doi": "10.5281/zenodo.17494608",
       "page": "https://zenodo.org/records/17494608",
-      "licence": "CC BY 4.0",
-      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
-      "licence_as_written": "Zenodo record licence field: cc-by-4.0; metadata file inside the zip: \"License: CC BY 4.0\"",
-      "commercial_use": "allowed with attribution",
-      "attribution": "Štursa, D.; Doležel, P.; Ksiažek, J. (2025). Potatoes Dataset. University of Pardubice. Zenodo. https://doi.org/10.5281/zenodo.17494608. Licensed under CC BY 4.0.",
-      "citation": "Štursa D., Doležel P., Ksiažek J. Potatoes Dataset. Zenodo, 2025. doi:10.5281/zenodo.17494608",
       "files": [
         {
           "name": "dataset_potatoes.zip",
@@ -30,17 +22,9 @@
       "title": "Lemons quality control dataset",
       "setting": "lab rig, one lemon per image photographed from several angles; not a conveyor belt",
       "fruit": "lemon",
-      "authors": "Maciej Adamiak (SoftwareMill)",
-      "institution": "SoftwareMill",
       "version": "v1.0.0 (GitHub tag v1.0.0, archived on Zenodo 2020-07-29)",
       "doi": "10.5281/zenodo.3965568",
       "page": "https://github.com/softwaremill/lemon-dataset",
-      "licence": "MIT",
-      "licence_url": "https://opensource.org/licenses/MIT",
-      "licence_as_written": "README at tag v1.0.0: \"MIT License, Copyright (c) 2020 SoftwareMill\". The Zenodo record's licence field says \"other-open\".",
-      "commercial_use": "allowed; keep the copyright and permission notice",
-      "attribution": "Lemons quality control dataset, Maciej Adamiak, SoftwareMill (2020), https://github.com/softwaremill/lemon-dataset, doi:10.5281/zenodo.3965568. MIT License, Copyright (c) 2020 SoftwareMill.",
-      "citation": "Adamiak M. Lemons quality control dataset. SoftwareMill, 2020. doi:10.5281/zenodo.3965568",
       "files": [
         {
           "name": "lemon-dataset-v1.0.0.zip",
@@ -55,17 +39,9 @@
       "title": "FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality)",
       "setting": "phone camera, varied backgrounds and lighting; not a conveyor belt",
       "fruit": "apple, banana, guava, lime, orange, pomegranate",
-      "authors": "Vishal Meshram, Kailas Patil",
-      "institution": "",
       "version": "Mendeley Data version 3 (published 2022-03-08)",
       "doi": "10.17632/b6fftwbr2v.3",
       "page": "https://data.mendeley.com/datasets/b6fftwbr2v/3",
-      "licence": "CC BY 4.0",
-      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
-      "licence_as_written": "Mendeley Data licence field on version 3: CC BY 4.0 (Creative Commons Attribution 4.0 International)",
-      "commercial_use": "allowed with attribution",
-      "attribution": "Meshram, V.; Patil, K. (2022). FruitNet: Indian Fruits Dataset with quality (Good, Bad & Mixed quality). Mendeley Data, V3. https://doi.org/10.17632/b6fftwbr2v.3. Licensed under CC BY 4.0.",
-      "citation": "Meshram V., Patil K. FruitNet: Indian fruits image dataset with quality for machine learning applications. Data in Brief 40 (2022) 107686. doi:10.1016/j.dib.2021.107686",
       "files": [
         {
           "name": "FruitNetDataset.zip",
@@ -88,51 +64,167 @@
       "title": "Coffee and Cashew Nut Dataset (cashew part)",
       "setting": "field photos of cashew trees taken from a drone at close range; not a conveyor belt",
       "fruit": "cashew apple",
-      "authors": "Joyce Nakatumba-Nabende, Andrew Katumba, Rahman Sanya, Jeremy Tusubira, Sudi Murindanyi, Gloria Namanya, Ann Nabiryo",
-      "institution": "Makerere University, Uganda",
       "version": "Mendeley Data version 1 (published 2023-11-10)",
       "doi": "10.17632/r46c6bpfpf.1",
       "page": "https://data.mendeley.com/datasets/r46c6bpfpf/1",
-      "licence": "CC BY 4.0",
-      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
-      "licence_as_written": "Mendeley Data licence field on version 1: CC BY 4.0 (Creative Commons Attribution 4.0 International)",
-      "commercial_use": "allowed with attribution",
-      "attribution": "Nakatumba-Nabende, J.; Katumba, A.; Sanya, R.; Tusubira, J.; Murindanyi, S.; Namanya, G.; Nabiryo, A. (2023). Coffee and Cashew Nut Dataset. Mendeley Data, V1. https://doi.org/10.17632/r46c6bpfpf.1. Licensed under CC BY 4.0.",
-      "citation": "Sanya R., Nabiryo A. L., Tusubira J. F., Murindanyi S., Katumba A., Nakatumba-Nabende J. Coffee and cashew nut dataset: A dataset for detection, classification, and yield estimation for machine learning applications. Data in Brief 52 (2024) 109952.",
       "local": {
-        "images": "images",
-        "labels": "Labels",
+        "images": "datasets/cashew/images",
+        "labels": "datasets/cashew/labels",
         "expected_images": 3098,
         "expected_label_files": 3098,
         "note": "Already in the project (training data of the current model). Not downloaded by the script; the official file is Cashew.rar (445,341,534 B, sha256 9ecd6e2626b48c84efb81ba995dbf57b7be7d1bffb5e799fe6fb55458f0bfeef)."
       },
       "files": []
-    }
-  ],
-  "recorded_not_downloaded": [
-    {
-      "title": "FruitRoll-360",
-      "page": "https://ieee-dataport.org/documents/fruitroll-360",
-      "doi": "10.21227/w30m-kb62",
-      "setting": "live factory line, citrus rolled 360° on a dual conveyor",
-      "licence_as_written": "Terms of Use: \"This dataset is released solely for academic and research purposes. Any commercial use requires prior written permission from the authors. Users must not redistribute the dataset or any subset thereof without authorization.\"",
-      "reason": "research only; commercial use needs written permission; IEEE DataPort login required"
     },
     {
-      "title": "Oranges Classification",
-      "page": "https://ieee-dataport.org/documents/oranges-classification",
-      "doi": "10.21227/fm4f-1n74",
-      "setting": "packing-house conveyor, camera above the belt",
-      "licence_as_written": "No licence in the visible page text. The page's embedded schema.org metadata declares \"license\": \"https://creativecommons.org/licenses/by/4.0/\".",
-      "reason": "files are behind an IEEE DataPort login/subscription, which this task excludes; the CC BY 4.0 appears only in machine-readable page metadata, so confirm it with the author before relying on it"
-    },
-    {
-      "title": "Sisfrutos Papaya",
-      "page": "https://github.com/jhony2507/Sisfrutos-Papaya",
+      "id": "usda_line_videos",
+      "title": "Sorting and packing line videos (seed potatoes and citrus)",
+      "setting": "real sorting and packing lines filmed by a hand-held or tripod camera (seed potatoes in Montana, a citrus packing facility in Texas); not a fixed camera above the belt; no labels",
+      "fruit": "potato, citrus",
+      "version": "copies kept by the media repository named on the page, uploaded there on 2026-03-17 and 2026-05-08",
       "doi": "",
-      "setting": "papaya packing facility",
-      "licence_as_written": "README, section \"License to use and download\": \"The Sisfrutos dataset is made available free of charge to academic and non-academic entities, such as research, teaching, scientific publications or personal experimentation, on a non-commercial basis. The use of this dataset, in whole or in part, is expressly prohibited for commercial purposes.\"",
-      "reason": "explicitly non-commercial; download links only on request"
+      "page": "https://commons.wikimedia.org/wiki/Category:Files_from_U.S._Department_of_Agriculture_Flickr_stream",
+      "files": [
+        {
+          "name": "citrus_packing_facility.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/20260209-O-RD001-Lone_Star_Citrus_Growers_Facility.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 149660768,
+          "sha1": "900528d4ea30cd9d05500a557ca653a0de5557a1",
+          "page": "https://commons.wikimedia.org/wiki/File:20260209-O-RD001-Lone_Star_Citrus_Growers_Facility.webm",
+          "commons_title": "File:20260209-O-RD001-Lone Star Citrus Growers Facility.webm"
+        },
+        {
+          "name": "potato_sorting_compilation.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Potatoes_Sorting_Montana2026_%2855252116350%29.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 43144981,
+          "sha1": "8e685b362babbdd3bfe71559f1269905d5a4e05b",
+          "page": "https://commons.wikimedia.org/wiki/File:Potatoes_Sorting_Montana2026_(55252116350).webm",
+          "commons_title": "File:Potatoes Sorting Montana2026 (55252116350).webm"
+        },
+        {
+          "name": "potato_0921.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/20260429-P-OC319-DSC_0921.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 8915385,
+          "sha1": "158ad8743be63d3ea0e58e725f21e1ea5a692c79",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319-DSC_0921.webm",
+          "commons_title": "File:20260429-P-OC319-DSC 0921.webm"
+        },
+        {
+          "name": "potato_0919.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/20260429-P-OC319-DSC_0919.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 3028111,
+          "sha1": "0708b7e6f50d99a557958bf2eff068c39589199b",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319-DSC_0919.webm",
+          "commons_title": "File:20260429-P-OC319-DSC 0919.webm"
+        },
+        {
+          "name": "potato_0922.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/20260429-P-OC319-DSC_0922.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 6031791,
+          "sha1": "c2895d3900c39f57c1ce27552ba9c0128a973b52",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319-DSC_0922.webm",
+          "commons_title": "File:20260429-P-OC319-DSC 0922.webm"
+        },
+        {
+          "name": "potato_0920.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/20260429-P-OC319-DSC_0920.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 12047582,
+          "sha1": "4fb2c27703768f9f2bfeecb61bde2c21b7f88e35",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319-DSC_0920.webm",
+          "commons_title": "File:20260429-P-OC319-DSC 0920.webm"
+        },
+        {
+          "name": "potato_0912_b.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/20260429-P-OC319_DSC_0912.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 4937866,
+          "sha1": "7fa4b9c571a231e62e0c24c3bfa3255dc36d4a7e",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319_DSC_0912.webm",
+          "commons_title": "File:20260429-P-OC319 DSC 0912.webm"
+        },
+        {
+          "name": "potato_0934.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/20260429-P-OC319-DSC_0934.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 9362227,
+          "sha1": "d3013e11ee4d70c73ab46912a87ff189c0f1702e",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319-DSC_0934.webm",
+          "commons_title": "File:20260429-P-OC319-DSC 0934.webm"
+        },
+        {
+          "name": "potato_0912.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/10/20260429-P-OC319-DSC_0912.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 3292819,
+          "sha1": "87911c29ede2c1102a563497cc1ad88d7327e21c",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319-DSC_0912.webm",
+          "commons_title": "File:20260429-P-OC319-DSC 0912.webm"
+        },
+        {
+          "name": "potato_0912_c.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/20260429-P-OC319_0912.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 1063779,
+          "sha1": "74801e10a2ec33ad6b946c90fb63b5e304a3d588",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319_0912.webm",
+          "commons_title": "File:20260429-P-OC319 0912.webm"
+        },
+        {
+          "name": "potato_0918.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/20260429-P-OC319_DSC_0918_2.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 5104568,
+          "sha1": "03e12efc1045a011e5075283d2e23d2bb98c1462",
+          "page": "https://commons.wikimedia.org/wiki/File:20260429-P-OC319_DSC_0918_2.webm",
+          "commons_title": "File:20260429-P-OC319 DSC 0918 2.webm"
+        }
+      ]
+    },
+    {
+      "id": "apple_grading_video",
+      "title": "Apple grading and packing (video)",
+      "setting": "real apple grading and packing line filmed by a hand-held camera; no labels",
+      "fruit": "apple",
+      "version": "file uploaded to the media repository named on the page on 2025-09-23",
+      "doi": "",
+      "page": "https://commons.wikimedia.org/wiki/File:Apple_grading_and_packing.webm",
+      "files": [
+        {
+          "name": "apple_grading.webm",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Apple_grading_and_packing.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "size": 16255708,
+          "sha1": "15f253a4897d162ada27c93bf026b298ed403baf",
+          "page": "https://commons.wikimedia.org/wiki/File:Apple_grading_and_packing.webm",
+          "commons_title": "File:Apple grading and packing.webm"
+        }
+      ]
+    },
+    {
+      "id": "cashew_drone_full",
+      "title": "Drone-based Agricultural Dataset for Crop Yield Estimation (cashew parts, full resolution)",
+      "setting": "close-range drone photos of cashew trees in Ghana and Uganda, full resolution, with boxes for tree, flower and four fruit stages; not a conveyor belt",
+      "fruit": "cashew apple",
+      "version": "Hugging Face revision 54ba9307e6f9ef441839a7286eee96b674993135 (last modified 2023-08-11)",
+      "doi": "10.57967/hf/0959",
+      "page": "https://huggingface.co/datasets/KaraAgroAI/Drone-based-Agricultural-Dataset-for-Crop-Yield-Estimation",
+      "store": "outside",
+      "files": [
+        {
+          "name": "ghana_cashew.zip",
+          "url": "https://huggingface.co/datasets/KaraAgroAI/Drone-based-Agricultural-Dataset-for-Crop-Yield-Estimation/resolve/54ba9307e6f9ef441839a7286eee96b674993135/data/Ghana/cashew.zip",
+          "size": 4344069522,
+          "sha256": "719b7eea0b2e1b244b39db0cc9089908b5d39cb9edba14b2c0698a677ddfdc0a",
+          "partial": true
+        },
+        {
+          "name": "uganda_cashew.zip",
+          "url": "https://huggingface.co/datasets/KaraAgroAI/Drone-based-Agricultural-Dataset-for-Crop-Yield-Estimation/resolve/54ba9307e6f9ef441839a7286eee96b674993135/data/Uganada/Cashew.zip",
+          "size": 11058442756,
+          "sha256": "44fe791c169f21e12e2120015b9cf1f7356ffea9a5a6fc592509197ec734e431",
+          "partial": true
+        },
+        {
+          "name": "datasheet.pdf",
+          "url": "https://huggingface.co/datasets/KaraAgroAI/Drone-based-Agricultural-Dataset-for-Crop-Yield-Estimation/resolve/54ba9307e6f9ef441839a7286eee96b674993135/data/Drone-based%20Agricultural%20Dataset%20for%20Crop%20Yield%20Estimation.pdf",
+          "size": 1408002,
+          "sha256": "37dfb3fd32c7c9a2ac19af17009523d794a5f3e199abb1706f7862a014f85388"
+        }
+      ]
     }
   ]
 }

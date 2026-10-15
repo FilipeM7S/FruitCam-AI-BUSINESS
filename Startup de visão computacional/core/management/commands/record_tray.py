@@ -25,7 +25,7 @@ class Command(BaseCommand):
         parser.add_argument("--label", required=True, choices=LABELS)
         parser.add_argument("--batch", required=True, help="one name per physical tray, e.g. 2026-10-12-podre-A")
         parser.add_argument("--source", help="overrides the source in config/cameras.json")
-        parser.add_argument("--out", default=str(Path(settings.BASE_DIR) / "belt_data"))
+        parser.add_argument("--out", default=str(Path(settings.BASE_DIR) / "datasets" / "belt_data"))
         parser.add_argument("--seconds", type=float)
         parser.add_argument("--frames-every", type=float, default=2.0)
         parser.add_argument("--snapshot-every", type=float, default=0.5)
@@ -44,6 +44,7 @@ class Command(BaseCommand):
         if simulated:
             mix = [1.0 if c == label else 0.0 for c in SIM_CLASSES] if label in SIM_CLASSES else cam.get("sim", {}).get("mix", (0.6, 0.25, 0.15))
             sim = {**cam.get("sim", {}), "mix": mix, "seed": int(hashlib.sha256(batch.encode()).hexdigest()[:8], 16)}
+            sim.pop("crops", None)
             belt = SimulatedBelt(px_per_mm=cam["px_per_mm"], **sim)
             read, width = belt.read, belt.width
         else:

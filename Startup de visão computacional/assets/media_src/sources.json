@@ -1,0 +1,152 @@
+{
+  "caju-pacajus": {
+    "original_size": [
+      4160,
+      3120
+    ],
+    "original_sha1": "974a0a81b9d7b56f2ed4a0664b6649c90740b601",
+    "master": "assets/media_src/commons/caju-pacajus.jpg",
+    "master_size": [
+      2560,
+      1920
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "caju-arvore": {
+    "original_size": [
+      3872,
+      2592
+    ],
+    "original_sha1": "46b19950d259cb511b16b9d9aef5a4efbac86f1a",
+    "master": "assets/media_src/commons/caju-arvore.jpg",
+    "master_size": [
+      2560,
+      1714
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "caju-vermelho": {
+    "original_size": [
+      3925,
+      2699
+    ],
+    "original_sha1": "974aecb7141fc4de528acfd3f37ca15f1c972f76",
+    "master": "assets/media_src/commons/caju-vermelho.jpg",
+    "master_size": [
+      2560,
+      1760
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "castanha": {
+    "original_size": [
+      3000,
+      3000
+    ],
+    "original_sha1": "8484bebc92d8f17803e0f2635cb94e9eb50eefe9",
+    "master": "assets/media_src/commons/castanha.jpg",
+    "master_size": [
+      2560,
+      2560
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "melao": {
+    "original_size": [
+      3070,
+      2458
+    ],
+    "original_sha1": "f9e42905cc27d764a999f192c88f4f4d6f63bffb",
+    "master": "assets/media_src/commons/melao.jpg",
+    "master_size": [
+      2560,
+      2050
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "guia-bom": {
+    "original_size": [
+      4000,
+      2250
+    ],
+    "original_sha1": "4864747859eb1dc2dae1be243acd77d10b7013a6",
+    "master": "assets/media_src/commons/guia-bom.jpg",
+    "master_size": [
+      2560,
+      1440
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "guia-varias": {
+    "original_size": [
+      1800,
+      1200
+    ],
+    "original_sha1": "817cba3a78507ddc9e54ade7f7c51f91912bb157",
+    "master": "assets/media_src/commons/guia-varias.jpg",
+    "master_size": [
+      1800,
+      1200
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "guia-longe": {
+    "original_size": [
+      2592,
+      1944
+    ],
+    "original_sha1": "e03030c6ba12a7484d74af9418875da23d962509",
+    "master": "assets/media_src/commons/guia-longe.jpg",
+    "master_size": [
+      2560,
+      1920
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "guia-escuro": {
+    "original_size": [
+      4496,
+      3000
+    ],
+    "original_sha1": "e0ed83500527ed047da380da9f59839d596e7bbe",
+    "master": "assets/media_src/commons/guia-escuro.jpg",
+    "master_size": [
+      2560,
+      1708
+    ],
+    "master_note": "Original reduzido para no máximo 2560 px no maior lado, sem metadados EXIF.",
+    "kind": "image",
+    "duration_s": null
+  },
+  "video-batatas": {
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha1": "8e685b362babbdd3bfe71559f1269905d5a4e05b",
+    "master": "assets/media_src/commons/video-batatas.webm",
+    "master_size": [
+      1920,
+      1080
+    ],
+    "master_note": "Arquivo original, sem alteração.",
+    "kind": "video",
+    "duration_s": 58.767
+  }
+}

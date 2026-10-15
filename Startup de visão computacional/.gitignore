@@ -2,3 +2,9 @@ data/**
 !data/**/
 !data/label_map.json
 !data/external/*/SOURCE.md
+var/
+datasets/belt_data/
+__pycache__/
+*.pyc
+node_modules/
+frontend/dist/

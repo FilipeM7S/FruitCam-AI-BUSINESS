@@ -75,9 +75,21 @@ def belt_background(h, w, rng, palette):
     return np.clip(bg, 0, 255), name
 
 
-def composite(crop_rgb, mask, rng, palette=TRAIN_BELTS):
+def real_background(h, w, rng, bank):
+    picture = bank[int(rng.integers(len(bank)))]
+    ph, pw = picture.shape[:2]
+    side = int(min(ph, pw) * rng.uniform(0.35, 1.0))
+    x, y = int(rng.integers(0, pw - side + 1)), int(rng.integers(0, ph - side + 1))
+    patch = picture[y:y + side, x:x + side]
+    if rng.random() < 0.5:
+        patch = patch[:, ::-1]
+    bg = cv2.resize(patch, (w, h), interpolation=cv2.INTER_AREA if side >= max(h, w) else cv2.INTER_LINEAR).astype(np.float32)
+    return np.clip(bg * rng.uniform(0.8, 1.2), 0, 255), "video"
+
+
+def composite(crop_rgb, mask, rng, palette=TRAIN_BELTS, bank=None, bank_share=0.5):
     h, w = crop_rgb.shape[:2]
-    bg, name = belt_background(h, w, rng, palette)
+    bg, name = real_background(h, w, rng, bank) if bank and rng.random() < bank_share else belt_background(h, w, rng, palette)
     alpha = cv2.GaussianBlur(mask.astype(np.float32), (0, 0), max(0.6, min(h, w) / 160))
     scale = rng.uniform(0.85, 1.08)
     dx, dy = rng.uniform(-0.05, 0.05, 2) * (w, h)

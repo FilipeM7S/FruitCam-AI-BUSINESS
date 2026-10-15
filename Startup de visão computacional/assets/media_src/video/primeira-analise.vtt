@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00.300 --> 00:03.041
+Inspeção por foto: escolha a fruta, o setor e a foto. Uma fruta por foto.
+
+00:03.041 --> 00:05.435
+A faixa de estado mostra as etapas reais do pedido: envio, análise e conclusão, com o tempo medido.
+
+00:05.435 --> 00:09.480
+Resultado: saída real do modelo para esta foto: boa. O sistema não decide sozinho: a fruta vai para revisão manual.
+
+00:09.480 --> 00:14.039
+O inspetor mostra só os campos salvos no banco e o recorte que o modelo recebeu.
+
+00:14.039 --> 00:17.256
+O registro aparece no Histórico, com filtros, seleção e exportação em CSV.

@@ -2,7 +2,6 @@ import base64
 import json
 import os
 import secrets
-import shutil
 import socket
 import subprocess
 import sys
@@ -17,14 +16,22 @@ from PIL import Image
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "media_src" / "video"
-PHOTO = ROOT / "media_src" / "commons" / "caju-vermelho.jpg"
+OUT = ROOT / "assets" / "media_src" / "video"
+PHOTO = ROOT / "assets" / "media_src" / "commons" / "caju-vermelho.jpg"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 SIZE = {"width": 1280, "height": 720}
 FPS = 30
 MEDIA = json.loads((ROOT / "frontend" / "src" / "media.json").read_text(encoding="utf-8"))["items"]
 VISIBLE = "[...document.querySelectorAll('[data-media], [data-bg]')].filter((f) => { const r = f.getBoundingClientRect(); return r.width > 0 && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth; }).map((f) => f.dataset.media || f.dataset.bg)"
 UPLOADED = "caju-vermelho"
+
+
+def emptied(folder):
+    folder.mkdir(parents=True, exist_ok=True)
+    for old in folder.iterdir():
+        if old.is_file():
+            old.unlink()
+    return folder
 
 
 def until(page, js, timeout=30000):
@@ -136,9 +143,7 @@ class Recorder:
 
 
 def encode(frames, end, work, outputs, crop=None):
-    frame_dir = work / "frames"
-    shutil.rmtree(frame_dir, ignore_errors=True)
-    frame_dir.mkdir()
+    frame_dir = emptied(work / "frames")
     lines = []
     for i, (t, data) in enumerate(frames):
         path = frame_dir / f"{i:05d}.jpg"
@@ -193,7 +198,7 @@ def demo(browser, server, work):
     rec = Recorder(page)
     rec.start()
     stills, still_assets = {}, {}
-    rec.mark("Login do FruitCam_ai. Ao fundo, vídeo ilustrativo de uma esteira de seleção (USDA, domínio público).")
+    rec.mark("Login do FruitCam_ai. Ao fundo, vídeo ilustrativo de uma esteira de seleção.")
     rec.hold(1600)
     page.locator("input[name=username]").press_sequentially("demo", delay=90)
     page.locator("input[name=password]").press_sequentially(server.password, delay=40)
@@ -226,7 +231,7 @@ def demo(browser, server, work):
     rec.hold(2600)
     page.keyboard.press("Escape")
     rec.hold(400)
-    rec.mark("Inspeção por foto: uma foto real de caju (Wilfredor, CC0) passa pelo mesmo classificador de três classes.")
+    rec.mark("Inspeção por foto: uma foto real de caju passa pelo mesmo classificador de três classes.")
     page.click("nav.nav >> text=Inspeção")
     page.wait_for_selector(".fruit-card")
     page.locator(".fruit-card", has_text="Caju").click()
@@ -238,7 +243,7 @@ def demo(browser, server, work):
     page.wait_for_selector(".verdict")
     rec.hold(1200)
     result = page.evaluate("({ label: document.querySelector('.verdict-label').textContent.trim(), confidence: document.querySelector('.facts dd').textContent.trim(), review: !!document.querySelector('.review-note') })")
-    rec.mark(f"Saída real do modelo: {result['label'].lower()}, confiança {result['confidence']}" + (", sem confiança suficiente para decidir sozinho: vai para revisão manual." if result["review"] else ".") + (" Este caju parece são: é um erro real do modelo. A foto não segue o guia (fruta entre folhas, sem fundo claro)." if result["label"] != "Boa" else " A foto tem folhas ao fundo, diferente da esteira."))
+    rec.mark(f"Saída real do modelo: {result['label'].lower()}, confiança {result['confidence']}" + (". O sistema não decide sozinho: a fruta vai para revisão manual." if result["review"] else ".") + (" Este caju parece são: é um erro real do modelo. A foto não segue o guia (fruta entre folhas, sem fundo claro)." if result["label"] != "Boa" else " A foto tem folhas ao fundo, diferente da esteira."))
     rec.hold(3600)
     stills["4-inspecao"] = page.screenshot()
     still_assets["4-inspecao"] = sorted(visible(page))
@@ -249,9 +254,7 @@ def demo(browser, server, work):
     encode(frames, rec.end, work, [(OUT / "demo.webm", "webm"), (OUT / "demo.mp4", "mp4")])
     (OUT / "demo-poster.png").write_bytes(poster)
     (OUT / "demo.vtt").write_text(captions(rec.marks, rec.end), encoding="utf-8")
-    story = OUT / "storyboard"
-    shutil.rmtree(story, ignore_errors=True)
-    story.mkdir()
+    story = emptied(OUT / "storyboard")
     for name, png in stills.items():
         (story / f"{name}.png").write_bytes(png)
     meta = {
@@ -260,9 +263,8 @@ def demo(browser, server, work):
         "duration": round(rec.end, 1),
         "alt": "Gravação de tela do app FruitCam_ai: login, página da linha com a explicação da câmera, monitor ao vivo de uma câmera simulada com indicadores e gráficos, o guia do usuário e a inspeção de uma foto de caju.",
         "posterAlt": "Monitor da linha: quadro da câmera simulada com caixas coloridas nas frutas e indicadores de frutas por minuto e porcentagem de cada classe.",
-        "caption": f"Gravação do app real em execução ({round(rec.end)} s, sem áudio). A câmera e os dados da linha são simulados e sintéticos; a foto da inspeção é real (CC0) e o resultado é a saída real do modelo.",
+        "caption": f"Gravação do app real em execução ({round(rec.end)} s, sem áudio). A câmera e os dados da linha são simulados e sintéticos; a foto da inspeção é real e o resultado é a saída real do modelo.",
         "transcript": [text for _, text in rec.marks],
-        "credit": "Gravação de tela do app FruitCam_ai (tools/record_demo.py). A interface gravada exibe fotos de terceiros da Wikimedia Commons, que mantêm suas licenças; autores e licenças na página Créditos.",
         "contains": sorted(rec.seen),
         "stills": still_assets,
         "poster": poster_assets,
@@ -291,9 +293,7 @@ def hero_shots(browser, server):
     page.wait_for_selector(".verdict")
     page.evaluate("window.scrollTo(0, document.querySelector('.analyze-grid').getBoundingClientRect().top + window.scrollY - 76)")
     page.wait_for_timeout(600)
-    hero = OUT / "hero"
-    shutil.rmtree(hero, ignore_errors=True)
-    hero.mkdir()
+    hero = emptied(OUT / "hero")
     page.screenshot(path=hero / "app-resultado.png")
     shown = {"app-resultado.png": sorted(visible(page))}
     page.goto(server.url + "/")
